@@ -12,8 +12,8 @@ export default function Footer() {
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
 
         {/* Top — brand + tagline */}
-        <div className="py-20 md:py-32" style={{ borderBottom: "1px solid #1A1410" }}>
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-20 md:gap-16">
+        <div className="py-20 md:py-48" style={{ borderBottom: "1px solid #1A1410" }}>
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-20 md:gap-32">
             <div>
               <Link href="/" aria-label="BRAVÍO — Inicio" className="inline-block mb-10">
                 <Image
@@ -79,7 +79,7 @@ export default function Footer() {
             </div>
 
             {/* Middle — links in 2 cols */}
-            <div className="grid grid-cols-2 gap-12 md:gap-20">
+            <div className="grid grid-cols-2 gap-12 md:gap-32">
               {/* Colecciones */}
               <nav aria-label="Colecciones">
                 <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-8 font-bold" style={{ color: "#849AAD" }}>

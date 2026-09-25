@@ -40,10 +40,10 @@ export default function OrigenSection() {
       </div>
 
       {/* Text content */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 pt-16 pb-24 md:pt-16 md:pb-36">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 pt-16 pb-24 md:pt-28 md:pb-48">
 
         {/* Eyebrow */}
-        <div className="flex items-center gap-3 mb-12">
+        <div className="flex items-center gap-3 mb-12 md:mb-20">
           <div style={{ width: "24px", height: "1px", background: "#5E1C23" }} />
           <p className="font-[SpaceGrotesk] text-[10px] tracking-[0.3em] uppercase font-bold" style={{ color: "#5E1C23" }}>
             Nuestro Origen
@@ -53,7 +53,7 @@ export default function OrigenSection() {
         {/* Heading */}
         <h2
           id="origen-heading"
-          className="font-[ArchivoBlack] text-[#B1C7D4] uppercase mb-12"
+          className="font-[ArchivoBlack] text-[#B1C7D4] uppercase mb-12 md:mb-16"
           style={{ fontSize: "clamp(2.5rem, 8vw, 5.5rem)", lineHeight: 0.95, letterSpacing: "-0.015em" }}
         >
           HECHO<br />EN LEÓN.
@@ -61,7 +61,7 @@ export default function OrigenSection() {
 
         {/* Body */}
         <p
-          className="font-[SpaceGrotesk] leading-relaxed max-w-lg mb-24"
+          className="font-[SpaceGrotesk] leading-relaxed max-w-lg mb-24 md:mb-32"
           style={{ fontSize: "clamp(0.875rem, 1.5vw, 1rem)", color: "#849AAD" }}
         >
           León, Guanajuato es la capital mundial del calzado.
@@ -69,8 +69,8 @@ export default function OrigenSection() {
           No como tendencia — como respuesta a la vida que ya se vive.
         </p>
 
-        <div style={{ borderTop: "1px solid #1A1410" }} className="pt-14">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 sm:gap-12">
+        <div style={{ borderTop: "1px solid #1A1410" }} className="pt-14 md:pt-24">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 sm:gap-16 md:gap-24">
             {STATS.map((stat, i) => (
               <div
                 key={stat.value}
