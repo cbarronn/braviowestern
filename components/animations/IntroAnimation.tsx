@@ -8,11 +8,11 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
   const [phase, setPhase] = useState<"logo" | "cruz" | "done">("logo");
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("cruz"), 1800);
+    const t1 = setTimeout(() => setPhase("cruz"), 2800);
     const t2 = setTimeout(() => {
       setPhase("done");
       onComplete();
-    }, 2800);
+    }, 4500);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, [onComplete]);
 
@@ -23,7 +23,7 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
           key="intro"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
           style={{
             position: "fixed",
             inset: 0,

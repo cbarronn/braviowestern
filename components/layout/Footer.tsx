@@ -127,16 +127,16 @@ export default function Footer() {
               <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-8 font-bold" style={{ color: "#849AAD" }}>
                 Atención al Cliente
               </p>
-              <div className="space-y-7">
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
                 <a href="https://wa.me/524777296578" target="_blank" rel="noopener noreferrer"
-                  className="block font-[SpaceGrotesk] text-base transition-colors hover:text-[#FFFFFF]" style={{ color: "#B1C7D4" }}>
+                  className="font-[SpaceGrotesk] text-base transition-colors hover:text-[#FFFFFF]" style={{ color: "#B1C7D4" }}>
                   WhatsApp: +52 (477) 729-6578
                 </a>
                 <a href="mailto:hola@braviowestern.com.mx"
-                  className="block font-[SpaceGrotesk] text-base transition-colors hover:text-[#FFFFFF]" style={{ color: "#B1C7D4" }}>
+                  className="font-[SpaceGrotesk] text-base transition-colors hover:text-[#FFFFFF]" style={{ color: "#B1C7D4" }}>
                   hola@braviowestern.com.mx
                 </a>
-                <p className="font-[SpaceGrotesk] text-base" style={{ color: "#849AAD" }}>
+                <p className="font-[SpaceGrotesk] text-base" style={{ color: "#849AAD", marginTop: "0.5rem" }}>
                   León, Guanajuato, México
                 </p>
               </div>
@@ -149,18 +149,9 @@ export default function Footer() {
           <p className="font-[SpaceGrotesk] text-sm tracking-widest uppercase" style={{ color: "#849AAD" }}>
             <span style={{ color: "#5E1C23", marginRight: "8px" }}>✦</span> León, Guanajuato · México
           </p>
-          <div className="flex items-center gap-8">
-            <Link
-              href="/aviso-de-privacidad"
-              className="font-[SpaceGrotesk] text-xs tracking-widest uppercase hover:text-[#B1C7D4] transition-colors"
-              style={{ color: "#605246" }}
-            >
-              Aviso de Privacidad
-            </Link>
-            <p className="font-[SpaceGrotesk] text-sm" style={{ color: "#849AAD" }}>
-              © {new Date().getFullYear()} BRAVÍO. Todos los derechos reservados.
-            </p>
-          </div>
+          <p className="font-[SpaceGrotesk] text-sm" style={{ color: "#849AAD" }}>
+            © {new Date().getFullYear()} BRAVÍO. Todos los derechos reservados.
+          </p>
         </div>
       </div>
     </footer>
