@@ -31,7 +31,7 @@ export default function Footer() {
                 Western para la vida actual.
               </p>
               <p
-                className="font-[SpaceGrotesk] text-lg leading-loose mb-12"
+                className="font-[SpaceGrotesk] text-lg leading-loose"
                 style={{ color: "#849AAD", maxWidth: "320px" }}
               >
                 Hecho en León, Guanajuato.
@@ -63,7 +63,7 @@ export default function Footer() {
               {/* Información y Redes */}
               <div>
                 {/* Redes Sociales */}
-                <div className="flex gap-8 mb-32 md:mb-40">
+                <div className="flex gap-8 mb-16 md:mb-20">
                   <a
                     href="https://www.instagram.com/wbravio?stkn=MWUwY3Z3NWR6a3duMw=="
                     target="_blank"
