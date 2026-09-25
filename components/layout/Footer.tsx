@@ -25,13 +25,13 @@ export default function Footer() {
                 />
               </Link>
               <p
-                className="font-[SpaceGrotesk] text-lg leading-loose mb-10"
+                className="font-[SpaceGrotesk] text-2xl leading-loose mb-8"
                 style={{ color: "#B1C7D4", maxWidth: "320px" }}
               >
                 Western para la vida actual.
               </p>
               <p
-                className="font-[SpaceGrotesk] text-base leading-loose mb-12"
+                className="font-[SpaceGrotesk] text-lg leading-loose mb-12"
                 style={{ color: "#849AAD", maxWidth: "320px" }}
               >
                 Hecho en León, Guanajuato.

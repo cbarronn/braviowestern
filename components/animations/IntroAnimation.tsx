@@ -73,7 +73,7 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
                 transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
                 style={{ zIndex: 1 }}
               >
-                <CruzDeHierro size={80} color="#5E1C23" />
+                <CruzDeHierro size={140} color="#5E1C23" />
               </motion.div>
             )}
           </AnimatePresence>
