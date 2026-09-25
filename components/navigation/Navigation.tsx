@@ -46,7 +46,7 @@ export default function Navigation() {
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between relative">
           
           {/* Logo — centered absolutely */}
-          <div className="absolute left-1/2 -translate-x-1/2">
+          <div className="absolute left-1/2 -translate-x-1/2 mt-3">
             <Link href="/" aria-label="BRAVÍO — Página de inicio" className="flex-shrink-0">
               <BravioLogoHorizontal variant="negativo" width={200} height={80} />
             </Link>
