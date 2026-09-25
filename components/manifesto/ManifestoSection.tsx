@@ -53,10 +53,10 @@ export default function ManifestoSection() {
       style={{ background: "#1A1410" }}
       aria-labelledby="manifesto-heading"
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-28 md:py-40">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-40">
 
         {/* Eyebrow */}
-        <div ref={eyebrowRef} className="flex items-center gap-4 mb-20 opacity-0">
+        <div ref={eyebrowRef} className="flex items-center gap-4 mb-16 opacity-0">
           <div style={{ width: "32px", height: "1px", background: "#5E1C23" }} />
           <p className="font-[SpaceGrotesk] text-[13px] tracking-[0.35em] uppercase font-bold" style={{ color: "#5E1C23" }}>
             Manifiesto
@@ -89,7 +89,7 @@ export default function ManifestoSection() {
         {/* Divider + footer line */}
         <div
           ref={footerRef}
-          className="mt-36 pt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 opacity-0"
+          className="mt-20 md:mt-36 pt-10 md:pt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 opacity-0"
           style={{ borderTop: "1px solid #3E342D" }}
         >
           <p className="font-[SpaceGrotesk] text-[10px] tracking-[0.3em] uppercase" style={{ color: "#849AAD" }}>

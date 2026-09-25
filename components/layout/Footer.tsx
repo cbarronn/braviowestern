@@ -13,7 +13,7 @@ export default function Footer() {
 
         {/* Top — brand + tagline */}
         <div className="py-20 md:py-32" style={{ borderBottom: "1px solid #1A1410" }}>
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-16">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-20 md:gap-16">
             <div>
               <Link href="/" aria-label="BRAVÍO — Inicio" className="inline-block mb-10">
                 <Image
@@ -31,7 +31,7 @@ export default function Footer() {
                 Western para la vida actual.
               </p>
               <p
-                className="font-[SpaceGrotesk] text-base leading-loose mb-10"
+                className="font-[SpaceGrotesk] text-base leading-loose mb-12"
                 style={{ color: "#849AAD", maxWidth: "320px" }}
               >
                 Hecho en León, Guanajuato.
@@ -85,7 +85,7 @@ export default function Footer() {
                 <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-8 font-bold" style={{ color: "#849AAD" }}>
                   Colecciones
                 </p>
-                <ul className="space-y-7 list-none m-0 p-0">
+                <ul className="space-y-8 list-none m-0 p-0">
                   {[
                     { href: "/mujer", label: "Mujer" },
                     { href: "/hombre", label: "Hombre" },
@@ -105,7 +105,7 @@ export default function Footer() {
                 <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-8 font-bold" style={{ color: "#849AAD" }}>
                   Información
                 </p>
-                <ul className="space-y-7 list-none m-0 p-0">
+                <ul className="space-y-8 list-none m-0 p-0">
                   {[
                     { href: "/nosotros", label: "Nosotros" },
                     { href: "/guia-de-tallas", label: "Guía de Tallas" },
@@ -145,7 +145,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="py-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-[SpaceGrotesk] text-sm tracking-widest uppercase" style={{ color: "#849AAD" }}>
             <span style={{ color: "#5E1C23", marginRight: "8px" }}>✦</span> León, Guanajuato · México
           </p>
