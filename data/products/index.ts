@@ -164,7 +164,7 @@ export const PRODUCTS: Product[] = [
       { label: "29", available: false },
       { label: "30", available: true },
     ],
-    images: ["/products/bota-hombre-chapala-1.jpg", "/products/bota-frente.jpg", "/products/bota-perfil.jpg", "/products/bota-suela-zipper.jpg"],
+    images: ["/products/bota-hombre-chapala-1.jpg"],
     featured: true,
     available: true,
     isDemoData: false,
@@ -206,7 +206,12 @@ export const PRODUCTS: Product[] = [
       { label: "29", available: true },
       { label: "30", available: true },
     ],
-    images: ["/products/bota-hombre-silao-1.jpg", "/products/bota-lifestyle-jeans.jpg", "/products/bota-suela-zipper.jpg"],
+    images: [
+      "/products/bota-frente.jpg",
+      "/products/bota-perfil.jpg",
+      "/products/bota-suela-zipper.jpg",
+      "/products/bota-lifestyle-jeans.jpg"
+    ],
     featured: true,
     available: true,
     isDemoData: false,
