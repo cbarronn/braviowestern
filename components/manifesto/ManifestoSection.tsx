@@ -67,7 +67,7 @@ export default function ManifestoSection() {
         <p
           ref={textRef}
           id="manifesto-heading"
-          className="font-[SpaceGrotesk] leading-loose mb-28 max-w-2xl"
+          className="font-[SpaceGrotesk] leading-loose mb-40 max-w-2xl"
           style={{ fontSize: "clamp(1rem, 1.8vw, 1.4rem)", color: "#849AAD" }}
         >
           BRAVÍO no es disfraz, no es nostalgia, no es teatro. Es la convicción de los que saben quiénes son y caminan en consecuencia. Una bota hecha en León, Guanajuato. Un amuleto. Una declaración.
