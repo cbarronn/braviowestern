@@ -13,7 +13,7 @@ export default function Footer() {
 
         {/* Top — brand + tagline */}
         <div className="py-20 md:py-48" style={{ borderBottom: "1px solid #1A1410" }}>
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-20 md:gap-32">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-12 md:gap-32">
             <div>
               <Link href="/" aria-label="BRAVÍO — Inicio" className="inline-block mt-4 md:mt-8 mb-10">
                 <Image
@@ -63,7 +63,7 @@ export default function Footer() {
               {/* Información y Redes */}
               <div>
                 {/* Redes Sociales */}
-                <div className="flex gap-8 mb-12">
+                <div className="flex gap-8 mb-20 md:mb-24">
                   <a
                     href="https://www.instagram.com/wbravio?stkn=MWUwY3Z3NWR6a3duMw=="
                     target="_blank"
