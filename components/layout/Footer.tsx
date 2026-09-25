@@ -125,9 +125,10 @@ export default function Footer() {
                 </ul>
               </nav>
             </div>
+          </div>
 
-            {/* Contacto — right aligned on desktop */}
-            <div className="md:text-right">
+          {/* Contacto — right aligned on desktop */}
+          <div className="md:text-right">
               <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-8 font-bold" style={{ color: "#849AAD" }}>
                 Atención al Cliente
               </p>
