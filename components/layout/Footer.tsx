@@ -42,7 +42,7 @@ export default function Footer() {
             <div className="grid grid-cols-2 gap-12 md:gap-32">
               {/* Colecciones */}
               <nav aria-label="Colecciones">
-                <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-8 font-bold" style={{ color: "#849AAD" }}>
+                <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mt-4 md:mt-8 mb-8 font-bold" style={{ color: "#849AAD" }}>
                   Colecciones
                 </p>
                 <ul className="list-none m-0 p-0" style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -63,7 +63,7 @@ export default function Footer() {
               {/* Información y Redes */}
               <div>
                 {/* Redes Sociales */}
-                <div className="flex gap-8 mb-16 md:mb-20">
+                <div className="flex gap-8 mt-4 md:mt-8 mb-16 md:mb-20">
                   <a
                     href="https://www.instagram.com/wbravio?stkn=MWUwY3Z3NWR6a3duMw=="
                     target="_blank"
@@ -72,10 +72,10 @@ export default function Footer() {
                     className="transition-colors hover:text-[#FFFFFF]"
                     style={{ color: "#849AAD" }}
                   >
-                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
                       <rect x="2" y="2" width="20" height="20" rx="5" />
                       <circle cx="12" cy="12" r="4" />
-                      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+                      <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
                     </svg>
                   </a>
                   <a
@@ -86,7 +86,7 @@ export default function Footer() {
                     className="transition-colors hover:text-[#FFFFFF]"
                     style={{ color: "#849AAD" }}
                   >
-                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
                       <path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" />
                     </svg>
                   </a>
@@ -98,7 +98,7 @@ export default function Footer() {
                     className="transition-colors hover:text-[#FFFFFF]"
                     style={{ color: "#849AAD" }}
                   >
-                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
                       <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
                     </svg>
                   </a>
@@ -129,7 +129,7 @@ export default function Footer() {
 
           {/* Contacto — right aligned on desktop */}
           <div className="md:text-right">
-              <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-8 font-bold" style={{ color: "#849AAD" }}>
+              <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mt-4 md:mt-8 mb-8 font-bold" style={{ color: "#849AAD" }}>
                 Atención al Cliente
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
