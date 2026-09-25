@@ -58,7 +58,7 @@ export default function ManifestoSection() {
         {/* Eyebrow */}
         <div ref={eyebrowRef} className="flex items-center gap-4 mb-20 opacity-0">
           <div style={{ width: "32px", height: "1px", background: "#5E1C23" }} />
-          <p className="font-[SpaceGrotesk] text-[10px] tracking-[0.35em] uppercase" style={{ color: "#5E1C23" }}>
+          <p className="font-[SpaceGrotesk] text-[13px] tracking-[0.35em] uppercase font-bold" style={{ color: "#5E1C23" }}>
             Manifiesto
           </p>
         </div>
