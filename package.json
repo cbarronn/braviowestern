@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "preinstall": "npm config set registry https://registry.npmjs.org/ && npm config set always-auth false",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
