@@ -45,7 +45,7 @@ export default function Footer() {
                 <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-8 font-bold" style={{ color: "#849AAD" }}>
                   Colecciones
                 </p>
-                <ul className="space-y-8 list-none m-0 p-0">
+                <ul className="list-none m-0 p-0" style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
                   {[
                     { href: "/mujer", label: "Mujer" },
                     { href: "/hombre", label: "Hombre" },
@@ -109,7 +109,7 @@ export default function Footer() {
                 <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-8 font-bold" style={{ color: "#849AAD" }}>
                   Información
                 </p>
-                <ul className="space-y-8 list-none m-0 p-0">
+                <ul className="list-none m-0 p-0" style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
                   {[
                     { href: "/nosotros", label: "Nosotros" },
                     { href: "/guia-de-tallas", label: "Guía de Tallas" },
