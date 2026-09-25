@@ -37,7 +37,6 @@ export function CruzDeHierro({
       role="img"
       {...props}
     >
-      <title>Cruz de Hierro BRAVÍO</title>
       <g fill={color}>
         <path d="M -58.8 -58.8 L 58.8 -58.8 L 109.2 -210 L -109.2 -210 Z M -58.8 58.8 L 58.8 58.8 L 109.2 210 L -109.2 210 Z M -58.8 -58.8 L -58.8 58.8 L -210 109.2 L -210 -109.2 Z M 58.8 -58.8 L 58.8 58.8 L 210 109.2 L 210 -109.2 Z M -58.8 -58.8 L 58.8 -58.8 L 58.8 58.8 L -58.8 58.8 Z" />
       </g>
@@ -74,7 +73,6 @@ export function BravioLogoApilado({
       role="img"
       aria-label={ariaLabel}
     >
-      <title>BRAVÍO</title>
       <g fill={fill} transform="scale(1,-1)">
         {/* BRA row */}
         <g transform="translate(0.0,1150)">
@@ -135,7 +133,6 @@ export function BravioLogoHorizontal({
       role="img"
       aria-label={ariaLabel}
     >
-      <title>BRAVÍO — Western para la vida actual</title>
       <g fill={fill} transform="scale(1,-1)">
         {/* B */}
         <g transform="translate(0,0)">
