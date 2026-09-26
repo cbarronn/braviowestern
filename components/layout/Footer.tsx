@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
 
         {/* Newsletter Section */}
-        <div className="py-16 md:py-24" style={{ borderBottom: "1px solid #1A1410", display: "flex", flexDirection: "column", gap: "2rem" }}>
+        <div className="py-12 md:py-16" style={{ borderBottom: "1px solid #1A1410", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           <h3 className="font-[ArchivoBlack] text-4xl md:text-6xl text-[#B1C7D4] tracking-tighter uppercase leading-none">
             ÚNETE AL CLUB.
           </h3>
@@ -23,8 +23,8 @@ export default function Footer() {
         </div>
 
         {/* Top — brand + tagline */}
-        <div className="py-20 md:py-48" style={{ borderBottom: "1px solid #1A1410" }}>
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-32">
+        <div className="py-12 md:py-20" style={{ borderBottom: "1px solid #1A1410" }}>
+          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12 lg:gap-24">
             <div>
               <Link href="/" aria-label="BRAVÍO — Inicio" className="inline-block mt-4 md:mt-8 mb-10">
                 <Image
@@ -50,13 +50,13 @@ export default function Footer() {
             </div>
 
             {/* Middle & Right — links and newsletter */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 xl:gap-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 w-full lg:w-auto">
               {/* Colecciones */}
               <nav aria-label="Colecciones">
-                <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mt-4 md:mt-8 mb-8 font-bold" style={{ color: "#849AAD" }}>
+                <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-6 font-bold" style={{ color: "#849AAD" }}>
                   Colecciones
                 </p>
-                <ul className="list-none m-0 p-0" style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                <ul className="list-none m-0 p-0" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                   {[
                     { href: "/mujer", label: "Mujer" },
                     { href: "/hombre", label: "Hombre" },
@@ -74,7 +74,7 @@ export default function Footer() {
               {/* Información y Redes */}
               <div>
                 {/* Redes Sociales */}
-                <div className="flex gap-8 mt-4 md:mt-8 mb-16 md:mb-20">
+                <div className="flex gap-6 mb-10 md:mb-12">
                   <a
                     href="https://www.instagram.com/wbravio?stkn=MWUwY3Z3NWR6a3duMw=="
                     target="_blank"
@@ -117,10 +117,10 @@ export default function Footer() {
 
                 {/* Información */}
                 <nav aria-label="Información">
-                <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-8 font-bold" style={{ color: "#849AAD" }}>
+                <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-6 font-bold" style={{ color: "#849AAD" }}>
                   Información
                 </p>
-                <ul className="list-none m-0 p-0" style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                <ul className="list-none m-0 p-0" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                   {[
                     { href: "/nosotros", label: "Nosotros" },
                     { href: "/guia-de-tallas", label: "Guía de Tallas" },
@@ -139,11 +139,11 @@ export default function Footer() {
           </div>
 
           {/* Contacto — right aligned on desktop */}
-          <div className="md:text-right">
-              <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mt-4 md:mt-8 mb-8 font-bold" style={{ color: "#849AAD" }}>
+          <div className="lg:text-right">
+              <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-6 font-bold" style={{ color: "#849AAD" }}>
                 Atención al Cliente
               </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                 <a href="https://wa.me/524777296578" target="_blank" rel="noopener noreferrer"
                   className="font-[SpaceGrotesk] text-base transition-colors hover:text-[#FFFFFF]" style={{ color: "#B1C7D4" }}>
                   WhatsApp: +52 (477) 729-6578
