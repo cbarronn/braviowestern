@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import NewsletterForm from "./NewsletterForm";
 
 export default function Footer() {
   return (
@@ -10,6 +11,16 @@ export default function Footer() {
       style={{ background: "#080604", borderTop: "1px solid #1A1410" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
+
+        {/* Newsletter Section */}
+        <div className="py-16 md:py-24" style={{ borderBottom: "1px solid #1A1410", display: "flex", flexDirection: "column", gap: "2rem" }}>
+          <h3 className="font-[ArchivoBlack] text-4xl md:text-6xl text-[#B1C7D4] tracking-tighter uppercase leading-none">
+            ÚNETE AL CLUB.
+          </h3>
+          <div className="max-w-xl">
+            <NewsletterForm />
+          </div>
+        </div>
 
         {/* Top — brand + tagline */}
         <div className="py-20 md:py-48" style={{ borderBottom: "1px solid #1A1410" }}>
@@ -38,8 +49,8 @@ export default function Footer() {
               </p>
             </div>
 
-            {/* Middle — links in 2 cols */}
-            <div className="grid grid-cols-2 gap-12 md:gap-32">
+            {/* Middle & Right — links and newsletter */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 xl:gap-24">
               {/* Colecciones */}
               <nav aria-label="Colecciones">
                 <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mt-4 md:mt-8 mb-8 font-bold" style={{ color: "#849AAD" }}>
