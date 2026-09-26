@@ -6,9 +6,9 @@ const getResend = () => new Resend(process.env.RESEND_API_KEY ?? "");
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { nombre, email, mensaje } = body;
+    const { nombre, email, telefono, mensaje } = body;
 
-    if (!nombre || !email || !mensaje) {
+    if (!nombre || !email || !telefono || !mensaje) {
       return NextResponse.json(
         { error: "Todos los campos son requeridos." },
         { status: 400 }
@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
       subject: `Nuevo mensaje de contacto — ${nombre}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background: #0F0C09; padding: 2rem; color: #B1C7D4;">
+          <img src="https://braviowestern.com.mx/brand/images/Avatar_BRAVIO_principal_1000px.png" alt="BRAVÍO" style="width: 60px; height: auto; margin-bottom: 2rem;" />
           <h2 style="font-size: 1.5rem; color: #B1C7D4; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
             Nuevo mensaje de contacto
           </h2>
@@ -35,6 +36,10 @@ export async function POST(req: NextRequest) {
             <tr>
               <td style="padding: 0.75rem 0; border-bottom: 1px solid #3E342D; color: #849AAD; font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em;">Email</td>
               <td style="padding: 0.75rem 0; border-bottom: 1px solid #3E342D; color: #B1C7D4;"><a href="mailto:${email}" style="color: #849AAD;">${email}</a></td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem 0; border-bottom: 1px solid #3E342D; color: #849AAD; font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em;">Teléfono</td>
+              <td style="padding: 0.75rem 0; border-bottom: 1px solid #3E342D; color: #B1C7D4;">${telefono}</td>
             </tr>
             <tr>
               <td style="padding: 0.75rem 0; color: #849AAD; font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; vertical-align: top;">Mensaje</td>
@@ -55,11 +60,12 @@ export async function POST(req: NextRequest) {
       subject: "Recibimos tu mensaje — BRAVÍO Western",
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background: #0F0C09; padding: 2rem; color: #B1C7D4;">
+          <img src="https://braviowestern.com.mx/brand/images/Avatar_BRAVIO_principal_1000px.png" alt="BRAVÍO" style="width: 60px; height: auto; margin-bottom: 2rem;" />
           <h2 style="font-size: 1.5rem; color: #B1C7D4; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">
             Gracias, ${nombre}.
           </h2>
           <p style="color: #849AAD; line-height: 1.8; margin-bottom: 1.5rem;">
-            Recibimos tu mensaje. Nos pondremos en contacto contigo a la brevedad.
+            Gracias por escribirnos, en breve te contactaremos. Un ejecutivo se pondrá en contacto contigo.
           </p>
           <p style="color: #605246; line-height: 1.8; font-size: 0.9rem;">
             Si tienes alguna pregunta urgente, puedes escribirnos directamente a

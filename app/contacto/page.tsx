@@ -51,7 +51,7 @@ const CONTACT_DETAILS = [
 ];
 
 export default function ContactoPage() {
-  const [form, setForm] = useState({ nombre: "", email: "", mensaje: "" });
+  const [form, setForm] = useState({ nombre: "", email: "", telefono: "", mensaje: "" });
   const [privacidad, setPrivacidad] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
@@ -60,7 +60,7 @@ export default function ContactoPage() {
   };
 
   const handleSubmit = async () => {
-    if (!form.nombre || !form.email || !form.mensaje || !privacidad) return;
+    if (!form.nombre || !form.email || !form.telefono || !form.mensaje || !privacidad) return;
     setStatus("sending");
     try {
       const res = await fetch("/api/contacto", {
@@ -70,7 +70,7 @@ export default function ContactoPage() {
       });
       if (res.ok) {
         setStatus("sent");
-        setForm({ nombre: "", email: "", mensaje: "" });
+        setForm({ nombre: "", email: "", telefono: "", mensaje: "" });
         setPrivacidad(false);
       } else {
         setStatus("error");
@@ -187,6 +187,15 @@ export default function ContactoPage() {
                 </label>
                 <input id="email" type="email" name="email" required placeholder="tu@correo.com"
                   value={form.email} onChange={handleChange}
+                  style={{ width: "100%", background: "transparent", border: "1px solid #3E342D", padding: "1.25rem 1.5rem", color: "#B1C7D4", fontFamily: "SpaceGrotesk, sans-serif", fontSize: "1rem", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                <label htmlFor="telefono" style={{ fontFamily: "SpaceGrotesk, sans-serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#849AAD" }}>
+                  Teléfono
+                </label>
+                <input id="telefono" type="tel" name="telefono" required placeholder="Tu número de teléfono"
+                  value={form.telefono} onChange={handleChange}
                   style={{ width: "100%", background: "transparent", border: "1px solid #3E342D", padding: "1.25rem 1.5rem", color: "#B1C7D4", fontFamily: "SpaceGrotesk, sans-serif", fontSize: "1rem", outline: "none", boxSizing: "border-box" }}
                 />
               </div>
