@@ -24,7 +24,7 @@ export default function Footer() {
 
         {/* Top — brand + tagline */}
         <div className="py-12 md:py-20" style={{ borderBottom: "1px solid #1A1410" }}>
-          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12 lg:gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 w-full">
             <div>
               <Link href="/" aria-label="BRAVÍO — Inicio" className="inline-block mt-4 md:mt-8 mb-10">
                 <Image
@@ -49,9 +49,7 @@ export default function Footer() {
               </p>
             </div>
 
-            {/* Middle & Right — links and newsletter */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 w-full lg:w-auto">
-              {/* Colecciones */}
+            {/* Colecciones */}
               <nav aria-label="Colecciones">
                 <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-6 font-bold" style={{ color: "#849AAD" }}>
                   Colecciones
@@ -135,11 +133,8 @@ export default function Footer() {
                   ))}
                 </ul>
               </nav>
-            </div>
-          </div>
-
           {/* Contacto — right aligned on desktop */}
-          <div className="lg:text-right">
+          <div className="md:text-right">
               <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-6 font-bold" style={{ color: "#849AAD" }}>
                 Atención al Cliente
               </p>
@@ -157,7 +152,6 @@ export default function Footer() {
                 </p>
               </div>
             </div>
-          </div>
         </div>
 
         {/* Bottom bar */}
