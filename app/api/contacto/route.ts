@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     const resend = getResend();
     await resend.emails.send({
       from: "BRAVÍO Contacto <noreply@braviowestern.com.mx>",
-      to: ["cbarron@ti-boot.com", "darrieta@vise.com.mx"],
+      to: ["cbarron@ti-boot.com", "darrieta@vise.com.mx", "daniela.arrieta.navarro1@gmail.com"],
       replyTo: email,
       subject: `Nuevo mensaje de contacto — ${nombre}`,
       html: `
