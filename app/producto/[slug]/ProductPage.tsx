@@ -107,8 +107,8 @@ export default function ProductPage({ product }: { product: Product }) {
               <h1 style={{
                 fontFamily: "ArchivoBlack, sans-serif",
                 fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-                lineHeight: 0.9,
-                letterSpacing: "-0.03em",
+                lineHeight: 1.08,
+                letterSpacing: "-0.015em",
                 textTransform: "uppercase",
                 color: "#B1C7D4",
                 marginBottom: "1.25rem",

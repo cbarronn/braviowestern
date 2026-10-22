@@ -98,21 +98,23 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
           {/* Tagline */}
           <motion.p
             initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 0.7 }}
+            animate={{ opacity: 0.85 }}
             transition={{ delay: 0.3 }}
             style={{
               fontFamily: "SpaceGrotesk, sans-serif",
-              fontSize: "10px",
-              letterSpacing: "0.28em",
+              fontSize: "11px",
+              letterSpacing: "0.22em",
+              lineHeight: 1.6,
               textTransform: "uppercase",
-              color: "#605246",
+              color: "#3E342D",
               zIndex: 1,
+              marginTop: "2rem",
             }}
           >
             Western para la vida actual
           </motion.p>
 
-          {/* Botón Central Inmersivo + Instrucción de Toque Libre (Ambas soluciones) */}
+          {/* Botón Central Inmersivo + Instrucción con amplio respiro */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -121,29 +123,29 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: "0.85rem",
-              marginTop: "1rem",
+              gap: "1.25rem",
+              marginTop: "1.75rem",
               zIndex: 2,
             }}
           >
-            {/* Botón Principal */}
+            {/* Botón Principal Amplio y Limpio */}
             <button
               type="button"
               onClick={handleEnter}
-              className="group relative px-7 py-3 rounded-full bg-[#1A1410] text-[#F5F0EA] border border-[#5E1C23]/60 hover:bg-[#5E1C23] hover:border-[#F5F0EA]/40 transition-all duration-300 shadow-xl hover:scale-105 flex items-center gap-3 cursor-pointer"
+              className="group relative inline-flex items-center justify-center gap-4 sm:gap-5 px-9 py-4 sm:px-11 sm:py-4.5 rounded-full bg-[#1A1410] text-[#F5F0EA] border border-[#5E1C23] hover:bg-[#5E1C23] hover:border-[#F5F0EA]/40 transition-all duration-300 shadow-2xl hover:scale-105 cursor-pointer"
             >
-              {/* Animated Equalizer Icon */}
-              <span className="flex items-end gap-[2px] h-3 w-3" aria-hidden="true">
+              {/* Animated Equalizer Icon — shrink-0 para nunca encimarse */}
+              <span className="flex items-end gap-[3px] h-3.5 w-3.5 shrink-0" aria-hidden="true">
                 <span className="w-[2px] bg-[#B1C7D4] rounded-full animate-eq-1 h-3" />
                 <span className="w-[2px] bg-[#B1C7D4] rounded-full animate-eq-2 h-2" />
                 <span className="w-[2px] bg-[#B1C7D4] rounded-full animate-eq-3 h-3.5" />
               </span>
 
-              <span className="font-[SpaceGrotesk] text-[11px] tracking-[0.25em] uppercase font-bold">
+              <span className="font-[SpaceGrotesk] text-[11px] sm:text-xs tracking-[0.16em] uppercase font-bold text-[#F5F0EA] whitespace-nowrap">
                 Entrar a la experiencia
               </span>
 
-              <span className="font-[ArchivoBlack] text-xs text-[#B1C7D4] group-hover:translate-x-0.5 transition-transform">
+              <span className="font-[ArchivoBlack] text-xs text-[#B1C7D4] shrink-0 group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
                 ✦
               </span>
             </button>
@@ -152,14 +154,15 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
             <p
               style={{
                 fontFamily: "SpaceGrotesk, sans-serif",
-                fontSize: "10px",
-                letterSpacing: "0.18em",
+                fontSize: "11px",
+                letterSpacing: "0.15em",
+                lineHeight: 1.6,
                 textTransform: "uppercase",
-                color: "#605246",
-                opacity: 0.75,
+                color: "#3E342D",
+                opacity: 0.8,
               }}
             >
-              O toca en cualquier parte para iniciar
+              O toca en cualquier parte para iniciar con audio
             </p>
           </motion.div>
 
@@ -169,19 +172,20 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
             onClick={handleEnter}
             style={{
               position: "absolute",
-              bottom: "2.5rem",
+              bottom: "3rem",
               left: "50%",
               transform: "translateX(-50%)",
               fontFamily: "SpaceGrotesk, sans-serif",
-              fontSize: "10px",
-              letterSpacing: "0.2em",
+              fontSize: "11px",
+              letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: "#605246",
+              color: "#3E342D",
               background: "transparent",
               border: "none",
               cursor: "pointer",
-              opacity: 0.7,
+              opacity: 0.75,
               zIndex: 2,
+              padding: "0.5rem 1rem",
             }}
             aria-label="Saltar introducción"
           >

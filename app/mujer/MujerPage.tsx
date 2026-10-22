@@ -115,7 +115,7 @@ function MujerScene({
             className="font-archivo opacity-0"
             style={{
               fontSize: "clamp(2.5rem, 5.5vw, 5.5rem)",
-              lineHeight: "0.95",
+              lineHeight: "1.1",
               letterSpacing: "-0.015em",
               textTransform: "uppercase",
               color: textColor,
@@ -130,7 +130,7 @@ function MujerScene({
             <p
               ref={subRef}
               className="mt-6 font-archivo opacity-0 text-[#5E1C23]"
-              style={{ fontSize: "clamp(1.25rem, 2vw, 1.75rem)", lineHeight: "1", textTransform: "uppercase", letterSpacing: "-0.01em" }}
+              style={{ fontSize: "clamp(1.25rem, 2vw, 1.75rem)", lineHeight: "1.25", textTransform: "uppercase", letterSpacing: "-0.01em" }}
             >
               {subheadline}
             </p>

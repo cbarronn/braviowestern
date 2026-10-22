@@ -55,7 +55,7 @@ export default function OrigenSection() {
         <h2
           id="origen-heading"
           className="font-[ArchivoBlack] text-[#B1C7D4] uppercase mb-12 md:mb-16"
-          style={{ fontSize: "clamp(2.5rem, 8vw, 5.5rem)", lineHeight: 0.95, letterSpacing: "-0.015em" }}
+          style={{ fontSize: "clamp(2.5rem, 8vw, 5.5rem)", lineHeight: 1.08, letterSpacing: "-0.015em" }}
         >
           HECHO<br />EN LEÓN.
         </h2>

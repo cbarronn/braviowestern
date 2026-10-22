@@ -25,8 +25,8 @@ export default function UniverseSection() {
               className="font-[ArchivoBlack] uppercase"
               style={{
                 fontSize: "clamp(2rem, 5vw, 4rem)",
-                lineHeight: 0.9,
-                letterSpacing: "-0.025em",
+                lineHeight: 1.08,
+                letterSpacing: "-0.015em",
                 color: "#605246",
               }}
             >
@@ -46,10 +46,10 @@ export default function UniverseSection() {
         </div>
 
         {/* Two panels */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 
           {/* Mujer */}
-          <Link href="/mujer" id="universe-mujer-link" className="group block relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
+          <Link href="/mujer" id="universe-mujer-link" className="group block relative overflow-hidden rounded-xl shadow-lg" style={{ aspectRatio: "3/4" }}>
             <Image
               src="/campaigns/mujer-escena-01.jpg"
               alt="BRAVÍO Mujer"
@@ -68,7 +68,7 @@ export default function UniverseSection() {
               </p>
               <h3
                 className="font-[ArchivoBlack] uppercase mb-4"
-                style={{ fontSize: "clamp(1.8rem, 5vw, 3.5rem)", lineHeight: 0.9, letterSpacing: "-0.025em", color: "#B1C7D4" }}
+                style={{ fontSize: "clamp(1.8rem, 5vw, 3.5rem)", lineHeight: 1.08, letterSpacing: "-0.015em", color: "#B1C7D4" }}
               >
                 BRAVÍO<br />MUJER.
               </h3>
@@ -82,7 +82,7 @@ export default function UniverseSection() {
           </Link>
 
           {/* Hombre */}
-          <Link href="/hombre" id="universe-hombre-link" className="group block relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
+          <Link href="/hombre" id="universe-hombre-link" className="group block relative overflow-hidden rounded-xl shadow-lg" style={{ aspectRatio: "3/4" }}>
             <Image
               src="/campaigns/hombre-hero.jpg"
               alt="BRAVÍO Hombre"
@@ -101,7 +101,7 @@ export default function UniverseSection() {
               </p>
               <h3
                 className="font-[ArchivoBlack] uppercase mb-4"
-                style={{ fontSize: "clamp(1.8rem, 5vw, 3.5rem)", lineHeight: 0.9, letterSpacing: "-0.025em", color: "#B1C7D4" }}
+                style={{ fontSize: "clamp(1.8rem, 5vw, 3.5rem)", lineHeight: 1.08, letterSpacing: "-0.015em", color: "#B1C7D4" }}
               >
                 BRAVÍO<br />HOMBRE.
               </h3>
