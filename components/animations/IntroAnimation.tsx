@@ -7,16 +7,21 @@ import { useAudio } from "@/lib/audio/AudioContext";
 
 export default function IntroAnimation({ onComplete }: { onComplete: () => void }) {
   const [phase, setPhase] = useState<"logo" | "cruz" | "done">("logo");
-  const { startSound } = useAudio();
+  const { startSound, isPlaying } = useAudio();
 
+  // Intentar reproducir sonido inmediatamente al entrar
   useEffect(() => {
+    startSound();
     const t1 = setTimeout(() => setPhase("cruz"), 2800);
     const t2 = setTimeout(() => {
       setPhase("done");
       onComplete();
     }, 4500);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
-  }, [onComplete]);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [onComplete, startSound]);
 
   const handleFinish = (withSound = true) => {
     if (withSound) {
@@ -34,6 +39,7 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+          onClick={() => startSound()}
           style={{
             position: "fixed",
             inset: 0,
@@ -44,6 +50,7 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
             alignItems: "center",
             justifyContent: "center",
             gap: "2rem",
+            cursor: "pointer",
           }}
           role="status"
           aria-label="Cargando BRAVÍO"
@@ -104,28 +111,55 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
             Western para la vida actual
           </motion.p>
 
-          {/* Saltar — centrado debajo del logo */}
-          <button
-            onClick={() => handleFinish(true)}
+          {/* Indicador de audio / saltar abajo */}
+          <div
             style={{
               position: "absolute",
               bottom: "3rem",
               left: "50%",
               transform: "translateX(-50%)",
-              fontFamily: "SpaceGrotesk, sans-serif",
-              fontSize: "11px",
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#605246",
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.75rem",
               zIndex: 2,
             }}
-            aria-label="Saltar introducción"
           >
-            Saltar ↗
-          </button>
+            {!isPlaying && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  startSound();
+                }}
+                className="font-[SpaceGrotesk] text-[10px] tracking-[0.25em] uppercase text-[#5E1C23] bg-white/40 px-3.5 py-1.5 rounded-full border border-[#5E1C23]/30 hover:bg-white/70 transition-all flex items-center gap-2"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#5E1C23] animate-ping" />
+                <span>Activar Sonido ♫</span>
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleFinish(true);
+              }}
+              style={{
+                fontFamily: "SpaceGrotesk, sans-serif",
+                fontSize: "11px",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: "#605246",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+              }}
+              aria-label="Saltar introducción"
+            >
+              Saltar ↗
+            </button>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
