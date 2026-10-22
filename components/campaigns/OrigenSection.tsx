@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import TallerCarousel from "./TallerCarousel";
 
 const STATS = [
   { value: "León", label: "Capital mundial del calzado" },
@@ -96,6 +97,10 @@ export default function OrigenSection() {
             ))}
           </div>
         </div>
+
+        {/* Carrusel de Procesos y Pieles de Taller BRAVÍO */}
+        <TallerCarousel />
+
       </div>
     </section>
   );

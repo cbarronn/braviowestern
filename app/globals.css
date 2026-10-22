@@ -379,3 +379,27 @@ body {
   background: #5E1C23;
   color: #B1C7D4;
 }
+
+/* ── Audio Equalizer Animations ── */
+@keyframes eqBar1 {
+  0%, 100% { height: 4px; }
+  50% { height: 13px; }
+}
+@keyframes eqBar2 {
+  0%, 100% { height: 12px; }
+  50% { height: 3px; }
+}
+@keyframes eqBar3 {
+  0%, 100% { height: 5px; }
+  50% { height: 14px; }
+}
+@keyframes eqBar4 {
+  0%, 100% { height: 13px; }
+  50% { height: 4px; }
+}
+
+.animate-eq-1 { animation: eqBar1 1.1s ease-in-out infinite; }
+.animate-eq-2 { animation: eqBar2 0.85s ease-in-out infinite; }
+.animate-eq-3 { animation: eqBar3 1.3s ease-in-out infinite; }
+.animate-eq-4 { animation: eqBar4 0.95s ease-in-out infinite; }
+

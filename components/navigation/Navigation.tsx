@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCart } from "@/lib/commerce/cart";
 import CartDrawer from "@/components/commerce/CartDrawer";
 import { BravioLogoHorizontal } from "@/components/ui/BravioLogo";
+import AudioToggle from "@/components/audio/AudioToggle";
 
 const NAV_LINKS = [
   { href: "/mujer", label: "Mujer" },
@@ -45,8 +46,13 @@ export default function Navigation() {
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between relative">
           
+          {/* Left actions — Ambient Sound Toggle */}
+          <div className="flex items-center z-10">
+            <AudioToggle />
+          </div>
+
           {/* Logo — centered absolutely */}
-          <div className="absolute left-1/2 -translate-x-1/2 mt-3">
+          <div className="absolute left-1/2 -translate-x-1/2 mt-3 pointer-events-auto">
             <Link href="/" aria-label="BRAVÍO — Página de inicio" className="flex-shrink-0">
               <BravioLogoHorizontal variant="negativo" width={200} height={80} />
             </Link>

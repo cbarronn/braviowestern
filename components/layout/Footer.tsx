@@ -133,6 +133,8 @@ export default function Footer() {
                   ))}
                 </ul>
               </nav>
+            </div>
+
           {/* Contacto — right aligned on desktop */}
           <div className="md:text-right">
               <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase mb-6 font-bold" style={{ color: "#849AAD" }}>
@@ -152,6 +154,7 @@ export default function Footer() {
                 </p>
               </div>
             </div>
+          </div>
         </div>
 
         {/* Bottom bar */}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { CartProvider } from "@/lib/commerce/cart";
+import { AudioProvider } from "@/lib/audio/AudioContext";
 import Navigation from "@/components/navigation/Navigation";
 import Footer from "@/components/layout/Footer";
 import SmoothScrollProvider from "@/components/animations/SmoothScrollProvider";
@@ -115,13 +116,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GTMNoScript />
         <GoogleTagManager />
         <CartProvider>
-          <SmoothScrollProvider>
-            <Navigation />
-            <main id="main-content" tabIndex={-1}>
-              {children}
-            </main>
-            <Footer />
-          </SmoothScrollProvider>
+          <AudioProvider>
+            <SmoothScrollProvider>
+              <Navigation />
+              <main id="main-content" tabIndex={-1}>
+                {children}
+              </main>
+              <Footer />
+            </SmoothScrollProvider>
+          </AudioProvider>
         </CartProvider>
       </body>
     </html>

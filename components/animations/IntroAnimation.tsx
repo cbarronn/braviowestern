@@ -3,9 +3,11 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BravioLogoApilado, CruzDeHierro } from "@/components/ui/BravioLogo";
+import { useAudio } from "@/lib/audio/AudioContext";
 
 export default function IntroAnimation({ onComplete }: { onComplete: () => void }) {
   const [phase, setPhase] = useState<"logo" | "cruz" | "done">("logo");
+  const { startSound } = useAudio();
 
   useEffect(() => {
     const t1 = setTimeout(() => setPhase("cruz"), 2800);
@@ -15,6 +17,14 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
     }, 4500);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, [onComplete]);
+
+  const handleFinish = (withSound = true) => {
+    if (withSound) {
+      startSound();
+    }
+    setPhase("done");
+    onComplete();
+  };
 
   return (
     <AnimatePresence>
@@ -96,7 +106,7 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
 
           {/* Saltar — centrado debajo del logo */}
           <button
-            onClick={() => { setPhase("done"); onComplete(); }}
+            onClick={() => handleFinish(true)}
             style={{
               position: "absolute",
               bottom: "3rem",
