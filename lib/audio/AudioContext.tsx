@@ -149,10 +149,8 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   }, [isPlaying, fadeIn, fadeOut]);
 
   const startSound = useCallback(() => {
-    const wasMuted = sessionStorage.getItem("bravio_audio_muted") === "true";
-    if (!wasMuted) {
-      fadeIn();
-    }
+    sessionStorage.setItem("bravio_audio_muted", "false");
+    fadeIn();
   }, [fadeIn]);
 
   const pauseSound = useCallback(() => {
