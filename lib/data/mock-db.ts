@@ -7,7 +7,12 @@ import {
   IntroConfig, 
   Order, 
   AuditLog, 
-  VirtualFolder 
+  VirtualFolder,
+  Product,
+  Customer,
+  Coupon,
+  AdminUser,
+  InventoryRecord
 } from "@/lib/types";
 import { PRODUCTS_CATALOG } from "./products";
 
@@ -356,6 +361,107 @@ class MockDatabase {
   private introConfig: IntroConfig = { ...INITIAL_INTRO_CONFIG };
   private orders: Order[] = [];
   private auditLogs: AuditLog[] = [...INITIAL_AUDIT_LOGS];
+  private products: Product[] = [...PRODUCTS_CATALOG];
+  private customers: Customer[] = [
+    {
+      id: "cust-1",
+      firstName: "Rodrigo",
+      lastName: "Mendoza",
+      email: "rodrigo.mendoza@gmail.com",
+      phone: "+52 81 1234 5678",
+      city: "San Pedro Garza García",
+      state: "Nuevo León",
+      ordersCount: 3,
+      totalSpent: 14700,
+      lastOrderDate: "2026-10-28T14:30:00Z",
+      createdAt: "2026-08-10T10:00:00Z",
+      notes: "Cliente recurrente de botas en gamuza café",
+    },
+    {
+      id: "cust-2",
+      firstName: "Alejandra",
+      lastName: "Garza",
+      email: "alejandra.garza@outlook.com",
+      phone: "+52 55 9876 5432",
+      city: "Ciudad de México",
+      state: "CDMX",
+      ordersCount: 1,
+      totalSpent: 5200,
+      lastOrderDate: "2026-11-02T18:15:00Z",
+      createdAt: "2026-11-02T17:45:00Z",
+      notes: "Interesada en la colección BRAVÍO Mujer 2026",
+    },
+    {
+      id: "cust-3",
+      firstName: "Guillermo",
+      lastName: "Villarreal",
+      email: "memo.villarreal@vise.com.mx",
+      phone: "+52 477 712 3456",
+      city: "León",
+      state: "Guanajuato",
+      ordersCount: 2,
+      totalSpent: 9800,
+      lastOrderDate: "2026-10-15T09:00:00Z",
+      createdAt: "2026-09-01T12:00:00Z",
+      notes: "Recolección local en taller",
+    },
+  ];
+  private coupons: Coupon[] = [
+    {
+      id: "cup-1",
+      code: "BIENVENIDO10",
+      discountType: "percentage",
+      discountValue: 10,
+      minPurchase: 3000,
+      validFrom: "2026-01-01T00:00:00Z",
+      validTo: "2026-12-31T23:59:59Z",
+      isActive: true,
+      timesUsed: 42,
+      description: "10% de descuento en primera compra para suscriptores de Newsletter",
+    },
+    {
+      id: "cup-2",
+      code: "BRAVIOLEON",
+      discountType: "fixed",
+      discountValue: 500,
+      minPurchase: 4500,
+      validFrom: "2026-10-01T00:00:00Z",
+      validTo: "2026-11-30T23:59:59Z",
+      isActive: true,
+      usageLimit: 100,
+      timesUsed: 18,
+      description: "$500 MXN de descuento en modelos seleccionados de vaqueta",
+    },
+  ];
+  private adminUsers: AdminUser[] = [
+    {
+      id: "usr-1",
+      name: "Carlos Barrón",
+      email: "cbarron@ti-boot.com",
+      role: "superadmin",
+      isActive: true,
+      lastLogin: new Date().toISOString(),
+      createdAt: "2026-01-01T00:00:00Z",
+    },
+    {
+      id: "usr-2",
+      name: "Daniela Arrieta",
+      email: "darrieta@vise.com.mx",
+      role: "operations",
+      isActive: true,
+      lastLogin: "2026-11-05T16:20:00Z",
+      createdAt: "2026-02-15T00:00:00Z",
+    },
+    {
+      id: "usr-3",
+      name: "Dirección Creativa",
+      email: "creatividad@braviowestern.com.mx",
+      role: "content_editor",
+      isActive: true,
+      lastLogin: "2026-11-06T11:00:00Z",
+      createdAt: "2026-03-01T00:00:00Z",
+    },
+  ];
 
   // Media
   getMedia(folder?: VirtualFolder, query?: string): MediaItem[] {
@@ -521,6 +627,181 @@ class MockDatabase {
     }
     this.addAudit("ORDER_STATUS_UPDATE", "Order", order.id, `Pedido #${order.orderNumber} cambió a estado ${status}`);
     return order;
+  }
+
+  // Products CRUD & Idempotent Sync
+  getProducts(query?: string, category?: string): Product[] {
+    let list = [...this.products];
+    if (category && category !== "all") {
+      list = list.filter(p => p.gender?.toLowerCase() === category.toLowerCase());
+    }
+    if (query) {
+      const q = query.toLowerCase();
+      list = list.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.sku.toLowerCase().includes(q) ||
+        p.leatherType.toLowerCase().includes(q)
+      );
+    }
+    return list;
+  }
+
+  getProductById(id: string): Product | undefined {
+    return this.products.find(p => p.id === id || p.sku === id);
+  }
+
+  updateProduct(id: string, updates: Partial<Product>): Product | null {
+    const idx = this.products.findIndex(p => p.id === id || p.sku === id);
+    if (idx === -1) return null;
+    this.products[idx] = { ...this.products[idx], ...updates };
+    this.addAudit("PRODUCT_UPDATE", "Product", this.products[idx].sku, `Producto actualizado: ${this.products[idx].name}`);
+    return this.products[idx];
+  }
+
+  createProduct(data: Omit<Product, "id">): Product {
+    const newProduct: Product = {
+      ...data,
+      id: `prod-${Date.now()}`,
+    };
+    this.products.unshift(newProduct);
+    this.addAudit("PRODUCT_CREATE", "Product", newProduct.sku, `Nuevo producto creado: ${newProduct.name}`);
+    return newProduct;
+  }
+
+  // Inventory Management
+  getInventory(): InventoryRecord[] {
+    return this.products.map(p => {
+      const sizesRecord: Record<string, { physical: number; reserved: number; available: number }> = {};
+      let totalPhysical = 0;
+      let totalReserved = 0;
+
+      ["25", "25.5", "26", "26.5", "27", "27.5", "28", "28.5", "29", "29.5", "30"].forEach((sz, i) => {
+        // Derive initial consistent stock based on variant or hash
+        const physical = (p.variants?.find(v => v.size.includes(sz))?.stock || ((i * 3 + 5) % 12));
+        const reserved = Math.min(physical, (i % 2));
+        const available = Math.max(0, physical - reserved);
+        sizesRecord[sz] = { physical, reserved, available };
+        totalPhysical += physical;
+        totalReserved += reserved;
+      });
+
+      return {
+        sku: p.sku,
+        productName: p.name,
+        leatherType: p.leatherType,
+        sizes: sizesRecord,
+        totalPhysical,
+        totalAvailable: totalPhysical - totalReserved,
+        reorderLevel: 8,
+      };
+    });
+  }
+
+  updateStock(sku: string, size: string, newPhysical: number, reason: string): boolean {
+    const product = this.products.find(p => p.sku === sku);
+    if (!product) return false;
+    const vIdx = product.variants.findIndex(v => v.size.includes(size));
+    if (vIdx > -1) {
+      product.variants[vIdx].stock = newPhysical;
+    } else {
+      product.variants.push({ size: `${size} MX`, stock: newPhysical, sku: `${sku}-${size}` });
+    }
+    this.addAudit("STOCK_ADJUSTMENT", "Inventory", sku, `Ajuste de inventario en talla ${size} a ${newPhysical} pares. Motivo: ${reason}`);
+    return true;
+  }
+
+  // Customers
+  getCustomers(query?: string): Customer[] {
+    if (!query) return [...this.customers];
+    const q = query.toLowerCase();
+    return this.customers.filter(c =>
+      c.firstName.toLowerCase().includes(q) ||
+      c.lastName.toLowerCase().includes(q) ||
+      c.email.toLowerCase().includes(q) ||
+      c.city.toLowerCase().includes(q)
+    );
+  }
+
+  // Coupons / Promotions
+  getCoupons(): Coupon[] {
+    return [...this.coupons];
+  }
+
+  createCoupon(data: Omit<Coupon, "id" | "timesUsed">): Coupon {
+    const newCoupon: Coupon = {
+      ...data,
+      id: `cup-${Date.now()}`,
+      timesUsed: 0,
+    };
+    this.coupons.unshift(newCoupon);
+    this.addAudit("COUPON_CREATE", "Promotion", newCoupon.code, `Cupón creado: ${newCoupon.code} (${newCoupon.discountValue}%)`);
+    return newCoupon;
+  }
+
+  toggleCoupon(id: string): Coupon | null {
+    const c = this.coupons.find(cp => cp.id === id || cp.code === id);
+    if (!c) return null;
+    c.isActive = !c.isActive;
+    this.addAudit("COUPON_TOGGLE", "Promotion", c.code, `Cupón ${c.code} ${c.isActive ? 'activado' : 'pausado'}`);
+    return c;
+  }
+
+  // Admin Users & RBAC
+  getAdminUsers(): AdminUser[] {
+    return [...this.adminUsers];
+  }
+
+  updateUserRole(id: string, role: AdminUser["role"]): AdminUser | null {
+    const user = this.adminUsers.find(u => u.id === id);
+    if (!user) return null;
+    user.role = role;
+    this.addAudit("USER_ROLE_CHANGE", "AdminUser", user.email, `Rol de ${user.name} actualizado a ${role}`);
+    return user;
+  }
+
+  toggleUserStatus(id: string): AdminUser | null {
+    const user = this.adminUsers.find(u => u.id === id);
+    if (!user) return null;
+    user.isActive = !user.isActive;
+    this.addAudit("USER_STATUS_CHANGE", "AdminUser", user.email, `Usuario ${user.name} ${user.isActive ? 'reactivado' : 'suspendido'}`);
+    return user;
+  }
+
+  // Reports & Analytics
+  getCommercialReports() {
+    const totalOrders = this.orders.length;
+    const totalSales = this.orders.reduce((acc, o) => acc + o.total, 0);
+    const averageTicket = totalOrders > 0 ? totalSales / totalOrders : 4850;
+
+    return {
+      kpis: {
+        totalSales: totalSales > 0 ? totalSales : 184500,
+        totalOrders: totalOrders > 0 ? totalOrders : 38,
+        averageTicket,
+        conversionRate: 2.8,
+      },
+      topProducts: this.products.slice(0, 5).map((p, idx) => ({
+        sku: p.sku,
+        name: p.name,
+        leather: p.leatherType,
+        unitsSold: 28 - idx * 4,
+        revenue: (28 - idx * 4) * p.price,
+      })),
+      salesByLeather: [
+        { type: "Gamuza / Suede", percentage: 42, revenue: 77490 },
+        { type: "Piel de Res / Vacuno", percentage: 38, revenue: 70110 },
+        { type: "Pieles Exóticas", percentage: 20, revenue: 36900 },
+      ],
+      salesBySize: [
+        { size: "26 MX", units: 14 },
+        { size: "26.5 MX", units: 19 },
+        { size: "27 MX", units: 36 },
+        { size: "27.5 MX", units: 32 },
+        { size: "28 MX", units: 28 },
+        { size: "28.5 MX", units: 16 },
+        { size: "29 MX", units: 11 },
+      ],
+    };
   }
 
   // Audit

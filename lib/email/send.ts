@@ -47,3 +47,4 @@ export async function sendEmail(options: SendEmailOptions): Promise<{ success: b
     return { success: false, error: err?.message || "Failed to send email" };
   }
 }
+

@@ -5,13 +5,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
+  Package,
+  Boxes,
+  ShoppingBag,
+  Users,
+  Tag,
+  BarChart3,
   Image as ImageIcon,
   Music,
   LayoutTemplate,
   Video,
   FolderKanban,
   Megaphone,
-  ShoppingBag,
+  Shield,
   ShieldAlert,
   ExternalLink,
   ChevronRight,
@@ -19,13 +25,19 @@ import {
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/products", label: "Catálogo de Productos", icon: Package },
+  { href: "/admin/inventory", label: "Matriz de Inventario", icon: Boxes },
+  { href: "/admin/orders", label: "Pedidos & Envíos", icon: ShoppingBag },
+  { href: "/admin/customers", label: "Clientes", icon: Users },
+  { href: "/admin/promotions", label: "Promociones & Cupones", icon: Tag },
+  { href: "/admin/reports", label: "Reportes & Ventas", icon: BarChart3 },
   { href: "/admin/media", label: "Multimedia (Fotos/Videos)", icon: ImageIcon },
   { href: "/admin/media/audio", label: "Audio Ambiental", icon: Music },
   { href: "/admin/content/home", label: "Editor del Home", icon: LayoutTemplate },
   { href: "/admin/content/intro", label: "Intro Cinematográfica", icon: Video },
   { href: "/admin/collections", label: "Colecciones", icon: FolderKanban },
   { href: "/admin/campaigns", label: "Campañas (Mujer 2026)", icon: Megaphone },
-  { href: "/admin/orders", label: "Pedidos & Envíos", icon: ShoppingBag },
+  { href: "/admin/users", label: "Usuarios & Roles", icon: Shield },
   { href: "/admin/audit", label: "Seguridad & Auditoría", icon: ShieldAlert },
 ];
 

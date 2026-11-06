@@ -13,9 +13,9 @@ export default function Footer() {
   return (
     <footer className="bg-bravio-volcanic border-t border-bravio-volcanic-border text-bravio-bone pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-bravio-volcanic-border">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-bravio-volcanic-border">
           {/* Brand Column */}
-          <div className="md:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-4">
             <div className="w-48 text-bravio-granate">
               <svg viewBox="-110 -1215 4554 1325" className="w-full h-auto fill-current">
                 <g transform="scale(1,-1)">
@@ -32,13 +32,13 @@ export default function Footer() {
             <p className="font-sans text-xs tracking-wider text-bravio-cloudy uppercase">
               WESTERN PARA LA VIDA ACTUAL.
             </p>
-            <p className="text-xs text-bravio-cloudy/80 max-w-md leading-relaxed">
-              Botas y accesorios de piel genuina con construcción Goodyear Welt. Elaboradas a mano por maestros artesanos en el corazón zapatero de León, Guanajuato, México.
+            <p className="text-xs text-bravio-cloudy/80 max-w-md leading-relaxed font-sans">
+              Botas y calzado de piel genuina con construcción Goodyear Welt 360°. Elaboradas por maestros artesanos zapateros en León, Guanajuato, México.
             </p>
             <div className="pt-2">
               <button
                 onClick={replayIntro}
-                className="inline-flex items-center gap-2 text-xs font-sans tracking-widest text-bravio-gold hover:text-bravio-bone border border-bravio-gold/40 hover:border-bravio-bone px-3 py-1.5 rounded transition-all duration-300"
+                className="inline-flex items-center gap-2 text-[11px] font-sans tracking-widest text-bravio-gold hover:text-bravio-bone border border-bravio-gold/40 hover:border-bravio-bone px-3 py-1.5 transition-all duration-300"
               >
                 <Play className="w-3 h-3 fill-current" />
                 <span>REPETIR INTRO CINEMATOGRÁFICA</span>
@@ -46,59 +46,112 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links Column 1 */}
+          {/* Links Column 1: Catálogo */}
           <div className="space-y-3">
             <h4 className="font-display text-xs tracking-widest uppercase text-bravio-bone">
-              Colecciones
+              Catálogo & Marca
             </h4>
-            <ul className="space-y-2 text-xs text-bravio-cloudy">
+            <ul className="space-y-2 text-xs text-bravio-cloudy font-sans">
+              <li>
+                <Link href="/hombre" className="hover:text-bravio-bone transition-colors">
+                  Calzado para Hombre
+                </Link>
+              </li>
               <li>
                 <Link href="/coleccion/sinaloa" className="hover:text-bravio-bone transition-colors">
                   Colección Sinaloa
                 </Link>
               </li>
               <li>
-                <Link href="/hombre" className="hover:text-bravio-bone transition-colors">
-                  Botas para Hombre
-                </Link>
-              </li>
-              <li>
-                <Link href="/coleccion/bravio-mujer" className="hover:text-bravio-bone transition-colors">
+                <Link href="/mujer" className="hover:text-bravio-bone transition-colors">
                   Línea Mujer 2026
                 </Link>
               </li>
               <li>
+                <Link href="/buscar" className="hover:text-bravio-bone transition-colors">
+                  Buscador de Botas
+                </Link>
+              </li>
+              <li>
+                <Link href="/la-cruz-de-hierro" className="hover:text-bravio-bone transition-colors">
+                  La Cruz de Hierro
+                </Link>
+              </li>
+              <li>
                 <Link href="/historia" className="hover:text-bravio-bone transition-colors">
-                  Taller y Origen en León
+                  El Taller de León Gto.
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Links Column 2 */}
+          {/* Links Column 2: Guías & Servicio */}
           <div className="space-y-3">
             <h4 className="font-display text-xs tracking-widest uppercase text-bravio-bone">
-              Atención & Seguridad
+              Guías & Cuidados
             </h4>
-            <ul className="space-y-2 text-xs text-bravio-cloudy">
+            <ul className="space-y-2 text-xs text-bravio-cloudy font-sans">
               <li>
-                <Link href="/rastreo" className="hover:text-bravio-bone transition-colors">
-                  Rastreo de Guía
+                <Link href="/guia-de-tallas" className="hover:text-bravio-bone transition-colors">
+                  Guía de Tallas (MX)
                 </Link>
               </li>
               <li>
-                <span className="text-bravio-cloudy/60">Garantía de Por Vida en Costura</span>
+                <Link href="/cuidados" className="hover:text-bravio-bone transition-colors">
+                  Cuidado de Pieles
+                </Link>
               </li>
               <li>
-                <span className="text-bravio-cloudy/60">hola@braviowestern.com.mx</span>
+                <Link href="/preguntas-frecuentes" className="hover:text-bravio-bone transition-colors">
+                  Preguntas Frecuentes
+                </Link>
               </li>
-              <li className="pt-2">
+              <li>
+                <Link href="/envios" className="hover:text-bravio-bone transition-colors">
+                  Política de Envíos
+                </Link>
+              </li>
+              <li>
+                <Link href="/cambios-y-devoluciones" className="hover:text-bravio-bone transition-colors">
+                  Primer Cambio Gratis
+                </Link>
+              </li>
+              <li>
+                <Link href="/rastreo" className="hover:text-bravio-bone transition-colors">
+                  Rastreo de Pedido
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Links Column 3: Legal & Administración */}
+          <div className="space-y-3">
+            <h4 className="font-display text-xs tracking-widest uppercase text-bravio-bone">
+              Legal & Privado
+            </h4>
+            <ul className="space-y-2 text-xs text-bravio-cloudy font-sans">
+              <li>
+                <Link href="/terminos-y-condiciones" className="hover:text-bravio-bone transition-colors">
+                  Términos y Condiciones
+                </Link>
+              </li>
+              <li>
+                <Link href="/aviso-de-privacidad" className="hover:text-bravio-bone transition-colors">
+                  Aviso de Privacidad
+                </Link>
+              </li>
+              <li>
+                <Link href="/contacto" className="hover:text-bravio-bone transition-colors">
+                  Contacto de Taller
+                </Link>
+              </li>
+              <li className="pt-3">
                 <Link
                   href="/admin"
-                  className="inline-flex items-center gap-1.5 text-bravio-gold/80 hover:text-bravio-gold transition-colors"
+                  className="inline-flex items-center gap-1.5 text-bravio-gold hover:text-bravio-bone transition-colors border border-bravio-gold/40 px-2.5 py-1 text-[11px]"
                 >
                   <Shield className="w-3.5 h-3.5" />
-                  <span>Panel de Administración</span>
+                  <span>Panel Privado /admin</span>
                 </Link>
               </li>
             </ul>
@@ -106,15 +159,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Credits */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-bravio-cloudy/60 gap-4">
-          <p>© {new Date().getFullYear()} BRAVÍO Western S.A. de C.V. Todos los derechos reservados.</p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-bravio-cloudy/60 gap-4 font-sans">
+          <p>© {new Date().getFullYear()} BRAVÍO Western · Todos los derechos reservados.</p>
           <div className="flex gap-6">
-            <span>León, Gto. México</span>
-            <span>Pagos seguros vía Mercado Pago</span>
+            <span>León, Guanajuato · México</span>
+            <span>Construcción Goodyear Welt 360°</span>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-

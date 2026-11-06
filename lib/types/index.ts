@@ -78,6 +78,7 @@ export interface Product {
   leatherType: string;
   color: string;
   construction: string;
+  category?: string;
   gender: "hombre" | "mujer" | "unisex";
   collectionId: string;
   images: string[];
@@ -209,4 +210,54 @@ export interface AuditLog {
   details: string;
   ipAddress?: string;
 }
+
+export interface Coupon {
+  id: string;
+  code: string;
+  discountType: "percentage" | "fixed";
+  discountValue: number;
+  minPurchase: number;
+  validFrom: string;
+  validTo: string;
+  isActive: boolean;
+  usageLimit?: number;
+  timesUsed: number;
+  description: string;
+}
+
+export interface Customer {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  city: string;
+  state: string;
+  ordersCount: number;
+  totalSpent: number;
+  lastOrderDate: string;
+  createdAt: string;
+  notes?: string;
+}
+
+export interface AdminUser {
+  id: string;
+  name: string;
+  email: string;
+  role: "superadmin" | "operations" | "content_editor";
+  isActive: boolean;
+  lastLogin: string;
+  createdAt: string;
+}
+
+export interface InventoryRecord {
+  sku: string;
+  productName: string;
+  leatherType: string;
+  sizes: Record<string, { physical: number; reserved: number; available: number }>;
+  totalPhysical: number;
+  totalAvailable: number;
+  reorderLevel: number;
+}
+
 
