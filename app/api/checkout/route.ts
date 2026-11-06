@@ -43,3 +43,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: err.message || "Error procesando el pedido" }, { status: 500 });
   }
 }
+

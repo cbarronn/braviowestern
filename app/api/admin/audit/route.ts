@@ -5,3 +5,4 @@ export async function GET() {
   const logs = db.getAuditLogs();
   return NextResponse.json({ success: true, logs });
 }
+

@@ -387,3 +387,4 @@ export const PRODUCTS_CATALOG: Product[] = [
     },
   },
 ];
+

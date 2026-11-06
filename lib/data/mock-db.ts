@@ -552,3 +552,4 @@ export const db = global.__BRAVIO_DB__ || new MockDatabase();
 if (process.env.NODE_ENV !== "production") {
   global.__BRAVIO_DB__ = db;
 }
+
