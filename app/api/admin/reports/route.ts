@@ -9,3 +9,4 @@ export async function GET() {
     return NextResponse.json({ error: "Error al generar reportes comerciales." }, { status: 500 });
   }
 }
+

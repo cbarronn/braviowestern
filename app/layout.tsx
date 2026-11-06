@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/commerce/CartDrawer";
 import AmbientAudioPlayer from "@/components/audio/AmbientAudioPlayer";
+import WelcomePromoModal from "@/components/marketing/WelcomePromoModal";
 
 const archivoBlack = localFont({
   src: "../public/brand/fonts/ArchivoBlack-Regular.ttf",
@@ -20,7 +21,7 @@ const spaceGrotesk = localFont({
 
 export const metadata: Metadata = {
   title: "BRAVÍO | Western para la vida actual",
-  description: "Botas y calzado artesanal de alta gama. Construcción Goodyear Welt y pieles de selección elaboradas en León, Guanajuato, México.",
+  description: "Botas y calzado de raíz western, construcción tradicional Goodyear Welt 360° y presencia contemporánea. Hechas en León, Guanajuato, México.",
   keywords: ["botas western", "bravio", "botas de piel", "leon guanajuato", "goodyear welt", "botas vaqueras contemporaneas"],
   icons: {
     icon: "/brand/logos/BRAVIO_cruz.svg",
@@ -40,6 +41,7 @@ export default function RootLayout({
         <Footer />
         <CartDrawer />
         <AmbientAudioPlayer />
+        <WelcomePromoModal />
       </body>
     </html>
   );
