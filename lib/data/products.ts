@@ -388,3 +388,21 @@ export const PRODUCTS_CATALOG: Product[] = [
   },
 ];
 
+export const PRODUCTS = PRODUCTS_CATALOG;
+
+export function getProductsByCategory(category: string): Product[] {
+  if (category === "all") return PRODUCTS_CATALOG;
+  return PRODUCTS_CATALOG.filter(
+    (p) => p.gender === category || p.collectionId === category
+  );
+}
+
+export function getProductBySlug(slug: string): Product | undefined {
+  return PRODUCTS_CATALOG.find((p) => p.slug === slug);
+}
+
+export function getProductById(id: string): Product | undefined {
+  return PRODUCTS_CATALOG.find((p) => p.id === id);
+}
+
+

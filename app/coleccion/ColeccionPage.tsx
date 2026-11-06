@@ -13,15 +13,15 @@ function ProductCard({ product }: { product: Product }) {
     <Link
       href={`/producto/${product.slug}`}
       aria-label={`Ver ${product.name}`}
-      className="group flex flex-col bg-white rounded-xl border border-[#E2D9D0] overflow-hidden hover:border-[#5E1C23] hover:shadow-xl transition-all duration-300"
+      className="group flex flex-col bg-white rounded-xl border border-[#B1C7D4]/50 overflow-hidden hover:border-[#5E1C23] hover:shadow-xl transition-all duration-300"
     >
-      {/* Contenedor de foto limpio — CERO textos sobre la bota */}
-      <div className="relative w-full aspect-square bg-[#FDFBF7] flex items-center justify-center p-8 border-b border-[#EFE8E0]">
+      {/* Contenedor de foto limpio — CERO textos sobre la bota, fondo blanco puro */}
+      <div className="relative w-full aspect-square bg-white flex items-center justify-center p-6 border-b border-[#B1C7D4]/30">
         <Image
           src={product.images[0] || "/products/bota-frente.jpg"}
           alt={product.name}
           fill
-          className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
+          className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
@@ -40,11 +40,11 @@ function ProductCard({ product }: { product: Product }) {
             )}
           </div>
 
-          <h3 className="font-[ArchivoBlack] text-[#1A1410] text-xl uppercase leading-tight mb-2 group-hover:text-[#5E1C23] transition-colors">
+          <h3 className="font-[ArchivoBlack] text-[#605246] text-xl uppercase leading-tight mb-2 group-hover:text-[#5E1C23] transition-colors">
             {product.name}
           </h3>
 
-          <p className="font-[SpaceGrotesk] text-xs text-[#605246] line-clamp-2 leading-relaxed mb-4">
+          <p className="font-[SpaceGrotesk] text-xs text-[#849AAD] line-clamp-2 leading-relaxed mb-4">
             {product.description}
           </p>
 
@@ -53,9 +53,9 @@ function ProductCard({ product }: { product: Product }) {
           </p>
         </div>
 
-        <div className="pt-5 mt-5 border-t border-[#EFE8E0] flex items-center justify-between">
+        <div className="pt-5 mt-5 border-t border-[#B1C7D4]/30 flex items-center justify-between">
           <div>
-            <span className="font-[ArchivoBlack] text-[#1A1410] text-xl">
+            <span className="font-[ArchivoBlack] text-[#5E1C23] text-xl">
               ${product.price.toLocaleString("es-MX")}
             </span>
             <span className="font-[SpaceGrotesk] text-xs text-[#849AAD] ml-1.5 font-medium">
@@ -80,22 +80,22 @@ export default function ColeccionPage() {
     : PRODUCTS.filter((p) => p.category === filter);
 
   return (
-    <div className="pt-[72px] min-h-screen bg-[#F5F0EA]">
+    <div className="pt-[72px] min-h-screen bg-white">
       {/* Header */}
       <section
-        className="relative overflow-hidden bg-[#1A1410] py-20 md:py-28"
+        className="relative overflow-hidden bg-[#605246] py-20 md:py-28"
         aria-labelledby="coleccion-heading"
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
           <div className="flex items-center gap-3 mb-4">
             <span className="w-8 h-[2px] bg-[#5E1C23]" />
-            <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase font-bold text-[#849AAD]">
+            <p className="font-[SpaceGrotesk] text-[11px] tracking-[0.3em] uppercase font-bold text-[#B1C7D4]">
               Toda la colección
             </p>
           </div>
           <h1
             id="coleccion-heading"
-            className="font-[ArchivoBlack] text-[#B1C7D4] uppercase"
+            className="font-[ArchivoBlack] text-white uppercase"
             style={{
               fontSize: "clamp(3rem, 7vw, 6.5rem)",
               lineHeight: "1.08",
@@ -104,18 +104,18 @@ export default function ColeccionPage() {
           >
             LAS BOTAS<br />QUE TE PONES.
           </h1>
-          <p className="mt-6 font-[SpaceGrotesk] text-base text-[#849AAD] max-w-lg leading-relaxed">
+          <p className="mt-6 font-[SpaceGrotesk] text-base text-[#B1C7D4] max-w-lg leading-relaxed">
             Calzado artesanal confeccionado en León, Guanajuato. Piel genuina, costura Goodyear Welt y horma oval.
           </p>
         </div>
-        <div className="absolute right-10 bottom-10 opacity-[0.04] pointer-events-none" aria-hidden="true">
+        <div className="absolute right-10 bottom-10 opacity-[0.06] pointer-events-none" aria-hidden="true">
           <CruzDeHierro size={400} color="#B1C7D4" />
         </div>
       </section>
 
       {/* Filter bar */}
       <div
-        className="sticky top-[72px] z-40 border-b border-[#E2D9D0] bg-[#F5F0EA]/95 backdrop-blur-md"
+        className="sticky top-[72px] z-40 border-b border-[#B1C7D4]/40 bg-white/95 backdrop-blur-md"
         role="group"
         aria-label="Filtros de colección"
       >
@@ -130,8 +130,8 @@ export default function ColeccionPage() {
                   onClick={() => setFilter(f)}
                   className={`px-5 py-2 rounded-full font-[SpaceGrotesk] text-[11px] tracking-[0.2em] uppercase font-semibold transition-all ${
                     filter === f
-                      ? "bg-[#1A1410] text-[#F5F0EA] shadow-sm"
-                      : "bg-white text-[#605246] border border-[#E2D9D0] hover:text-[#1A1410]"
+                      ? "bg-[#5E1C23] text-white shadow-sm"
+                      : "bg-white text-[#605246] border border-[#B1C7D4]/60 hover:text-[#5E1C23]"
                   }`}
                 >
                   {f === "all" ? "Todos los Modelos" : f === "mujer" ? "Dama" : "Caballero (Botín Sinaloa)"}

@@ -2,10 +2,12 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { PRODUCTS_CATALOG } from "@/lib/data/products";
 import { useCommerceStore } from "@/lib/store/commerce-store";
 import { ArrowLeft, Check, ShieldCheck, Truck, RotateCcw } from "lucide-react";
+import { CruzDeHierro } from "@/components/ui/BravioLogo";
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -46,12 +48,12 @@ export default function ProductDetailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-bravio-volcanic py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="min-h-screen bg-white text-[#605246] pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Back button */}
       <div className="mb-6">
         <Link
-          href="/coleccion/sinaloa"
-          className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-bravio-cloudy hover:text-bravio-bone transition-colors"
+          href="/hombre"
+          className="inline-flex items-center gap-2 text-xs font-[SpaceGrotesk] uppercase tracking-widest text-[#849AAD] hover:text-[#605246] transition-colors font-bold"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Volver al catálogo</span>
@@ -59,16 +61,18 @@ export default function ProductDetailPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        {/* Left: Gallery */}
+        {/* Left: Gallery with pure white backdrop for seamless white-background photos */}
         <div className="space-y-4">
           {/* Main Large Image */}
-          <div className="relative aspect-[4/5] bg-bravio-volcanic-card rounded-sm overflow-hidden border border-bravio-volcanic-border shadow-2xl">
-            <img
+          <div className="relative aspect-[4/5] bg-white rounded-none overflow-hidden border border-[#B1C7D4]/60 p-6 flex items-center justify-center shadow-xs">
+            <Image
               src={product.images[activeImageIndex] || product.featuredImage}
               alt={product.name}
-              className="w-full h-full object-cover object-center filter contrast-105"
+              fill
+              className="object-contain p-6"
+              priority
             />
-            <span className="absolute top-4 left-4 bg-bravio-volcanic/90 backdrop-blur-md text-[10px] font-sans tracking-widest uppercase text-bravio-cloudy px-3 py-1 border border-bravio-volcanic-border">
+            <span className="absolute top-4 left-4 bg-[#F4F7F9] text-[10px] font-[SpaceGrotesk] font-bold tracking-widest uppercase text-[#605246] px-3 py-1 border border-[#B1C7D4]/60">
               {product.leatherType}
             </span>
           </div>
@@ -80,13 +84,13 @@ export default function ProductDetailPage() {
                 <button
                   key={idx}
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`relative w-20 h-24 flex-shrink-0 bg-bravio-volcanic-card rounded overflow-hidden border-2 transition-all ${
+                  className={`relative w-20 h-24 flex-shrink-0 bg-white border-2 p-1 transition-all ${
                     activeImageIndex === idx
-                      ? "border-bravio-granate scale-95"
-                      : "border-transparent opacity-60 hover:opacity-100"
+                      ? "border-[#5E1C23] shadow-xs"
+                      : "border-[#B1C7D4]/50 opacity-70 hover:opacity-100"
                   }`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
+                  <img src={img} alt="" className="w-full h-full object-contain" />
                 </button>
               ))}
             </div>
@@ -96,45 +100,48 @@ export default function ProductDetailPage() {
         {/* Right: Product Info & Actions */}
         <div className="space-y-8">
           <div>
-            <span className="text-xs uppercase tracking-cinematic text-bravio-cloudy font-sans">
-              SKU: {product.sku}
-            </span>
-            <h1 className="font-display text-3xl sm:text-4xl text-bravio-bone uppercase tracking-wide mt-1">
+            <div className="flex items-center gap-2 mb-2">
+              <CruzDeHierro size={14} color="#5E1C23" />
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#849AAD] font-[SpaceGrotesk] font-bold">
+                SKU: {product.sku} · Hecho a mano en León, Gto.
+              </span>
+            </div>
+            <h1 className="font-archivo text-3xl sm:text-4xl text-[#605246] uppercase tracking-tight">
               {product.name}
             </h1>
-            <p className="text-sm text-bravio-cloudy mt-2 font-light">
+            <p className="text-sm font-[SpaceGrotesk] text-[#849AAD] mt-2">
               {product.subtitle}
             </p>
 
             {/* Price */}
             <div className="flex items-baseline gap-3 mt-4">
-              <span className="font-display text-2xl sm:text-3xl text-bravio-bone">
+              <span className="font-archivo text-3xl text-[#5E1C23] font-bold">
                 ${product.price.toLocaleString("es-MX")} MXN
               </span>
               {product.compareAtPrice && (
-                <span className="text-sm text-bravio-cloudy/60 line-through">
-                  ${product.compareAtPrice.toLocaleString("es-MX")}
+                <span className="text-sm font-[SpaceGrotesk] text-[#849AAD]/70 line-through">
+                  ${product.compareAtPrice.toLocaleString("es-MX")} MXN
                 </span>
               )}
             </div>
           </div>
 
           {/* Description */}
-          <div className="border-t border-bravio-volcanic-border pt-6">
-            <p className="text-sm text-bravio-cloudy leading-relaxed font-light">
+          <div className="border-t border-[#B1C7D4]/40 pt-6">
+            <p className="text-sm font-[SpaceGrotesk] text-[#605246]/80 leading-relaxed">
               {product.description}
             </p>
           </div>
 
           {/* Sizing Grid */}
           <div className="space-y-3">
-            <div className="flex justify-between items-center text-xs">
-              <span className="font-sans uppercase tracking-widest text-bravio-bone font-medium">
+            <div className="flex justify-between items-center text-xs font-[SpaceGrotesk]">
+              <span className="uppercase tracking-widest text-[#605246] font-bold">
                 Selecciona Talla (México)
               </span>
-              <span className="text-bravio-gold text-[11px] underline cursor-pointer">
-                Guía de hormas
-              </span>
+              <Link href="/guia-de-tallas" className="text-[#5E1C23] text-[11px] font-bold underline">
+                Guía de tallas
+              </Link>
             </div>
 
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
@@ -142,14 +149,14 @@ export default function ProductDetailPage() {
                 <button
                   key={v.size}
                   onClick={() => setSelectedSize(v.size)}
-                  className={`py-3 px-2 rounded text-center transition-all ${
+                  className={`py-3 px-2 text-center transition-all border ${
                     selectedSize === v.size
-                      ? "bg-bravio-granate text-bravio-bone font-bold ring-2 ring-bravio-granate"
-                      : "bg-bravio-volcanic-card text-bravio-cloudy hover:text-bravio-bone border border-bravio-volcanic-border"
+                      ? "bg-[#5E1C23] text-white border-[#5E1C23] font-bold shadow-xs"
+                      : "bg-white text-[#605246] hover:bg-[#F4F7F9] border-[#B1C7D4]"
                   }`}
                 >
                   <span className="block font-mono text-sm">{v.size.replace(" MX", "")}</span>
-                  <span className="block text-[9px] text-bravio-cloudy/70 uppercase">
+                  <span className="block text-[9px] font-[SpaceGrotesk] opacity-75 uppercase">
                     {v.stock} disp.
                   </span>
                 </button>
@@ -161,10 +168,10 @@ export default function ProductDetailPage() {
           <div className="space-y-3 pt-2">
             <button
               onClick={handleAddToCart}
-              className={`w-full py-4 px-6 rounded-sm font-sans text-xs tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 ${
+              className={`w-full py-4 px-6 font-[SpaceGrotesk] text-xs font-bold tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 shadow-sm ${
                 isAdded
-                  ? "bg-emerald-600 text-white"
-                  : "bg-bravio-granate hover:bg-bravio-granate-light text-bravio-bone shadow-xl shadow-bravio-granate/30"
+                  ? "bg-emerald-700 text-white"
+                  : "bg-[#5E1C23] hover:bg-[#47151a] text-white"
               }`}
             >
               {isAdded ? (
@@ -179,54 +186,57 @@ export default function ProductDetailPage() {
 
             <button
               onClick={handleBuyNow}
-              className="w-full py-3.5 px-6 rounded-sm font-sans text-xs tracking-widest uppercase transition-all duration-300 bg-bravio-volcanic-card hover:bg-bravio-volcanic-border border border-bravio-volcanic-border text-bravio-bone"
+              className="w-full py-3.5 px-6 font-[SpaceGrotesk] text-xs font-bold tracking-widest uppercase transition-all duration-300 bg-white hover:bg-[#F4F7F9] border border-[#B1C7D4] text-[#605246]"
             >
-              COMPRAR AHORA (EXPRÉS)
+              COMPRAR AHORA (CHECKOUT RÁPIDO)
             </button>
           </div>
 
-          {/* Value Props */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-bravio-volcanic-border pt-6 text-xs text-bravio-cloudy">
-            <div className="flex items-center gap-2.5">
-              <Truck className="w-4 h-4 text-bravio-gold flex-shrink-0" />
+          {/* Trust Guarantees */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-[#B1C7D4]/40 pt-6 text-xs font-[SpaceGrotesk] text-[#849AAD]">
+            <div className="flex items-center gap-2">
+              <Truck className="w-4 h-4 text-[#5E1C23] flex-shrink-0" />
               <span>Envío Gratis a todo México</span>
             </div>
-            <div className="flex items-center gap-2.5">
-              <ShieldCheck className="w-4 h-4 text-bravio-gold flex-shrink-0" />
-              <span>Construcción Goodyear Welt</span>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <RotateCcw className="w-4 h-4 text-bravio-gold flex-shrink-0" />
+            <div className="flex items-center gap-2">
+              <RotateCcw className="w-4 h-4 text-[#5E1C23] flex-shrink-0" />
               <span>Primer cambio de talla gratis</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-[#5E1C23] flex-shrink-0" />
+              <span>Garantía Goodyear Welt 360°</span>
             </div>
           </div>
 
-          {/* Technical Specs Details */}
-          <div className="border border-bravio-volcanic-border rounded-sm bg-bravio-volcanic-card/50 divide-y divide-bravio-volcanic-border text-xs">
+          {/* Technical Specs List */}
+          <div className="border border-[#B1C7D4]/50 bg-[#F4F7F9] divide-y divide-[#B1C7D4]/30 text-xs font-[SpaceGrotesk]">
             <div className="p-3 flex justify-between">
-              <span className="text-bravio-cloudy/70 uppercase">Horma</span>
-              <span className="text-bravio-bone font-medium">{product.details.horma}</span>
+              <span className="text-[#849AAD] uppercase">Construcción:</span>
+              <span className="text-[#605246] font-bold">{product.construction}</span>
             </div>
             <div className="p-3 flex justify-between">
-              <span className="text-bravio-cloudy/70 uppercase">Suela</span>
-              <span className="text-bravio-bone font-medium">{product.details.suela}</span>
+              <span className="text-[#849AAD] uppercase">Tipo de Piel:</span>
+              <span className="text-[#605246] font-bold">{product.leatherType}</span>
             </div>
             <div className="p-3 flex justify-between">
-              <span className="text-bravio-cloudy/70 uppercase">Tubo</span>
-              <span className="text-bravio-bone font-medium">{product.details.tubo}</span>
+              <span className="text-[#849AAD] uppercase">Color Oficial:</span>
+              <span className="text-[#605246] font-bold">{product.color}</span>
             </div>
-            <div className="p-3 flex justify-between">
-              <span className="text-bravio-cloudy/70 uppercase">Tacón</span>
-              <span className="text-bravio-bone font-medium">{product.details.tacon}</span>
-            </div>
-            <div className="p-3 flex justify-between">
-              <span className="text-bravio-cloudy/70 uppercase">Origen</span>
-              <span className="text-bravio-bone font-medium">{product.details.origen}</span>
-            </div>
+            {product.details?.suela && (
+              <div className="p-3 flex justify-between">
+                <span className="text-[#849AAD] uppercase">Suela:</span>
+                <span className="text-[#605246] font-bold">{product.details.suela}</span>
+              </div>
+            )}
+            {product.details?.horma && (
+              <div className="p-3 flex justify-between">
+                <span className="text-[#849AAD] uppercase">Horma:</span>
+                <span className="text-[#605246] font-bold">{product.details.horma}</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 }
-

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ShoppingBag, Menu, X, Shield, Search, ArrowRight } from "lucide-react";
+import { ShoppingBag, Menu, X, Shield, Search } from "lucide-react";
 import { useCommerceStore } from "@/lib/store/commerce-store";
 
 export default function Header() {
@@ -11,10 +11,10 @@ export default function Header() {
   const { count } = getCartTotal();
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-bravio-volcanic/90 backdrop-blur-md border-b border-bravio-volcanic-border">
+    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-[#B1C7D4]/40 shadow-sm">
       {/* Top Banner Notice */}
-      <div className="bg-bravio-granate text-bravio-bone text-[11px] font-sans tracking-widest text-center py-1.5 px-4 font-medium uppercase">
-        Envíos asegurados a todo México • Confección artesanal en León Gto.
+      <div className="bg-[#5E1C23] text-white text-[11px] font-[SpaceGrotesk] tracking-widest text-center py-1.5 px-4 font-medium uppercase">
+        Envíos asegurados a todo México · Confección artesanal en León Gto.
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -22,7 +22,7 @@ export default function Header() {
         <div className="flex items-center md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-bravio-cloudy hover:text-bravio-bone transition-colors"
+            className="p-2 text-[#605246] hover:text-[#5E1C23] transition-colors"
             aria-label="Menú principal"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -30,24 +30,30 @@ export default function Header() {
         </div>
 
         {/* Desktop Navigation Links (Left) */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           <Link
             href="/coleccion/sinaloa"
-            className="text-xs uppercase tracking-widest text-bravio-cloudy hover:text-bravio-bone transition-colors font-sans"
+            className="text-xs uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk] font-bold"
           >
             Colección Sinaloa
           </Link>
           <Link
             href="/hombre"
-            className="text-xs uppercase tracking-widest text-bravio-cloudy hover:text-bravio-bone transition-colors font-sans"
+            className="text-xs uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk] font-bold"
           >
             Hombre
           </Link>
           <Link
-            href="/coleccion/bravio-mujer"
-            className="text-xs uppercase tracking-widest text-bravio-cloudy hover:text-bravio-bone transition-colors font-sans"
+            href="/mujer"
+            className="text-xs uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk] font-bold"
           >
             Mujer 2026
+          </Link>
+          <Link
+            href="/la-cruz-de-hierro"
+            className="text-xs uppercase tracking-widest text-[#849AAD] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk]"
+          >
+            La Cruz
           </Link>
         </nav>
 
@@ -55,7 +61,7 @@ export default function Header() {
         <div className="flex-1 md:flex-initial flex justify-center items-center py-2">
           <Link href="/" className="group flex items-center gap-3">
             {/* Authentic SVG Logo */}
-            <div className="w-40 sm:w-48 text-bravio-granate group-hover:text-bravio-granate-light transition-colors">
+            <div className="w-40 sm:w-48 text-[#5E1C23] group-hover:text-[#72232b] transition-colors">
               <svg viewBox="-110 -1215 4554 1325" className="w-full h-auto fill-current">
                 <g transform="scale(1,-1)">
                   <g transform="translate(0,0)"><path d="M722 519Q722 392 607 359V355Q738 325 738 183Q738 129 711.5 87.5Q685 46 639.0 23.0Q593 0 538 0H74V688H532Q584 688 627.5 666.5Q671 645 696.5 606.0Q722 567 722 519ZM295 420H447Q469 420 483.5 435.5Q498 451 498 474V484Q498 506 483.0 521.5Q468 537 447 537H295ZM295 160H463Q485 160 499.5 175.5Q514 191 514 214V224Q514 247 499.5 262.5Q485 278 463 278H295Z"/></g>
@@ -72,37 +78,41 @@ export default function Header() {
         </div>
 
         {/* Desktop Navigation (Right) & Cart */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-5">
           <Link
-            href="/historia"
-            className="hidden lg:block text-xs uppercase tracking-widest text-bravio-cloudy hover:text-bravio-bone transition-colors font-sans"
+            href="/buscar"
+            className="p-2 text-[#605246] hover:text-[#5E1C23] transition-colors"
+            title="Buscar calzado"
+            aria-label="Buscar calzado"
           >
-            Historia
+            <Search className="w-5 h-5" />
           </Link>
+
           <Link
             href="/rastreo"
-            className="hidden lg:block text-xs uppercase tracking-widest text-bravio-cloudy hover:text-bravio-bone transition-colors font-sans"
+            className="hidden lg:block text-xs uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk] font-bold"
           >
             Rastreo
           </Link>
+
           <Link
             href="/admin"
-            className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-bravio-cloudy/60 hover:text-bravio-gold transition-colors font-sans"
+            className="hidden sm:flex items-center gap-1.5 text-xs uppercase tracking-wider text-[#849AAD] hover:text-[#605246] transition-colors font-[SpaceGrotesk]"
             title="Panel Administrativo"
           >
             <Shield className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Admin</span>
+            <span>Admin</span>
           </Link>
 
           {/* Cart Icon */}
           <button
             onClick={toggleCart}
-            className="relative p-2 text-bravio-bone hover:text-bravio-cloudy transition-colors flex items-center gap-2"
+            className="relative p-2 text-[#605246] hover:text-[#5E1C23] transition-colors flex items-center gap-2"
             aria-label="Abrir carrito de compras"
           >
-            <ShoppingBag className="w-5 h-5 text-bravio-bone" />
+            <ShoppingBag className="w-5 h-5" />
             {count > 0 && (
-              <span className="absolute -top-1 -right-1 bg-bravio-granate text-bravio-bone text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center border border-bravio-volcanic">
+              <span className="absolute -top-1 -right-1 bg-[#5E1C23] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
                 {count}
               </span>
             )}
@@ -112,47 +122,61 @@ export default function Header() {
 
       {/* Mobile Drawer Navigation */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-bravio-volcanic border-b border-bravio-volcanic-border px-6 py-8 space-y-6">
+        <div className="md:hidden bg-white border-b border-[#B1C7D4]/40 px-6 py-8 space-y-6 shadow-xl">
           <div className="flex flex-col space-y-4">
             <Link
               href="/coleccion/sinaloa"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-base uppercase tracking-widest text-bravio-bone hover:text-bravio-granate transition-colors font-sans"
+              className="text-base uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk] font-bold"
             >
               Colección Sinaloa
             </Link>
             <Link
               href="/hombre"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-base uppercase tracking-widest text-bravio-bone hover:text-bravio-granate transition-colors font-sans"
+              className="text-base uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk] font-bold"
             >
               Hombre
             </Link>
             <Link
-              href="/coleccion/bravio-mujer"
+              href="/mujer"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-base uppercase tracking-widest text-bravio-bone hover:text-bravio-granate transition-colors font-sans"
+              className="text-base uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk] font-bold"
             >
               Mujer 2026
             </Link>
             <Link
+              href="/buscar"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-base uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk]"
+            >
+              Buscar Botas
+            </Link>
+            <Link
+              href="/la-cruz-de-hierro"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-base uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk]"
+            >
+              La Cruz de Hierro
+            </Link>
+            <Link
               href="/historia"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-base uppercase tracking-widest text-bravio-bone hover:text-bravio-granate transition-colors font-sans"
+              className="text-base uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk]"
             >
               Historia y Artesanía
             </Link>
             <Link
               href="/rastreo"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-base uppercase tracking-widest text-bravio-bone hover:text-bravio-granate transition-colors font-sans"
+              className="text-base uppercase tracking-widest text-[#605246] hover:text-[#5E1C23] transition-colors font-[SpaceGrotesk]"
             >
               Rastreo de Pedidos
             </Link>
             <Link
               href="/admin"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-base uppercase tracking-widest text-bravio-gold hover:underline transition-colors font-sans pt-4 border-t border-bravio-volcanic-border"
+              className="text-base uppercase tracking-widest text-[#5E1C23] font-bold hover:underline transition-colors font-[SpaceGrotesk] pt-4 border-t border-[#B1C7D4]/40"
             >
               Acceso a Administración
             </Link>
@@ -162,4 +186,3 @@ export default function Header() {
     </header>
   );
 }
-

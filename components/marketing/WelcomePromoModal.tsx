@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { X, Sparkles, Check, ArrowRight, Copy } from "lucide-react";
+import { X, Check, ArrowRight, Copy } from "lucide-react";
 import { CruzDeHierro } from "@/components/ui/BravioLogo";
 
 export default function WelcomePromoModal() {
@@ -56,12 +56,12 @@ export default function WelcomePromoModal() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-md bg-[#16120E] border-2 border-[#605246]/50 p-8 shadow-2xl text-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#605246]/50 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-md bg-white border border-[#B1C7D4] p-8 shadow-2xl text-center text-[#605246]">
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 p-1.5 text-[#849AAD] hover:text-[#B1C7D4] transition-colors"
+          className="absolute top-4 right-4 p-1.5 text-[#849AAD] hover:text-[#605246] transition-colors"
           aria-label="Cerrar modal"
         >
           <X size={18} />
@@ -69,18 +69,18 @@ export default function WelcomePromoModal() {
 
         <CruzDeHierro size={32} color="#5E1C23" className="mx-auto mb-4" />
 
-        <span className="text-[10px] font-[SpaceGrotesk] uppercase tracking-[0.25em] text-[#849AAD] block mb-1">
+        <span className="text-[10px] font-[SpaceGrotesk] uppercase tracking-[0.25em] text-[#849AAD] font-bold block mb-1">
           Beneficio Exclusivo
         </span>
 
-        <h2 className="font-archivo text-2xl sm:text-3xl text-[#B1C7D4] uppercase tracking-tight mb-3">
+        <h2 className="font-archivo text-2xl sm:text-3xl text-[#605246] uppercase tracking-tight mb-3">
           10% EN TU PRIMER PAR
         </h2>
 
         {!isSubscribed ? (
           <>
             <p className="font-[SpaceGrotesk] text-xs text-[#849AAD] leading-relaxed mb-6">
-              Suscríbete al registro de taller para recibir noticias de nuevos lotes, eventos privados y obtén 10% de descuento en tu primer pedido.
+              Suscríbete al registro de taller para recibir novedades de producción artesanal y obtén 10% de descuento en tu primera compra en línea.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3 font-[SpaceGrotesk]">
@@ -90,35 +90,35 @@ export default function WelcomePromoModal() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Ingresa tu correo electrónico..."
-                className="w-full bg-[#0F0C09] border border-[#605246]/40 px-4 py-3 text-xs text-[#B1C7D4] placeholder-[#849AAD]/60 focus:outline-none focus:border-[#5E1C23] text-center"
+                className="w-full bg-[#F4F7F9] border border-[#B1C7D4] px-4 py-3 text-xs text-[#605246] placeholder-[#849AAD] focus:outline-none focus:border-[#5E1C23] text-center"
               />
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 bg-[#5E1C23] hover:bg-[#72232b] text-white text-xs font-bold uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3.5 bg-[#5E1C23] hover:bg-[#47151a] text-white text-xs font-bold uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2 shadow-sm"
               >
                 {isSubmitting ? "Registrando..." : "Obtener mi Código"} <ArrowRight size={14} />
               </button>
             </form>
 
-            <p className="mt-4 text-[10px] font-[SpaceGrotesk] text-[#849AAD]/70">
-              Válido en compras mínimas de $3,000 MXN. Respetamos tu privacidad.
+            <p className="mt-4 text-[10px] font-[SpaceGrotesk] text-[#849AAD]">
+              Válido en modelos con construcción Goodyear Welt 360°. Respetamos tu privacidad.
             </p>
           </>
         ) : (
           <div className="space-y-4 pt-2">
-            <p className="font-[SpaceGrotesk] text-xs text-[#849AAD]">
+            <p className="font-[SpaceGrotesk] text-xs text-[#605246]">
               ¡Estás registrado! Utiliza este código en tu checkout:
             </p>
 
-            <div className="flex items-center justify-between p-3 bg-[#0F0C09] border border-[#605246]/50">
-              <span className="font-mono font-bold text-lg text-white tracking-widest pl-2">
+            <div className="flex items-center justify-between p-3 bg-[#F4F7F9] border border-[#B1C7D4]">
+              <span className="font-mono font-bold text-lg text-[#5E1C23] tracking-widest pl-2">
                 BIENVENIDO10
               </span>
               <button
                 onClick={copyCode}
-                className="px-3 py-1.5 bg-[#5E1C23] hover:bg-[#72232b] text-white text-[11px] font-[SpaceGrotesk] uppercase tracking-wider flex items-center gap-1.5 transition-colors"
+                className="px-3 py-1.5 bg-[#5E1C23] hover:bg-[#47151a] text-white text-[11px] font-[SpaceGrotesk] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors shadow-xs"
               >
                 {copied ? <Check size={14} /> : <Copy size={14} />}
                 <span>{copied ? "Copiado" : "Copiar"}</span>
@@ -127,7 +127,7 @@ export default function WelcomePromoModal() {
 
             <button
               onClick={handleClose}
-              className="text-xs font-[SpaceGrotesk] text-[#849AAD] hover:text-[#B1C7D4] underline pt-2 block mx-auto"
+              className="text-xs font-[SpaceGrotesk] text-[#605246] hover:text-[#5E1C23] underline pt-2 block mx-auto font-bold"
             >
               Comenzar a comprar
             </button>

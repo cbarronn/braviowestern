@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ShieldCheck, Sparkles, Compass, Check } from "lucide-react";
 import CinematicIntro from "@/components/intro/CinematicIntro";
 import { PRODUCTS_CATALOG } from "@/lib/data/products";
@@ -45,11 +46,11 @@ export default function HomePage() {
       {/* Cinematic Intro Animation */}
       {showIntro && <CinematicIntro onComplete={() => setShowIntro(false)} />}
 
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-white text-[#605246]">
         {/* =========================================================
             SECTION 1: CINEMATIC HERO
         ========================================================= */}
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-bravio-volcanic">
+        <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#16120E] text-white">
           {/* Background Video / Atmosphere */}
           <div className="absolute inset-0 z-0">
             <video
@@ -58,47 +59,47 @@ export default function HomePage() {
               loop
               playsInline
               poster="/brand/posterImage-142.png"
-              className="w-full h-full object-cover opacity-40 scale-105 filter brightness-75 contrast-110"
+              className="w-full h-full object-cover opacity-45 scale-105 filter brightness-75 contrast-110"
             >
               <source src="/media/video.mp4" type="video/mp4" />
             </video>
             {/* Cinematic Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-bravio-volcanic via-bravio-volcanic/60 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-bravio-volcanic/80 via-transparent to-bravio-volcanic/80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#16120E] via-[#16120E]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#16120E]/80 via-transparent to-[#16120E]/80" />
           </div>
 
           {/* Hero Content */}
           <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
             {/* Micro Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-bravio-granate/30 border border-bravio-granate/50 rounded-full mb-6 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-bravio-gold animate-pulse" />
-              <span className="text-[11px] font-sans tracking-widest text-bravio-cloudy uppercase">
-                Edición Limitada 2026 • León, Gto.
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/10 border border-white/20 rounded-full mb-6 backdrop-blur-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B1C7D4] animate-pulse" />
+              <span className="text-[11px] font-[SpaceGrotesk] tracking-[0.2em] text-[#B1C7D4] uppercase font-bold">
+                León, Guanajuato · Construcción Tradicional
               </span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-bravio-bone tracking-tight uppercase leading-[0.95] mb-6">
+            <h1 className="font-archivo text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight uppercase leading-[0.95] mb-6">
               WESTERN PARA LA VIDA ACTUAL
             </h1>
 
             {/* Subheadline */}
-            <p className="max-w-2xl mx-auto font-sans text-sm sm:text-base md:text-lg text-bravio-cloudy font-light leading-relaxed mb-10">
-              Botas concebidas para el ritmo implacable de la ciudad moderna. Construcción artesanal Goodyear Welt con pieles nobles de res, gamuza y grabados exóticos.
+            <p className="max-w-2xl mx-auto font-[SpaceGrotesk] text-sm sm:text-base md:text-lg text-[#B1C7D4] leading-relaxed mb-10">
+              Botas concebidas para el ritmo cotidiano de la ciudad y el camino. Construcción artesanal Goodyear Welt 360° con pieles nobles de res, gamuza y grabados exóticos.
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/coleccion/sinaloa"
-                className="w-full sm:w-auto px-8 py-4 bg-bravio-granate hover:bg-bravio-granate-light text-bravio-bone font-sans text-xs tracking-widest uppercase transition-all duration-300 shadow-xl shadow-bravio-granate/30 flex items-center justify-center gap-2 group"
+                href="/hombre"
+                className="w-full sm:w-auto px-8 py-4 bg-[#5E1C23] hover:bg-[#72232b] text-white font-[SpaceGrotesk] text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 shadow-xl flex items-center justify-center gap-2 group"
               >
-                <span>EXPLORAR COLECCIÓN SINALOA</span>
+                <span>EXPLORAR CATÁLOGO</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="/coleccion/bravio-mujer"
-                className="w-full sm:w-auto px-8 py-4 bg-bravio-volcanic-card/80 hover:bg-bravio-volcanic-border border border-bravio-volcanic-border hover:border-bravio-cloudy/40 text-bravio-bone font-sans text-xs tracking-widest uppercase transition-all duration-300 backdrop-blur-sm"
+                href="/mujer"
+                className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-[SpaceGrotesk] text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 backdrop-blur-sm"
               >
                 LÍNEA MUJER 2026
               </Link>
@@ -109,25 +110,25 @@ export default function HomePage() {
         {/* =========================================================
             SECTION 2: MANIFIESTO DE MARCA
         ========================================================= */}
-        <section className="relative py-24 bg-bravio-volcanic border-y border-bravio-volcanic-border overflow-hidden">
+        <section className="relative py-20 bg-[#F4F7F9] border-y border-[#B1C7D4]/40 overflow-hidden">
           <div className="max-w-4xl mx-auto px-4 text-center">
             {/* Brand Cross Icon */}
-            <div className="w-10 h-10 mx-auto mb-6 text-bravio-granate">
+            <div className="w-10 h-10 mx-auto mb-6 text-[#5E1C23]">
               <svg viewBox="-280 -280 560 560" className="w-full h-full fill-current">
                 <path d="M -58.8 -58.8 L 58.8 -58.8 L 109.2 -210 L -109.2 -210 Z M -58.8 58.8 L 58.8 58.8 L 109.2 210 L -109.2 210 Z M -58.8 -58.8 L -58.8 58.8 L -210 109.2 L -210 -109.2 Z M 58.8 -58.8 L 58.8 58.8 L 210 109.2 L 210 -109.2 Z M -58.8 -58.8 L 58.8 -58.8 L 58.8 58.8 L -58.8 58.8 Z" />
               </svg>
             </div>
 
-            <p className="text-xs uppercase tracking-cinematic text-bravio-cloudy font-sans font-medium mb-4">
+            <p className="text-xs uppercase tracking-[0.25em] text-[#849AAD] font-[SpaceGrotesk] font-bold mb-4">
               EL MANIFIESTO
             </p>
 
-            <blockquote className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl text-bravio-bone leading-snug tracking-wide uppercase">
-              “No creemos en el disfraz vaquero. Creemos en la bota como instrumento de carácter, elegancia sobria y presencia indeleble.”
+            <blockquote className="font-archivo text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#605246] leading-snug tracking-wide uppercase">
+              &ldquo;No creemos en el disfraz vaquero. Creemos en la bota como instrumento de carácter, elegancia sobria y presencia cotidiana.&rdquo;
             </blockquote>
 
-            <p className="mt-6 text-xs text-bravio-cloudy/60 font-sans tracking-widest uppercase">
-              Taller Artesanal BRAVÍO • León, Guanajuato
+            <p className="mt-6 text-xs text-[#849AAD] font-[SpaceGrotesk] tracking-[0.15em] uppercase">
+              Taller Artesanal BRAVÍO · León, Guanajuato
             </p>
           </div>
         </section>
@@ -137,66 +138,68 @@ export default function HomePage() {
         ========================================================= */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-cinematic text-bravio-cloudy font-sans">
-              DIMENSIONES
+            <span className="text-xs uppercase tracking-[0.25em] text-[#849AAD] font-[SpaceGrotesk] font-bold block mb-2">
+              DOS MUNDOS · UNA SOLA RAÍZ
             </span>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-bravio-bone tracking-wider uppercase mt-1">
-              EL UNIVERSO BRAVÍO
+            <h2 className="font-archivo text-2xl sm:text-4xl text-[#605246] tracking-wide uppercase">
+              COLECCIONES OFICIALES
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Card Hombre */}
+            {/* Universo Hombre */}
             <Link
               href="/hombre"
-              className="group relative h-[520px] rounded-sm overflow-hidden border border-bravio-volcanic-border hover:border-bravio-granate/60 transition-all duration-500 shadow-xl flex flex-col justify-end p-8"
+              className="group relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden border border-[#B1C7D4]/40 bg-white shadow-sm hover:shadow-xl transition-all duration-500"
             >
-              <img
+              <Image
                 src="/products/bota-hombre-silao-1.jpg"
-                alt="Línea Hombre BRAVÍO"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-90"
+                alt="Colección Hombre BRAVÍO"
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-bravio-volcanic via-bravio-volcanic/40 to-transparent" />
-              <div className="relative z-10">
-                <span className="text-xs uppercase tracking-widest text-bravio-cloudy font-sans">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#605246]/90 via-[#605246]/30 to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8 text-white">
+                <span className="text-[11px] font-[SpaceGrotesk] uppercase tracking-[0.2em] text-[#B1C7D4] block mb-1">
                   Colección Permanente
                 </span>
-                <h3 className="font-display text-2xl sm:text-3xl text-bravio-bone tracking-wider uppercase mt-1">
-                  HOMBRE SINALOA
+                <h3 className="font-archivo text-2xl sm:text-3xl uppercase tracking-wide mb-2">
+                  BRAVÍO HOMBRE
                 </h3>
-                <p className="text-xs text-bravio-cloudy mt-2 max-w-sm font-light">
-                  Siluetas robustas y acabados pull-up, gamuzas aperladas y exóticos legendarios con construcción Goodyear Welt.
+                <p className="text-xs font-[SpaceGrotesk] text-white/80 max-w-sm mb-4 line-clamp-2">
+                  Modelos de corte recto y puntera vaquera construidos con vaqueta vegetal y cerco cosido.
                 </p>
-                <div className="mt-4 flex items-center gap-2 text-xs font-sans tracking-widest text-bravio-gold group-hover:translate-x-1 transition-transform">
-                  <span>VER CATÁLOGO HOMBRE</span>
+                <div className="inline-flex items-center gap-2 text-xs font-[SpaceGrotesk] font-bold uppercase tracking-[0.15em] text-[#B1C7D4] group-hover:text-white transition-colors">
+                  <span>Ver Colección Hombre</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
             </Link>
 
-            {/* Card Mujer */}
+            {/* Universo Mujer */}
             <Link
-              href="/coleccion/bravio-mujer"
-              className="group relative h-[520px] rounded-sm overflow-hidden border border-bravio-volcanic-border hover:border-bravio-granate/60 transition-all duration-500 shadow-xl flex flex-col justify-end p-8"
+              href="/mujer"
+              className="group relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden border border-[#B1C7D4]/40 bg-white shadow-sm hover:shadow-xl transition-all duration-500"
             >
-              <img
+              <Image
                 src="/brand/image1.png"
-                alt="Línea Mujer BRAVÍO 2026"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-90"
+                alt="Campaña Mujer 2026 BRAVÍO"
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-bravio-volcanic via-bravio-volcanic/40 to-transparent" />
-              <div className="relative z-10">
-                <span className="text-xs uppercase tracking-widest text-bravio-cloudy font-sans">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#605246]/90 via-[#605246]/30 to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8 text-white">
+                <span className="text-[11px] font-[SpaceGrotesk] uppercase tracking-[0.2em] text-[#B1C7D4] block mb-1">
                   Campaña Visual 2026
                 </span>
-                <h3 className="font-display text-2xl sm:text-3xl text-bravio-bone tracking-wider uppercase mt-1">
+                <h3 className="font-archivo text-2xl sm:text-3xl uppercase tracking-wide mb-2">
                   BRAVÍO MUJER
                 </h3>
-                <p className="text-xs text-bravio-cloudy mt-2 max-w-sm font-light">
-                  Estética desértica contemporánea. Siluetas depuradas y cañas anatómicas de máxima distinción y poder.
+                <p className="text-xs font-[SpaceGrotesk] text-white/80 max-w-sm mb-4 line-clamp-2">
+                  Cinco territorios narrativos. Siluetas audaces, amuleto forjado y presencia contemporánea.
                 </p>
-                <div className="mt-4 flex items-center gap-2 text-xs font-sans tracking-widest text-bravio-gold group-hover:translate-x-1 transition-transform">
-                  <span>EXPLORAR CAMPAÑA MUJER</span>
+                <div className="inline-flex items-center gap-2 text-xs font-[SpaceGrotesk] font-bold uppercase tracking-[0.15em] text-[#B1C7D4] group-hover:text-white transition-colors">
+                  <span>Explorar Campaña 2026</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
@@ -205,29 +208,29 @@ export default function HomePage() {
         </section>
 
         {/* =========================================================
-            SECTION 4: CATÁLOGO DE BOTAS DESTACADAS
+            SECTION 4: CATÁLOGO DE BOTAS DESTACADAS (FONDO BLANCO LIMPIO)
         ========================================================= */}
-        <section className="py-20 bg-bravio-volcanic-card/50 border-t border-bravio-volcanic-border">
+        <section className="py-20 bg-white border-t border-[#B1C7D4]/40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-[#B1C7D4]/30">
               <div>
-                <span className="text-xs uppercase tracking-cinematic text-bravio-cloudy font-sans">
-                  CONSTRUCCIÓN GOODYEAR WELT
+                <span className="text-xs uppercase tracking-[0.2em] text-[#849AAD] font-[SpaceGrotesk] font-bold">
+                  CONSTRUCCIÓN GOODYEAR WELT 360°
                 </span>
-                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-bravio-bone tracking-wider uppercase mt-1">
+                <h2 className="font-archivo text-2xl sm:text-4xl text-[#605246] tracking-wider uppercase mt-1">
                   MODELOS INSIGNIA
                 </h2>
               </div>
               <Link
-                href="/coleccion/sinaloa"
-                className="mt-4 md:mt-0 inline-flex items-center gap-2 text-xs tracking-widest uppercase text-bravio-cloudy hover:text-bravio-bone font-sans transition-colors"
+                href="/hombre"
+                className="mt-4 md:mt-0 inline-flex items-center gap-2 text-xs tracking-widest uppercase text-[#5E1C23] hover:text-[#72232b] font-[SpaceGrotesk] font-bold transition-colors"
               >
                 <span>Ver catálogo completo ({PRODUCTS_CATALOG.length} modelos)</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
-            {/* Products Grid */}
+            {/* Products Grid — Pure White Backgrounds for Seamless Photos */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {PRODUCTS_CATALOG.slice(0, 6).map((product) => {
                 const currentSize = selectedSizes[product.sku] || product.variants[0]?.size || "27 MX";
@@ -236,19 +239,21 @@ export default function HomePage() {
                 return (
                   <div
                     key={product.sku}
-                    className="group bg-bravio-volcanic border border-bravio-volcanic-border hover:border-bravio-granate/60 transition-all duration-300 rounded-sm overflow-hidden flex flex-col justify-between"
+                    className="group bg-white border border-[#B1C7D4]/50 hover:border-[#5E1C23] transition-all duration-300 shadow-sm hover:shadow-lg flex flex-col justify-between"
                   >
-                    {/* Image View */}
+                    {/* Image View with Pure White Base */}
                     <Link
                       href={`/producto/${product.slug}`}
-                      className="relative block aspect-[4/5] bg-bravio-volcanic-card overflow-hidden"
+                      className="relative block aspect-[4/5] bg-white overflow-hidden border-b border-[#B1C7D4]/30"
                     >
-                      <img
+                      <Image
                         src={product.featuredImage}
                         alt={product.name}
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        fill
+                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
-                      <span className="absolute top-3 left-3 bg-bravio-volcanic/90 backdrop-blur-md text-[10px] font-sans tracking-widest uppercase text-bravio-cloudy px-2.5 py-1 border border-bravio-volcanic-border">
+                      <span className="absolute top-3 left-3 bg-[#F4F7F9] text-[10px] font-[SpaceGrotesk] font-bold tracking-widest uppercase text-[#605246] px-2.5 py-1 border border-[#B1C7D4]/50">
                         {product.leatherType}
                       </span>
                     </Link>
@@ -256,31 +261,27 @@ export default function HomePage() {
                     {/* Product Details */}
                     <div className="p-5 flex-1 flex flex-col justify-between">
                       <div>
-                        <div className="flex justify-between items-start gap-2 mb-1">
-                          <h3 className="font-display text-sm uppercase tracking-wider text-bravio-bone group-hover:text-bravio-cloudy transition-colors">
-                            <Link href={`/producto/${product.slug}`}>
-                              {product.name}
-                            </Link>
-                          </h3>
-                        </div>
-                        <p className="text-xs text-bravio-cloudy/80 line-clamp-1 mb-3">
+                        <p className="text-[10px] font-[SpaceGrotesk] uppercase tracking-[0.2em] text-[#849AAD] mb-1">
+                          SKU: {product.sku}
+                        </p>
+                        <h3 className="font-archivo text-base uppercase tracking-wide text-[#605246] group-hover:text-[#5E1C23] transition-colors mb-1">
+                          <Link href={`/producto/${product.slug}`}>
+                            {product.name}
+                          </Link>
+                        </h3>
+                        <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] line-clamp-1 mb-3">
                           {product.subtitle}
                         </p>
 
                         <div className="flex items-baseline gap-2 mb-4">
-                          <span className="font-display text-base text-bravio-bone">
+                          <span className="font-archivo text-lg text-[#5E1C23]">
                             ${product.price.toLocaleString("es-MX")} MXN
                           </span>
-                          {product.compareAtPrice && (
-                            <span className="text-xs text-bravio-cloudy/50 line-through">
-                              ${product.compareAtPrice.toLocaleString("es-MX")}
-                            </span>
-                          )}
                         </div>
 
                         {/* Size Picker */}
-                        <div className="mb-4">
-                          <span className="text-[10px] uppercase font-sans tracking-widest text-bravio-cloudy block mb-1.5">
+                        <div className="mb-5">
+                          <span className="text-[10px] uppercase font-[SpaceGrotesk] tracking-widest text-[#849AAD] block mb-2 font-bold">
                             Talla Mexicana:
                           </span>
                           <div className="flex flex-wrap gap-1.5">
@@ -288,10 +289,10 @@ export default function HomePage() {
                               <button
                                 key={v.size}
                                 onClick={() => handleSelectSize(product.sku, v.size)}
-                                className={`px-2.5 py-1 text-xs font-mono rounded transition-colors ${
+                                className={`px-2.5 py-1 text-xs font-mono transition-colors border ${
                                   currentSize === v.size
-                                    ? "bg-bravio-granate text-bravio-bone font-bold"
-                                    : "bg-bravio-volcanic-card text-bravio-cloudy hover:text-bravio-bone border border-bravio-volcanic-border"
+                                    ? "bg-[#5E1C23] border-[#5E1C23] text-white font-bold"
+                                    : "bg-white text-[#605246] hover:border-[#605246] border-[#B1C7D4]/60"
                                 }`}
                               >
                                 {v.size.replace(" MX", "")}
@@ -304,10 +305,10 @@ export default function HomePage() {
                       {/* Add to Cart Button */}
                       <button
                         onClick={() => handleAddToCart(product)}
-                        className={`w-full py-2.5 px-4 rounded-sm font-sans text-xs tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 ${
+                        className={`w-full py-3 px-4 font-[SpaceGrotesk] text-xs font-bold tracking-[0.15em] uppercase transition-all duration-300 flex items-center justify-center gap-2 ${
                           isAdded
-                            ? "bg-emerald-600 text-white"
-                            : "bg-bravio-volcanic-card hover:bg-bravio-granate text-bravio-bone border border-bravio-volcanic-border hover:border-bravio-granate"
+                            ? "bg-emerald-700 text-white"
+                            : "bg-[#605246] hover:bg-[#5E1C23] text-white"
                         }`}
                       >
                         {isAdded ? (
@@ -330,65 +331,68 @@ export default function HomePage() {
         {/* =========================================================
             SECTION 5: ORIGEN ARTESANAL EN LEÓN
         ========================================================= */}
-        <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Photo */}
-            <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-bravio-volcanic-border shadow-2xl">
-              <img
-                src="/products/bota-suela-zipper.jpg"
-                alt="Detalle de construcción de suela artesanal BRAVÍO"
-                className="w-full h-full object-cover object-center filter contrast-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-bravio-volcanic/80 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <span className="text-[11px] uppercase tracking-widest text-bravio-gold font-sans block mb-1">
-                  Garantía de Por Vida en Construcción
+        <section className="py-24 bg-[#F4F7F9] border-t border-[#B1C7D4]/40">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Photo */}
+              <div className="relative aspect-[4/3] overflow-hidden border border-[#B1C7D4]/50 shadow-xl bg-white">
+                <Image
+                  src="/products/bota-suela-zipper.jpg"
+                  alt="Detalle de construcción de suela artesanal BRAVÍO"
+                  fill
+                  className="object-cover object-center filter contrast-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#605246]/80 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <span className="text-[11px] uppercase tracking-widest text-[#B1C7D4] font-[SpaceGrotesk] block mb-1">
+                    Garantía de Construcción Artesanal
+                  </span>
+                  <p className="font-archivo text-lg uppercase tracking-wider">
+                    Costura 360° Goodyear Welt
+                  </p>
+                </div>
+              </div>
+
+              {/* Narrative Info */}
+              <div className="space-y-6">
+                <span className="text-xs uppercase tracking-[0.2em] text-[#849AAD] font-[SpaceGrotesk] font-bold">
+                  HERENCIA DE LEÓN GUANAJUATO
                 </span>
-                <p className="font-display text-lg text-bravio-bone uppercase tracking-wider">
-                  Costura 360° Goodyear Welt
+                <h2 className="font-archivo text-3xl sm:text-4xl text-[#605246] tracking-wide uppercase leading-tight">
+                  MÁS DE 200 PASOS ARTESANALES EN CADA PAR
+                </h2>
+                <p className="text-sm font-[SpaceGrotesk] text-[#605246] leading-relaxed">
+                  Cada bota BRAVÍO nace en las manos de maestros artesanos zapateros en León, Guanajuato. Seleccionamos rigurosamente pieles curtidas con extractos vegetales naturales, asegurando una flexibilidad orgánica y una respirabilidad total.
                 </p>
-              </div>
-            </div>
 
-            {/* Narrative Info */}
-            <div className="space-y-6">
-              <span className="text-xs uppercase tracking-cinematic text-bravio-cloudy font-sans">
-                HERENCIA DE LEÓN GUANAJUATO
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl text-bravio-bone tracking-wide uppercase leading-tight">
-                MÁS DE 200 PASOS ARTESANALES EN CADA PAR
-              </h2>
-              <p className="text-sm text-bravio-cloudy leading-relaxed font-light">
-                Cada bota BRAVÍO nace en las manos de artesanos con más de cuatro décadas de maestría zapatera. Seleccionamos rigurosamente pieles curtidas con extractos vegetales naturales, asegurando una flexibilidad orgánica y una respirabilidad total.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-                <div className="border-l-2 border-bravio-granate pl-4">
-                  <h4 className="font-display text-xs text-bravio-bone tracking-wider uppercase mb-1">
-                    Goodyear Welt
-                  </h4>
-                  <p className="text-xs text-bravio-cloudy/80 leading-relaxed">
-                    Suela cosida al ribete, permitiendo resolar tus botas indefinidamente conforme pasen los años.
-                  </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                  <div className="border-l-2 border-[#5E1C23] pl-4">
+                    <h4 className="font-archivo text-xs text-[#605246] tracking-wider uppercase mb-1">
+                      Goodyear Welt 360°
+                    </h4>
+                    <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] leading-relaxed">
+                      Suela de vaqueta cosida al cerco, permitiendo resolar tus botas cuantas veces sea necesario.
+                    </p>
+                  </div>
+                  <div className="border-l-2 border-[#5E1C23] pl-4">
+                    <h4 className="font-archivo text-xs text-[#605246] tracking-wider uppercase mb-1">
+                      Cambrillón de Acero
+                    </h4>
+                    <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] leading-relaxed">
+                      Alma de acero templado integrada en el enfranque para garantizar soporte anatómico continuo.
+                    </p>
+                  </div>
                 </div>
-                <div className="border-l-2 border-bravio-granate pl-4">
-                  <h4 className="font-display text-xs text-bravio-bone tracking-wider uppercase mb-1">
-                    Alma de Acero Templado
-                  </h4>
-                  <p className="text-xs text-bravio-cloudy/80 leading-relaxed">
-                    Cambrillón de acero integrado en el puente para mantener la postura anatómica perfecta en cada zancada.
-                  </p>
-                </div>
-              </div>
 
-              <div className="pt-4">
-                <Link
-                  href="/historia"
-                  className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-bravio-gold hover:text-bravio-bone transition-colors"
-                >
-                  <span>Conocer la historia de nuestro taller</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="pt-4">
+                  <Link
+                    href="/historia"
+                    className="inline-flex items-center gap-2 text-xs font-[SpaceGrotesk] font-bold tracking-widest uppercase text-[#5E1C23] hover:text-[#72232b] transition-colors"
+                  >
+                    <span>Conocer la historia de nuestro taller</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -397,4 +401,3 @@ export default function HomePage() {
     </>
   );
 }
-

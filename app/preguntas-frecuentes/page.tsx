@@ -32,11 +32,11 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "¿El envío tiene costo?",
-        a: "El envío es completamente GRATUITO en compras a partir de $3,500 MXN. Para pedidos por debajo de este monto, la tarifa estándar nacional es de $190 MXN a través de FedEx, DHL o Estafeta asegurada.",
+        a: "El envío es completamente GRATUITO en compras a partir de $3,500 MXN. Para pedidos por debajo de este monto, la tarifa estándar nacional es de $190 MXN a través de FedEx o Estafeta asegurada.",
       },
       {
         q: "¿Cómo puedo rastrear mi paquete?",
-        a: "Una vez que tu par es empacado y la guía se genera en León Gto, recibirás un correo electrónico con tu número de guía. También puedes ingresar tu folio 'BW-XXXXXX' y correo en nuestra sección de /rastreo para ver las 5 etapas del envío en tiempo real.",
+        a: "Una vez que tu par es empacado y la guía se genera en León Gto, recibirás un correo electrónico con tu número de guía. También puedes ingresar tu folio 'BW-XXXXXX' en nuestra sección de /rastreo para ver las etapas del envío en tiempo real.",
       },
     ],
   },
@@ -53,7 +53,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "¿Cuáles son las condiciones para que aplique el cambio?",
-        a: "La bota debe encontrarse en estado nuevo, sin marcas de desgaste en la suela de vaqueta (te sugerimos probártelas sobre alfombra o cartón liso) y con su caja y empaques originales completos.",
+        a: "La bota debe encontrarse en estado nuevo, sin marcas de desgaste en la suela de vaqueta (te sugerimos probártelas sobre alfombra o cartón liso) y con su empaque original completo.",
       },
     ],
   },
@@ -70,7 +70,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "¿Las pieles son auténticas?",
-        a: "Absolutamente sí. Empleamos pieles vacunas de primera selección, gamuzas genuinas y pieles exóticas con certificados CITES de procedencia legal y sustentable.",
+        a: "Absolutamente sí. Empleamos pieles vacunas de primera selección, gamuzas genuinas y pieles exóticas con certificados de procedencia legal.",
       },
     ],
   },
@@ -97,17 +97,17 @@ export default function PreguntasFrecuentesPage() {
   };
 
   return (
-    <div className="pt-[90px] min-h-screen bg-[#0F0C09] text-[#B1C7D4] pb-24">
+    <div className="pt-[90px] min-h-screen bg-white text-[#605246] pb-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="py-12 border-b border-[#605246]/20">
+        <div className="py-12 border-b border-[#B1C7D4]/40">
           <div className="flex items-center gap-2 mb-3">
             <CruzDeHierro size={16} color="#5E1C23" />
-            <span className="text-[11px] font-[SpaceGrotesk] uppercase tracking-[0.2em] text-[#849AAD]">
+            <span className="text-[11px] font-[SpaceGrotesk] uppercase tracking-[0.2em] text-[#849AAD] font-bold">
               Centro de Ayuda
             </span>
           </div>
-          <h1 className="font-archivo text-3xl sm:text-5xl text-[#B1C7D4] uppercase tracking-tight mb-4">
+          <h1 className="font-archivo text-3xl sm:text-5xl text-[#605246] uppercase tracking-tight mb-4">
             PREGUNTAS FRECUENTES.
           </h1>
           <p className="font-[SpaceGrotesk] text-sm text-[#849AAD] max-w-2xl leading-relaxed">
@@ -119,7 +119,7 @@ export default function PreguntasFrecuentesPage() {
         <div className="py-12 space-y-12">
           {FAQ_CATEGORIES.map((cat, cIdx) => (
             <div key={cIdx} className="space-y-4">
-              <h2 className="font-archivo text-lg sm:text-xl text-[#B1C7D4] uppercase tracking-wide flex items-center gap-2 border-b border-[#605246]/30 pb-3">
+              <h2 className="font-archivo text-lg sm:text-xl text-[#605246] uppercase tracking-wide flex items-center gap-2 border-b border-[#B1C7D4]/40 pb-3">
                 <span className="text-[#5E1C23] font-bold">✦</span> {cat.category}
               </h2>
 
@@ -131,11 +131,11 @@ export default function PreguntasFrecuentesPage() {
                   return (
                     <div
                       key={key}
-                      className="bg-[#16120E] border border-[#605246]/30 transition-colors"
+                      className="bg-white border border-[#B1C7D4]/50 shadow-xs transition-colors"
                     >
                       <button
                         onClick={() => toggleItem(key)}
-                        className="w-full text-left p-5 flex items-center justify-between gap-4 font-archivo text-sm text-[#B1C7D4] uppercase tracking-wide hover:text-white transition-colors"
+                        className="w-full text-left p-5 flex items-center justify-between gap-4 font-archivo text-sm text-[#605246] uppercase tracking-wide hover:text-[#5E1C23] transition-colors"
                       >
                         <span>{qItem.q}</span>
                         <ChevronDown
@@ -147,7 +147,7 @@ export default function PreguntasFrecuentesPage() {
                       </button>
 
                       {isOpen && (
-                        <div className="px-5 pb-5 pt-1 border-t border-[#605246]/20 font-[SpaceGrotesk] text-xs text-[#849AAD] leading-relaxed">
+                        <div className="px-5 pb-5 pt-1 border-t border-[#B1C7D4]/30 font-[SpaceGrotesk] text-xs text-[#605246]/80 leading-relaxed">
                           {qItem.a}
                         </div>
                       )}
@@ -159,34 +159,25 @@ export default function PreguntasFrecuentesPage() {
           ))}
         </div>
 
-        {/* Direct Contact Banner */}
-        <div className="p-8 bg-[#16120E] border border-[#605246]/40 text-center">
-          <HelpCircle size={28} className="text-[#5E1C23] mx-auto mb-3" />
-          <h3 className="font-archivo text-lg text-[#B1C7D4] uppercase mb-2">
-            ¿No encontraste lo que buscabas?
+        {/* Still Have Questions CTA */}
+        <div className="p-8 bg-[#F4F7F9] border border-[#B1C7D4]/60 text-center space-y-4 shadow-xs">
+          <CruzDeHierro size={28} color="#5E1C23" className="mx-auto" />
+          <h3 className="font-archivo text-xl text-[#605246] uppercase">
+            ¿Tienes otra pregunta?
           </h3>
-          <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] max-w-md mx-auto mb-6">
-            Nuestro equipo de atención al cliente en León, Guanajuato está listo para resolver tus dudas directamente.
+          <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] max-w-md mx-auto">
+            Atendemos directamente desde el taller en León, Guanajuato. Escríbenos y con gusto te asistiremos.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="pt-2">
             <Link
               href="/contacto"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#5E1C23] hover:bg-[#72232b] text-white font-[SpaceGrotesk] text-xs font-bold uppercase tracking-[0.15em] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#5E1C23] hover:bg-[#47151a] text-white text-xs font-[SpaceGrotesk] font-bold uppercase tracking-[0.15em] transition-colors shadow-sm"
             >
-              Formulario de Contacto <ArrowRight size={14} />
+              Contactar a Soporte <ArrowRight size={14} />
             </Link>
-            <a
-              href="https://wa.me/524777296578"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#0F0C09] hover:bg-[#605246]/20 border border-[#605246]/50 text-xs font-[SpaceGrotesk] font-bold text-[#B1C7D4] uppercase tracking-[0.15em] transition-colors"
-            >
-              WhatsApp Directo
-            </a>
           </div>
         </div>
       </div>
     </div>
   );
 }
-

@@ -42,17 +42,17 @@ const LEATHER_GUIDES = [
 
 export default function CuidadosPage() {
   return (
-    <div className="pt-[90px] min-h-screen bg-[#0F0C09] text-[#B1C7D4] pb-24">
+    <div className="pt-[90px] min-h-screen bg-white text-[#605246] pb-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="py-12 border-b border-[#605246]/20">
+        <div className="py-12 border-b border-[#B1C7D4]/40">
           <div className="flex items-center gap-2 mb-3">
             <CruzDeHierro size={16} color="#5E1C23" />
-            <span className="text-[11px] font-[SpaceGrotesk] uppercase tracking-[0.2em] text-[#849AAD]">
+            <span className="text-[11px] font-[SpaceGrotesk] uppercase tracking-[0.2em] text-[#849AAD] font-bold">
               Mantenimiento Artesanal
             </span>
           </div>
-          <h1 className="font-archivo text-3xl sm:text-5xl lg:text-6xl text-[#B1C7D4] uppercase tracking-tight mb-4">
+          <h1 className="font-archivo text-3xl sm:text-5xl lg:text-6xl text-[#605246] uppercase tracking-tight mb-4">
             CUIDADO DE TUS BOTAS.
           </h1>
           <p className="font-[SpaceGrotesk] text-sm sm:text-base text-[#849AAD] max-w-2xl leading-relaxed">
@@ -61,34 +61,34 @@ export default function CuidadosPage() {
         </div>
 
         {/* 4 Golden Rules */}
-        <div className="py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-b border-[#605246]/20">
-          <div className="bg-[#16120E] p-6 border border-[#605246]/30">
+        <div className="py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-b border-[#B1C7D4]/40">
+          <div className="bg-[#F4F7F9] p-6 border border-[#B1C7D4]/50 shadow-xs">
             <SunMedium size={24} className="text-[#5E1C23] mb-3" />
-            <h3 className="font-archivo text-sm text-[#B1C7D4] uppercase mb-2">Secado a la Sombra</h3>
+            <h3 className="font-archivo text-sm text-[#605246] uppercase mb-2">Secado a la Sombra</h3>
             <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] leading-relaxed">
               Si tus botas se empapan de lluvia, déjalas secar en un lugar ventilado y techado. Jamás las acerques al fuego o al sol directo.
             </p>
           </div>
 
-          <div className="bg-[#16120E] p-6 border border-[#605246]/30">
+          <div className="bg-[#F4F7F9] p-6 border border-[#B1C7D4]/50 shadow-xs">
             <Sparkles size={24} className="text-[#5E1C23] mb-3" />
-            <h3 className="font-archivo text-sm text-[#B1C7D4] uppercase mb-2">Hormas de Cedro</h3>
+            <h3 className="font-archivo text-sm text-[#605246] uppercase mb-2">Hormas de Cedro</h3>
             <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] leading-relaxed">
               Usar hormas de madera de cedro al guardarlas absorbe el sudor interno, evita que la puntera se deforme y previene malos olores.
             </p>
           </div>
 
-          <div className="bg-[#16120E] p-6 border border-[#605246]/30">
+          <div className="bg-[#F4F7F9] p-6 border border-[#B1C7D4]/50 shadow-xs">
             <Droplets size={24} className="text-[#5E1C23] mb-3" />
-            <h3 className="font-archivo text-sm text-[#B1C7D4] uppercase mb-2">Rotación de Uso</h3>
+            <h3 className="font-archivo text-sm text-[#605246] uppercase mb-2">Rotación de Uso</h3>
             <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] leading-relaxed">
               Evita usar el mismo par dos días consecutivos si caminas jornadas intensas. La plantilla de piel vegetal necesita 24 horas para respirar.
             </p>
           </div>
 
-          <div className="bg-[#16120E] p-6 border border-[#605246]/30">
+          <div className="bg-[#F4F7F9] p-6 border border-[#B1C7D4]/50 shadow-xs">
             <ShieldAlert size={24} className="text-[#5E1C23] mb-3" />
-            <h3 className="font-archivo text-sm text-[#B1C7D4] uppercase mb-2">Resuela Oportuna</h3>
+            <h3 className="font-archivo text-sm text-[#605246] uppercase mb-2">Resuela Oportuna</h3>
             <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] leading-relaxed">
               Al contar con cerco cosido Goodyear, puedes cambiar la suela de vaqueta cuantas veces sea necesario antes de que el desgaste toque el cerco.
             </p>
@@ -97,42 +97,42 @@ export default function CuidadosPage() {
 
         {/* Detailed Guides by Material */}
         <div className="py-12 space-y-8">
-          <h2 className="font-archivo text-2xl text-[#B1C7D4] uppercase tracking-tight">
+          <h2 className="font-archivo text-2xl text-[#605246] uppercase tracking-tight">
             INSTRUCCIONES ESPECÍFICAS POR TIPO DE PIEL
           </h2>
 
           <div className="space-y-6">
             {LEATHER_GUIDES.map((g, idx) => (
-              <div key={idx} className="bg-[#16120E] border border-[#605246]/30 p-6 sm:p-8">
-                <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-[#605246]/20">
-                  <h3 className="font-archivo text-lg sm:text-xl text-[#B1C7D4] uppercase">
+              <div key={idx} className="bg-white border border-[#B1C7D4]/50 p-6 sm:p-8 shadow-sm">
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-[#B1C7D4]/40">
+                  <h3 className="font-archivo text-lg sm:text-xl text-[#605246] uppercase">
                     {g.type}
                   </h3>
-                  <span className="px-3 py-1 bg-[#0F0C09] border border-[#605246]/40 text-[10px] font-[SpaceGrotesk] uppercase tracking-[0.15em] text-[#849AAD]">
+                  <span className="px-3 py-1 bg-[#F4F7F9] border border-[#B1C7D4]/60 text-[10px] font-[SpaceGrotesk] uppercase tracking-[0.15em] text-[#605246] font-bold">
                     {g.tag}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-[SpaceGrotesk] text-xs">
                   <div>
-                    <h4 className="font-bold text-[#B1C7D4] uppercase tracking-wider mb-2 text-[11px] text-[#5E1C23]">
+                    <h4 className="font-bold uppercase tracking-wider mb-2 text-[11px] text-[#5E1C23]">
                       Limpieza Rutinaria
                     </h4>
-                    <p className="text-[#849AAD] leading-relaxed">{g.cleaning}</p>
+                    <p className="text-[#605246]/80 leading-relaxed">{g.cleaning}</p>
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-[#B1C7D4] uppercase tracking-wider mb-2 text-[11px] text-[#5E1C23]">
+                    <h4 className="font-bold uppercase tracking-wider mb-2 text-[11px] text-[#5E1C23]">
                       Hidratación & Cera
                     </h4>
-                    <p className="text-[#849AAD] leading-relaxed">{g.hydration}</p>
+                    <p className="text-[#605246]/80 leading-relaxed">{g.hydration}</p>
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-[#B1C7D4] uppercase tracking-wider mb-2 text-[11px] text-[#5E1C23]">
+                    <h4 className="font-bold uppercase tracking-wider mb-2 text-[11px] text-[#5E1C23]">
                       Emergencias & Manchas
                     </h4>
-                    <p className="text-[#849AAD] leading-relaxed">{g.emergency}</p>
+                    <p className="text-[#605246]/80 leading-relaxed">{g.emergency}</p>
                   </div>
                 </div>
               </div>
@@ -141,9 +141,9 @@ export default function CuidadosPage() {
         </div>
 
         {/* Assistance CTA */}
-        <div className="mt-8 p-8 bg-[#16120E] border border-[#605246]/40 text-center">
+        <div className="mt-8 p-8 bg-[#F4F7F9] border border-[#B1C7D4]/60 text-center">
           <CruzDeHierro size={28} color="#5E1C23" className="mx-auto mb-3" />
-          <h3 className="font-archivo text-xl text-[#B1C7D4] uppercase mb-2">
+          <h3 className="font-archivo text-xl text-[#605246] uppercase mb-2">
             ¿Tienes dudas con un par específico?
           </h3>
           <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] max-w-lg mx-auto mb-6">
@@ -151,7 +151,7 @@ export default function CuidadosPage() {
           </p>
           <Link
             href="/contacto"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#0F0C09] hover:bg-[#605246]/20 border border-[#605246]/50 text-xs font-[SpaceGrotesk] font-bold text-[#B1C7D4] uppercase tracking-[0.15em] transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#5E1C23] hover:bg-[#47151a] text-xs font-[SpaceGrotesk] font-bold text-white uppercase tracking-[0.15em] transition-colors shadow-sm"
           >
             Contactar al Taller <ArrowRight size={14} />
           </Link>
@@ -160,4 +160,3 @@ export default function CuidadosPage() {
     </div>
   );
 }
-

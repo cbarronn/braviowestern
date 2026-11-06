@@ -3,24 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --background: #121212;
-  --foreground: #F5F3EF;
+  --background: #FFFFFF;
+  --foreground: #605246;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: #605246;
+  background: #FFFFFF;
   font-family: var(--font-space-grotesk), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  selection-background-color: #5E1C23;
-  selection-color: #F5F3EF;
 }
 
 ::selection {
   background-color: #5E1C23;
-  color: #F5F3EF;
+  color: #FFFFFF;
 }
 
 /* Custom subtle scrollbar */
@@ -30,11 +28,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #121212;
+  background: #F4F7F9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2A2725;
+  background: #B1C7D4;
   border-radius: 3px;
 }
 
@@ -50,23 +48,22 @@ body {
   font-family: var(--font-space-grotesk), sans-serif;
 }
 
-/* Glass panel */
+/* Glass panel light */
 .glass-panel {
-  background: rgba(24, 23, 22, 0.75);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(177, 199, 212, 0.4);
 }
 
 .glass-panel-light {
-  background: rgba(245, 243, 239, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(94, 28, 35, 0.15);
 }
 
-/* Subtle glow effects */
+/* Glow effects */
 .glow-granate {
-  box-shadow: 0 0 40px -10px rgba(94, 28, 35, 0.45);
+  box-shadow: 0 0 30px -5px rgba(94, 28, 35, 0.25);
 }
-

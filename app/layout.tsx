@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${archivoBlack.variable} ${spaceGrotesk.variable}`}>
-      <body className="bg-bravio-volcanic text-bravio-bone min-h-screen flex flex-col font-sans">
+      <body className="bg-white text-[#605246] min-h-screen flex flex-col font-sans selection:bg-[#5E1C23] selection:text-white">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
