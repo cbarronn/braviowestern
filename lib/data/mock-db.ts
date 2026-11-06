@@ -1,0 +1,555 @@
+import { 
+  MediaItem, 
+  AudioTrack, 
+  CollectionItem, 
+  CampaignItem, 
+  HomeSectionConfig, 
+  IntroConfig, 
+  Order, 
+  AuditLog, 
+  VirtualFolder 
+} from "@/lib/types";
+import { PRODUCTS_CATALOG } from "./products";
+
+// Initial Seed Data
+const INITIAL_MEDIA: MediaItem[] = [
+  {
+    id: "med-1",
+    name: "BRAVÍO Cruz de Hierro Oficial",
+    url: "/brand/logos/BRAVIO_cruz.svg",
+    storagePath: "brand/logos/BRAVIO_cruz.svg",
+    fileType: "svg",
+    mimeType: "image/svg+xml",
+    sizeBytes: 767,
+    virtualFolder: "Amuleto",
+    category: "hero",
+    altText: "Cruz de Hierro oficial de BRAVÍO",
+    sortOrder: 1,
+    status: "published",
+    createdAt: "2026-10-01T00:00:00Z",
+    updatedAt: "2026-10-01T00:00:00Z",
+    uploadedBy: "Sistema",
+    usedIn: ["intro.cruz", "navigation.icon", "footer.icon"]
+  },
+  {
+    id: "med-2",
+    name: "Logotipo Horizontal Principal",
+    url: "/brand/logos/BRAVIO_horizontal.svg",
+    storagePath: "brand/logos/BRAVIO_horizontal.svg",
+    fileType: "svg",
+    mimeType: "image/svg+xml",
+    sizeBytes: 1808,
+    virtualFolder: "Hero",
+    category: "hero",
+    altText: "Logotipo oficial BRAVÍO Western",
+    sortOrder: 2,
+    status: "published",
+    createdAt: "2026-10-01T00:00:00Z",
+    updatedAt: "2026-10-01T00:00:00Z",
+    uploadedBy: "Sistema",
+    usedIn: ["intro.logo", "navigation.logo"]
+  },
+  {
+    id: "med-3",
+    name: "Campaña Hero Desierto Mujer",
+    url: "/brand/image1.png",
+    storagePath: "brand/image1.png",
+    fileType: "png",
+    mimeType: "image/png",
+    sizeBytes: 2999849,
+    virtualFolder: "Mujer",
+    category: "editorial",
+    relatedCampaign: "mujer-2026",
+    altText: "Editorial BRAVÍO Mujer 2026 en paisaje desértico",
+    sortOrder: 3,
+    status: "published",
+    createdAt: "2026-10-05T00:00:00Z",
+    updatedAt: "2026-10-05T00:00:00Z",
+    uploadedBy: "Director Creativo",
+    usedIn: ["home.universe.mujer", "campaigns.mujer-2026"]
+  },
+  {
+    id: "med-4",
+    name: "Editorial Hombre Botas Silao",
+    url: "/products/bota-hombre-silao-1.jpg",
+    storagePath: "products/bota-hombre-silao-1.jpg",
+    fileType: "jpg",
+    mimeType: "image/jpeg",
+    sizeBytes: 744509,
+    virtualFolder: "Hombre",
+    category: "editorial",
+    relatedSku: "BW-SIN-RE-NEG",
+    altText: "Hombre vistiendo bota western negra en entorno urbano contemporáneo",
+    sortOrder: 4,
+    status: "published",
+    createdAt: "2026-10-05T00:00:00Z",
+    updatedAt: "2026-10-05T00:00:00Z",
+    uploadedBy: "Director Creativo",
+    usedIn: ["home.universe.hombre", "collection.sinaloa"]
+  },
+  {
+    id: "med-5",
+    name: "Video Oficial Intro BRAVÍO",
+    url: "/media/video.mp4",
+    storagePath: "media/video.mp4",
+    fileType: "mp4",
+    mimeType: "video/mp4",
+    sizeBytes: 2154206,
+    virtualFolder: "Videos",
+    category: "intro_video",
+    altText: "Video de marca cinemático BRAVÍO",
+    sortOrder: 5,
+    status: "published",
+    createdAt: "2026-10-10T00:00:00Z",
+    updatedAt: "2026-10-10T00:00:00Z",
+    uploadedBy: "Equipo Creativo",
+    usedIn: ["home.intro", "home.hero_bg"]
+  },
+  {
+    id: "med-6",
+    name: "Sonora Sunset — Ambient Soundtrack",
+    url: "/audio/bravio-theme.wav",
+    storagePath: "audio/bravio-theme.wav",
+    fileType: "wav",
+    mimeType: "audio/wav",
+    sizeBytes: 4200000,
+    virtualFolder: "Música",
+    category: "audio",
+    altText: "Banda sonora instrumental de guitarras acústicas y slide western contemporáneo",
+    sortOrder: 6,
+    status: "published",
+    licenseInfo: "Composición original comisionada para BRAVÍO Western — Derechos exclusivos de uso comercial digital.",
+    createdAt: "2026-10-12T00:00:00Z",
+    updatedAt: "2026-10-12T00:00:00Z",
+    uploadedBy: "Administrador de Audio",
+    usedIn: ["audio.ambient"]
+  },
+  {
+    id: "med-7",
+    name: "Bota Sinaloa Gamuza Arena Perfil",
+    url: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
+    storagePath: "products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
+    fileType: "webp",
+    mimeType: "image/webp",
+    sizeBytes: 220188,
+    virtualFolder: "Productos",
+    category: "product",
+    relatedSku: "BW-SIN-GA-ARE",
+    relatedCollection: "sinaloa",
+    altText: "Bota Sinaloa Gamuza Arena toma de perfil",
+    sortOrder: 7,
+    status: "published",
+    createdAt: "2026-10-15T00:00:00Z",
+    updatedAt: "2026-10-15T00:00:00Z",
+    uploadedBy: "Fotógrafo de Producto",
+    usedIn: ["product.BW-SIN-GA-ARE", "home.featured_boots"]
+  },
+  {
+    id: "med-8",
+    name: "Bota Sinaloa Res Negro Frontal",
+    url: "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
+    storagePath: "products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
+    fileType: "webp",
+    mimeType: "image/webp",
+    sizeBytes: 210000,
+    virtualFolder: "Productos",
+    category: "product",
+    relatedSku: "BW-SIN-RE-NEG",
+    relatedCollection: "sinaloa",
+    altText: "Bota Sinaloa Res Negro",
+    sortOrder: 8,
+    status: "published",
+    createdAt: "2026-10-15T00:00:00Z",
+    updatedAt: "2026-10-15T00:00:00Z",
+    uploadedBy: "Fotógrafo de Producto",
+    usedIn: ["product.BW-SIN-RE-NEG", "home.featured_boots"]
+  }
+];
+
+const INITIAL_AUDIO_TRACKS: AudioTrack[] = [
+  {
+    id: "aud-1",
+    title: "Sonora Sunset (Instrumental Ambient)",
+    artist: "BRAVÍO Sound Design",
+    genre: "Contemporary Instrumental Country Western",
+    url: "/audio/bravio-theme.wav",
+    durationSeconds: 142,
+    isMain: true,
+    isEnabled: true,
+    initialVolume: 0.28,
+    loop: true,
+    licenseDetails: "Licencia de sincronización comercial digital y master recording adquirido por BRAVÍO México.",
+    uploadedAt: "2026-10-12T10:00:00Z"
+  }
+];
+
+const INITIAL_COLLECTIONS: CollectionItem[] = [
+  {
+    id: "col-1",
+    slug: "sinaloa",
+    name: "Colección Sinaloa",
+    tagline: "El Renacimiento de la Silueta Western Tradicional",
+    description: "Inspirada en el carácter indomable del noroeste mexicano. Confeccionada con pieles seleccionadas de res, gamuza aperlada y grabados exóticos de avestruz, caimán y pitón sobre una construcción artesanal Goodyear Welt garantizada de por vida.",
+    coverImage: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
+    gallery: [
+      { id: "g-1", url: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp", alt: "Gamuza Arena", order: 1, isCover: true, status: "published" },
+      { id: "g-2", url: "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp", alt: "Res Negro", order: 2, isCover: false, status: "published" },
+      { id: "g-3", url: "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-1.webp", alt: "Avestruz Coñac", order: 3, isCover: false, status: "published" },
+      { id: "g-4", url: "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-1.webp", alt: "Pitón Blanco", order: 4, isCover: false, status: "published" },
+      { id: "g-5", url: "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-1.webp", alt: "Gamuza Miel", order: 5, isCover: false, status: "published" },
+    ],
+    productSkus: ["BW-SIN-GA-ARE", "BW-SIN-GA-MIE", "BW-SIN-RE-NEG", "BW-SIN-RE-CAF", "BW-SIN-ALL-NEG", "BW-SIN-AVE-CON", "BW-SIN-PIT-BLA", "BW-SIN-CAI-NEG"],
+    sortOrder: 1,
+    status: "published",
+    seo: {
+      title: "Colección Sinaloa — Botas Western Artesanales | BRAVÍO",
+      description: "Descubre la colección de botas Sinaloa de BRAVÍO. Construcción Goodyear Welt y pieles de alta gama hechas en León, México."
+    }
+  },
+  {
+    id: "col-2",
+    slug: "bravio-mujer",
+    name: "BRAVÍO Mujer — Línea 2026",
+    tagline: "Fuerza, Elegancia y Estilo Western Contemporáneo",
+    description: "La interpretación femenina del universo BRAVÍO. Siluetas esbeltas, cañas anatómicas y pieles con acabado sedoso para la mujer que lidera con paso firme.",
+    coverImage: "/brand/image1.png",
+    gallery: [
+      { id: "gm-1", url: "/brand/image1.png", alt: "Campaña Mujer Paisaje", order: 1, isCover: true, status: "published" },
+      { id: "gm-2", url: "/brand/image2.png", alt: "Retrato Editorial Mujer", order: 2, isCover: false, status: "published" },
+      { id: "gm-3", url: "/products/bota-mujer-leon-1.jpg", alt: "Bota Mujer León", order: 3, isCover: false, status: "published" },
+    ],
+    productSkus: ["BW-SIN-GA-ARE", "BW-SIN-RE-CAF"],
+    sortOrder: 2,
+    status: "published",
+    seo: {
+      title: "BRAVÍO Mujer 2026 — Nueva Dimensión Western",
+      description: "Explora la nueva línea de botas y calzado para mujer BRAVÍO."
+    }
+  }
+];
+
+const INITIAL_CAMPAIGNS: CampaignItem[] = [
+  {
+    id: "camp-1",
+    slug: "mujer-2026",
+    name: "BRAVÍO Mujer 2026",
+    subtitle: "Campaña Visual con Origen",
+    description: "Una exploración visual de la mujer contemporánea en comunión con los paisajes áridos de México, vistiendo siluetas occidentales depuradas de ornamentación innecesaria.",
+    destinationUrl: "/colecciones/bravio-mujer",
+    coverMedia: "/brand/image1.png",
+    mediaType: "image",
+    photos: ["/brand/image1.png", "/brand/image2.png", "/brand/image15.png"],
+    videos: ["/media/video.mp4"],
+    headline: "EL NUEVO HORIZONTE FEMENINO",
+    bodyText: "Donde la herencia artesanal de León se encuentra con la fuerza natural de la mujer de hoy.",
+    status: "active",
+    validFrom: "2026-01-01",
+    sortOrder: 1
+  }
+];
+
+const INITIAL_INTRO_CONFIG: IntroConfig = {
+  enabled: true,
+  videoUrl: "/media/video.mp4",
+  posterUrl: "/brand/posterImage-142.png",
+  durationSeconds: 5,
+  frequency: "once_per_session",
+  allowSkip: true,
+  respectReducedMotion: true,
+  headline: "BRAVÍO",
+  descriptor: "WESTERN PARA LA VIDA ACTUAL."
+};
+
+const INITIAL_HOME_SECTIONS: HomeSectionConfig[] = [
+  {
+    id: "sec-hero",
+    type: "hero",
+    title: "Hero Principal",
+    enabled: true,
+    sortOrder: 1,
+    data: {
+      headline: "WESTERN PARA LA VIDA ACTUAL",
+      subheadline: "Botas y calzado artesanal confeccionados con pieles de excepción y construcción Goodyear Welt en León, México.",
+      ctaPrimaryText: "EXPLORAR CATÁLOGO",
+      ctaPrimaryLink: "/coleccion/sinaloa",
+      ctaSecondaryText: "CONOCER EL ORIGEN",
+      ctaSecondaryLink: "/historia",
+      desktopImage: "/brand/image10.png",
+      mobileImage: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
+      videoUrl: "/media/video.mp4"
+    }
+  },
+  {
+    id: "sec-manifesto",
+    type: "manifesto",
+    title: "Manifiesto de Marca",
+    enabled: true,
+    sortOrder: 2,
+    data: {
+      badge: "EL MANIFIESTO",
+      quote: "No creemos en el disfraz vaquero. Creemos en la bota como instrumento de carácter, elegancia sobria y presencia indeleble.",
+      author: "Taller Artesanal BRAVÍO, León Gto."
+    }
+  },
+  {
+    id: "sec-universe",
+    type: "universe",
+    title: "El Universo BRAVÍO",
+    enabled: true,
+    sortOrder: 3,
+    data: {
+      leftTitle: "HOMBRE",
+      leftSubtitle: "Colección Sinaloa",
+      leftImage: "/products/bota-hombre-silao-1.jpg",
+      leftLink: "/hombre",
+      rightTitle: "MUJER 2026",
+      rightSubtitle: "Nueva Campaña Visual",
+      rightImage: "/brand/image1.png",
+      rightLink: "/coleccion/bravio-mujer"
+    }
+  },
+  {
+    id: "sec-boots",
+    type: "featured_boots",
+    title: "Modelos Destacados",
+    enabled: true,
+    sortOrder: 4,
+    data: {
+      title: "MODELOS INSIGNIA",
+      subtitle: "Construcción centenaria. Estética contemporánea.",
+      skus: ["BW-SIN-GA-ARE", "BW-SIN-GA-MIE", "BW-SIN-RE-NEG", "BW-SIN-AVE-CON", "BW-SIN-PIT-BLA"]
+    }
+  },
+  {
+    id: "sec-craftsmanship",
+    type: "craftsmanship",
+    title: "Origen & Artesanía",
+    enabled: true,
+    sortOrder: 5,
+    data: {
+      headline: "HECHO A MANO EN LEÓN, MÉXICO",
+      description: "Más de 200 pasos artesanales manuales. Hormas esculpidas al milímetro, pieles de curtición vegetal y vástago de acero templado para un soporte inigualable durante décadas de uso.",
+      image: "/products/bota-suela-zipper.jpg"
+    }
+  }
+];
+
+const INITIAL_AUDIT_LOGS: AuditLog[] = [
+  {
+    id: "aud-log-1",
+    timestamp: new Date().toISOString(),
+    user: "Arquitecto Senior",
+    action: "SYSTEM_INITIALIZE",
+    entity: "System",
+    entityId: "bravio-core",
+    details: "Inicialización del sistema BRAVÍO 2.9 con arquitectura Next.js App Router y catálogo completo."
+  }
+];
+
+// In-Memory Data Store (simulates Postgres with persistence capability)
+class MockDatabase {
+  private media: MediaItem[] = [...INITIAL_MEDIA];
+  private audioTracks: AudioTrack[] = [...INITIAL_AUDIO_TRACKS];
+  private collections: CollectionItem[] = [...INITIAL_COLLECTIONS];
+  private campaigns: CampaignItem[] = [...INITIAL_CAMPAIGNS];
+  private homeSections: HomeSectionConfig[] = [...INITIAL_HOME_SECTIONS];
+  private introConfig: IntroConfig = { ...INITIAL_INTRO_CONFIG };
+  private orders: Order[] = [];
+  private auditLogs: AuditLog[] = [...INITIAL_AUDIT_LOGS];
+
+  // Media
+  getMedia(folder?: VirtualFolder, query?: string): MediaItem[] {
+    let list = this.media.filter(m => m.status !== "archived");
+    if (folder) list = list.filter(m => m.virtualFolder === folder);
+    if (query) {
+      const q = query.toLowerCase();
+      list = list.filter(m => 
+        m.name.toLowerCase().includes(q) || 
+        m.altText.toLowerCase().includes(q) || 
+        m.relatedSku?.toLowerCase().includes(q)
+      );
+    }
+    return list.sort((a, b) => a.sortOrder - b.sortOrder);
+  }
+
+  addMedia(item: Omit<MediaItem, "id" | "createdAt" | "updatedAt">): MediaItem {
+    const newItem: MediaItem = {
+      ...item,
+      id: `med-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+    this.media.unshift(newItem);
+    this.addAudit("MEDIA_UPLOAD", "Media", newItem.id, `Subida de archivo: ${newItem.name}`);
+    return newItem;
+  }
+
+  updateMedia(id: string, updates: Partial<MediaItem>): MediaItem | null {
+    const idx = this.media.findIndex(m => m.id === id);
+    if (idx === -1) return null;
+    this.media[idx] = {
+      ...this.media[idx],
+      ...updates,
+      updatedAt: new Date().toISOString()
+    };
+    this.addAudit("MEDIA_UPDATE", "Media", id, `Actualización de metadatos para ${this.media[idx].name}`);
+    return this.media[idx];
+  }
+
+  archiveMedia(id: string): boolean {
+    const item = this.media.find(m => m.id === id);
+    if (!item) return false;
+    item.status = "archived";
+    item.updatedAt = new Date().toISOString();
+    this.addAudit("MEDIA_ARCHIVE", "Media", id, `Archivo seguro de multimedia: ${item.name}`);
+    return true;
+  }
+
+  // Audio
+  getAudioTracks(): AudioTrack[] {
+    return [...this.audioTracks];
+  }
+
+  getMainAudioTrack(): AudioTrack | undefined {
+    return this.audioTracks.find(t => t.isMain && t.isEnabled) || this.audioTracks[0];
+  }
+
+  updateAudioTrack(id: string, updates: Partial<AudioTrack>): AudioTrack | null {
+    const idx = this.audioTracks.findIndex(t => t.id === id);
+    if (idx === -1) return null;
+    if (updates.isMain) {
+      this.audioTracks.forEach(t => (t.isMain = false));
+    }
+    this.audioTracks[idx] = { ...this.audioTracks[idx], ...updates };
+    this.addAudit("AUDIO_UPDATE", "Audio", id, `Configuración de audio actualizada: ${this.audioTracks[idx].title}`);
+    return this.audioTracks[idx];
+  }
+
+  addAudioTrack(track: Omit<AudioTrack, "id" | "uploadedAt">): AudioTrack {
+    const newTrack: AudioTrack = {
+      ...track,
+      id: `aud-${Date.now()}`,
+      uploadedAt: new Date().toISOString()
+    };
+    if (newTrack.isMain) {
+      this.audioTracks.forEach(t => (t.isMain = false));
+    }
+    this.audioTracks.push(newTrack);
+    this.addAudit("AUDIO_UPLOAD", "Audio", newTrack.id, `Nueva pista de audio cargada: ${newTrack.title}`);
+    return newTrack;
+  }
+
+  // Collections
+  getCollections(): CollectionItem[] {
+    return [...this.collections].sort((a, b) => a.sortOrder - b.sortOrder);
+  }
+
+  getCollectionBySlug(slug: string): CollectionItem | undefined {
+    return this.collections.find(c => c.slug === slug);
+  }
+
+  updateCollection(id: string, updates: Partial<CollectionItem>): CollectionItem | null {
+    const idx = this.collections.findIndex(c => c.id === id);
+    if (idx === -1) return null;
+    this.collections[idx] = { ...this.collections[idx], ...updates };
+    this.addAudit("COLLECTION_UPDATE", "Collection", id, `Colección actualizada: ${this.collections[idx].name}`);
+    return this.collections[idx];
+  }
+
+  // Campaigns
+  getCampaigns(): CampaignItem[] {
+    return [...this.campaigns].sort((a, b) => a.sortOrder - b.sortOrder);
+  }
+
+  updateCampaign(id: string, updates: Partial<CampaignItem>): CampaignItem | null {
+    const idx = this.campaigns.findIndex(c => c.id === id);
+    if (idx === -1) return null;
+    this.campaigns[idx] = { ...this.campaigns[idx], ...updates };
+    this.addAudit("CAMPAIGN_UPDATE", "Campaign", id, `Campaña actualizada: ${this.campaigns[idx].name}`);
+    return this.campaigns[idx];
+  }
+
+  // Home Sections
+  getHomeSections(): HomeSectionConfig[] {
+    return [...this.homeSections].sort((a, b) => a.sortOrder - b.sortOrder);
+  }
+
+  updateHomeSection(id: string, updates: Partial<HomeSectionConfig>): HomeSectionConfig | null {
+    const idx = this.homeSections.findIndex(s => s.id === id);
+    if (idx === -1) return null;
+    this.homeSections[idx] = { ...this.homeSections[idx], ...updates };
+    this.addAudit("HOME_SECTION_UPDATE", "HomeSection", id, `Sección de Inicio actualizada: ${this.homeSections[idx].title}`);
+    return this.homeSections[idx];
+  }
+
+  // Intro Config
+  getIntroConfig(): IntroConfig {
+    return { ...this.introConfig };
+  }
+
+  updateIntroConfig(updates: Partial<IntroConfig>): IntroConfig {
+    this.introConfig = { ...this.introConfig, ...updates };
+    this.addAudit("INTRO_CONFIG_UPDATE", "Intro", "global", "Parámetros de Intro cinematográfica modificados.");
+    return this.introConfig;
+  }
+
+  // Orders
+  getOrders(): Order[] {
+    return [...this.orders].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  }
+
+  createOrder(orderData: Omit<Order, "id" | "orderNumber" | "createdAt">): Order {
+    const newOrder: Order = {
+      ...orderData,
+      id: `ord-${Date.now()}`,
+      orderNumber: `BW-${Math.floor(100000 + Math.random() * 900000)}`,
+      createdAt: new Date().toISOString(),
+    };
+    this.orders.unshift(newOrder);
+    this.addAudit("ORDER_CREATE", "Order", newOrder.id, `Nuevo pedido generado #${newOrder.orderNumber}`);
+    return newOrder;
+  }
+
+  updateOrderStatus(orderId: string, status: Order["status"], carrier?: string, trackingNumber?: string): Order | null {
+    const order = this.orders.find(o => o.id === orderId || o.orderNumber === orderId);
+    if (!order) return null;
+    order.status = status;
+    if (carrier) order.carrier = carrier;
+    if (trackingNumber) {
+      order.trackingNumber = trackingNumber;
+      order.trackingUrl = `/rastreo?orderId=${order.orderNumber}`;
+    }
+    this.addAudit("ORDER_STATUS_UPDATE", "Order", order.id, `Pedido #${order.orderNumber} cambió a estado ${status}`);
+    return order;
+  }
+
+  // Audit
+  getAuditLogs(): AuditLog[] {
+    return [...this.auditLogs].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+  }
+
+  private addAudit(action: string, entity: string, entityId: string, details: string) {
+    const log: AuditLog = {
+      id: `log-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+      timestamp: new Date().toISOString(),
+      user: "Admin / Marketing",
+      action,
+      entity,
+      entityId,
+      details,
+    };
+    this.auditLogs.unshift(log);
+    if (this.auditLogs.length > 500) this.auditLogs.pop();
+  }
+}
+
+// Global Singleton for Development & Server Runtime
+declare global {
+  var __BRAVIO_DB__: MockDatabase | undefined;
+}
+
+export const db = global.__BRAVIO_DB__ || new MockDatabase();
+if (process.env.NODE_ENV !== "production") {
+  global.__BRAVIO_DB__ = db;
+}
+

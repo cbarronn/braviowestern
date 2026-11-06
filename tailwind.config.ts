@@ -9,85 +9,42 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // BRAVÍO Official Palette
-        "cloudy-valley": "#B1C7D4",
-        "tsunami": "#849AAD",
-        "volcanic": "#605246",
-        "red-oxide": "#5E1C23",
-        // Extended palette
-        "cloudy-valley-light": "#C8D8E2",
-        "cloudy-valley-dark": "#94AEBB",
-        "volcanic-light": "#7A6858",
-        "volcanic-dark": "#3E342D",
-        "ink": "#1A1410",
-        "cream": "#F5F0EA",
+        bravio: {
+          granate: "#5E1C23",
+          "granate-dark": "#3D1217",
+          "granate-light": "#7E2730",
+          cloudy: "#B1C7D4",
+          "cloudy-light": "#D8E4EC",
+          "cloudy-dark": "#7F9BAE",
+          volcanic: "#121212",
+          "volcanic-card": "#181716",
+          "volcanic-border": "#2C2825",
+          bone: "#F5F3EF",
+          canvas: "#EAE6DF",
+          gold: "#C2A676",
+        },
       },
       fontFamily: {
-        archivo: ["ArchivoBlack", "sans-serif"],
-        grotesk: ["SpaceGrotesk", "sans-serif"],
+        display: ["var(--font-archivo-black)", "sans-serif"],
+        sans: ["var(--font-space-grotesk)", "sans-serif"],
       },
-      fontSize: {
-        "display-2xl": ["clamp(4rem, 10vw, 9rem)", { lineHeight: "1.06", letterSpacing: "-0.02em" }],
-        "display-xl": ["clamp(3rem, 7vw, 6.5rem)", { lineHeight: "1.08", letterSpacing: "-0.015em" }],
-        "display-lg": ["clamp(2.5rem, 5vw, 5rem)", { lineHeight: "1.1", letterSpacing: "-0.015em" }],
-        "display-md": ["clamp(2rem, 3.5vw, 3.5rem)", { lineHeight: "1.15", letterSpacing: "-0.01em" }],
-        "body-lg": ["clamp(1rem, 1.5vw, 1.25rem)", { lineHeight: "1.6" }],
-        "body-sm": ["0.875rem", { lineHeight: "1.5" }],
-        "label": ["0.75rem", { lineHeight: "1", letterSpacing: "0.15em" }],
-      },
-      spacing: {
-        "18": "4.5rem",
-        "22": "5.5rem",
-        "30": "7.5rem",
-        "section": "clamp(5rem, 10vw, 10rem)",
-      },
-      screens: {
-        "xs": "375px",
-        "sm": "640px",
-        "md": "768px",
-        "lg": "1024px",
-        "xl": "1280px",
-        "2xl": "1440px",
-        "3xl": "1920px",
-      },
-      transitionTimingFunction: {
-        "bravio": "cubic-bezier(0.76, 0, 0.24, 1)",
-        "bravio-in": "cubic-bezier(0.55, 0, 1, 0.45)",
-        "bravio-out": "cubic-bezier(0, 0.55, 0.45, 1)",
-      },
-      transitionDuration: {
-        "600": "600ms",
-        "800": "800ms",
-        "1200": "1200ms",
-      },
-      animation: {
-        "fade-in": "fadeIn 1s cubic-bezier(0.76,0,0.24,1) forwards",
-        "slide-up": "slideUp 1s cubic-bezier(0.76,0,0.24,1) forwards",
-        "scale-in": "scaleIn 1.2s cubic-bezier(0.76,0,0.24,1) forwards",
-        "cross-spin": "crossSpin 20s linear infinite",
+      letterSpacing: {
+        cinematic: "0.25em",
+        wide: "0.15em",
       },
       keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        slideUp: {
-          "0%": { opacity: "0", transform: "translateY(60px)" },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        scaleIn: {
-          "0%": { opacity: "0", transform: "scale(1.1)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
-        },
-        crossSpin: {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
+        "pulse-subtle": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.6" },
         },
       },
-      backgroundImage: {
-        "bravio-gradient": "linear-gradient(135deg, #B1C7D4 0%, #849AAD 50%, #605246 100%)",
-        "dark-gradient": "linear-gradient(180deg, #1A1410 0%, #605246 100%)",
-        "hero-overlay": "linear-gradient(to bottom, rgba(26,20,16,0) 0%, rgba(26,20,16,0.7) 100%)",
+      animation: {
+        "fade-in": "fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "pulse-subtle": "pulse-subtle 4s ease-in-out infinite",
       },
     },
   },
@@ -95,3 +52,4 @@ const config: Config = {
 };
 
 export default config;
+
