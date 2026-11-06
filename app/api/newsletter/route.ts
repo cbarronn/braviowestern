@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
-
-const getResend = () => new Resend(process.env.RESEND_API_KEY ?? "");
+import { sendEmail } from "@/lib/email/send";
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,10 +12,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const resend = getResend();
-
     // 1. Notificación interna al equipo BRAVÍO
-    await resend.emails.send({
+    await sendEmail({
       from: "BRAVÍO Newsletter <noreply@braviowestern.com.mx>",
       to: ["cbarron@ti-boot.com", "darrieta@vise.com.mx", "daniela.arrieta.navarro1@gmail.com"],
       subject: `Nuevo suscriptor al Newsletter: ${email}`,
@@ -40,7 +36,7 @@ export async function POST(req: NextRequest) {
     });
 
     // 2. Correo de bienvenida automático para el cliente
-    await resend.emails.send({
+    await sendEmail({
       from: "BRAVÍO Western <hola@braviowestern.com.mx>",
       to: [email],
       subject: "Bienvenido al Club BRAVÍO",

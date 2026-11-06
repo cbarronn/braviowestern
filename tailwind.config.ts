@@ -10,15 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         bravio: {
-          granate: "#5E1C23",
-          "granate-dark": "#3D1217",
+          cloudy: "#B1C7D4", // 60% Dominant
+          tsunami: "#849AAD", // 15%
+          volcanic: "#605246", // 20%
+          "volcanic-dark": "#3E342B",
+          "volcanic-card": "#4A3F35",
+          "volcanic-border": "#736456",
+          granate: "#5E1C23", // 5% Accent (Red Oxide)
           "granate-light": "#7E2730",
-          cloudy: "#B1C7D4",
-          "cloudy-light": "#D8E4EC",
-          "cloudy-dark": "#7F9BAE",
-          volcanic: "#121212",
-          "volcanic-card": "#181716",
-          "volcanic-border": "#2C2825",
           bone: "#F5F3EF",
           canvas: "#EAE6DF",
           gold: "#C2A676",
@@ -52,4 +51,3 @@ const config: Config = {
 };
 
 export default config;
-

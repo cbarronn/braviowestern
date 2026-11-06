@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
-
-const getResend = () => new Resend(process.env.RESEND_API_KEY ?? "");
+import { sendEmail } from "@/lib/email/send";
 
 export async function POST(req: NextRequest) {
   try {
@@ -16,8 +14,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Email al equipo BRAVÍO
-    const resend = getResend();
-    await resend.emails.send({
+    await sendEmail({
       from: "BRAVÍO Contacto <noreply@braviowestern.com.mx>",
       to: ["cbarron@ti-boot.com", "darrieta@vise.com.mx", "daniela.arrieta.navarro1@gmail.com"],
       replyTo: email,
@@ -54,7 +51,7 @@ export async function POST(req: NextRequest) {
     });
 
     // Confirmación automática al usuario
-    await resend.emails.send({
+    await sendEmail({
       from: "BRAVÍO Western <hola@braviowestern.com.mx>",
       to: [email],
       subject: "Recibimos tu mensaje — BRAVÍO Western",
