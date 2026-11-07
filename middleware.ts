@@ -3,11 +3,20 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const sessionCookie = request.cookies.get("bravio_admin_session")?.value;
 
-  // Protect all /admin routes except /admin/login
+  // 1. Protect all /api/admin/* endpoints (except auth: login, 2fa, session status)
+  if (pathname.startsWith("/api/admin") && !pathname.startsWith("/api/admin/auth")) {
+    if (!sessionCookie) {
+      return NextResponse.json(
+        { error: "Acceso no autorizado. Se requiere inicio de sesión con 2FA." },
+        { status: 401 }
+      );
+    }
+  }
+
+  // 2. Protect all /admin UI pages except /admin/login
   if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/login")) {
-    const sessionCookie = request.cookies.get("bravio_admin_session")?.value;
-
     if (!sessionCookie) {
       const loginUrl = new URL("/admin/login", request.url);
       loginUrl.searchParams.set("redirect", pathname);
@@ -15,18 +24,27 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // If already logged in and visits /admin/login, redirect to /admin
+  // 3. If already logged in and visits /admin/login, redirect to /admin dashboard
   if (pathname === "/admin/login") {
-    const sessionCookie = request.cookies.get("bravio_admin_session")?.value;
     if (sessionCookie) {
       return NextResponse.redirect(new URL("/admin", request.url));
     }
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+
+  // 4. Inject Essential HTTP Security Headers
+  response.headers.set("X-Frame-Options", "SAMEORIGIN");
+  response.headers.set("X-Content-Type-Options", "nosniff");
+  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  response.headers.set("X-XSS-Protection", "1; mode=block");
+
+  return response;
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/api/admin/:path*"],
 };
+
 
