@@ -67,27 +67,43 @@ const CHAPTERS = [
 const UPCOMING_MODELS = [
   {
     name: "Bota Silao Dama",
-    category: "Edición Limitada 2026",
-    leather: "Piel Nobuck Arena",
+    category: "Colección Cápsula 2026",
+    leather: "Piel Gamuza Arena",
+    price: 3499,
+    slug: "bota-silao-dama-gamuza-arena",
     highlight: "Caña media anatómica con cerco cosido a mano y tacón cubano biselado.",
     image: "/campaigns/hero-boots.jpg",
-    status: "En Proceso Artesanal",
+    status: "Disponible en Preventa",
   },
   {
     name: "Bota Chapala Dama",
     category: "Prototipo Oficial",
     leather: "Piel Vacuno Miel",
+    price: 3699,
+    slug: "bota-chapala-dama-vacuno-miel",
     highlight: "Silueta estilizada con tiradores reforzados y la Cruz de Hierro grabada en bajo relieve.",
     image: "/campaigns/clean-boots.png",
-    status: "Fase de Calce & Horma",
+    status: "Disponible en Preventa",
   },
   {
-    name: "Detalle de Confección",
+    name: "Bota Monterrey Dama",
+    category: "Edición Urbana",
+    leather: "Vaqueta Res Negro",
+    price: 3899,
+    slug: "bota-monterrey-dama-res-negro",
+    highlight: "Corte estructurado para asfalto con vástago de acero y puntera vaquera suave.",
+    image: "/campaigns/mujer-escena-03.jpg",
+    status: "Disponible en Preventa",
+  },
+  {
+    name: "Bota Guanajuato Dama",
     category: "Maestría en León",
-    leather: "Goodyear Welt 360°",
-    highlight: "Corte artesanal con vástago de refuerzo interior y acabados encerados a fuego.",
-    image: "/campaigns/product-3.jpg",
-    status: "Taller Guanajuato",
+    leather: "Nobuck Olivo Mineral",
+    price: 3799,
+    slug: "bota-guanajuato-dama-nobuck-olivo",
+    highlight: "Textura aterciopelada de poro abierto con plantilla ergonómica de descanso.",
+    image: "/campaigns/mujer-escena-04.jpg",
+    status: "Disponible en Preventa",
   },
 ];
 
@@ -266,47 +282,72 @@ export default function MujerPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {UPCOMING_MODELS.map((model, idx) => (
             <div
               key={idx}
-              className="bg-white border border-[#B1C7D4]/60 overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white border border-[#B1C7D4]/60 overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow group"
             >
-              <div className="relative aspect-[4/3] bg-[#EAEFEF] overflow-hidden">
+              <Link href={`/producto/${model.slug}`} className="relative aspect-[4/3] bg-[#EAEFEF] overflow-hidden block">
                 <Image
                   src={model.image}
                   alt={model.name}
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover object-center"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
-                <span className="absolute top-3 left-3 bg-[#605246] text-white text-[10px] font-[SpaceGrotesk] font-bold px-2 py-0.5 tracking-wider uppercase">
+                <span className="absolute top-3 left-3 bg-[#5E1C23] text-white text-[9px] font-[SpaceGrotesk] font-bold px-2 py-0.5 tracking-wider uppercase">
                   {model.status}
                 </span>
-              </div>
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              </Link>
+              <div className="p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-[SpaceGrotesk] uppercase tracking-widest text-[#849AAD] block mb-1">
-                    {model.category}
-                  </span>
-                  <h3 className="font-archivo text-xl uppercase text-[#605246] mb-1">
-                    {model.name}
-                  </h3>
-                  <p className="text-xs font-[SpaceGrotesk] font-bold text-[#5E1C23] mb-3">
+                  <div className="flex justify-between items-start mb-1">
+                    <span className="text-[10px] font-[SpaceGrotesk] uppercase tracking-widest text-[#849AAD]">
+                      {model.category}
+                    </span>
+                    <span className="font-archivo text-sm text-[#5E1C23] font-bold">
+                      ${model.price.toLocaleString("es-MX")} MXN
+                    </span>
+                  </div>
+                  <Link href={`/producto/${model.slug}`}>
+                    <h3 className="font-archivo text-base uppercase text-[#605246] hover:text-[#5E1C23] transition-colors mb-1 line-clamp-1">
+                      {model.name}
+                    </h3>
+                  </Link>
+                  <p className="text-[11px] font-[SpaceGrotesk] font-bold text-[#605246]/70 mb-2">
                     {model.leather}
                   </p>
-                  <p className="text-xs font-[SpaceGrotesk] text-[#605246]/80 leading-relaxed">
+                  <p className="text-xs font-[SpaceGrotesk] text-[#849AAD] leading-relaxed line-clamp-2">
                     {model.highlight}
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-[#B1C7D4]/30 flex items-center justify-between text-[11px] font-[SpaceGrotesk] text-[#849AAD]">
-                  <span>Numeración: 22 - 27 MX</span>
-                  <span className="text-[#5E1C23] font-bold">Otoño 2026</span>
+                <div className="pt-4 mt-4 border-t border-[#B1C7D4]/30 space-y-2">
+                  <div className="flex items-center justify-between text-[10px] font-[SpaceGrotesk] text-[#849AAD]">
+                    <span>Tallas: 22 - 27 MX</span>
+                    <span className="text-[#5E1C23] font-bold">Goodyear Welt</span>
+                  </div>
+                  <Link
+                    href={`/producto/${model.slug}`}
+                    className="block w-full py-2 bg-[#F4F7F9] hover:bg-[#5E1C23] text-[#605246] hover:text-white border border-[#B1C7D4]/60 hover:border-[#5E1C23] text-[11px] font-[SpaceGrotesk] font-bold uppercase tracking-wider text-center transition-colors"
+                  >
+                    Ver Modelo & Comprar
+                  </Link>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link
+            href="/coleccion/bravio-mujer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#605246] hover:bg-[#4d4138] text-white text-xs font-[SpaceGrotesk] font-bold uppercase tracking-widest transition-colors shadow-xs"
+          >
+            <span>Explorar Catálogo Completo Mujer 2026</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
 

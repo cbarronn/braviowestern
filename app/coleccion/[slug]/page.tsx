@@ -26,9 +26,16 @@ export default function CollectionPage() {
     : "La consagración de la bota vaquera artesanal para el asfalto y la vida contemporánea.";
 
   const filteredProducts = PRODUCTS_CATALOG.filter((p) => {
+    // If on women collection, show only women models; otherwise show men/unisex
+    if (isWomen) {
+      if (p.gender !== "mujer" && p.collectionId !== "bravio-mujer") return false;
+    } else {
+      if (p.gender === "mujer") return false;
+    }
+
     if (leatherFilter === "all") return true;
     if (leatherFilter === "gamuza") return p.leatherType.toLowerCase().includes("gamuza");
-    if (leatherFilter === "res") return p.leatherType.toLowerCase().includes("res");
+    if (leatherFilter === "res") return p.leatherType.toLowerCase().includes("res") || p.leatherType.toLowerCase().includes("vaqueta") || p.leatherType.toLowerCase().includes("vacuno");
     if (leatherFilter === "exotico") {
       const l = p.leatherType.toLowerCase();
       return l.includes("alligator") || l.includes("avestruz") || l.includes("pitón") || l.includes("caimán");

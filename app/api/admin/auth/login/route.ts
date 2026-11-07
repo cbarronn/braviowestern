@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifyAdminCredentials, setAdminSession } from "@/lib/auth/admin-auth";
+import { verifyAdminCredentials, createTwoFactorChallenge } from "@/lib/auth/admin-auth";
 import { db } from "@/lib/data/mock-db";
 
 export async function POST(req: NextRequest) {
@@ -16,29 +16,29 @@ export async function POST(req: NextRequest) {
     const user = await verifyAdminCredentials(username, password);
 
     if (!user) {
+      db.addAudit(
+        "AUTH_LOGIN_FAILED",
+        "Security",
+        username,
+        `Intento de acceso fallido para usuario: ${username}`
+      );
+
       return NextResponse.json(
-        { error: "Credenciales de acceso incorrectas o usuario inactivo." },
+        { error: "Credenciales de acceso incorrectas o usuario no autorizado." },
         { status: 401 }
       );
     }
 
-    await setAdminSession(user);
-
-    db.addAudit(
-      "AUTH_LOGIN_SUCCESS",
-      "Security",
-      user.email,
-      `Inicio de sesión exitoso de ${user.name} (${user.role})`
-    );
+    // Credentials valid -> generate 2FA challenge code
+    const challenge = await createTwoFactorChallenge(user);
 
     return NextResponse.json({
       success: true,
-      user: {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-        role: user.role,
-      },
+      requires2FA: true,
+      tempToken: challenge.tempToken,
+      email: challenge.email,
+      // For developer convenience or fallback when local SMTP is offline:
+      devCode: challenge.code,
     });
   } catch (error) {
     console.error("Login error:", error);
@@ -48,4 +48,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-

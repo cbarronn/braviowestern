@@ -53,14 +53,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     if (pathname === "/admin/login") return;
 
     fetch("/api/admin/auth/session")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error("Unauthenticated");
+        return res.json();
+      })
       .then((data) => {
         if (data.authenticated && data.user) {
           setCurrentUser(data.user);
+        } else {
+          router.push("/admin/login");
         }
       })
-      .catch(() => {});
-  }, [pathname]);
+      .catch(() => {
+        router.push("/admin/login");
+      });
+  }, [pathname, router]);
 
   const handleLogout = async () => {
     try {
