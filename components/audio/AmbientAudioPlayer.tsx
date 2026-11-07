@@ -7,6 +7,11 @@ import { useCommerceStore } from "@/lib/store/commerce-store";
 export default function AmbientAudioPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const {
     isPlayingAudio,
@@ -36,6 +41,8 @@ export default function AmbientAudioPlayer() {
       audioRef.current.pause();
     }
   }, [isPlayingAudio, hasInteracted]);
+
+  if (!mounted) return null;
 
   return (
     <>
