@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import CartDrawer from "@/components/commerce/CartDrawer";
-import AmbientAudioPlayer from "@/components/audio/AmbientAudioPlayer";
-import WelcomePromoModal from "@/components/marketing/WelcomePromoModal";
+import StoreLayoutShell from "@/components/layout/StoreLayoutShell";
 
 const archivoBlack = localFont({
   src: "../public/brand/fonts/ArchivoBlack-Regular.ttf",
@@ -36,12 +32,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${archivoBlack.variable} ${spaceGrotesk.variable}`}>
       <body className="bg-white text-[#605246] min-h-screen flex flex-col font-sans selection:bg-[#5E1C23] selection:text-white">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <CartDrawer />
-        <AmbientAudioPlayer />
-        <WelcomePromoModal />
+        <StoreLayoutShell>{children}</StoreLayoutShell>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { db } from "@/lib/data/mock-db";
 import { PRODUCTS_CATALOG } from "@/lib/data/products";
+import ModernCharts from "@/components/admin/ModernCharts";
 import {
   Image as ImageIcon,
   ShoppingBag,
@@ -87,6 +88,9 @@ export default function AdminDashboardPage() {
           <div className="text-[11px] text-[#849AAD] mt-1">{orders.length} pedidos totales</div>
         </div>
       </div>
+
+      {/* Modern Interactive Operational Charts */}
+      <ModernCharts />
 
       {/* Quick Action Navigation Cards */}
       <div>

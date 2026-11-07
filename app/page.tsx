@@ -16,10 +16,19 @@ export default function HomePage() {
   const { addToCart } = useCommerceStore();
 
   useEffect(() => {
-    // Check if intro has already run in this session
-    const seen = sessionStorage.getItem("bravio_intro_seen");
-    if (!seen) {
-      setShowIntro(true);
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("intro") === "true") {
+        try {
+          sessionStorage.removeItem("bravio_intro_seen");
+        } catch (e) {}
+        setShowIntro(true);
+        return;
+      }
+      const seen = sessionStorage.getItem("bravio_intro_seen");
+      if (!seen) {
+        setShowIntro(true);
+      }
     }
   }, []);
 

@@ -6,8 +6,11 @@ import { Play, Shield } from "lucide-react";
 
 export default function Footer() {
   const replayIntro = () => {
-    sessionStorage.removeItem("bravio_intro_seen");
-    window.location.reload();
+    try {
+      sessionStorage.removeItem("bravio_intro_seen");
+      localStorage.removeItem("bravio_intro_seen");
+    } catch (e) {}
+    window.location.href = "/?intro=true";
   };
 
   return (
