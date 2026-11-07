@@ -93,15 +93,15 @@ export default function AdminCollectionsPage() {
 
   return (
     <div className="space-y-8 max-w-6xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#B1C7D4]/40 pb-6">
         <div>
-          <span className="text-xs uppercase tracking-cinematic text-bravio-cloudy font-sans">
+          <span className="text-xs uppercase tracking-widest text-bravio-tsunami font-sans font-bold">
             CATÁLOGO & CURADURÍA
           </span>
-          <h1 className="font-display text-2xl sm:text-3xl text-bravio-bone uppercase tracking-wide mt-1">
+          <h1 className="font-display text-2xl sm:text-3xl text-bravio-volcanic uppercase tracking-wide mt-1">
             ADMINISTRACIÓN VISUAL DE COLECCIONES
           </h1>
-          <p className="text-xs text-bravio-cloudy mt-1 font-light">
+          <p className="text-xs text-bravio-tsunami mt-1 font-light">
             Edita portadas, arrastra galerías y sincroniza con la tienda pública al instante.
           </p>
         </div>
@@ -109,7 +109,7 @@ export default function AdminCollectionsPage() {
         <button
           onClick={handleSaveCollection}
           disabled={isSaving}
-          className="inline-flex items-center gap-2 px-6 py-2.5 bg-bravio-granate hover:bg-bravio-granate-light disabled:opacity-50 text-bravio-bone text-xs font-sans tracking-widest uppercase rounded transition-colors shadow-lg shadow-bravio-granate/20 font-medium"
+          className="inline-flex items-center gap-2 px-6 py-2.5 bg-bravio-granate hover:bg-bravio-granate-light disabled:opacity-50 text-white text-xs font-sans tracking-widest uppercase rounded-sm transition-colors shadow-sm font-medium"
         >
           {savedNotice ? (
             <>
@@ -126,15 +126,15 @@ export default function AdminCollectionsPage() {
       </div>
 
       {/* Collection Selector Tabs */}
-      <div className="flex gap-2 border-b border-bravio-volcanic-border pb-3">
+      <div className="flex gap-2 border-b border-[#B1C7D4]/40 pb-3">
         {collections.map((col) => (
           <button
             key={col.id}
             onClick={() => setActiveCollectionId(col.id)}
-            className={`px-4 py-2 rounded text-xs font-sans tracking-wider uppercase transition-colors ${
+            className={`px-4 py-2 rounded-sm text-xs font-sans tracking-wider uppercase transition-colors ${
               activeCol.id === col.id
-                ? "bg-bravio-granate text-bravio-bone font-medium"
-                : "bg-bravio-volcanic-card text-bravio-cloudy hover:text-bravio-bone"
+                ? "bg-bravio-granate text-white font-bold"
+                : "bg-white border border-[#B1C7D4]/60 text-bravio-tsunami hover:text-bravio-volcanic"
             }`}
           >
             {col.name}
@@ -144,12 +144,12 @@ export default function AdminCollectionsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left 7 cols: Photo Gallery & Reordering */}
-        <div className="lg:col-span-7 bg-bravio-volcanic-card border border-bravio-volcanic-border rounded p-6 space-y-6">
+        <div className="lg:col-span-7 bg-white border border-[#B1C7D4]/60 rounded-sm shadow-sm p-6 space-y-6">
           <div className="flex justify-between items-center">
-            <h3 className="font-display text-base uppercase text-bravio-bone">
+            <h3 className="font-display text-base uppercase text-bravio-volcanic font-bold">
               Fotografías de la Colección ({activeCol.gallery.length})
             </h3>
-            <span className="text-[11px] text-bravio-gold font-sans">
+            <span className="text-[11px] text-bravio-granate font-sans font-bold">
               ★ Estrella = Foto de Portada
             </span>
           </div>
@@ -161,62 +161,62 @@ export default function AdminCollectionsPage() {
               return (
                 <div
                   key={photo.id}
-                  className={`flex items-center gap-4 p-3 rounded bg-bravio-volcanic border transition-all ${
+                  className={`flex items-center gap-4 p-3 rounded-sm bg-[#F8FAFB] border transition-all ${
                     isCover
                       ? "border-bravio-granate ring-1 ring-bravio-granate/40"
-                      : "border-bravio-volcanic-border"
+                      : "border-[#B1C7D4]/40"
                   }`}
                 >
                   <img
                     src={photo.url}
                     alt={photo.alt}
-                    className="w-16 h-16 object-cover rounded bg-bravio-volcanic-card"
+                    className="w-16 h-16 object-contain rounded-sm bg-white p-1 border border-[#B1C7D4]/30"
                   />
 
                   <div className="flex-1 min-w-0 text-xs">
                     <div className="flex items-center gap-2">
-                      <span className="font-medium text-bravio-bone truncate">
+                      <span className="font-medium text-bravio-volcanic truncate">
                         {photo.alt || `Foto #${idx + 1}`}
                       </span>
                       {isCover && (
-                        <span className="bg-bravio-granate text-bravio-bone text-[9px] uppercase px-1.5 py-0.5 rounded font-bold">
+                        <span className="bg-bravio-granate text-white text-[9px] uppercase px-1.5 py-0.5 rounded font-bold">
                           PORTADA
                         </span>
                       )}
                     </div>
-                    <span className="text-[11px] text-bravio-cloudy/60 font-mono truncate block mt-0.5">
+                    <span className="text-[11px] text-bravio-tsunami font-mono truncate block mt-0.5">
                       {photo.url}
                     </span>
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-center gap-1 text-bravio-cloudy">
+                  <div className="flex items-center gap-1 text-bravio-tsunami">
                     <button
                       onClick={() => handleSetCover(photo.url)}
                       className={`p-1.5 rounded transition-colors ${
-                        isCover ? "text-amber-400" : "hover:text-amber-400"
+                        isCover ? "text-amber-500" : "hover:text-amber-500"
                       }`}
                       title="Elegir como foto de portada"
                     >
-                      <Star className={`w-4 h-4 ${isCover ? "fill-amber-400" : ""}`} />
+                      <Star className={`w-4 h-4 ${isCover ? "fill-amber-500" : ""}`} />
                     </button>
 
                     <button
                       onClick={() => handleTogglePhotoVisibility(photo.id)}
-                      className="p-1.5 hover:text-bravio-bone transition-colors"
+                      className="p-1.5 hover:text-bravio-volcanic transition-colors"
                       title={photo.status === "published" ? "Ocultar" : "Publicar"}
                     >
                       {photo.status === "published" ? (
-                        <Eye className="w-4 h-4 text-emerald-400" />
+                        <Eye className="w-4 h-4 text-emerald-600" />
                       ) : (
-                        <EyeOff className="w-4 h-4 text-red-400" />
+                        <EyeOff className="w-4 h-4 text-red-500" />
                       )}
                     </button>
 
                     <button
                       disabled={idx === 0}
                       onClick={() => handleMovePhoto(idx, "up")}
-                      className="p-1.5 hover:text-bravio-bone disabled:opacity-20 transition-colors"
+                      className="p-1.5 hover:text-bravio-volcanic disabled:opacity-20 transition-colors"
                       title="Mover arriba"
                     >
                       <ArrowUp className="w-4 h-4" />
@@ -225,7 +225,7 @@ export default function AdminCollectionsPage() {
                     <button
                       disabled={idx === activeCol.gallery.length - 1}
                       onClick={() => handleMovePhoto(idx, "down")}
-                      className="p-1.5 hover:text-bravio-bone disabled:opacity-20 transition-colors"
+                      className="p-1.5 hover:text-bravio-volcanic disabled:opacity-20 transition-colors"
                       title="Mover abajo"
                     >
                       <ArrowDown className="w-4 h-4" />
@@ -233,7 +233,7 @@ export default function AdminCollectionsPage() {
 
                     <button
                       onClick={() => handleDeletePhoto(photo.id)}
-                      className="p-1.5 hover:text-red-400 transition-colors"
+                      className="p-1.5 hover:text-red-500 transition-colors"
                       title="Eliminar de la colección"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -246,53 +246,53 @@ export default function AdminCollectionsPage() {
         </div>
 
         {/* Right 5 cols: Collection Metadata & SEO */}
-        <div className="lg:col-span-5 bg-bravio-volcanic-card border border-bravio-volcanic-border rounded p-6 space-y-4 text-xs">
-          <h3 className="font-display text-base uppercase text-bravio-bone pb-2 border-b border-bravio-volcanic-border">
+        <div className="lg:col-span-5 bg-white border border-[#B1C7D4]/60 rounded-sm shadow-sm p-6 space-y-4 text-xs">
+          <h3 className="font-display text-base uppercase text-bravio-volcanic pb-2 border-b border-[#B1C7D4]/40 font-bold">
             Configuración General
           </h3>
 
           <div>
-            <label className="block text-bravio-cloudy mb-1">Nombre de la Colección</label>
+            <label className="block text-bravio-tsunami font-bold mb-1">Nombre de la Colección</label>
             <input
               type="text"
               value={activeCol.name}
               onChange={(e) => handleUpdateActive({ name: e.target.value })}
-              className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+              className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
             />
           </div>
 
           <div>
-            <label className="block text-bravio-cloudy mb-1">Slug URL</label>
+            <label className="block text-bravio-tsunami font-bold mb-1">Slug URL</label>
             <input
               type="text"
               value={activeCol.slug}
               onChange={(e) => handleUpdateActive({ slug: e.target.value })}
-              className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone font-mono"
+              className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic font-mono focus:outline-none focus:border-bravio-granate"
             />
           </div>
 
           <div>
-            <label className="block text-bravio-cloudy mb-1">Lema o Tagline</label>
+            <label className="block text-bravio-tsunami font-bold mb-1">Lema o Tagline</label>
             <input
               type="text"
               value={activeCol.tagline}
               onChange={(e) => handleUpdateActive({ tagline: e.target.value })}
-              className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+              className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
             />
           </div>
 
           <div>
-            <label className="block text-bravio-cloudy mb-1">Descripción Editorial</label>
+            <label className="block text-bravio-tsunami font-bold mb-1">Descripción Editorial</label>
             <textarea
               rows={4}
               value={activeCol.description}
               onChange={(e) => handleUpdateActive({ description: e.target.value })}
-              className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone leading-relaxed"
+              className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic leading-relaxed focus:outline-none focus:border-bravio-granate"
             />
           </div>
 
           <div>
-            <label className="block text-bravio-cloudy mb-1">Estado de Publicación</label>
+            <label className="block text-bravio-tsunami font-bold mb-1">Estado de Publicación</label>
             <select
               value={activeCol.status}
               onChange={(e) =>
@@ -300,7 +300,7 @@ export default function AdminCollectionsPage() {
                   status: e.target.value as "published" | "draft" | "archived",
                 })
               }
-              className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+              className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
             >
               <option value="published">Publicado en Tienda</option>
               <option value="draft">Borrador (Oculto)</option>

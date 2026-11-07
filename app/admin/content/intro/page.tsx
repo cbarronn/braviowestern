@@ -50,15 +50,15 @@ export default function AdminIntroPage() {
 
   return (
     <div className="space-y-8 max-w-4xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#B1C7D4]/40 pb-6">
         <div>
-          <span className="text-xs uppercase tracking-cinematic text-bravio-cloudy font-sans">
+          <span className="text-xs uppercase tracking-widest text-bravio-tsunami font-sans font-bold">
             EXPERIENCIA CINEMATOGRÁFICA
           </span>
-          <h1 className="font-display text-2xl sm:text-3xl text-bravio-bone uppercase tracking-wide mt-1">
+          <h1 className="font-display text-2xl sm:text-3xl text-bravio-volcanic uppercase tracking-wide mt-1">
             ADMINISTRACIÓN DE LA INTRO
           </h1>
-          <p className="text-xs text-bravio-cloudy mt-1 font-light">
+          <p className="text-xs text-bravio-tsunami mt-1 font-light">
             Sustituye el video de apertura, define su frecuencia y personaliza el comportamiento de omisión.
           </p>
         </div>
@@ -66,7 +66,7 @@ export default function AdminIntroPage() {
         <button
           onClick={handleSave}
           disabled={isSaving}
-          className="inline-flex items-center gap-2 px-6 py-2.5 bg-bravio-granate hover:bg-bravio-granate-light disabled:opacity-50 text-bravio-bone text-xs font-sans tracking-widest uppercase rounded transition-colors shadow-lg shadow-bravio-granate/20 font-medium"
+          className="inline-flex items-center gap-2 px-6 py-2.5 bg-bravio-granate hover:bg-bravio-granate-light disabled:opacity-50 text-white text-xs font-sans tracking-widest uppercase rounded-sm transition-colors shadow-sm font-medium"
         >
           {savedNotice ? (
             <>
@@ -84,11 +84,11 @@ export default function AdminIntroPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Left: Video Preview */}
-        <div className="bg-bravio-volcanic-card border border-bravio-volcanic-border rounded p-6 space-y-4">
-          <h3 className="font-display text-sm uppercase text-bravio-bone">
+        <div className="bg-white border border-[#B1C7D4]/60 rounded-sm shadow-sm p-6 space-y-4">
+          <h3 className="font-display text-sm uppercase text-bravio-volcanic font-bold">
             Vista Previa de la Secuencia
           </h3>
-          <div className="relative aspect-[16/9] bg-bravio-volcanic rounded overflow-hidden border border-bravio-volcanic-border">
+          <div className="relative aspect-[16/9] bg-[#F8FAFB] rounded-sm overflow-hidden border border-[#B1C7D4]/40">
             <video
               src={config.videoUrl}
               poster={config.posterUrl}
@@ -96,15 +96,15 @@ export default function AdminIntroPage() {
               className="w-full h-full object-cover"
             />
           </div>
-          <p className="text-[11px] text-bravio-cloudy/70">
+          <p className="text-[11px] text-bravio-tsunami">
             Resolución recomendada: 1920x1080 (horizontal) y 1080x1920 (móvil progresivo). Formato MP4 H.264 o WebM.
           </p>
         </div>
 
         {/* Right: Controls Form */}
-        <form onSubmit={handleSave} className="bg-bravio-volcanic-card border border-bravio-volcanic-border rounded p-6 space-y-4 text-xs">
-          <div className="flex items-center justify-between pb-3 border-b border-bravio-volcanic-border">
-            <span className="font-sans uppercase text-bravio-bone font-medium">
+        <form onSubmit={handleSave} className="bg-white border border-[#B1C7D4]/60 rounded-sm shadow-sm p-6 space-y-4 text-xs">
+          <div className="flex items-center justify-between pb-3 border-b border-[#B1C7D4]/40">
+            <span className="font-sans uppercase text-bravio-volcanic font-bold">
               Estado de la Intro
             </span>
             <label className="relative inline-flex items-center cursor-pointer">
@@ -114,39 +114,39 @@ export default function AdminIntroPage() {
                 onChange={(e) => setConfig({ ...config, enabled: e.target.checked })}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-bravio-volcanic peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-bravio-granate"></div>
+              <div className="w-11 h-6 bg-[#EEF2F6] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-bravio-granate"></div>
             </label>
           </div>
 
           <div>
-            <label className="block text-bravio-cloudy mb-1">Ruta del Video MP4 / WebM</label>
+            <label className="block text-bravio-tsunami font-bold mb-1">Ruta del Video MP4 / WebM</label>
             <input
               type="text"
               value={config.videoUrl}
               onChange={(e) => setConfig({ ...config, videoUrl: e.target.value })}
-              className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone font-mono"
+              className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic font-mono focus:outline-none focus:border-bravio-granate"
             />
           </div>
 
           <div>
-            <label className="block text-bravio-cloudy mb-1">Imagen Poster (Fallback)</label>
+            <label className="block text-bravio-tsunami font-bold mb-1">Imagen Poster (Fallback)</label>
             <input
               type="text"
               value={config.posterUrl}
               onChange={(e) => setConfig({ ...config, posterUrl: e.target.value })}
-              className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone font-mono"
+              className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic font-mono focus:outline-none focus:border-bravio-granate"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-bravio-cloudy mb-1">Duración Objetivo</label>
+              <label className="block text-bravio-tsunami font-bold mb-1">Duración Objetivo</label>
               <select
                 value={config.durationSeconds}
                 onChange={(e) =>
                   setConfig({ ...config, durationSeconds: parseInt(e.target.value) })
                 }
-                className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+                className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
               >
                 <option value={4}>4 Segundos</option>
                 <option value={5}>5 Segundos (Recomendado)</option>
@@ -155,7 +155,7 @@ export default function AdminIntroPage() {
             </div>
 
             <div>
-              <label className="block text-bravio-cloudy mb-1">Frecuencia</label>
+              <label className="block text-bravio-tsunami font-bold mb-1">Frecuencia</label>
               <select
                 value={config.frequency}
                 onChange={(e) =>
@@ -164,7 +164,7 @@ export default function AdminIntroPage() {
                     frequency: e.target.value as "once_per_session" | "always",
                   })
                 }
-                className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+                className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
               >
                 <option value="once_per_session">Una vez por sesión</option>
                 <option value="always">Siempre en cada recarga</option>
@@ -181,7 +181,7 @@ export default function AdminIntroPage() {
                 onChange={(e) => setConfig({ ...config, allowSkip: e.target.checked })}
                 className="accent-bravio-granate"
               />
-              <label htmlFor="skip" className="text-bravio-cloudy">
+              <label htmlFor="skip" className="text-bravio-volcanic">
                 Mostrar botón visible "Saltar Intro"
               </label>
             </div>
@@ -196,7 +196,7 @@ export default function AdminIntroPage() {
                 }
                 className="accent-bravio-granate"
               />
-              <label htmlFor="reduced" className="text-bravio-cloudy">
+              <label htmlFor="reduced" className="text-bravio-volcanic">
                 Respetar preferencia de usuario "Movimiento reducido"
               </label>
             </div>

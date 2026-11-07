@@ -10,7 +10,11 @@ import {
   ArrowRight,
   Sparkles,
   TrendingUp,
+  Boxes,
+  Users,
+  ShieldCheck,
 } from "lucide-react";
+import { CruzDeHierro } from "@/components/ui/BravioLogo";
 
 export default function AdminDashboardPage() {
   const mediaCount = db.getMedia().length;
@@ -25,143 +29,153 @@ export default function AdminDashboardPage() {
     .reduce((acc, o) => acc + o.total, 0);
 
   return (
-    <div className="space-y-10 max-w-6xl">
+    <div className="space-y-10 max-w-6xl font-[SpaceGrotesk]">
       <div>
-        <span className="text-xs uppercase tracking-cinematic text-bravio-cloudy font-sans">
-          PANEL DE CONTROL CENTRAL
-        </span>
-        <h1 className="font-display text-3xl text-bravio-bone uppercase tracking-wide mt-1">
+        <div className="flex items-center gap-2 mb-2">
+          <CruzDeHierro size={16} color="#5E1C23" />
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#849AAD] font-bold">
+            Panel de Control Central
+          </span>
+        </div>
+        <h1 className="font-archivo text-3xl text-[#605246] uppercase tracking-wide">
           DASHBOARD DE OPERACIONES BRAVÍO
         </h1>
-        <p className="text-xs text-bravio-cloudy mt-1 font-light">
-          Administración integral de contenidos multimedia, catálogo artesanal, ventas y ambientación sin necesidad de despliegues de código.
+        <p className="text-xs text-[#849AAD] mt-1">
+          Administración integral de contenidos multimedia, catálogo artesanal, ventas, inventario y ambientación en tiempo real.
         </p>
       </div>
 
       {/* KPI Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-bravio-volcanic-card border border-bravio-volcanic-border p-6 rounded-sm">
-          <div className="flex items-center justify-between text-bravio-cloudy mb-2">
-            <span className="text-xs uppercase font-sans tracking-wider">Archivos Multimedia</span>
-            <ImageIcon className="w-4 h-4 text-bravio-gold" />
+        <div className="bg-white border border-[#B1C7D4]/60 p-6 rounded shadow-xs">
+          <div className="flex items-center justify-between text-[#849AAD] mb-2">
+            <span className="text-xs uppercase font-bold tracking-wider">Archivos Multimedia</span>
+            <ImageIcon className="w-4 h-4 text-[#5E1C23]" />
           </div>
-          <div className="font-display text-2xl text-bravio-bone">{mediaCount}</div>
-          <div className="text-[11px] text-bravio-cloudy/70 mt-1">Fotos, videos y vectores</div>
+          <div className="font-archivo text-3xl text-[#605246]">{mediaCount}</div>
+          <div className="text-[11px] text-[#849AAD] mt-1">Fotos oficiales, videos e iconos</div>
         </div>
 
-        <div className="bg-bravio-volcanic-card border border-bravio-volcanic-border p-6 rounded-sm">
-          <div className="flex items-center justify-between text-bravio-cloudy mb-2">
-            <span className="text-xs uppercase font-sans tracking-wider">Modelos de Botas</span>
-            <ShoppingBag className="w-4 h-4 text-bravio-gold" />
+        <div className="bg-white border border-[#B1C7D4]/60 p-6 rounded shadow-xs">
+          <div className="flex items-center justify-between text-[#849AAD] mb-2">
+            <span className="text-xs uppercase font-bold tracking-wider">Modelos de Botas</span>
+            <ShoppingBag className="w-4 h-4 text-[#5E1C23]" />
           </div>
-          <div className="font-display text-2xl text-bravio-bone">{PRODUCTS_CATALOG.length}</div>
-          <div className="text-[11px] text-bravio-cloudy/70 mt-1">Catálogo Sinaloa activo</div>
+          <div className="font-archivo text-3xl text-[#605246]">{PRODUCTS_CATALOG.length}</div>
+          <div className="text-[11px] text-[#849AAD] mt-1">Catálogo Sinaloa activo</div>
         </div>
 
-        <div className="bg-bravio-volcanic-card border border-bravio-volcanic-border p-6 rounded-sm">
-          <div className="flex items-center justify-between text-bravio-cloudy mb-2">
-            <span className="text-xs uppercase font-sans tracking-wider">Audio Ambiental</span>
-            <Music className="w-4 h-4 text-bravio-gold" />
+        <div className="bg-white border border-[#B1C7D4]/60 p-6 rounded shadow-xs">
+          <div className="flex items-center justify-between text-[#849AAD] mb-2">
+            <span className="text-xs uppercase font-bold tracking-wider">Audio Ambiental</span>
+            <Music className="w-4 h-4 text-[#5E1C23]" />
           </div>
-          <div className="font-display text-base text-emerald-400 truncate">
+          <div className="font-archivo text-base text-emerald-700 truncate mt-1">
             {audioTrack ? audioTrack.title : "Inactivo"}
           </div>
-          <div className="text-[11px] text-bravio-cloudy/70 mt-1">Sonora Sunset Western</div>
+          <div className="text-[11px] text-[#849AAD] mt-1">Sonora Sunset Western</div>
         </div>
 
-        <div className="bg-bravio-volcanic-card border border-bravio-volcanic-border p-6 rounded-sm">
-          <div className="flex items-center justify-between text-bravio-cloudy mb-2">
-            <span className="text-xs uppercase font-sans tracking-wider">Ventas Generadas</span>
-            <TrendingUp className="w-4 h-4 text-bravio-gold" />
+        <div className="bg-white border border-[#B1C7D4]/60 p-6 rounded shadow-xs">
+          <div className="flex items-center justify-between text-[#849AAD] mb-2">
+            <span className="text-xs uppercase font-bold tracking-wider">Ventas Generadas</span>
+            <TrendingUp className="w-4 h-4 text-[#5E1C23]" />
           </div>
-          <div className="font-display text-2xl text-bravio-bone">
+          <div className="font-archivo text-3xl text-[#5E1C23]">
             ${totalSales.toLocaleString("es-MX")}
           </div>
-          <div className="text-[11px] text-bravio-cloudy/70 mt-1">{orders.length} pedidos totales</div>
+          <div className="text-[11px] text-[#849AAD] mt-1">{orders.length} pedidos totales</div>
         </div>
       </div>
 
       {/* Quick Action Navigation Cards */}
       <div>
-        <h3 className="font-display text-base uppercase tracking-wider text-bravio-bone mb-4">
+        <h3 className="font-archivo text-base uppercase tracking-wider text-[#605246] mb-4">
           Accesos Rápidos Prioritarios
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Link
-            href="/admin/media"
-            className="group bg-bravio-volcanic-card hover:bg-bravio-volcanic-border border border-bravio-volcanic-border p-6 rounded-sm transition-all flex flex-col justify-between"
+            href="/admin/products"
+            className="group bg-white hover:border-[#5E1C23] border border-[#B1C7D4]/60 p-6 rounded transition-all flex flex-col justify-between shadow-xs hover:shadow-md"
           >
             <div>
-              <ImageIcon className="w-6 h-6 text-bravio-granate mb-3" />
-              <h4 className="font-display text-sm text-bravio-bone uppercase tracking-wider">
-                Biblioteca Multimedia
+              <ShoppingBag className="w-6 h-6 text-[#5E1C23] mb-3" />
+              <h4 className="font-archivo text-sm text-[#605246] uppercase tracking-wider">
+                Catálogo de Productos
               </h4>
-              <p className="text-xs text-bravio-cloudy mt-1">
-                Subir fotografías, organizar por carpetas (Hombre, Mujer, Productos), editar alt y asignar SKU.
+              <p className="text-xs text-[#849AAD] mt-1 leading-relaxed">
+                Editar precios, títulos, estatus de publicación y sincronización con archivo Excel.
               </p>
             </div>
-            <div className="mt-4 flex items-center gap-2 text-xs font-sans text-bravio-gold group-hover:translate-x-1 transition-transform">
-              <span>Gestionar Fotos</span>
+            <div className="mt-4 pt-4 border-t border-[#B1C7D4]/30 flex items-center justify-between text-xs font-bold text-[#5E1C23] group-hover:translate-x-1 transition-transform">
+              <span>Gestionar Catálogo</span>
               <ArrowRight className="w-4 h-4" />
             </div>
           </Link>
 
           <Link
-            href="/admin/content/home"
-            className="group bg-bravio-volcanic-card hover:bg-bravio-volcanic-border border border-bravio-volcanic-border p-6 rounded-sm transition-all flex flex-col justify-between"
+            href="/admin/inventory"
+            className="group bg-white hover:border-[#5E1C23] border border-[#B1C7D4]/60 p-6 rounded transition-all flex flex-col justify-between shadow-xs hover:shadow-md"
           >
             <div>
-              <Sparkles className="w-6 h-6 text-bravio-granate mb-3" />
-              <h4 className="font-display text-sm text-bravio-bone uppercase tracking-wider">
-                Editor del Home
+              <Boxes className="w-6 h-6 text-[#5E1C23] mb-3" />
+              <h4 className="font-archivo text-sm text-[#605246] uppercase tracking-wider">
+                Matriz de Inventario
               </h4>
-              <p className="text-xs text-bravio-cloudy mt-1">
-                Reordenar secciones, cambiar titulares, actualizar imagen de hero y botones sin desplegar código.
+              <p className="text-xs text-[#849AAD] mt-1 leading-relaxed">
+                Control de tallas 25 al 30 MX, stock físico disponible, reservado y ajuste directo.
               </p>
             </div>
-            <div className="mt-4 flex items-center gap-2 text-xs font-sans text-bravio-gold group-hover:translate-x-1 transition-transform">
-              <span>Personalizar Portada</span>
+            <div className="mt-4 pt-4 border-t border-[#B1C7D4]/30 flex items-center justify-between text-xs font-bold text-[#5E1C23] group-hover:translate-x-1 transition-transform">
+              <span>Ver Matriz de Tallas</span>
               <ArrowRight className="w-4 h-4" />
             </div>
           </Link>
 
           <Link
-            href="/admin/media/audio"
-            className="group bg-bravio-volcanic-card hover:bg-bravio-volcanic-border border border-bravio-volcanic-border p-6 rounded-sm transition-all flex flex-col justify-between"
+            href="/admin/orders"
+            className="group bg-white hover:border-[#5E1C23] border border-[#B1C7D4]/60 p-6 rounded transition-all flex flex-col justify-between shadow-xs hover:shadow-md"
           >
             <div>
-              <Music className="w-6 h-6 text-bravio-granate mb-3" />
-              <h4 className="font-display text-sm text-bravio-bone uppercase tracking-wider">
-                Control de Música
+              <TrendingUp className="w-6 h-6 text-[#5E1C23] mb-3" />
+              <h4 className="font-archivo text-sm text-[#605246] uppercase tracking-wider">
+                Pedidos & Envíos
               </h4>
-              <p className="text-xs text-bravio-cloudy mt-1">
-                Subir canciones autorizadas de country western instrumental, ajustar volumen y documentar licencias.
+              <p className="text-xs text-[#849AAD] mt-1 leading-relaxed">
+                Supervisar compras en línea, comprobantes SPEI y guías de envío nacional.
               </p>
             </div>
-            <div className="mt-4 flex items-center gap-2 text-xs font-sans text-bravio-gold group-hover:translate-x-1 transition-transform">
-              <span>Configurar Audio</span>
+            <div className="mt-4 pt-4 border-t border-[#B1C7D4]/30 flex items-center justify-between text-xs font-bold text-[#5E1C23] group-hover:translate-x-1 transition-transform">
+              <span>Revisar Órdenes</span>
               <ArrowRight className="w-4 h-4" />
             </div>
           </Link>
         </div>
       </div>
 
-      {/* Recent Activity Audit Trail */}
-      <div className="bg-bravio-volcanic-card border border-bravio-volcanic-border rounded-sm p-6">
-        <h3 className="font-display text-sm uppercase tracking-wider text-bravio-bone mb-4">
-          Registro de Auditoría Reciente
-        </h3>
-        <div className="divide-y divide-bravio-volcanic-border">
+      {/* Audit & Activity */}
+      <div className="bg-white border border-[#B1C7D4]/60 p-6 rounded shadow-xs">
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#B1C7D4]/30">
+          <div className="flex items-center gap-2">
+            <ShieldCheck size={18} className="text-[#5E1C23]" />
+            <h3 className="font-archivo text-sm uppercase text-[#605246]">
+              Registro de Auditoría Reciente
+            </h3>
+          </div>
+          <Link href="/admin/audit" className="text-xs text-[#5E1C23] font-bold hover:underline">
+            Ver registro completo →
+          </Link>
+        </div>
+
+        <div className="divide-y divide-[#B1C7D4]/20 text-xs">
           {auditLogs.map((log) => (
-            <div key={log.id} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <div key={log.id} className="py-2.5 flex items-center justify-between">
               <div>
-                <span className="font-mono text-bravio-gold font-bold mr-2">[{log.action}]</span>
-                <span className="text-bravio-bone">{log.details}</span>
+                <span className="font-bold text-[#605246]">{log.action}</span>
+                <span className="text-[#849AAD] ml-2">por {log.userEmail || log.user}</span>
               </div>
-              <span className="text-[11px] text-bravio-cloudy/60 whitespace-nowrap">
-                {new Date(log.timestamp).toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit" })}
-              </span>
+              <span className="text-[#849AAD] text-[11px]">{new Date(log.timestamp).toLocaleTimeString("es-MX")}</span>
             </div>
           ))}
         </div>
@@ -169,4 +183,3 @@ export default function AdminDashboardPage() {
     </div>
   );
 }
-

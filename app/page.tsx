@@ -48,10 +48,10 @@ export default function HomePage() {
 
       <div className="relative overflow-hidden bg-white text-[#605246]">
         {/* =========================================================
-            SECTION 1: CINEMATIC HERO
+            SECTION 1: CINEMATIC HERO (VIDEO EN ALTA CLARIDAD)
         ========================================================= */}
-        <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#16120E] text-white">
-          {/* Background Video / Atmosphere */}
+        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black text-white">
+          {/* Background Video / Atmosphere — Alta Visibilidad y Nitidez */}
           <div className="absolute inset-0 z-0">
             <video
               autoPlay
@@ -59,13 +59,13 @@ export default function HomePage() {
               loop
               playsInline
               poster="/brand/posterImage-142.png"
-              className="w-full h-full object-cover opacity-45 scale-105 filter brightness-75 contrast-110"
+              className="w-full h-full object-cover opacity-95 filter brightness-100 contrast-105"
             >
               <source src="/media/video.mp4" type="video/mp4" />
             </video>
-            {/* Cinematic Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#16120E] via-[#16120E]/40 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#16120E]/80 via-transparent to-[#16120E]/80" />
+            {/* Scrim sutil para máxima legibilidad sin apagar el video */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30" />
+            <div className="absolute inset-0 bg-radial-vignette opacity-40 pointer-events-none" />
           </div>
 
           {/* Hero Content */}

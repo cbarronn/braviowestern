@@ -195,6 +195,7 @@ export interface Order {
   status: "pending_payment" | "paid" | "preparing" | "shipped" | "delivered" | "cancelled";
   paymentMethod: "mercadopago" | "transferencia" | "tarjeta";
   paymentId?: string;
+  paymentStatus?: "pending" | "approved" | "rejected" | "refunded" | string;
   carrier?: string;
   trackingNumber?: string;
   trackingUrl?: string;
@@ -204,6 +205,7 @@ export interface AuditLog {
   id: string;
   timestamp: string;
   user: string;
+  userEmail?: string;
   action: string;
   entity: string;
   entityId: string;
@@ -233,6 +235,7 @@ export interface Customer {
   phone: string;
   city: string;
   state: string;
+  address?: string;
   ordersCount: number;
   totalSpent: number;
   lastOrderDate: string;

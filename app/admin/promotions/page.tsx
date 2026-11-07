@@ -91,84 +91,84 @@ export default function AdminPromotionsPage() {
       )}
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-bravio-volcanic-border pb-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#B1C7D4]/40 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Tag size={16} className="text-bravio-granate" />
-            <span className="text-[10px] font-sans tracking-cinematic text-bravio-gold uppercase">
+            <span className="text-[10px] font-sans tracking-widest text-bravio-tsunami uppercase font-bold">
               Conversión & Fidelidad
             </span>
           </div>
-          <h1 className="font-display text-2xl sm:text-3xl text-bravio-bone tracking-wider uppercase">
+          <h1 className="font-display text-2xl sm:text-3xl text-bravio-volcanic tracking-wider uppercase">
             PROMOCIONES & CUPONES
           </h1>
         </div>
 
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2.5 bg-bravio-granate hover:bg-bravio-granate-light text-bravio-bone text-xs font-sans tracking-wider uppercase transition-colors"
+          className="flex items-center gap-2 px-4 py-2.5 bg-bravio-granate hover:bg-bravio-granate-light text-white text-xs font-sans tracking-wider uppercase transition-colors shadow-sm rounded-sm"
         >
           <Plus size={14} /> Crear Nuevo Cupón
         </button>
       </div>
 
       {/* 10% Newsletter Banner Rule */}
-      <div className="p-6 bg-bravio-volcanic-card border border-bravio-gold/40 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="p-6 bg-white border border-[#B1C7D4]/60 rounded-sm shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <span className="text-[10px] font-sans text-bravio-gold uppercase tracking-wider block mb-1">
+          <span className="text-[10px] font-sans text-bravio-granate uppercase tracking-wider block mb-1 font-bold">
             Regla Automática de Bienvenida
           </span>
-          <h3 className="font-display text-base text-bravio-bone uppercase">
+          <h3 className="font-display text-base text-bravio-volcanic uppercase">
             10% de descuento en primera compra por suscripción al Newsletter
           </h3>
-          <p className="text-xs font-sans text-bravio-cloudy mt-1">
-            Se genera y despacha vía correo automático al confirmar suscripción con código único o genérico <strong className="text-bravio-bone">BIENVENIDO10</strong>.
+          <p className="text-xs font-sans text-bravio-tsunami mt-1">
+            Se genera y despacha vía correo automático al confirmar suscripción con código único o genérico <strong className="text-bravio-volcanic">BIENVENIDO10</strong>.
           </p>
         </div>
 
-        <span className="px-3 py-1 bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] font-sans uppercase tracking-wider font-bold">
+        <span className="px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-300 text-[10px] font-sans uppercase tracking-wider font-bold rounded-sm">
           Regla Activa
         </span>
       </div>
 
       {/* Coupons Table */}
-      <div className="bg-bravio-volcanic-card border border-bravio-volcanic-border overflow-x-auto">
+      <div className="bg-white border border-[#B1C7D4]/60 rounded-sm shadow-sm overflow-x-auto">
         <table className="w-full text-left font-sans text-xs">
-          <thead className="bg-bravio-volcanic border-b border-bravio-volcanic-border text-bravio-cloudy uppercase tracking-wider text-[10px]">
+          <thead className="bg-[#F8FAFB] border-b border-[#B1C7D4]/50 text-bravio-tsunami uppercase tracking-wider text-[10px]">
             <tr>
-              <th className="p-4">Código</th>
-              <th className="p-4">Descuento</th>
-              <th className="p-4">Compra Mínima</th>
-              <th className="p-4 text-center">Usos</th>
-              <th className="p-4">Descripción</th>
-              <th className="p-4 text-center">Estado</th>
-              <th className="p-4 text-right">Acción</th>
+              <th className="p-4 font-bold">Código</th>
+              <th className="p-4 font-bold">Descuento</th>
+              <th className="p-4 font-bold">Compra Mínima</th>
+              <th className="p-4 text-center font-bold">Usos</th>
+              <th className="p-4 font-bold">Descripción</th>
+              <th className="p-4 text-center font-bold">Estado</th>
+              <th className="p-4 text-right font-bold">Acción</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-bravio-volcanic-border text-bravio-bone">
+          <tbody className="divide-y divide-[#B1C7D4]/30 text-bravio-volcanic">
             {coupons.map((c) => (
-              <tr key={c.id} className="hover:bg-bravio-volcanic/50 transition-colors">
-                <td className="p-4 font-mono font-bold text-sm text-bravio-gold tracking-wider">
+              <tr key={c.id} className="hover:bg-[#F8FAFB] transition-colors">
+                <td className="p-4 font-mono font-bold text-sm text-bravio-granate tracking-wider">
                   {c.code}
                 </td>
                 <td className="p-4 font-sans font-bold">
                   {c.discountType === "percentage" ? `${c.discountValue}% OFF` : `$${c.discountValue} MXN OFF`}
                 </td>
-                <td className="p-4 font-mono text-bravio-cloudy">
+                <td className="p-4 font-mono text-bravio-tsunami">
                   ${c.minPurchase.toLocaleString("es-MX")} MXN
                 </td>
                 <td className="p-4 text-center font-mono font-bold">
                   {c.timesUsed}
                 </td>
-                <td className="p-4 text-bravio-cloudy max-w-[280px]">
+                <td className="p-4 text-bravio-tsunami max-w-[280px]">
                   {c.description}
                 </td>
                 <td className="p-4 text-center">
                   <span
                     className={`inline-block px-2 py-0.5 text-[9px] uppercase tracking-wider font-bold rounded-sm ${
                       c.isActive
-                        ? "bg-emerald-950 text-emerald-400 border border-emerald-800"
-                        : "bg-red-950 text-red-400 border border-red-800"
+                        ? "bg-emerald-50 text-emerald-700 border border-emerald-300"
+                        : "bg-red-50 text-red-600 border border-red-200"
                     }`}
                   >
                     {c.isActive ? "Activo" : "Pausado"}
@@ -177,10 +177,10 @@ export default function AdminPromotionsPage() {
                 <td className="p-4 text-right">
                   <button
                     onClick={() => handleToggle(c.id)}
-                    className="p-1.5 hover:text-bravio-gold text-bravio-cloudy transition-colors"
+                    className="p-1.5 hover:text-bravio-granate text-bravio-tsunami transition-colors"
                     title={c.isActive ? "Pausar cupón" : "Activar cupón"}
                   >
-                    {c.isActive ? <ToggleRight size={22} className="text-emerald-400" /> : <ToggleLeft size={22} />}
+                    {c.isActive ? <ToggleRight size={22} className="text-emerald-600" /> : <ToggleLeft size={22} />}
                   </button>
                 </td>
               </tr>
@@ -191,18 +191,18 @@ export default function AdminPromotionsPage() {
 
       {/* Create Coupon Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <form onSubmit={handleCreateCoupon} className="bg-[#16120E] border border-bravio-volcanic-border w-full max-w-md p-6 space-y-4">
-            <div className="flex justify-between items-center border-b border-bravio-volcanic-border pb-3">
-              <h3 className="font-display text-lg text-bravio-bone uppercase">Crear Cupón de Descuento</h3>
-              <button type="button" onClick={() => setIsModalOpen(false)} className="text-bravio-cloudy hover:text-white">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <form onSubmit={handleCreateCoupon} className="bg-white border border-[#B1C7D4]/60 shadow-xl rounded-sm w-full max-w-md p-6 space-y-4">
+            <div className="flex justify-between items-center border-b border-[#B1C7D4]/40 pb-3">
+              <h3 className="font-display text-lg text-bravio-volcanic uppercase">Crear Cupón de Descuento</h3>
+              <button type="button" onClick={() => setIsModalOpen(false)} className="text-bravio-tsunami hover:text-bravio-volcanic">
                 <X size={18} />
               </button>
             </div>
 
             <div className="space-y-3 font-sans text-xs">
               <div>
-                <label className="block text-bravio-cloudy uppercase tracking-wider mb-1">
+                <label className="block text-bravio-tsunami font-bold uppercase tracking-wider mb-1">
                   Código Alfanumérico
                 </label>
                 <input
@@ -211,19 +211,19 @@ export default function AdminPromotionsPage() {
                   value={newCode}
                   onChange={(e) => setNewCode(e.target.value.toUpperCase())}
                   placeholder="EJ: VERANO20"
-                  className="w-full bg-[#0F0C09] border border-bravio-volcanic-border p-2.5 text-bravio-bone font-mono uppercase focus:outline-none focus:border-bravio-granate"
+                  className="w-full bg-white border border-[#B1C7D4]/60 p-2.5 text-bravio-volcanic font-mono uppercase focus:outline-none focus:border-bravio-granate rounded-sm"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-bravio-cloudy uppercase tracking-wider mb-1">
+                  <label className="block text-bravio-tsunami font-bold uppercase tracking-wider mb-1">
                     Tipo
                   </label>
                   <select
                     value={newDiscountType}
                     onChange={(e) => setNewDiscountType(e.target.value as any)}
-                    className="w-full bg-[#0F0C09] border border-bravio-volcanic-border p-2.5 text-bravio-bone focus:outline-none focus:border-bravio-granate"
+                    className="w-full bg-white border border-[#B1C7D4]/60 p-2.5 text-bravio-volcanic focus:outline-none focus:border-bravio-granate rounded-sm"
                   >
                     <option value="percentage">Porcentaje (%)</option>
                     <option value="fixed">Monto Fijo ($ MXN)</option>
@@ -231,7 +231,7 @@ export default function AdminPromotionsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-bravio-cloudy uppercase tracking-wider mb-1">
+                  <label className="block text-bravio-tsunami font-bold uppercase tracking-wider mb-1">
                     Valor Descuento
                   </label>
                   <input
@@ -240,14 +240,14 @@ export default function AdminPromotionsPage() {
                     required
                     value={newDiscountValue}
                     onChange={(e) => setNewDiscountValue(Number(e.target.value))}
-                    className="w-full bg-[#0F0C09] border border-bravio-volcanic-border p-2.5 text-bravio-bone font-mono focus:outline-none focus:border-bravio-granate"
+                    className="w-full bg-white border border-[#B1C7D4]/60 p-2.5 text-bravio-volcanic font-mono focus:outline-none focus:border-bravio-granate rounded-sm"
                   >
                   </input>
                 </div>
               </div>
 
               <div>
-                <label className="block text-bravio-cloudy uppercase tracking-wider mb-1">
+                <label className="block text-bravio-tsunami font-bold uppercase tracking-wider mb-1">
                   Compra Mínima ($ MXN)
                 </label>
                 <input
@@ -255,12 +255,12 @@ export default function AdminPromotionsPage() {
                   min="0"
                   value={newMinPurchase}
                   onChange={(e) => setNewMinPurchase(Number(e.target.value))}
-                  className="w-full bg-[#0F0C09] border border-bravio-volcanic-border p-2.5 text-bravio-bone font-mono focus:outline-none focus:border-bravio-granate"
+                  className="w-full bg-white border border-[#B1C7D4]/60 p-2.5 text-bravio-volcanic font-mono focus:outline-none focus:border-bravio-granate rounded-sm"
                 />
               </div>
 
               <div>
-                <label className="block text-bravio-cloudy uppercase tracking-wider mb-1">
+                <label className="block text-bravio-tsunami font-bold uppercase tracking-wider mb-1">
                   Descripción / Campaña
                 </label>
                 <input
@@ -268,22 +268,22 @@ export default function AdminPromotionsPage() {
                   value={newDescription}
                   onChange={(e) => setNewDescription(e.target.value)}
                   placeholder="Ej: Descuento especial día del padre"
-                  className="w-full bg-[#0F0C09] border border-bravio-volcanic-border p-2.5 text-bravio-bone focus:outline-none focus:border-bravio-granate"
+                  className="w-full bg-white border border-[#B1C7D4]/60 p-2.5 text-bravio-volcanic focus:outline-none focus:border-bravio-granate rounded-sm"
                 />
               </div>
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-bravio-volcanic-border">
+            <div className="flex justify-end gap-3 pt-3 border-t border-[#B1C7D4]/40">
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 border border-bravio-volcanic-border text-xs text-bravio-cloudy"
+                className="px-4 py-2 border border-[#B1C7D4]/60 text-xs text-bravio-tsunami hover:text-bravio-volcanic rounded-sm"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 bg-bravio-granate hover:bg-bravio-granate-light text-bravio-bone text-xs font-bold uppercase tracking-wider transition-colors"
+                className="px-5 py-2 bg-bravio-granate hover:bg-bravio-granate-light text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm rounded-sm"
               >
                 Guardar Cupón
               </button>

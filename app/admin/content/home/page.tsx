@@ -82,15 +82,15 @@ export default function AdminHomeEditorPage() {
 
   return (
     <div className="space-y-8 max-w-6xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#B1C7D4]/40 pb-6">
         <div>
-          <span className="text-xs uppercase tracking-cinematic text-bravio-cloudy font-sans">
+          <span className="text-xs uppercase tracking-widest text-bravio-tsunami font-sans font-bold">
             MODULARIDAD VISUAL
           </span>
-          <h1 className="font-display text-2xl sm:text-3xl text-bravio-bone uppercase tracking-wide mt-1">
+          <h1 className="font-display text-2xl sm:text-3xl text-bravio-volcanic uppercase tracking-wide mt-1">
             EDITOR DE PORTADA (HOME)
           </h1>
-          <p className="text-xs text-bravio-cloudy mt-1 font-light">
+          <p className="text-xs text-bravio-tsunami mt-1 font-light">
             Reorganiza las secciones, personaliza titulares y actualiza imágenes del Hero en tiempo real.
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function AdminHomeEditorPage() {
         <button
           onClick={handleSaveHome}
           disabled={isSaving}
-          className="inline-flex items-center gap-2 px-6 py-2.5 bg-bravio-granate hover:bg-bravio-granate-light disabled:opacity-50 text-bravio-bone text-xs font-sans tracking-widest uppercase rounded transition-colors shadow-lg shadow-bravio-granate/20 font-medium"
+          className="inline-flex items-center gap-2 px-6 py-2.5 bg-bravio-granate hover:bg-bravio-granate-light disabled:opacity-50 text-white text-xs font-sans tracking-widest uppercase rounded-sm transition-colors shadow-sm font-medium"
         >
           {savedNotice ? (
             <>
@@ -116,8 +116,8 @@ export default function AdminHomeEditorPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left 5 cols: Section Reordering & Activation */}
-        <div className="lg:col-span-5 bg-bravio-volcanic-card border border-bravio-volcanic-border rounded p-6 space-y-4">
-          <h3 className="font-display text-sm uppercase text-bravio-bone pb-2 border-b border-bravio-volcanic-border">
+        <div className="lg:col-span-5 bg-white border border-[#B1C7D4]/60 rounded-sm shadow-sm p-6 space-y-4">
+          <h3 className="font-display text-sm uppercase text-bravio-volcanic pb-2 border-b border-[#B1C7D4]/40 font-bold">
             Estructura de Secciones
           </h3>
 
@@ -129,14 +129,14 @@ export default function AdminHomeEditorPage() {
                 <div
                   key={sec.id}
                   onClick={() => setActiveSectionId(sec.id)}
-                  className={`flex items-center justify-between p-3 rounded cursor-pointer transition-all border ${
+                  className={`flex items-center justify-between p-3 rounded-sm cursor-pointer transition-all border ${
                     isSelected
-                      ? "bg-bravio-granate/20 border-bravio-granate text-bravio-bone"
-                      : "bg-bravio-volcanic border-bravio-volcanic-border text-bravio-cloudy hover:text-bravio-bone"
+                      ? "bg-bravio-granate/10 border-bravio-granate text-bravio-volcanic font-bold"
+                      : "bg-[#F8FAFB] border-[#B1C7D4]/40 text-bravio-tsunami hover:text-bravio-volcanic"
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
-                    <span className="font-mono text-xs text-bravio-gold font-bold">
+                    <span className="font-mono text-xs text-bravio-granate font-bold">
                       0{idx + 1}
                     </span>
                     <span className="text-xs font-sans tracking-wider uppercase font-medium">
@@ -150,13 +150,13 @@ export default function AdminHomeEditorPage() {
                         e.stopPropagation();
                         handleToggleSectionEnabled(sec.id);
                       }}
-                      className="p-1 hover:text-bravio-bone transition-colors"
+                      className="p-1 hover:text-bravio-volcanic transition-colors"
                       title={sec.enabled ? "Desactivar sección" : "Activar sección"}
                     >
                       {sec.enabled ? (
-                        <Eye className="w-3.5 h-3.5 text-emerald-400" />
+                        <Eye className="w-3.5 h-3.5 text-emerald-600" />
                       ) : (
-                        <EyeOff className="w-3.5 h-3.5 text-red-400" />
+                        <EyeOff className="w-3.5 h-3.5 text-red-500" />
                       )}
                     </button>
 
@@ -166,7 +166,7 @@ export default function AdminHomeEditorPage() {
                         e.stopPropagation();
                         handleMoveSection(idx, "up");
                       }}
-                      className="p-1 hover:text-bravio-bone disabled:opacity-20 transition-colors"
+                      className="p-1 hover:text-bravio-volcanic disabled:opacity-20 transition-colors"
                       title="Subir sección"
                     >
                       <ArrowUp className="w-3.5 h-3.5" />
@@ -178,7 +178,7 @@ export default function AdminHomeEditorPage() {
                         e.stopPropagation();
                         handleMoveSection(idx, "down");
                       }}
-                      className="p-1 hover:text-bravio-bone disabled:opacity-20 transition-colors"
+                      className="p-1 hover:text-bravio-volcanic disabled:opacity-20 transition-colors"
                       title="Bajar sección"
                     >
                       <ArrowDown className="w-3.5 h-3.5" />
@@ -191,16 +191,16 @@ export default function AdminHomeEditorPage() {
         </div>
 
         {/* Right 7 cols: Section Content Editor */}
-        <div className="lg:col-span-7 bg-bravio-volcanic-card border border-bravio-volcanic-border rounded p-6 space-y-4 text-xs">
-          <div className="flex justify-between items-center pb-2 border-b border-bravio-volcanic-border">
-            <h3 className="font-display text-base uppercase text-bravio-bone">
+        <div className="lg:col-span-7 bg-white border border-[#B1C7D4]/60 rounded-sm shadow-sm p-6 space-y-4 text-xs">
+          <div className="flex justify-between items-center pb-2 border-b border-[#B1C7D4]/40">
+            <h3 className="font-display text-base uppercase text-bravio-volcanic font-bold">
               Editando: {activeSec.title}
             </h3>
             <span
-              className={`text-[10px] font-sans tracking-widest uppercase px-2 py-0.5 rounded ${
+              className={`text-[10px] font-sans tracking-widest uppercase px-2 py-0.5 rounded font-bold ${
                 activeSec.enabled
-                  ? "bg-emerald-500/20 text-emerald-400"
-                  : "bg-red-500/20 text-red-400"
+                  ? "bg-emerald-50 text-emerald-700 border border-emerald-300"
+                  : "bg-red-50 text-red-600 border border-red-200"
               }`}
             >
               {activeSec.enabled ? "Visible en Producción" : "Oculto"}
@@ -210,63 +210,63 @@ export default function AdminHomeEditorPage() {
           {activeSec.type === "hero" && (
             <div className="space-y-4">
               <div>
-                <label className="block text-bravio-cloudy mb-1">Titular Principal (Headline)</label>
+                <label className="block text-bravio-tsunami font-bold mb-1">Titular Principal (Headline)</label>
                 <input
                   type="text"
                   value={activeSec.data.headline || ""}
                   onChange={(e) => handleUpdateActiveData("headline", e.target.value)}
-                  className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone font-display"
+                  className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic font-display focus:outline-none focus:border-bravio-granate"
                 />
               </div>
 
               <div>
-                <label className="block text-bravio-cloudy mb-1">Subtítulo Descriptivo</label>
+                <label className="block text-bravio-tsunami font-bold mb-1">Subtítulo Descriptivo</label>
                 <textarea
                   rows={3}
                   value={activeSec.data.subheadline || ""}
                   onChange={(e) => handleUpdateActiveData("subheadline", e.target.value)}
-                  className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone leading-relaxed"
+                  className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic leading-relaxed focus:outline-none focus:border-bravio-granate"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-bravio-cloudy mb-1">Texto Botón Primario</label>
+                  <label className="block text-bravio-tsunami font-bold mb-1">Texto Botón Primario</label>
                   <input
                     type="text"
                     value={activeSec.data.ctaPrimaryText || ""}
                     onChange={(e) => handleUpdateActiveData("ctaPrimaryText", e.target.value)}
-                    className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+                    className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
                   />
                 </div>
                 <div>
-                  <label className="block text-bravio-cloudy mb-1">Enlace Botón Primario</label>
+                  <label className="block text-bravio-tsunami font-bold mb-1">Enlace Botón Primario</label>
                   <input
                     type="text"
                     value={activeSec.data.ctaPrimaryLink || ""}
                     onChange={(e) => handleUpdateActiveData("ctaPrimaryLink", e.target.value)}
-                    className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone font-mono"
+                    className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic font-mono focus:outline-none focus:border-bravio-granate"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-bravio-cloudy mb-1">Imagen Escritorio (URL)</label>
+                  <label className="block text-bravio-tsunami font-bold mb-1">Imagen Escritorio (URL)</label>
                   <input
                     type="text"
                     value={activeSec.data.desktopImage || ""}
                     onChange={(e) => handleUpdateActiveData("desktopImage", e.target.value)}
-                    className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone font-mono"
+                    className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic font-mono focus:outline-none focus:border-bravio-granate"
                   />
                 </div>
                 <div>
-                  <label className="block text-bravio-cloudy mb-1">Video de Fondo (URL)</label>
+                  <label className="block text-bravio-tsunami font-bold mb-1">Video de Fondo (URL)</label>
                   <input
                     type="text"
                     value={activeSec.data.videoUrl || ""}
                     onChange={(e) => handleUpdateActiveData("videoUrl", e.target.value)}
-                    className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone font-mono"
+                    className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic font-mono focus:outline-none focus:border-bravio-granate"
                   />
                 </div>
               </div>
@@ -276,21 +276,21 @@ export default function AdminHomeEditorPage() {
           {activeSec.type === "manifesto" && (
             <div className="space-y-4">
               <div>
-                <label className="block text-bravio-cloudy mb-1">Texto del Manifiesto</label>
+                <label className="block text-bravio-tsunami font-bold mb-1">Texto del Manifiesto</label>
                 <textarea
                   rows={4}
                   value={activeSec.data.quote || ""}
                   onChange={(e) => handleUpdateActiveData("quote", e.target.value)}
-                  className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone font-display leading-relaxed"
+                  className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic font-display leading-relaxed focus:outline-none focus:border-bravio-granate"
                 />
               </div>
               <div>
-                <label className="block text-bravio-cloudy mb-1">Firma / Autor</label>
+                <label className="block text-bravio-tsunami font-bold mb-1">Firma / Autor</label>
                 <input
                   type="text"
                   value={activeSec.data.author || ""}
                   onChange={(e) => handleUpdateActiveData("author", e.target.value)}
-                  className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+                  className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
                 />
               </div>
             </div>
@@ -299,21 +299,21 @@ export default function AdminHomeEditorPage() {
           {activeSec.type === "craftsmanship" && (
             <div className="space-y-4">
               <div>
-                <label className="block text-bravio-cloudy mb-1">Titular de Artesanía</label>
+                <label className="block text-bravio-tsunami font-bold mb-1">Titular de Artesanía</label>
                 <input
                   type="text"
                   value={activeSec.data.headline || ""}
                   onChange={(e) => handleUpdateActiveData("headline", e.target.value)}
-                  className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+                  className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
                 />
               </div>
               <div>
-                <label className="block text-bravio-cloudy mb-1">Descripción</label>
+                <label className="block text-bravio-tsunami font-bold mb-1">Descripción</label>
                 <textarea
                   rows={4}
                   value={activeSec.data.description || ""}
                   onChange={(e) => handleUpdateActiveData("description", e.target.value)}
-                  className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone leading-relaxed"
+                  className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic leading-relaxed focus:outline-none focus:border-bravio-granate"
                 />
               </div>
             </div>

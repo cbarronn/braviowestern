@@ -809,11 +809,11 @@ class MockDatabase {
     return [...this.auditLogs].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
   }
 
-  private addAudit(action: string, entity: string, entityId: string, details: string) {
+  addAudit(action: string, entity: string, entityId: string, details: string, user = "Admin / Marketing") {
     const log: AuditLog = {
       id: `log-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
       timestamp: new Date().toISOString(),
-      user: "Admin / Marketing",
+      user,
       action,
       entity,
       entityId,

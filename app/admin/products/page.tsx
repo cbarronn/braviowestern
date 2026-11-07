@@ -14,6 +14,7 @@ import {
   AlertCircle 
 } from "lucide-react";
 import { Product } from "@/lib/types";
+import { CruzDeHierro } from "@/components/ui/BravioLogo";
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -78,7 +79,7 @@ export default function AdminProductsPage() {
   };
 
   const handleSimulateExcelSync = () => {
-    showToast("Sincronización idempotente con 'fichas tecnicas.xlsx' completada: 10 modelos verificados.");
+    showToast("Sincronización con fichas tecnicas.xlsx completada. 10 productos actualizados.");
     setIsImportModalOpen(false);
   };
 
@@ -88,30 +89,35 @@ export default function AdminProductsPage() {
       p.name.toLowerCase().includes(query.toLowerCase()) ||
       p.sku.toLowerCase().includes(query.toLowerCase()) ||
       p.leatherType.toLowerCase().includes(query.toLowerCase());
-    const matchCat = selectedCategory === "all" || p.gender === selectedCategory;
+
+    const matchCat =
+      selectedCategory === "all" ||
+      p.gender === selectedCategory ||
+      p.collectionId === selectedCategory;
+
     return matchQuery && matchCat;
   });
 
   return (
-    <div className="p-6 sm:p-10 space-y-8">
+    <div className="space-y-8 font-[SpaceGrotesk] text-[#605246]">
       {/* Toast Alert */}
       {toast && (
-        <div className="fixed top-6 right-6 z-50 bg-[#16120E] border-2 border-emerald-500 text-emerald-300 px-5 py-3 shadow-2xl flex items-center gap-3 font-sans text-xs">
-          <CheckCircle2 size={18} />
+        <div className="fixed top-6 right-6 z-50 bg-white border-2 border-emerald-500 text-emerald-800 px-5 py-3 shadow-2xl flex items-center gap-3 text-xs font-bold">
+          <CheckCircle2 size={18} className="text-emerald-600" />
           <span>{toast}</span>
         </div>
       )}
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-bravio-volcanic-border pb-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#B1C7D4]/40 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <Package size={16} className="text-bravio-granate" />
-            <span className="text-[10px] font-sans tracking-cinematic text-bravio-gold uppercase">
-              Catálogo & Precios
+            <CruzDeHierro size={14} color="#5E1C23" />
+            <span className="text-[10px] tracking-[0.2em] text-[#849AAD] uppercase font-bold">
+              Catálogo & Precios Oficiales
             </span>
           </div>
-          <h1 className="font-display text-2xl sm:text-3xl text-bravio-bone tracking-wider uppercase">
+          <h1 className="font-archivo text-2xl sm:text-3xl text-[#605246] uppercase tracking-wide">
             PRODUCTOS OFICIALES
           </h1>
         </div>
@@ -119,9 +125,9 @@ export default function AdminProductsPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsImportModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2.5 bg-bravio-volcanic-card border border-bravio-volcanic-border hover:bg-bravio-volcanic text-xs font-sans tracking-wider uppercase text-bravio-cloudy transition-colors"
+            className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#B1C7D4] hover:bg-[#F4F7F9] text-xs font-bold uppercase tracking-wider text-[#605246] transition-colors shadow-xs"
           >
-            <FileSpreadsheet size={14} /> Sincronizar Excel
+            <FileSpreadsheet size={14} className="text-[#5E1C23]" /> Sincronizar Excel
           </button>
         </div>
       </div>
@@ -129,13 +135,13 @@ export default function AdminProductsPage() {
       {/* Filters & Search */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="relative flex-1 min-w-[240px]">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-bravio-cloudy" />
+          <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#849AAD]" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Buscar por SKU, nombre del modelo, tipo de piel..."
-            className="w-full bg-bravio-volcanic-card border border-bravio-volcanic-border pl-10 pr-4 py-2 text-xs text-bravio-bone placeholder-bravio-cloudy/50 focus:outline-none focus:border-bravio-granate"
+            className="w-full bg-white border border-[#B1C7D4] pl-10 pr-4 py-2.5 text-xs text-[#605246] placeholder-[#849AAD] focus:outline-none focus:border-[#5E1C23] shadow-xs"
           />
         </div>
 
@@ -144,10 +150,10 @@ export default function AdminProductsPage() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 text-xs font-sans uppercase tracking-wider border transition-colors ${
+              className={`px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider border transition-colors ${
                 selectedCategory === cat
-                  ? "bg-bravio-granate border-bravio-granate text-bravio-bone"
-                  : "bg-bravio-volcanic-card border-bravio-volcanic-border text-bravio-cloudy"
+                  ? "bg-[#5E1C23] border-[#5E1C23] text-white shadow-xs"
+                  : "bg-white border-[#B1C7D4] text-[#605246] hover:bg-[#F4F7F9]"
               }`}
             >
               {cat === "all" ? "Todos" : cat}
@@ -157,9 +163,9 @@ export default function AdminProductsPage() {
       </div>
 
       {/* Products Table */}
-      <div className="bg-bravio-volcanic-card border border-bravio-volcanic-border overflow-x-auto">
-        <table className="w-full text-left font-sans text-xs">
-          <thead className="bg-bravio-volcanic border-b border-bravio-volcanic-border text-bravio-cloudy uppercase tracking-wider text-[10px]">
+      <div className="bg-white border border-[#B1C7D4]/60 overflow-x-auto shadow-xs rounded">
+        <table className="w-full text-left text-xs">
+          <thead className="bg-[#F4F7F9] border-b border-[#B1C7D4]/40 text-[#849AAD] uppercase tracking-wider text-[10px] font-bold">
             <tr>
               <th className="p-4">Foto</th>
               <th className="p-4">SKU / Modelo</th>
@@ -169,36 +175,36 @@ export default function AdminProductsPage() {
               <th className="p-4 text-right">Acciones</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-bravio-volcanic-border text-bravio-bone">
+          <tbody className="divide-y divide-[#B1C7D4]/20 text-[#605246]">
             {filtered.map((p) => (
-              <tr key={p.sku} className="hover:bg-bravio-volcanic/50 transition-colors">
+              <tr key={p.sku} className="hover:bg-[#F4F7F9]/60 transition-colors">
                 <td className="p-4">
-                  <div className="relative w-12 h-14 bg-black border border-bravio-volcanic-border overflow-hidden">
+                  <div className="relative w-12 h-14 bg-white border border-[#B1C7D4]/40 p-1 flex items-center justify-center">
                     <Image
                       src={p.featuredImage || "/brand/image1.png"}
                       alt={p.name}
                       fill
-                      className="object-cover"
+                      className="object-contain p-1"
                     />
                   </div>
                 </td>
                 <td className="p-4">
-                  <span className="font-mono text-bravio-gold text-[11px] block">{p.sku}</span>
-                  <span className="font-display font-medium text-sm text-bravio-bone uppercase">{p.name}</span>
+                  <span className="font-mono text-[#5E1C23] text-[11px] block font-bold">{p.sku}</span>
+                  <span className="font-archivo text-sm text-[#605246] uppercase">{p.name}</span>
                 </td>
-                <td className="p-4 text-bravio-cloudy">
-                  <span className="block text-bravio-bone">{p.leatherType}</span>
-                  <span className="text-[10px]">Goodyear Welt 360° · León Gto</span>
+                <td className="p-4">
+                  <span className="block text-[#605246] font-bold">{p.leatherType}</span>
+                  <span className="text-[10px] text-[#849AAD]">Goodyear Welt 360° · León Gto</span>
                 </td>
-                <td className="p-4 font-mono font-bold text-sm">
+                <td className="p-4 font-archivo text-base text-[#5E1C23] font-bold">
                   ${p.price.toLocaleString("es-MX")}
                 </td>
                 <td className="p-4">
                   <span
-                    className={`inline-block px-2 py-0.5 text-[9px] uppercase tracking-wider font-bold rounded-sm ${
+                    className={`inline-block px-2.5 py-0.5 text-[9px] uppercase tracking-wider font-bold rounded-sm ${
                       p.status === "active"
-                        ? "bg-emerald-950 text-emerald-400 border border-emerald-800"
-                        : "bg-amber-950 text-amber-400 border border-amber-800"
+                        ? "bg-emerald-50 text-emerald-800 border border-emerald-500/30"
+                        : "bg-amber-50 text-amber-800 border border-amber-500/30"
                     }`}
                   >
                     {p.status === "active" ? "Activo" : "Borrador"}
@@ -207,7 +213,7 @@ export default function AdminProductsPage() {
                 <td className="p-4 text-right">
                   <button
                     onClick={() => handleEditClick(p)}
-                    className="p-2 bg-bravio-volcanic hover:bg-bravio-granate/20 text-bravio-cloudy hover:text-bravio-bone border border-bravio-volcanic-border transition-colors"
+                    className="p-2 bg-white hover:bg-[#F4F7F9] text-[#605246] hover:text-[#5E1C23] border border-[#B1C7D4] transition-colors shadow-2xs"
                     title="Editar precio y estado"
                   >
                     <Edit3 size={14} />
@@ -221,39 +227,39 @@ export default function AdminProductsPage() {
 
       {/* Edit Modal */}
       {editingProduct && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#16120E] border border-bravio-volcanic-border w-full max-w-md p-6 space-y-6">
-            <div className="flex justify-between items-center border-b border-bravio-volcanic-border pb-3">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-[#B1C7D4] w-full max-w-md p-6 space-y-6 shadow-2xl">
+            <div className="flex justify-between items-center border-b border-[#B1C7D4]/40 pb-3">
               <div>
-                <span className="text-[10px] font-mono text-bravio-gold">{editingProduct.sku}</span>
-                <h3 className="font-display text-lg text-bravio-bone uppercase">{editingProduct.name}</h3>
+                <span className="text-[10px] font-mono text-[#5E1C23] font-bold">{editingProduct.sku}</span>
+                <h3 className="font-archivo text-lg text-[#605246] uppercase">{editingProduct.name}</h3>
               </div>
-              <button onClick={() => setEditingProduct(null)} className="text-bravio-cloudy hover:text-white">
+              <button onClick={() => setEditingProduct(null)} className="text-[#849AAD] hover:text-[#605246]">
                 <X size={18} />
               </button>
             </div>
 
-            <div className="space-y-4 font-sans text-xs">
+            <div className="space-y-4 text-xs font-[SpaceGrotesk]">
               <div>
-                <label className="block text-bravio-cloudy uppercase tracking-wider mb-1">
+                <label className="block text-[#605246] uppercase font-bold tracking-wider mb-1">
                   Precio de Venta ($ MXN)
                 </label>
                 <input
                   type="number"
                   value={editPrice}
                   onChange={(e) => setEditPrice(Number(e.target.value))}
-                  className="w-full bg-[#0F0C09] border border-bravio-volcanic-border p-2.5 text-bravio-bone font-mono text-sm focus:outline-none focus:border-bravio-granate"
+                  className="w-full bg-[#F4F7F9] border border-[#B1C7D4] p-2.5 text-[#605246] font-mono text-sm focus:outline-none focus:border-[#5E1C23]"
                 />
               </div>
 
               <div>
-                <label className="block text-bravio-cloudy uppercase tracking-wider mb-1">
+                <label className="block text-[#605246] uppercase font-bold tracking-wider mb-1">
                   Estado en Tienda
                 </label>
                 <select
                   value={editStatus}
                   onChange={(e) => setEditStatus(e.target.value as any)}
-                  className="w-full bg-[#0F0C09] border border-bravio-volcanic-border p-2.5 text-bravio-bone text-xs focus:outline-none focus:border-bravio-granate"
+                  className="w-full bg-[#F4F7F9] border border-[#B1C7D4] p-2.5 text-[#605246] text-xs focus:outline-none focus:border-[#5E1C23]"
                 >
                   <option value="active">Activo (Visible en catálogo y compras)</option>
                   <option value="draft">Borrador (Oculto)</option>
@@ -262,17 +268,17 @@ export default function AdminProductsPage() {
               </div>
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-bravio-volcanic-border">
+            <div className="flex justify-end gap-3 pt-3 border-t border-[#B1C7D4]/40">
               <button
                 onClick={() => setEditingProduct(null)}
-                className="px-4 py-2 border border-bravio-volcanic-border text-xs text-bravio-cloudy"
+                className="px-4 py-2 border border-[#B1C7D4] text-xs text-[#605246] font-bold"
               >
                 Cancelar
               </button>
               <button
                 onClick={handleSaveEdit}
                 disabled={isSaving}
-                className="px-5 py-2 bg-bravio-granate hover:bg-bravio-granate-light text-bravio-bone text-xs font-bold uppercase tracking-wider transition-colors"
+                className="px-5 py-2 bg-[#5E1C23] hover:bg-[#47151a] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm"
               >
                 {isSaving ? "Guardando..." : "Guardar Cambios"}
               </button>
@@ -283,38 +289,38 @@ export default function AdminProductsPage() {
 
       {/* Excel Sync Modal */}
       {isImportModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#16120E] border border-bravio-volcanic-border w-full max-w-lg p-6 space-y-6">
-            <div className="flex justify-between items-center border-b border-bravio-volcanic-border pb-3">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-[#B1C7D4] w-full max-w-lg p-6 space-y-6 shadow-2xl">
+            <div className="flex justify-between items-center border-b border-[#B1C7D4]/40 pb-3">
               <div className="flex items-center gap-2">
-                <FileSpreadsheet className="text-bravio-gold" size={18} />
-                <h3 className="font-display text-lg text-bravio-bone uppercase">Sincronización Fichas Técnicas</h3>
+                <FileSpreadsheet className="text-[#5E1C23]" size={18} />
+                <h3 className="font-archivo text-lg text-[#605246] uppercase">Sincronización Fichas Técnicas</h3>
               </div>
-              <button onClick={() => setIsImportModalOpen(false)} className="text-bravio-cloudy hover:text-white">
+              <button onClick={() => setIsImportModalOpen(false)} className="text-[#849AAD] hover:text-[#605246]">
                 <X size={18} />
               </button>
             </div>
 
-            <p className="font-sans text-xs text-bravio-cloudy leading-relaxed">
-              El importador lee el archivo maestro <code className="text-bravio-bone bg-black px-1.5 py-0.5">fichas tecnicas.xlsx</code> y actualiza de manera idempotente los SKUs, materiales de corte, forro flor de cerdo, suelas de vaqueta y precios oficiales sin alterar imágenes ya asignadas.
+            <p className="text-xs text-[#849AAD] leading-relaxed">
+              El importador lee el archivo maestro <code className="text-[#605246] bg-[#F4F7F9] px-1.5 py-0.5 border border-[#B1C7D4]/40 font-mono">fichas tecnicas.xlsx</code> y actualiza de manera idempotente los SKUs, materiales de corte, forro flor de cerdo, suelas de vaqueta y precios oficiales sin alterar imágenes ya asignadas.
             </p>
 
-            <div className="p-4 bg-bravio-volcanic border border-bravio-volcanic-border text-[11px] font-sans text-bravio-cloudy space-y-1">
+            <div className="p-4 bg-[#F4F7F9] border border-[#B1C7D4]/50 text-[11px] text-[#605246] space-y-1">
               <p>✦ <strong>Fuente:</strong> fichas tecnicas.xlsx (León, Guanajuato)</p>
               <p>✦ <strong>Modo:</strong> Idempotente (Upsert sin duplicar registros)</p>
               <p>✦ <strong>Validación:</strong> Tallas mexicanas 25 a 30 MX obligatorias</p>
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-bravio-volcanic-border">
+            <div className="flex justify-end gap-3 pt-3 border-t border-[#B1C7D4]/40">
               <button
                 onClick={() => setIsImportModalOpen(false)}
-                className="px-4 py-2 border border-bravio-volcanic-border text-xs text-bravio-cloudy"
+                className="px-4 py-2 border border-[#B1C7D4] text-xs text-[#605246] font-bold"
               >
                 Cerrar
               </button>
               <button
                 onClick={handleSimulateExcelSync}
-                className="px-5 py-2 bg-bravio-granate hover:bg-bravio-granate-light text-bravio-bone text-xs font-bold uppercase tracking-wider transition-colors"
+                className="px-5 py-2 bg-[#5E1C23] hover:bg-[#47151a] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm"
               >
                 Ejecutar Sincronización
               </button>

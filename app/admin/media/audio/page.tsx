@@ -100,22 +100,22 @@ export default function AdminAudioPage() {
 
   return (
     <div className="space-y-8 max-w-5xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#B1C7D4]/40 pb-6">
         <div>
-          <span className="text-xs uppercase tracking-cinematic text-bravio-cloudy font-sans">
+          <span className="text-xs uppercase tracking-widest text-bravio-tsunami font-sans font-bold">
             AMBIENTACIÓN SONORA
           </span>
-          <h1 className="font-display text-2xl sm:text-3xl text-bravio-bone uppercase tracking-wide mt-1">
+          <h1 className="font-display text-2xl sm:text-3xl text-bravio-volcanic uppercase tracking-wide mt-1">
             ADMINISTRACIÓN DE AUDIO WESTERN
           </h1>
-          <p className="text-xs text-bravio-cloudy mt-1 font-light">
+          <p className="text-xs text-bravio-tsunami mt-1 font-light">
             Gestiona la banda sonora contemporánea (guitarras acústicas y slide) y el cumplimiento de derechos de autor.
           </p>
         </div>
 
         <button
           onClick={() => setShowAddModal(true)}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-bravio-granate hover:bg-bravio-granate-light text-bravio-bone text-xs font-sans tracking-widest uppercase rounded transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-bravio-granate hover:bg-bravio-granate-light text-white text-xs font-sans tracking-widest uppercase rounded-sm transition-colors shadow-sm font-bold"
         >
           <Plus className="w-4 h-4" />
           <span>Subir Pista Musical</span>
@@ -130,17 +130,17 @@ export default function AdminAudioPage() {
           return (
             <div
               key={track.id}
-              className={`p-6 rounded-sm border bg-bravio-volcanic-card transition-all ${
+              className={`p-6 rounded-sm border bg-white shadow-sm transition-all ${
                 track.isMain
-                  ? "border-bravio-granate ring-1 ring-bravio-granate/50"
-                  : "border-bravio-volcanic-border"
+                  ? "border-bravio-granate ring-1 ring-bravio-granate/40"
+                  : "border-[#B1C7D4]/60"
               }`}
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                 <div className="flex items-center gap-4">
                   <button
                     onClick={() => handleTogglePreview(track)}
-                    className="w-12 h-12 rounded-full bg-bravio-granate/20 text-bravio-bone hover:bg-bravio-granate flex items-center justify-center transition-colors flex-shrink-0"
+                    className="w-12 h-12 rounded-full bg-bravio-granate/10 text-bravio-granate hover:bg-bravio-granate hover:text-white flex items-center justify-center transition-colors flex-shrink-0"
                     title={isPreviewing ? "Detener vista previa" : "Escuchar vista previa"}
                   >
                     {isPreviewing ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-0.5" />}
@@ -148,17 +148,17 @@ export default function AdminAudioPage() {
 
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-display text-base text-bravio-bone uppercase">
+                      <h3 className="font-display text-base text-bravio-volcanic uppercase font-bold">
                         {track.title}
                       </h3>
                       {track.isMain && (
-                        <span className="bg-bravio-granate text-bravio-bone text-[10px] font-sans tracking-widest uppercase px-2 py-0.5 rounded">
+                        <span className="bg-bravio-granate text-white text-[10px] font-sans tracking-widest uppercase px-2 py-0.5 rounded-sm font-bold">
                           PISTA PRINCIPAL
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-bravio-cloudy mt-0.5">
-                      {track.artist} • <span className="text-bravio-gold">{track.genre}</span>
+                    <p className="text-xs text-bravio-tsunami mt-0.5">
+                      {track.artist} • <span className="text-bravio-granate font-medium">{track.genre}</span>
                     </p>
                   </div>
                 </div>
@@ -166,10 +166,10 @@ export default function AdminAudioPage() {
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => handleToggleEnabled(track)}
-                    className={`px-3 py-1.5 rounded text-xs font-sans tracking-wider uppercase transition-colors ${
+                    className={`px-3 py-1.5 rounded-sm text-xs font-sans tracking-wider uppercase transition-colors font-bold ${
                       track.isEnabled
-                        ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-                        : "bg-bravio-volcanic text-bravio-cloudy/60 border border-bravio-volcanic-border"
+                        ? "bg-emerald-50 text-emerald-700 border border-emerald-300"
+                        : "bg-[#F8FAFB] text-bravio-tsunami border border-[#B1C7D4]/40"
                     }`}
                   >
                     {track.isEnabled ? "Ambientación Activa" : "Deshabilitada"}
@@ -178,7 +178,7 @@ export default function AdminAudioPage() {
                   {!track.isMain && (
                     <button
                       onClick={() => handleSetMain(track.id)}
-                      className="px-3 py-1.5 bg-bravio-volcanic hover:bg-bravio-volcanic-border text-bravio-bone border border-bravio-volcanic-border rounded text-xs font-sans tracking-wider uppercase transition-colors"
+                      className="px-3 py-1.5 bg-white hover:bg-[#F8FAFB] text-bravio-volcanic border border-[#B1C7D4]/60 rounded-sm text-xs font-sans tracking-wider uppercase transition-colors shadow-sm font-bold"
                     >
                       Asignar como Principal
                     </button>
@@ -187,15 +187,15 @@ export default function AdminAudioPage() {
               </div>
 
               {/* License and copyright compliance */}
-              <div className="pt-4 border-t border-bravio-volcanic-border text-xs flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                <div className="flex items-center gap-2 text-bravio-cloudy">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <div className="pt-4 border-t border-[#B1C7D4]/40 text-xs flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                <div className="flex items-center gap-2 text-bravio-tsunami">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                   <span>
-                    Licencia: <span className="text-bravio-bone">{track.licenseDetails}</span>
+                    Licencia: <span className="text-bravio-volcanic font-medium">{track.licenseDetails}</span>
                   </span>
                 </div>
 
-                <div className="flex items-center gap-4 text-bravio-cloudy text-[11px]">
+                <div className="flex items-center gap-4 text-bravio-tsunami text-[11px] font-medium">
                   <span>Volumen Inicial: {Math.round(track.initialVolume * 100)}%</span>
                   <span>Bucle: {track.loop ? "Sí" : "No"}</span>
                 </div>
@@ -207,59 +207,59 @@ export default function AdminAudioPage() {
 
       {/* Add Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-bravio-volcanic-card border border-bravio-volcanic-border rounded max-w-lg w-full p-6 text-xs text-bravio-bone space-y-4">
-            <h3 className="font-display text-base uppercase text-bravio-bone pb-2 border-b border-bravio-volcanic-border">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+          <div className="bg-white border border-[#B1C7D4]/60 rounded-sm shadow-xl max-w-lg w-full p-6 text-xs text-bravio-volcanic space-y-4">
+            <h3 className="font-display text-base uppercase text-bravio-volcanic pb-2 border-b border-[#B1C7D4]/40 font-bold">
               Nueva Pista de Audio Autorizada
             </h3>
 
             <form onSubmit={handleAddTrack} className="space-y-4">
               <div>
-                <label className="block text-bravio-cloudy mb-1">Título de la Pieza *</label>
+                <label className="block text-bravio-tsunami font-bold mb-1">Título de la Pieza *</label>
                 <input
                   required
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Ej. Desierto de Sonora (Guitarras & Slide)"
-                  className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+                  className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-bravio-cloudy mb-1">Compositor / Artista</label>
+                  <label className="block text-bravio-tsunami font-bold mb-1">Compositor / Artista</label>
                   <input
                     type="text"
                     value={artist}
                     onChange={(e) => setArtist(e.target.value)}
-                    className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+                    className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
                   />
                 </div>
                 <div>
-                  <label className="block text-bravio-cloudy mb-1">Género</label>
+                  <label className="block text-bravio-tsunami font-bold mb-1">Género</label>
                   <input
                     type="text"
                     value={genre}
                     onChange={(e) => setGenre(e.target.value)}
-                    className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+                    className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-bravio-cloudy mb-1">Ruta del Archivo *</label>
+                <label className="block text-bravio-tsunami font-bold mb-1">Ruta del Archivo *</label>
                 <input
                   required
                   type="text"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone font-mono"
+                  className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic font-mono focus:outline-none focus:border-bravio-granate"
                 />
               </div>
 
               <div>
-                <label className="block text-bravio-cloudy mb-1">
+                <label className="block text-bravio-tsunami font-bold mb-1">
                   Licencia & Documentación de Derechos de Autor *
                 </label>
                 <textarea
@@ -268,7 +268,7 @@ export default function AdminAudioPage() {
                   value={licenseDetails}
                   onChange={(e) => setLicenseDetails(e.target.value)}
                   placeholder="Describe el contrato, comprobante de compra o autorización comercial de la composición musical para uso en web..."
-                  className="w-full bg-bravio-volcanic border border-bravio-volcanic-border rounded px-3 py-2 text-bravio-bone"
+                  className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic focus:outline-none focus:border-bravio-granate"
                 />
               </div>
 
@@ -280,22 +280,22 @@ export default function AdminAudioPage() {
                   onChange={(e) => setLoop(e.target.checked)}
                   className="accent-bravio-granate"
                 />
-                <label htmlFor="loop" className="text-bravio-cloudy">
+                <label htmlFor="loop" className="text-bravio-tsunami font-medium">
                   Reproducir continuamente en bucle durante la sesión
                 </label>
               </div>
 
-              <div className="flex justify-end gap-3 pt-4 border-t border-bravio-volcanic-border">
+              <div className="flex justify-end gap-3 pt-4 border-t border-[#B1C7D4]/40">
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 bg-bravio-volcanic border border-bravio-volcanic-border rounded text-bravio-cloudy"
+                  className="px-4 py-2 bg-white border border-[#B1C7D4]/60 rounded-sm text-bravio-tsunami hover:text-bravio-volcanic"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-bravio-granate hover:bg-bravio-granate-light text-bravio-bone rounded uppercase tracking-wider font-medium"
+                  className="px-5 py-2 bg-bravio-granate hover:bg-bravio-granate-light text-white rounded-sm uppercase tracking-wider font-bold shadow-sm"
                 >
                   Guardar Pista
                 </button>
