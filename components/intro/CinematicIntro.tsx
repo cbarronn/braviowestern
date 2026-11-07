@@ -127,12 +127,12 @@ export default function CinematicIntro({
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#1F1915] overflow-hidden select-none"
     >
       {/* =========================================================
-          ATMÓSFERA OFICIAL DEL MANUAL DE MARCA BRAVÍO:
+          ATMÓSFERA OFICIAL DEL MANUAL DE MARCA BRAVÍO (SIN CUADRÍCULA):
           - Volcanic Island (#605246): Base volcánica terrosa y profunda
-          - Cloudy Valley (#B1C7D4): Cielo y luz atmosférica principal (60%)
+          - Cloudy Valley (#B1C7D4): Luz y auras etéreas principales (60%)
           - Tsunami (#849AAD): Contraste y profundidad (15%)
           - Red Oxide (#5E1C23): Acento forjado e ígneo (5%)
-          Sin videos de fondo para evitar duplicidad de marcas o empalmes.
+          Textura orgánica con haces volumétricos, partículas y resplandor
       ========================================================= */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Volcanic Island Canvas */}
@@ -140,51 +140,90 @@ export default function CinematicIntro({
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 48%, #605246 0%, #382F28 45%, #181411 100%)",
+              "radial-gradient(ellipse at 50% 48%, #4A3E35 0%, #2A231D 50%, #120F0C 100%)",
           }}
         />
 
-        {/* Luminous Cloudy Valley Wave (Top Left) */}
+        {/* Volumetric Soft Ray Beams */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-30">
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 140, repeat: Infinity, ease: "linear" }}
+            className="w-[180vw] h-[180vw] max-w-[1400px] max-h-[1400px]"
+            style={{
+              background:
+                "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(177,199,212,0.14) 30deg, transparent 60deg, rgba(132,154,173,0.12) 120deg, transparent 180deg, rgba(177,199,212,0.16) 220deg, transparent 270deg, rgba(94,28,35,0.14) 320deg, transparent 360deg)",
+              filter: "blur(40px)",
+            }}
+          />
+        </div>
+
+        {/* Luminous Cloudy Valley Wave (Top Center) */}
         <motion.div
           animate={{
-            scale: [1, 1.2, 1],
+            scale: [1, 1.25, 1],
+            opacity: [0.4, 0.65, 0.4],
+            y: ["-3%", "3%", "-3%"],
+          }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[120vw] h-[100vh] bg-[radial-gradient(ellipse_at_center,rgba(177,199,212,0.35)_0%,rgba(132,154,173,0.15)_45%,transparent_75%)] mix-blend-screen filter blur-2xl"
+        />
+
+        {/* Warm Volcanic & Red Oxide Glow (Bottom) */}
+        <motion.div
+          animate={{
+            scale: [1.1, 1, 1.1],
             opacity: [0.35, 0.55, 0.35],
-            x: ["-4%", "4%", "-4%"],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-1/4 -left-1/4 w-[140vw] h-[140vh] bg-[radial-gradient(circle_at_center,rgba(177,199,212,0.32)_0%,rgba(132,154,173,0.15)_40%,transparent_75%)] mix-blend-screen"
-        />
-
-        {/* Tsunami & Red Oxide Deep Warmth Pulse (Bottom Right) */}
-        <motion.div
-          animate={{
-            scale: [1.15, 1, 1.15],
-            opacity: [0.3, 0.5, 0.3],
-            y: ["-4%", "4%", "-4%"],
           }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-1/4 -right-1/4 w-[130vw] h-[130vh] bg-[radial-gradient(circle_at_center,rgba(94,28,35,0.35)_0%,rgba(132,154,173,0.2)_45%,transparent_80%)] mix-blend-screen"
+          className="absolute -bottom-1/3 left-1/2 -translate-x-1/2 w-[120vw] h-[90vh] bg-[radial-gradient(ellipse_at_center,rgba(94,28,35,0.38)_0%,rgba(96,82,70,0.25)_45%,transparent_75%)] mix-blend-screen filter blur-2xl"
         />
 
         {/* Anamorphic Cloudy Valley Flare Sweep */}
         <motion.div
           animate={{
             x: ["-120%", "220%"],
-            opacity: [0, 0.6, 0],
+            opacity: [0, 0.55, 0],
           }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.5 }}
-          className="absolute inset-y-0 w-2/5 bg-gradient-to-r from-transparent via-[#B1C7D4]/30 to-transparent skew-x-12 pointer-events-none"
+          transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.5 }}
+          className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-[#B1C7D4]/35 to-transparent skew-x-12 pointer-events-none filter blur-sm"
         />
 
-        {/* Retícula editorial suave inspirada en el manual de marca */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, #B1C7D4 1px, transparent 1px), linear-gradient(to bottom, #B1C7D4 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
+        {/* Organic Floating Stardust Embers */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {[
+            { top: "20%", left: "15%", size: 3, delay: 0, duration: 6 },
+            { top: "65%", left: "22%", size: 2, delay: 1, duration: 7 },
+            { top: "35%", left: "80%", size: 3.5, delay: 2, duration: 8 },
+            { top: "75%", left: "75%", size: 2.5, delay: 1.5, duration: 6.5 },
+            { top: "15%", left: "60%", size: 2, delay: 3, duration: 7.5 },
+            { top: "50%", left: "45%", size: 4, delay: 0.5, duration: 5.5 },
+            { top: "85%", left: "35%", size: 3, delay: 2.5, duration: 8.5 },
+          ].map((star, i) => (
+            <motion.div
+              key={i}
+              animate={{
+                y: ["0px", "-40px", "0px"],
+                opacity: [0.2, 0.85, 0.2],
+                scale: [0.8, 1.3, 0.8],
+              }}
+              transition={{
+                duration: star.duration,
+                repeat: Infinity,
+                delay: star.delay,
+                ease: "easeInOut",
+              }}
+              className="absolute rounded-full bg-[#B1C7D4]"
+              style={{
+                top: star.top,
+                left: star.left,
+                width: `${star.size}px`,
+                height: `${star.size}px`,
+                boxShadow: "0 0 10px rgba(177,199,212,0.9)",
+              }}
+            />
+          ))}
+        </div>
 
         {/* Vignette de Volcanic Island para enfocar el centro */}
         <div className="absolute inset-0 bg-radial-vignette opacity-80" />
