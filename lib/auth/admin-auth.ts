@@ -119,7 +119,7 @@ export async function createTwoFactorChallenge(user: AdminUser): Promise<{
 
   try {
     await sendEmail({
-      from: "BRAVÍO Control <seguridad@braviowestern.com.mx>",
+      from: "BRAVÍO Western <hola@braviowestern.com.mx>",
       to: user.email,
       subject: `Código de Verificación BRAVÍO: ${code}`,
       html: htmlContent,
