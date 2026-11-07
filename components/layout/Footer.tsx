@@ -57,12 +57,12 @@ export default function Footer() {
                 <div className="flex items-center gap-2.5">
                   {/* Instagram */}
                   <a
-                    href="https://instagram.com/braviowestern"
+                    href="https://www.instagram.com/bravio_western?dlrf=MWUwY3Z3NWR6a3duMw=="
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#5E1C23] border border-white/10 hover:border-[#5E1C23] flex items-center justify-center text-bravio-cloudy hover:text-white transition-all duration-300"
-                    title="Instagram @braviowestern"
-                    aria-label="Instagram de BRAVÍO Western"
+                    title="Instagram @bravio_western"
+                    aria-label="Instagram oficial de BRAVÍO Western"
                   >
                     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2 stroke-linecap-round stroke-linejoin-round">
                       <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -73,12 +73,12 @@ export default function Footer() {
 
                   {/* Facebook */}
                   <a
-                    href="https://facebook.com/braviowestern"
+                    href="https://www.facebook.com/share/1CUakum76M/?mibextid=wwXIfr"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#5E1C23] border border-white/10 hover:border-[#5E1C23] flex items-center justify-center text-bravio-cloudy hover:text-white transition-all duration-300"
                     title="Facebook BRAVÍO Western"
-                    aria-label="Facebook de BRAVÍO Western"
+                    aria-label="Facebook oficial de BRAVÍO Western"
                   >
                     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2 stroke-linecap-round stroke-linejoin-round">
                       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -87,12 +87,12 @@ export default function Footer() {
 
                   {/* TikTok */}
                   <a
-                    href="https://tiktok.com/@braviowestern"
+                    href="https://www.tiktok.com/@bravio.western.01?_r=1&_t=ZS-9A2EvLdOPp4"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#5E1C23] border border-white/10 hover:border-[#5E1C23] flex items-center justify-center text-bravio-cloudy hover:text-white transition-all duration-300"
-                    title="TikTok @braviowestern"
-                    aria-label="TikTok de BRAVÍO Western"
+                    title="TikTok @bravio.western.01"
+                    aria-label="TikTok oficial de BRAVÍO Western"
                   >
                     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
                       <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.69a6.34 6.34 0 0 0 6.34 6.31 6.34 6.34 0 0 0 6.34-6.31V9.56a8.16 8.16 0 0 0 4.91 1.64V7.75a4.78 4.78 0 0 1-1-.06z" />
@@ -101,7 +101,7 @@ export default function Footer() {
 
                   {/* WhatsApp */}
                   <a
-                    href="https://wa.me/524771234567?text=Hola%20BRAV%C3%8DO%2C%20quisiera%20asesor%C3%ADa%20sobre%20sus%20botas%20artesanales"
+                    href="https://wa.me/524777296578?text=Hola%20BRAV%C3%8DO%2C%20quisiera%20asesor%C3%ADa%20sobre%20sus%20botas%20artesanales"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-8 h-8 rounded-full bg-white/5 hover:bg-emerald-700 border border-white/10 hover:border-emerald-700 flex items-center justify-center text-bravio-cloudy hover:text-white transition-all duration-300"

@@ -7,7 +7,7 @@ import { CruzDeHierro } from "@/components/ui/BravioLogo";
 const SOCIAL_LINKS = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/wbravio?stkn=MWUwY3Z3NWR6a3duMw==",
+    href: "https://www.instagram.com/bravio_western?dlrf=MWUwY3Z3NWR6a3duMw==",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -27,7 +27,7 @@ const SOCIAL_LINKS = [
   },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/share/1DqKq1kg4q/?mibextid=wwXIfr",
+    href: "https://www.facebook.com/share/1CUakum76M/?mibextid=wwXIfr",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
