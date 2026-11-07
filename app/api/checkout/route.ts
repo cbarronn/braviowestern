@@ -30,11 +30,15 @@ export async function POST(req: NextRequest) {
     let paymentUrl = null;
     let isTestDemo = true;
 
-    // Check if live Mercado Pago access token is provided
-    const mpAccessToken = process.env.MERCADOPAGO_ACCESS_TOKEN || process.env.MP_ACCESS_TOKEN;
+    // Get payment configuration from database with env fallbacks
+    const paymentSettings = db.getPaymentSettings();
+    const mpAccessToken = 
+      paymentSettings.mercadopago.accessToken || 
+      process.env.MERCADOPAGO_ACCESS_TOKEN || 
+      process.env.MP_ACCESS_TOKEN;
 
     if (paymentMethod === "mercadopago") {
-      if (mpAccessToken) {
+      if (mpAccessToken && !mpAccessToken.startsWith("TEST-placeholder")) {
         try {
           const client = new MercadoPagoConfig({ accessToken: mpAccessToken });
           const preference = new Preference(client);
@@ -69,7 +73,7 @@ export async function POST(req: NextRequest) {
               },
               auto_return: "approved",
               external_reference: order.orderNumber,
-              statement_descriptor: "BRAVIO WESTERN",
+              statement_descriptor: paymentSettings.mercadopago.statementDescriptor || "BRAVIO WESTERN",
             },
           });
 

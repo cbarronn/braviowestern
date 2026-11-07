@@ -7,12 +7,13 @@ import {
   IntroConfig, 
   Order, 
   AuditLog, 
-  VirtualFolder,
-  Product,
-  Customer,
-  Coupon,
-  AdminUser,
-  InventoryRecord
+  VirtualFolder, 
+  Product, 
+  Customer, 
+  Coupon, 
+  AdminUser, 
+  InventoryRecord,
+  PaymentSettings
 } from "@/lib/types";
 import { PRODUCTS_CATALOG } from "./products";
 
@@ -353,6 +354,33 @@ const INITIAL_AUDIT_LOGS: AuditLog[] = [
   }
 ];
 
+const INITIAL_PAYMENT_SETTINGS: PaymentSettings = {
+  mercadopago: {
+    enabled: true,
+    sandboxMode: true,
+    publicKey: process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY || process.env.MP_PUBLIC_KEY || "TEST-8f6a9e10-3841-4562-b91c-7d9a10243567",
+    accessToken: process.env.MERCADOPAGO_ACCESS_TOKEN || process.env.MP_ACCESS_TOKEN || "TEST-7281940182746190-041215-6f17e3f890124cba7e6f890123456789-109283746",
+    clientId: "",
+    clientSecret: "",
+    installmentsEnabled: true,
+    maxInstallments: 12,
+    statementDescriptor: "BRAVIO WESTERN",
+  },
+  spei: {
+    enabled: true,
+    bankName: "BBVA México",
+    beneficiary: "BRAVÍO WESTERN TRADING S.A. DE C.V.",
+    clabe: "012 225 0011 8293 8472",
+    accountNumber: "1182938472",
+    notificationEmail: "pagos@braviowestern.com.mx",
+    notificationWhatsapp: "+52 (477) 729-6578",
+    instructions: "Transfiere el monto exacto vía SPEI. Ingresa tu número de pedido en el concepto/referencia para agilizar la validación automática.",
+    expirationHours: 48,
+  },
+  updatedAt: new Date().toISOString(),
+  updatedBy: "Sistema",
+};
+
 // In-Memory Data Store (simulates Postgres with persistence capability)
 class MockDatabase {
   private media: MediaItem[] = [...INITIAL_MEDIA];
@@ -364,6 +392,7 @@ class MockDatabase {
   private orders: Order[] = [];
   private auditLogs: AuditLog[] = [...INITIAL_AUDIT_LOGS];
   private products: Product[] = [...PRODUCTS_CATALOG];
+  private paymentSettings: PaymentSettings = { ...INITIAL_PAYMENT_SETTINGS };
   private customers: Customer[] = [
     {
       id: "cust-1",
@@ -804,6 +833,45 @@ class MockDatabase {
         { size: "29 MX", units: 11 },
       ],
     };
+  }
+
+  // Payment Settings
+  getPaymentSettings(): PaymentSettings {
+    if (!this.paymentSettings) {
+      this.paymentSettings = JSON.parse(JSON.stringify(INITIAL_PAYMENT_SETTINGS));
+    }
+    return {
+      ...this.paymentSettings,
+      mercadopago: { ...this.paymentSettings.mercadopago },
+      spei: { ...this.paymentSettings.spei }
+    };
+  }
+
+  updatePaymentSettings(updates: { mercadopago?: Partial<PaymentSettings["mercadopago"]>; spei?: Partial<PaymentSettings["spei"]> }, updatedBy = "cbarron"): PaymentSettings {
+    if (!this.paymentSettings) {
+      this.paymentSettings = JSON.parse(JSON.stringify(INITIAL_PAYMENT_SETTINGS));
+    }
+    this.paymentSettings = {
+      ...this.paymentSettings,
+      mercadopago: {
+        ...this.paymentSettings.mercadopago,
+        ...(updates.mercadopago || {}),
+      },
+      spei: {
+        ...this.paymentSettings.spei,
+        ...(updates.spei || {}),
+      },
+      updatedAt: new Date().toISOString(),
+      updatedBy,
+    };
+    this.addAudit(
+      "PAYMENT_SETTINGS_UPDATE",
+      "PaymentSettings",
+      "payments",
+      `Ajustes de pago actualizados (Mercado Pago: ${this.paymentSettings.mercadopago.enabled ? "Activo" : "Inactivo"} [${this.paymentSettings.mercadopago.sandboxMode ? "Sandbox" : "Producción"}], SPEI: ${this.paymentSettings.spei.enabled ? "Activo" : "Inactivo"} [${this.paymentSettings.spei.bankName}])`,
+      updatedBy
+    );
+    return this.getPaymentSettings();
   }
 
   // Audit

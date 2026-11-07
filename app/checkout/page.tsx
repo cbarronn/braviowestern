@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCommerceStore } from "@/lib/store/commerce-store";
@@ -11,6 +11,11 @@ export default function CheckoutPage() {
   const router = useRouter();
   const { cart, getCartTotal, clearCart } = useCommerceStore();
   const { subtotal, shipping, total } = getCartTotal();
+
+  const [paymentConfig, setPaymentConfig] = useState<{
+    mercadopago?: { enabled: boolean; maxInstallments?: number };
+    spei?: { enabled: boolean; bankName: string; clabe: string; beneficiary: string };
+  } | null>(null);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -28,6 +33,20 @@ export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState<"mercadopago" | "transferencia">("mercadopago");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [completedOrder, setCompletedOrder] = useState<any>(null);
+
+  useEffect(() => {
+    fetch("/api/settings/payments")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.settings) {
+          setPaymentConfig(data.settings);
+          if (!data.settings.mercadopago?.enabled && data.settings.spei?.enabled) {
+            setPaymentMethod("transferencia");
+          }
+        }
+      })
+      .catch((err) => console.error("Could not load payment settings:", err));
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -317,43 +336,47 @@ export default function CheckoutPage() {
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div
-                  onClick={() => setPaymentMethod("mercadopago")}
-                  className={`p-4 border cursor-pointer transition-all flex items-start gap-3 ${
-                    paymentMethod === "mercadopago"
-                      ? "bg-[#5E1C23]/5 border-[#5E1C23] ring-1 ring-[#5E1C23]"
-                      : "bg-white border-[#B1C7D4]/60 hover:border-[#605246]/40"
-                  }`}
-                >
-                  <CreditCard className="w-5 h-5 text-[#5E1C23] flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-archivo text-xs text-[#605246] uppercase">
-                      Mercado Pago (Tarjetas & OXXO)
-                    </h4>
-                    <p className="text-[11px] font-[SpaceGrotesk] text-[#849AAD] mt-1">
-                      Hasta 12 meses, débito, crédito o pago en efectivo en OXXO.
-                    </p>
+                {paymentConfig?.mercadopago?.enabled !== false && (
+                  <div
+                    onClick={() => setPaymentMethod("mercadopago")}
+                    className={`p-4 border cursor-pointer transition-all flex items-start gap-3 ${
+                      paymentMethod === "mercadopago"
+                        ? "bg-[#5E1C23]/5 border-[#5E1C23] ring-1 ring-[#5E1C23]"
+                        : "bg-white border-[#B1C7D4]/60 hover:border-[#605246]/40"
+                    }`}
+                  >
+                    <CreditCard className="w-5 h-5 text-[#5E1C23] flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-archivo text-xs text-[#605246] uppercase">
+                        Mercado Pago (Tarjetas & OXXO)
+                      </h4>
+                      <p className="text-[11px] font-[SpaceGrotesk] text-[#849AAD] mt-1">
+                        Hasta {paymentConfig?.mercadopago?.maxInstallments || 12} meses, débito, crédito o pago en efectivo en OXXO.
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div
-                  onClick={() => setPaymentMethod("transferencia")}
-                  className={`p-4 border cursor-pointer transition-all flex items-start gap-3 ${
-                    paymentMethod === "transferencia"
-                      ? "bg-[#5E1C23]/5 border-[#5E1C23] ring-1 ring-[#5E1C23]"
-                      : "bg-white border-[#B1C7D4]/60 hover:border-[#605246]/40"
-                  }`}
-                >
-                  <Landmark className="w-5 h-5 text-[#5E1C23] flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-archivo text-xs text-[#605246] uppercase">
-                      Transferencia SPEI Directa
-                    </h4>
-                    <p className="text-[11px] font-[SpaceGrotesk] text-[#849AAD] mt-1">
-                      Confirmación vía CLABE BBVA. Sin comisiones de pasarela.
-                    </p>
+                {paymentConfig?.spei?.enabled !== false && (
+                  <div
+                    onClick={() => setPaymentMethod("transferencia")}
+                    className={`p-4 border cursor-pointer transition-all flex items-start gap-3 ${
+                      paymentMethod === "transferencia"
+                        ? "bg-[#5E1C23]/5 border-[#5E1C23] ring-1 ring-[#5E1C23]"
+                        : "bg-white border-[#B1C7D4]/60 hover:border-[#605246]/40"
+                    }`}
+                  >
+                    <Landmark className="w-5 h-5 text-[#5E1C23] flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-archivo text-xs text-[#605246] uppercase">
+                        Transferencia SPEI Directa
+                      </h4>
+                      <p className="text-[11px] font-[SpaceGrotesk] text-[#849AAD] mt-1">
+                        Confirmación vía CLABE {paymentConfig?.spei?.bankName || "BBVA México"}. Sin comisiones de pasarela.
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
 

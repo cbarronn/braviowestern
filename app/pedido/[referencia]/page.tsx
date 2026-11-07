@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Truck, ArrowRight, ShieldCheck } from "lucide-react";
 import { CruzDeHierro } from "@/components/ui/BravioLogo";
+import { db } from "@/lib/data/mock-db";
 
 export const metadata: Metadata = {
   title: "Confirmación de Pedido | BRAVÍO Western",
@@ -18,6 +19,8 @@ interface PageProps {
 export default async function PedidoConfirmacionPage({ params }: PageProps) {
   const { referencia } = await params;
   const decodedRef = decodeURIComponent(referencia).toUpperCase();
+  const paymentSettings = db.getPaymentSettings();
+  const spei = paymentSettings.spei;
 
   return (
     <div className="pt-[100px] min-h-screen bg-white text-[#605246] pb-24">
@@ -52,45 +55,58 @@ export default async function PedidoConfirmacionPage({ params }: PageProps) {
         </div>
 
         {/* SPEI Instructions Box */}
-        <div className="my-8 p-6 bg-[#F4F7F9] border border-[#B1C7D4]/50 space-y-4 shadow-xs">
-          <div className="flex items-center justify-between border-b border-[#B1C7D4]/40 pb-3">
-            <div className="flex items-center gap-2">
-              <CruzDeHierro size={16} color="#5E1C23" />
-              <h2 className="font-archivo text-base text-[#605246] uppercase">
-                Datos de Pago (Si seleccionaste Transferencia SPEI)
-              </h2>
-            </div>
-            <span className="text-[10px] font-[SpaceGrotesk] uppercase tracking-wider px-2 py-0.5 bg-white border border-[#B1C7D4]/60 text-[#605246] font-bold">
-              Banco BBVA
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-[SpaceGrotesk] text-xs">
-            <div>
-              <span className="text-[#849AAD] block uppercase tracking-wider mb-1">Beneficiario:</span>
-              <span className="text-[#605246] font-bold">BRAVÍO WESTERN TRADING S.A. DE C.V.</span>
-            </div>
-
-            <div>
-              <span className="text-[#849AAD] block uppercase tracking-wider mb-1">CLABE Interbancaria:</span>
-              <span className="text-[#5E1C23] font-mono font-bold tracking-wider select-all text-sm">
-                012 225 0011 8293 8472
+        {spei.enabled && (
+          <div className="my-8 p-6 bg-[#F4F7F9] border border-[#B1C7D4]/50 space-y-4 shadow-xs">
+            <div className="flex items-center justify-between border-b border-[#B1C7D4]/40 pb-3">
+              <div className="flex items-center gap-2">
+                <CruzDeHierro size={16} color="#5E1C23" />
+                <h2 className="font-archivo text-base text-[#605246] uppercase">
+                  Datos de Pago por Transferencia SPEI
+                </h2>
+              </div>
+              <span className="text-[10px] font-[SpaceGrotesk] uppercase tracking-wider px-2 py-0.5 bg-white border border-[#B1C7D4]/60 text-[#605246] font-bold">
+                {spei.bankName}
               </span>
             </div>
 
-            <div>
-              <span className="text-[#849AAD] block uppercase tracking-wider mb-1">Concepto / Referencia:</span>
-              <span className="text-[#605246] font-bold font-mono">{decodedRef}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-[SpaceGrotesk] text-xs">
+              <div>
+                <span className="text-[#849AAD] block uppercase tracking-wider mb-1">Beneficiario:</span>
+                <span className="text-[#605246] font-bold">{spei.beneficiary}</span>
+              </div>
+
+              <div>
+                <span className="text-[#849AAD] block uppercase tracking-wider mb-1">CLABE Interbancaria:</span>
+                <span className="text-[#5E1C23] font-mono font-bold tracking-wider select-all text-sm">
+                  {spei.clabe}
+                </span>
+              </div>
+
+              <div>
+                <span className="text-[#849AAD] block uppercase tracking-wider mb-1">Concepto / Referencia:</span>
+                <span className="text-[#605246] font-bold font-mono">{decodedRef}</span>
+              </div>
+
+              <div>
+                <span className="text-[#849AAD] block uppercase tracking-wider mb-1">Comprobante a:</span>
+                <a href={`mailto:${spei.notificationEmail}`} className="text-[#5E1C23] underline font-bold">
+                  {spei.notificationEmail}
+                </a>
+                {spei.notificationWhatsapp && (
+                  <span className="block text-[#849AAD] mt-0.5">
+                    o WhatsApp: <strong className="text-[#605246]">{spei.notificationWhatsapp}</strong>
+                  </span>
+                )}
+              </div>
             </div>
 
-            <div>
-              <span className="text-[#849AAD] block uppercase tracking-wider mb-1">Comprobante a:</span>
-              <a href="mailto:pagos@braviowestern.com.mx" className="text-[#5E1C23] underline font-bold">
-                pagos@braviowestern.com.mx
-              </a>
-            </div>
+            {spei.instructions && (
+              <p className="text-[11px] font-[SpaceGrotesk] text-[#849AAD] pt-2 border-t border-[#B1C7D4]/40">
+                {spei.instructions}
+              </p>
+            )}
           </div>
-        </div>
+        )}
 
         {/* Steps to Delivery */}
         <div className="my-8 p-6 bg-white border border-[#B1C7D4]/50 space-y-4 shadow-sm">

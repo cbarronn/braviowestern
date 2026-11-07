@@ -273,4 +273,36 @@ export interface InventoryRecord {
   reorderLevel: number;
 }
 
+export interface MercadoPagoConfigSettings {
+  enabled: boolean;
+  sandboxMode: boolean;
+  publicKey: string;
+  accessToken: string;
+  clientId?: string;
+  clientSecret?: string;
+  installmentsEnabled: boolean;
+  maxInstallments: number;
+  statementDescriptor: string;
+}
+
+export interface SpeiConfigSettings {
+  enabled: boolean;
+  bankName: string;
+  beneficiary: string;
+  clabe: string;
+  accountNumber?: string;
+  notificationEmail: string;
+  notificationWhatsapp: string;
+  instructions: string;
+  expirationHours: number;
+}
+
+export interface PaymentSettings {
+  mercadopago: MercadoPagoConfigSettings;
+  spei: SpeiConfigSettings;
+  updatedAt: string;
+  updatedBy: string;
+}
+
+
 
