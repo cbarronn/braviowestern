@@ -232,11 +232,23 @@ export default function AdminLoginPage() {
               </div>
 
               {devNoticeCode && (
-                <div className="p-3 bg-amber-50 border border-amber-400 text-amber-900 text-xs text-center">
-                  <span className="font-bold">Código de verificación generado: </span>
-                  <span className="font-mono text-sm tracking-widest font-black text-[#5E1C23] bg-white px-2 py-0.5 border border-amber-300 ml-1">
-                    {devNoticeCode}
-                  </span>
+                <div className="p-3.5 bg-amber-50 border border-amber-400 text-amber-900 text-xs text-center space-y-2">
+                  <div>
+                    <span className="font-bold">Código de verificación: </span>
+                    <span className="font-mono text-base tracking-widest font-black text-[#5E1C23] bg-white px-2.5 py-1 border border-amber-300 ml-1 inline-block">
+                      {devNoticeCode}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setTwoFactorCode(devNoticeCode)}
+                    className="text-[11px] font-bold text-[#5E1C23] hover:underline uppercase tracking-wider block mx-auto cursor-pointer"
+                  >
+                    ✦ Clic aquí para autorrellenar código ✦
+                  </button>
+                  <p className="text-[10px] text-amber-800/80">
+                    * También fue enviado vía Resend a tu correo (revisa si tu servidor lo desvió a Spam / No deseado).
+                  </p>
                 </div>
               )}
 
