@@ -67,43 +67,43 @@ const CHAPTERS = [
 const UPCOMING_MODELS = [
   {
     name: "Bota Silao Dama",
-    category: "Colección Cápsula 2026",
+    category: "Línea Dama 2026",
     leather: "Piel Gamuza Arena",
     price: 3499,
     slug: "bota-silao-dama-gamuza-arena",
     highlight: "Caña media anatómica con cerco cosido a mano y tacón cubano biselado.",
-    image: "/campaigns/hero-boots.jpg",
-    status: "Disponible en Preventa",
+    image: "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg",
+    status: "Preventa Oficial",
   },
   {
     name: "Bota Chapala Dama",
-    category: "Prototipo Oficial",
-    leather: "Piel Vacuno Miel",
+    category: "Línea Dama 2026",
+    leather: "Piel Gamuza Miel",
     price: 3699,
     slug: "bota-chapala-dama-vacuno-miel",
     highlight: "Silueta estilizada con tiradores reforzados y la Cruz de Hierro grabada en bajo relieve.",
-    image: "/campaigns/clean-boots.png",
-    status: "Disponible en Preventa",
+    image: "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpg",
+    status: "Preventa Oficial",
   },
   {
     name: "Bota Monterrey Dama",
-    category: "Edición Urbana",
+    category: "Línea Dama 2026",
     leather: "Vaqueta Res Negro",
     price: 3899,
     slug: "bota-monterrey-dama-res-negro",
     highlight: "Corte estructurado para asfalto con vástago de acero y puntera vaquera suave.",
-    image: "/campaigns/mujer-escena-03.jpg",
-    status: "Disponible en Preventa",
+    image: "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG.jpg",
+    status: "Preventa Oficial",
   },
   {
     name: "Bota Guanajuato Dama",
-    category: "Maestría en León",
-    leather: "Nobuck Olivo Mineral",
-    price: 3799,
-    slug: "bota-guanajuato-dama-nobuck-olivo",
-    highlight: "Textura aterciopelada de poro abierto con plantilla ergonómica de descanso.",
-    image: "/campaigns/mujer-escena-04.jpg",
-    status: "Disponible en Preventa",
+    category: "Línea Dama 2026",
+    leather: "Exótico Pitón Marfil",
+    price: 3999,
+    slug: "bota-guanajuato-dama-piton-marfil",
+    highlight: "Grabado exótico de alta gama con costura Goodyear Welt 360° artesanal.",
+    image: "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA.jpg",
+    status: "Preventa Oficial",
   },
 ];
 
@@ -288,13 +288,13 @@ export default function MujerPage() {
               key={idx}
               className="bg-white border border-[#B1C7D4]/60 overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow group"
             >
-              <Link href={`/producto/${model.slug}`} className="relative aspect-[4/3] bg-[#EAEFEF] overflow-hidden block">
+              <Link href={`/producto/${model.slug}`} className="relative aspect-[4/5] bg-white overflow-hidden p-4 border-b border-[#B1C7D4]/40 flex items-center justify-center block">
                 <Image
                   src={model.image}
                   alt={model.name}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                 />
                 <span className="absolute top-3 left-3 bg-[#5E1C23] text-white text-[9px] font-[SpaceGrotesk] font-bold px-2 py-0.5 tracking-wider uppercase">
                   {model.status}

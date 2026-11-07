@@ -2400,12 +2400,12 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "mujer",
     "gender": "mujer",
     "collectionId": "bravio-mujer",
-    "featuredImage": "/campaigns/hero-boots.jpg",
+    "featuredImage": "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg",
     "images": [
-      "/campaigns/hero-boots.jpg",
-      "/campaigns/mujer-escena-01.jpg",
-      "/campaigns/product-3.jpg",
-      "/campaigns/door-highres.jpg"
+      "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg",
+      "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE (2).jpg",
+      "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE (3).jpg",
+      "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE (4).jpg"
     ],
     "variants": [
       { "size": "22 MX", "sku": "BW-MUJ-SIL-ARE-220", "stock": 3 },
@@ -2449,12 +2449,12 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "mujer",
     "gender": "mujer",
     "collectionId": "bravio-mujer",
-    "featuredImage": "/campaigns/clean-boots.png",
+    "featuredImage": "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpg",
     "images": [
-      "/campaigns/clean-boots.png",
-      "/campaigns/mujer/editorial-01.jpg",
-      "/campaigns/product-3.jpg",
-      "/campaigns/mujer-escena-04.jpg"
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpg",
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (2).jpg",
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (3).jpg",
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (4).jpg"
     ],
     "variants": [
       { "size": "22.5 MX", "sku": "BW-MUJ-CHA-MIE-225", "stock": 3 },
@@ -2496,12 +2496,12 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "mujer",
     "gender": "mujer",
     "collectionId": "bravio-mujer",
-    "featuredImage": "/campaigns/mujer-escena-03.jpg",
+    "featuredImage": "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG.jpg",
     "images": [
-      "/campaigns/mujer-escena-03.jpg",
-      "/campaigns/mujer-escena-04.jpg",
-      "/campaigns/hero-boots.jpg",
-      "/campaigns/product-3.jpg"
+      "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG.jpg",
+      "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG (2).jpg",
+      "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG (3).jpg",
+      "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG (4).jpg"
     ],
     "variants": [
       { "size": "23 MX", "sku": "BW-MUJ-MTY-NEG-230", "stock": 3 },
@@ -2544,12 +2544,12 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "mujer",
     "gender": "mujer",
     "collectionId": "bravio-mujer",
-    "featuredImage": "/campaigns/mujer-escena-04.jpg",
+    "featuredImage": "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA.jpg",
     "images": [
-      "/campaigns/mujer-escena-04.jpg",
-      "/campaigns/door-highres.jpg",
-      "/campaigns/clean-boots.png",
-      "/campaigns/product-3.jpg"
+      "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA.jpg",
+      "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA (2).jpg",
+      "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA (3).jpg",
+      "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA (4).jpg"
     ],
     "variants": [
       { "size": "22.5 MX", "sku": "BW-MUJ-GTO-OLI-225", "stock": 3 },

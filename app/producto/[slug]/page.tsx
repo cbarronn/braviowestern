@@ -54,7 +54,7 @@ export default function ProductDetailPage() {
       {/* Back button */}
       <div className="mb-6">
         <Link
-          href="/hombre"
+          href={product.gender === "mujer" ? "/mujer" : "/hombre"}
           className="inline-flex items-center gap-2 text-xs font-[SpaceGrotesk] uppercase tracking-widest text-[#849AAD] hover:text-[#605246] transition-colors font-bold"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
