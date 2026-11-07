@@ -156,6 +156,7 @@ export default function HomePage() {
                 src="/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp"
                 alt="Colección Hombre BRAVÍO"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#605246]/90 via-[#605246]/30 to-transparent" />
@@ -185,6 +186,7 @@ export default function HomePage() {
                 src="/brand/image1.png"
                 alt="Campaña Mujer 2026 BRAVÍO"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#605246]/90 via-[#605246]/30 to-transparent" />
@@ -232,7 +234,7 @@ export default function HomePage() {
 
             {/* Products Grid — Pure White Backgrounds for Seamless Photos */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {PRODUCTS_CATALOG.slice(0, 6).map((product) => {
+              {PRODUCTS_CATALOG.slice(0, 6).map((product, idx) => {
                 const currentSize = selectedSizes[product.sku] || product.variants[0]?.size || "27 MX";
                 const isAdded = addedSku === product.sku;
 
@@ -250,8 +252,9 @@ export default function HomePage() {
                         src={product.featuredImage}
                         alt={product.name}
                         fill
-                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        priority={idx < 4}
+                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                       />
                       <span className="absolute top-3 left-3 bg-[#F4F7F9] text-[10px] font-[SpaceGrotesk] font-bold tracking-widest uppercase text-[#605246] px-2.5 py-1 border border-[#B1C7D4]/50">
                         {product.leatherType}
@@ -340,6 +343,7 @@ export default function HomePage() {
                   src="/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-3.webp"
                   alt="Detalle de construcción de suela artesanal BRAVÍO"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-center filter contrast-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#605246]/80 via-transparent to-transparent" />

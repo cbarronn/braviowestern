@@ -55,6 +55,7 @@ export default function CarritoPage() {
                       src={item.image || "/brand/image1.png"}
                       alt={item.name}
                       fill
+                      sizes="(max-width: 640px) 96px, 112px"
                       className="object-contain p-1"
                     />
                   </div>

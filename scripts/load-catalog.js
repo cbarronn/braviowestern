@@ -317,3 +317,4 @@ export function getProductBySlug(slug: string) {
 
 fs.writeFileSync(path.join(__dirname, '../data/products/index.ts'), dataProductsContent, 'utf-8');
 console.log('Successfully wrote data/products/index.ts.');
+

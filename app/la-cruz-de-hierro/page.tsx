@@ -45,6 +45,7 @@ export default function CruzDeHierroPage() {
               src="/brand/image1.png"
               alt="La Cruz de Hierro BRAVÍO"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -95,6 +96,7 @@ export default function CruzDeHierroPage() {
               src="/brand/image2.png"
               alt="El amuleto en la vida urbana"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

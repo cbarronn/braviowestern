@@ -74,6 +74,8 @@ export default function CollectionPage() {
             src={isWomen ? "/brand/image1.png" : "/brand/image10.png"}
             alt={title}
             fill
+            sizes="100vw"
+            priority
             className="object-cover object-center opacity-30 filter contrast-125"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#605246] via-[#605246]/70 to-transparent" />
@@ -145,6 +147,7 @@ export default function CollectionPage() {
                   src={product.featuredImage}
                   alt={product.name}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                 />
                 <span className="absolute top-3 left-3 bg-[#F4F7F9] text-[9px] font-[SpaceGrotesk] font-bold tracking-widest uppercase text-[#605246] px-2.5 py-1 border border-[#B1C7D4]/50">

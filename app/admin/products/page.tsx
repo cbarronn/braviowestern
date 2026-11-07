@@ -184,6 +184,7 @@ export default function AdminProductsPage() {
                       src={p.featuredImage || "/brand/image1.png"}
                       alt={p.name}
                       fill
+                      sizes="48px"
                       className="object-contain p-1"
                     />
                   </div>
