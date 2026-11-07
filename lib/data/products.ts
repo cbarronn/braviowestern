@@ -22,13 +22,13 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
-      "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-2.webp",
-      "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-3.webp",
-      "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-4.webp",
-      "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-5.webp"
+      "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE (2).jpg",
+      "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE (3).jpg",
+      "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE (4).jpg",
+      "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE (5).jpg",
+      "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg"
     ],
     "variants": [
       {
@@ -194,12 +194,12 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (2).jpeg",
     "images": [
-      "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-1.webp",
-      "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-2.webp",
-      "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-3.webp",
-      "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-4.webp"
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (2).jpeg",
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (3).jpeg",
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (4).jpeg",
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpeg"
     ],
     "variants": [
       {
@@ -365,13 +365,13 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-re-caf/BW-SIN-RES-CAF (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-1.webp",
-      "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-2.webp",
-      "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-3.webp",
-      "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-4.webp",
-      "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-5.webp"
+      "/products/catalogo/bw-sin-re-caf/BW-SIN-RES-CAF (2).jpg",
+      "/products/catalogo/bw-sin-re-caf/BW-SIN-RES-CAF (3).jpg",
+      "/products/catalogo/bw-sin-re-caf/BW-SIN-RES-CAF (4).jpg",
+      "/products/catalogo/bw-sin-re-caf/BW-SIN-RES-CAF (5).jpg",
+      "/products/catalogo/bw-sin-re-caf/BW-SIN-RES-CAF.jpg"
     ],
     "variants": [
       {
@@ -533,13 +533,13 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
-      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-2.webp",
-      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-3.webp",
-      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-4.webp",
-      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-5.webp"
+      "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG (2).jpg",
+      "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG (4).jpg",
+      "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG (5).jpg",
+      "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG (6).jpg",
+      "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG.jpg"
     ],
     "variants": [
       {
@@ -701,15 +701,15 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-re-mar/BW-SIN-RE-MAR (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-1.webp",
-      "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-2.webp",
-      "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-3.webp",
-      "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-4.webp",
-      "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-5.webp",
-      "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-6.webp",
-      "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-7.webp"
+      "/products/catalogo/bw-sin-re-mar/BW-SIN-RE-MAR (2).jpg",
+      "/products/catalogo/bw-sin-re-mar/BW-SIN-RE-MAR (3).jpg",
+      "/products/catalogo/bw-sin-re-mar/BW-SIN-RE-MAR (4).jpg",
+      "/products/catalogo/bw-sin-re-mar/BW-SIN-RE-MAR (5).jpg",
+      "/products/catalogo/bw-sin-re-mar/BW-SIN-RE-MAR (6).jpg",
+      "/products/catalogo/bw-sin-re-mar/BW-SIN-RE-MAR (7).jpg",
+      "/products/catalogo/bw-sin-re-mar/BW-SIN-RE-MAR.jpg"
     ],
     "variants": [
       {
@@ -871,15 +871,15 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-all-neg/BW-SIN-ALL-NEG (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-1.webp",
-      "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-2.webp",
-      "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-3.webp",
-      "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-4.webp",
-      "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-5.webp",
-      "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-6.webp",
-      "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-7.webp"
+      "/products/catalogo/bw-sin-all-neg/BW-SIN-ALL-NEG (2).jpg",
+      "/products/catalogo/bw-sin-all-neg/BW-SIN-ALL-NEG (3).jpg",
+      "/products/catalogo/bw-sin-all-neg/BW-SIN-ALL-NEG (4).jpg",
+      "/products/catalogo/bw-sin-all-neg/BW-SIN-ALL-NEG (5).jpg",
+      "/products/catalogo/bw-sin-all-neg/BW-SIN-ALL-NEG (6).jpg",
+      "/products/catalogo/bw-sin-all-neg/BW-SIN-ALL-NEG (7).jpg",
+      "/products/catalogo/bw-sin-all-neg/BW-SIN-ALL-NEG (8).jpg"
     ],
     "variants": [
       {
@@ -1043,14 +1043,14 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-ave-con/BW-SIN-AVE-COÑ (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-1.webp",
-      "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-2.webp",
-      "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-3.webp",
-      "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-4.webp",
-      "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-5.webp",
-      "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-6.webp"
+      "/products/catalogo/bw-sin-ave-con/BW-SIN-AVE-COÑ (2).jpg",
+      "/products/catalogo/bw-sin-ave-con/BW-SIN-AVE-COÑ (3).jpg",
+      "/products/catalogo/bw-sin-ave-con/BW-SIN-AVE-COÑ (4).jpg",
+      "/products/catalogo/bw-sin-ave-con/BW-SIN-AVE-COÑ (5).jpg",
+      "/products/catalogo/bw-sin-ave-con/BW-SIN-AVE-COÑ (6).jpg",
+      "/products/catalogo/bw-sin-ave-con/BW-SIN-AVE-COÑ.jpg"
     ],
     "variants": [
       {
@@ -1214,13 +1214,13 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-ave-caf/BW-SIN-AVE-CAF (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-1.webp",
-      "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-2.webp",
-      "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-3.webp",
-      "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-4.webp",
-      "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-5.webp"
+      "/products/catalogo/bw-sin-ave-caf/BW-SIN-AVE-CAF (2).jpg",
+      "/products/catalogo/bw-sin-ave-caf/BW-SIN-AVE-CAF (3).jpg",
+      "/products/catalogo/bw-sin-ave-caf/BW-SIN-AVE-CAF (4).jpg",
+      "/products/catalogo/bw-sin-ave-caf/BW-SIN-AVE-CAF (5).jpg",
+      "/products/catalogo/bw-sin-ave-caf/BW-SIN-AVE-CAF.jpg"
     ],
     "variants": [
       {
@@ -1384,14 +1384,14 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-ave-neg/BW-SIN-AVE-NEG (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-1.webp",
-      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-2.webp",
-      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-3.webp",
-      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-4.webp",
-      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-5.webp",
-      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-6.webp"
+      "/products/catalogo/bw-sin-ave-neg/BW-SIN-AVE-NEG (2).jpg",
+      "/products/catalogo/bw-sin-ave-neg/BW-SIN-AVE-NEG (3).jpg",
+      "/products/catalogo/bw-sin-ave-neg/BW-SIN-AVE-NEG (4).jpg",
+      "/products/catalogo/bw-sin-ave-neg/BW-SIN-AVE-NEG (5).jpg",
+      "/products/catalogo/bw-sin-ave-neg/BW-SIN-AVE-NEG (6).jpg",
+      "/products/catalogo/bw-sin-ave-neg/BW-SIN-AVE-NEG.jpg"
     ],
     "variants": [
       {
@@ -1555,14 +1555,14 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-pit-caf/BW-SIN-PIT-CAF (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-1.webp",
-      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-2.webp",
-      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-3.webp",
-      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-4.webp",
-      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-5.webp",
-      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-6.webp"
+      "/products/catalogo/bw-sin-pit-caf/BW-SIN-PIT-CAF (2).jpg",
+      "/products/catalogo/bw-sin-pit-caf/BW-SIN-PIT-CAF (3).jpg",
+      "/products/catalogo/bw-sin-pit-caf/BW-SIN-PIT-CAF (4).jpg",
+      "/products/catalogo/bw-sin-pit-caf/BW-SIN-PIT-CAF (5).jpg",
+      "/products/catalogo/bw-sin-pit-caf/BW-SIN-PIT-CAF (6).jpg",
+      "/products/catalogo/bw-sin-pit-caf/BW-SIN-PIT-CAF.jpg"
     ],
     "variants": [
       {
@@ -1726,14 +1726,14 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-1.webp",
-      "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-2.webp",
-      "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-3.webp",
-      "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-4.webp",
-      "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-5.webp",
-      "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-6.webp"
+      "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA (2).jpg",
+      "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA (3).jpg",
+      "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA (4).jpg",
+      "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA (5).jpg",
+      "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA (6).jpg",
+      "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA.jpg"
     ],
     "variants": [
       {
@@ -1897,15 +1897,15 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-cai-neg/BW-SIN-CAI-NEG (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-1.webp",
-      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-2.webp",
-      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-3.webp",
-      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-4.webp",
-      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-5.webp",
-      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-6.webp",
-      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-7.webp"
+      "/products/catalogo/bw-sin-cai-neg/BW-SIN-CAI-NEG (2).jpg",
+      "/products/catalogo/bw-sin-cai-neg/BW-SIN-CAI-NEG (3).jpg",
+      "/products/catalogo/bw-sin-cai-neg/BW-SIN-CAI-NEG (4).jpg",
+      "/products/catalogo/bw-sin-cai-neg/BW-SIN-CAI-NEG (5).jpg",
+      "/products/catalogo/bw-sin-cai-neg/BW-SIN-CAI-NEG (6).jpg",
+      "/products/catalogo/bw-sin-cai-neg/BW-SIN-CAI-NEG (7).jpg",
+      "/products/catalogo/bw-sin-cai-neg/BW-SIN-CAI-NEG.jpg"
     ],
     "variants": [
       {
@@ -2069,16 +2069,16 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-cai-caf/BW-SIN-CAI-CAF (2).jpg",
     "images": [
-      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-1.webp",
-      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-2.webp",
-      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-3.webp",
-      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-4.webp",
-      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-5.webp",
-      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-6.webp",
-      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-7.webp",
-      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-8.webp"
+      "/products/catalogo/bw-sin-cai-caf/BW-SIN-CAI-CAF (2).jpg",
+      "/products/catalogo/bw-sin-cai-caf/BW-SIN-CAI-CAF (3).jpg",
+      "/products/catalogo/bw-sin-cai-caf/BW-SIN-CAI-CAF (4).jpg",
+      "/products/catalogo/bw-sin-cai-caf/BW-SIN-CAI-CAF (5).jpg",
+      "/products/catalogo/bw-sin-cai-caf/BW-SIN-CAI-CAF (6).jpg",
+      "/products/catalogo/bw-sin-cai-caf/BW-SIN-CAI-CAF (7).jpg",
+      "/products/catalogo/bw-sin-cai-caf/BW-SIN-CAI-CAF (8).jpg",
+      "/products/catalogo/bw-sin-cai-caf/BW-SIN-CAI-CAF.jpg"
     ],
     "variants": [
       {
@@ -2242,16 +2242,16 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "hombre",
     "gender": "hombre",
     "collectionId": "sinaloa",
-    "featuredImage": "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-1.webp",
+    "featuredImage": "/products/catalogo/bw-sin-pit-vin/JFT-10.jpg",
     "images": [
-      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-1.webp",
-      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-2.webp",
-      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-3.webp",
-      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-4.webp",
-      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-5.webp",
-      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-6.webp",
-      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-7.webp",
-      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-8.webp"
+      "/products/catalogo/bw-sin-pit-vin/JFT-10.jpg",
+      "/products/catalogo/bw-sin-pit-vin/JFT-11.jpg",
+      "/products/catalogo/bw-sin-pit-vin/JFT-12.jpg",
+      "/products/catalogo/bw-sin-pit-vin/JFT-13.jpg",
+      "/products/catalogo/bw-sin-pit-vin/JFT-14.jpg",
+      "/products/catalogo/bw-sin-pit-vin/JFT-15.jpg",
+      "/products/catalogo/bw-sin-pit-vin/JFT-16.jpg",
+      "/products/catalogo/bw-sin-pit-vin/JFT-9.jpg"
     ],
     "variants": [
       {
