@@ -75,16 +75,16 @@ const INITIAL_MEDIA: MediaItem[] = [
   },
   {
     id: "med-4",
-    name: "Editorial Hombre Botas Silao",
-    url: "/products/bota-hombre-silao-1.jpg",
-    storagePath: "products/bota-hombre-silao-1.jpg",
-    fileType: "jpg",
-    mimeType: "image/jpeg",
-    sizeBytes: 744509,
+    name: "Editorial Hombre Botas Sinaloa Res Negro",
+    url: "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
+    storagePath: "products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
+    fileType: "webp",
+    mimeType: "image/webp",
+    sizeBytes: 250000,
     virtualFolder: "Hombre",
     category: "editorial",
     relatedSku: "BW-SIN-RE-NEG",
-    altText: "Hombre vistiendo bota western negra en entorno urbano contemporáneo",
+    altText: "Bota Sinaloa Res Negro con construcción Goodyear Welt",
     sortOrder: 4,
     status: "published",
     createdAt: "2026-10-05T00:00:00Z",
@@ -221,7 +221,7 @@ const INITIAL_COLLECTIONS: CollectionItem[] = [
     gallery: [
       { id: "gm-1", url: "/brand/image1.png", alt: "Campaña Mujer Paisaje", order: 1, isCover: true, status: "published" },
       { id: "gm-2", url: "/brand/image2.png", alt: "Retrato Editorial Mujer", order: 2, isCover: false, status: "published" },
-      { id: "gm-3", url: "/products/bota-mujer-leon-1.jpg", alt: "Bota Mujer León", order: 3, isCover: false, status: "published" },
+      { id: "gm-3", url: "/campaigns/mujer-campana-hero.jpg", alt: "Editorial BRAVÍO Mujer 2026", order: 3, isCover: false, status: "published" },
     ],
     productSkus: ["BW-SIN-GA-ARE", "BW-SIN-RE-CAF"],
     sortOrder: 2,
@@ -305,7 +305,7 @@ const INITIAL_HOME_SECTIONS: HomeSectionConfig[] = [
     data: {
       leftTitle: "HOMBRE",
       leftSubtitle: "Colección Sinaloa",
-      leftImage: "/products/bota-hombre-silao-1.jpg",
+      leftImage: "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
       leftLink: "/hombre",
       rightTitle: "MUJER 2026",
       rightSubtitle: "Nueva Campaña Visual",
@@ -334,7 +334,7 @@ const INITIAL_HOME_SECTIONS: HomeSectionConfig[] = [
     data: {
       headline: "HECHO A MANO EN LEÓN, MÉXICO",
       description: "Más de 200 pasos artesanales manuales. Hormas esculpidas al milímetro, pieles de curtición vegetal y vástago de acero templado para un soporte inigualable durante décadas de uso.",
-      image: "/products/bota-suela-zipper.jpg"
+      image: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-3.webp"
     }
   }
 ];

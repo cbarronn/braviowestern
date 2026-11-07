@@ -153,7 +153,7 @@ export default function HomePage() {
               className="group relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden border border-[#B1C7D4]/40 bg-white shadow-sm hover:shadow-xl transition-all duration-500"
             >
               <Image
-                src="/products/bota-hombre-silao-1.jpg"
+                src="/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp"
                 alt="Colección Hombre BRAVÍO"
                 fill
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
@@ -337,7 +337,7 @@ export default function HomePage() {
               {/* Photo */}
               <div className="relative aspect-[4/3] overflow-hidden border border-[#B1C7D4]/50 shadow-xl bg-white">
                 <Image
-                  src="/products/bota-suela-zipper.jpg"
+                  src="/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-3.webp"
                   alt="Detalle de construcción de suela artesanal BRAVÍO"
                   fill
                   className="object-cover object-center filter contrast-105"

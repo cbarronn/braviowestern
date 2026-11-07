@@ -1,391 +1,2389 @@
 import { Product } from "@/lib/types";
 
+// =====================================================================
+// BRAVÍO — CATÁLOGO OFICIAL GENERADO DESDE FICHAS TÉCNICAS (EXCEL)
+// Y FOTOGRAFÍAS REALES EN FONDO BLANCO PURO
+// =====================================================================
+
 export const PRODUCTS_CATALOG: Product[] = [
   {
-    id: "prod-1",
-    sku: "BW-SIN-GA-ARE",
-    slug: "sinaloa-gamuza-arena",
-    name: "Bota Sinaloa Gamuza Arena",
-    subtitle: "Silueta Western Contemporánea en Gamuza Premium",
-    price: 4890,
-    compareAtPrice: 5490,
-    description: "Confeccionada a mano en León, Guanajuato. Gamuza de res seleccionada con acabado aperlado en tono arena desértico. Forro interior de res genuino para máxima transpirabilidad y confort diario, plantilla acolchada de alta densidad y suela de cuero curtido vegetal con vástago de acero reforzado.",
-    leatherType: "Gamuza de Res Tratada",
-    color: "Arena / Desert Sand",
-    construction: "Goodyear Welt Tradicional",
-    gender: "hombre",
-    collectionId: "sinaloa",
-    featuredImage: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
-    images: [
+    "id": "prod-1",
+    "sku": "BW-SIN-GA-ARE",
+    "skuBase": "BW-SIN-GA-ARE",
+    "slug": "bota-sinaloa-gamuza-arena",
+    "name": "Bota Sinaloa Gamuza Arena",
+    "subtitle": "Construcción Goodyear Welt Tradicional en gamuza de res 100% genuina",
+    "price": 3199,
+    "compareAtPrice": 3519,
+    "description": "Descubre el auténtico estilo western con las botas Bravio Western, diseñadas para quienes buscan destacar con elegancia, carácter y tradición. Su acabado en gamuza aporta una textura sofisticada y un estilo versátil que combina perfectamente con tu dia a dia.",
+    "leatherType": "gamuza de res 100% genuina",
+    "color": "arena",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
+    "images": [
       "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
       "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-2.webp",
       "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-3.webp",
       "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-4.webp",
-      "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-5.webp",
+      "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-5.webp"
     ],
-    variants: [
-      { size: "25 MX", stock: 8, sku: "BW-SIN-GA-ARE-25" },
-      { size: "26 MX", stock: 12, sku: "BW-SIN-GA-ARE-26" },
-      { size: "27 MX", stock: 15, sku: "BW-SIN-GA-ARE-27" },
-      { size: "28 MX", stock: 10, sku: "BW-SIN-GA-ARE-28" },
-      { size: "29 MX", stock: 6, sku: "BW-SIN-GA-ARE-29" },
-      { size: "30 MX", stock: 4, sku: "BW-SIN-GA-ARE-30" },
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-GA-ARE-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-GA-ARE-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-GA-ARE-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-GA-ARE-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-GA-ARE-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-GA-ARE-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-GA-ARE-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-GA-ARE-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-GA-ARE-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-GA-ARE-265",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-GA-ARE-300",
+        "stock": 1
+      }
     ],
-    tags: ["bota", "hombre", "sinaloa", "gamuza", "arena", "mas-vendido"],
-    isFeatured: true,
-    status: "active",
-    details: {
-      horma: "Semi-oval Western estilizada",
-      suela: "Cuero natural con tapa de hule antideslizante",
-      tubo: "11 pulgadas con jaladeras reforzadas",
-      tacon: "1.5 pulgadas biselado",
-      origen: "Hecho a mano en León, México",
+    "colors": [
+      {
+        "name": "arena",
+        "hex": "#D7C4A5",
+        "slug": "arena"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "arena",
+      "gamuza-de-res-100-genuina"
+    ],
+    "isFeatured": true,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
     },
+    "careInstructions": {
+      "title": "Cuidados de la gamuza de res 100% genuina",
+      "tips": [
+        "Evita el contacto con el agua:",
+        "La humedad puede manchar la gamuza y alterar su textura original.",
+        "Limpia con un cepillo especial:",
+        "Utiliza un cepillo para gamuza, con movimientos suaves, para retirar polvo y suciedad.",
+        "No utilices productos abrasivos:",
+        "Evita detergentes, cloro, jabones fuertes o limpiadores que puedan dañar el material.",
+        "Utiliza un protector para gamuza:",
+        "Aplica un producto especializado siguiendo sus instrucciones y prueba primero en una zona poco visible.",
+        "Guarda tus botas correctamente:",
+        "Consérvalas en un lugar fresco, seco y ventilado, lejos de la luz solar directa.",
+        "Evita fuentes de calor:",
+        "Si se mojan, deja que se sequen naturalmente a temperatura ambiente.",
+        "Conserva su estilo original"
+      ]
+    }
   },
   {
-    id: "prod-2",
-    sku: "BW-SIN-GA-MIE",
-    slug: "sinaloa-gamuza-miel",
-    name: "Bota Sinaloa Gamuza Miel",
-    subtitle: "Tono Miel Tostado con Pátina Natural",
-    price: 4890,
-    compareAtPrice: 5490,
-    description: "Inspirada en los atardeceres de Sonora y los valles dorados de México. Gamuza tratada contra salpicaduras ligeras, ribetes tonales y pespuntes al tono que resaltan la nobleza del trabajo artesanal guanajuatense.",
-    leatherType: "Gamuza de Res",
-    color: "Miel Cálido / Warm Honey",
-    construction: "Goodyear Welt Tradicional",
-    gender: "hombre",
-    collectionId: "sinaloa",
-    featuredImage: "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-1.webp",
-    images: [
+    "id": "prod-2",
+    "sku": "BW-SIN-GA-MIE",
+    "skuBase": "BW-SIN-GA-MIE",
+    "slug": "bota-sinaloa-gamuza-miel",
+    "name": "Bota Sinaloa Gamuza Miel",
+    "subtitle": "Construcción Goodyear Welt Tradicional en gamuza de res 100% genuina",
+    "price": 3199,
+    "compareAtPrice": 3519,
+    "description": "Descubre el auténtico estilo western con las botas Bravio Western, diseñadas para quienes buscan destacar con elegancia, carácter y tradición. Su acabado en gamuza aporta una textura sofisticada y un estilo versátil que combina perfectamente con tu dia a dia.",
+    "leatherType": "gamuza de res 100% genuina",
+    "color": "MIEL",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-1.webp",
+    "images": [
       "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-1.webp",
       "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-2.webp",
       "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-3.webp",
-      "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-4.webp",
+      "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-4.webp"
     ],
-    variants: [
-      { size: "25 MX", stock: 5, sku: "BW-SIN-GA-MIE-25" },
-      { size: "26 MX", stock: 9, sku: "BW-SIN-GA-MIE-26" },
-      { size: "27 MX", stock: 14, sku: "BW-SIN-GA-MIE-27" },
-      { size: "28 MX", stock: 8, sku: "BW-SIN-GA-MIE-28" },
-      { size: "29 MX", stock: 5, sku: "BW-SIN-GA-MIE-29" },
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-GA-MIE-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-GA-MIE-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-GA-MIE-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-GA-MIE-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-GA-MIE-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-GA-MIE-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-GA-MIE-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-GA-MIE-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-GA-MIE-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-GA-MIE-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-GA-MIE-300",
+        "stock": 1
+      }
     ],
-    tags: ["bota", "hombre", "sinaloa", "gamuza", "miel"],
-    isFeatured: true,
-    status: "active",
-    details: {
-      horma: "Western contemporánea",
-      suela: "Cuero curtido al roble",
-      tubo: "11 pulgadas",
-      tacon: "1.5 pulgadas",
-      origen: "León, Guanajuato",
+    "colors": [
+      {
+        "name": "MIEL",
+        "hex": "#C68B45",
+        "slug": "miel"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "miel",
+      "gamuza-de-res-100-genuina"
+    ],
+    "isFeatured": true,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
     },
+    "careInstructions": {
+      "title": "Cuidados de la gamuza de res 100% genuina",
+      "tips": [
+        "Evita el contacto con el agua:",
+        "La humedad puede manchar la gamuza y alterar su textura original.",
+        "Limpia con un cepillo especial:",
+        "Utiliza un cepillo para gamuza, con movimientos suaves, para retirar polvo y suciedad.",
+        "No utilices productos abrasivos:",
+        "Evita detergentes, cloro, jabones fuertes o limpiadores que puedan dañar el material.",
+        "Utiliza un protector para gamuza:",
+        "Aplica un producto especializado siguiendo sus instrucciones y prueba primero en una zona poco visible.",
+        "Guarda tus botas correctamente:",
+        "Consérvalas en un lugar fresco, seco y ventilado, lejos de la luz solar directa.",
+        "Evita fuentes de calor:",
+        "Si se mojan, deja que se sequen naturalmente a temperatura ambiente.",
+        "Conserva su estilo original"
+      ]
+    }
   },
   {
-    id: "prod-3",
-    sku: "BW-SIN-RE-NEG",
-    slug: "sinaloa-res-negro",
-    name: "Bota Sinaloa Res Negro",
-    subtitle: "Piel de Res Grano Entero Negro Obsidiana",
-    price: 4490,
-    description: "La bota insignia de elegancia sobria y carácter implacable. Piel de res plena flor con brillo natural ceroso, pespunte artesanal en tubo con el monograma BRAVÍO estilizado.",
-    leatherType: "Piel de Res Plena Flor",
-    color: "Negro Obsidiana / Deep Black",
-    construction: "Goodyear Welt Tradicional",
-    gender: "hombre",
-    collectionId: "sinaloa",
-    featuredImage: "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
-    images: [
-      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
-      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-2.webp",
-      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-3.webp",
-      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-4.webp",
-      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-5.webp",
-    ],
-    variants: [
-      { size: "25 MX", stock: 10, sku: "BW-SIN-RE-NEG-25" },
-      { size: "26 MX", stock: 15, sku: "BW-SIN-RE-NEG-26" },
-      { size: "27 MX", stock: 20, sku: "BW-SIN-RE-NEG-27" },
-      { size: "28 MX", stock: 18, sku: "BW-SIN-RE-NEG-28" },
-      { size: "29 MX", stock: 12, sku: "BW-SIN-RE-NEG-29" },
-      { size: "30 MX", stock: 8, sku: "BW-SIN-RE-NEG-30" },
-    ],
-    tags: ["bota", "hombre", "sinaloa", "negro", "cuero", "esencial"],
-    isFeatured: true,
-    status: "active",
-    details: {
-      horma: "Semi-oval Western",
-      suela: "Suela de cuero natural teñida al negro con inserto antiderrapante",
-      tubo: "11.5 pulgadas",
-      tacon: "1.5 pulgadas",
-      origen: "León, Guanajuato",
-    },
-  },
-  {
-    id: "prod-4",
-    sku: "BW-SIN-RE-CAF",
-    slug: "sinaloa-res-cafe",
-    name: "Bota Sinaloa Res Café",
-    subtitle: "Piel Pull-Up Roble con Efecto Envejecido",
-    price: 4490,
-    description: "Una piel que cuenta una historia con cada paso. El acabado pull-up aceitado adquiere tonalidades más claras en los puntos de flexión, creando una pátina única e irrepetible para cada usuario.",
-    leatherType: "Piel de Res Pull-Up Aceitada",
-    color: "Café Roble / Vintage Brown",
-    construction: "Goodyear Welt Tradicional",
-    gender: "hombre",
-    collectionId: "sinaloa",
-    featuredImage: "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-1.webp",
-    images: [
+    "id": "prod-3",
+    "sku": "BW-SIN-RE-CAF",
+    "skuBase": "BW-SIN-RE-CAF",
+    "slug": "bota-sinaloa-res-cafe",
+    "name": "Bota Sinaloa Res Café",
+    "subtitle": "Construcción Goodyear Welt Tradicional en res 100% genuina",
+    "price": 3199,
+    "compareAtPrice": 3519,
+    "description": "Lleva tu estilo al siguiente nivel con Bravio Western, diseñados para quienes buscan una combinación de carácter, elegancia y presencia. Su acabado en color cafe le da una apariencia sofisticada y versátil, perfecta para complementar desde un look western hasta un estilo más elegante. Su diseño de caña corta y líneas limpias aporta una imagen moderna sin perder la esencia tradicional de la bota western.",
+    "leatherType": "res 100% genuina",
+    "color": "",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-1.webp",
+    "images": [
       "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-1.webp",
       "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-2.webp",
       "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-3.webp",
       "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-4.webp",
-      "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-5.webp",
+      "/products/catalogo/bw-sin-re-caf/bw-sin-re-caf-5.webp"
     ],
-    variants: [
-      { size: "25 MX", stock: 6, sku: "BW-SIN-RE-CAF-25" },
-      { size: "26 MX", stock: 11, sku: "BW-SIN-RE-CAF-26" },
-      { size: "27 MX", stock: 16, sku: "BW-SIN-RE-CAF-27" },
-      { size: "28 MX", stock: 14, sku: "BW-SIN-RE-CAF-28" },
-      { size: "29 MX", stock: 8, sku: "BW-SIN-RE-CAF-29" },
-      { size: "30 MX", stock: 5, sku: "BW-SIN-RE-CAF-30" },
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-RE-CAF-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-RE-CAF-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-RE-CAF-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-RE-CAF-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-RE-CAF-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-RE-CAF-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-RE-CAF-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-RE-CAF-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-RE-CAF-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-RE-CAF-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-RE-CAF-300",
+        "stock": 1
+      }
     ],
-    tags: ["bota", "hombre", "sinaloa", "cafe", "pull-up"],
-    isFeatured: true,
-    status: "active",
-    details: {
-      horma: "Semi-oval Western",
-      suela: "Cuero natural pespunteado 360°",
-      tubo: "11 pulgadas",
-      tacon: "1.5 pulgadas",
-      origen: "León, Guanajuato",
+    "colors": [
+      {
+        "name": "",
+        "hex": "#605246",
+        "slug": ""
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "",
+      "res-100-genuina"
+    ],
+    "isFeatured": true,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
     },
+    "careInstructions": {
+      "title": "Cuidados de la res 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Para mantener tus botas Bravio Western en óptimas condiciones, sigue estas recomendaciones:",
+        "Retira el polvo después de cada uso con un paño suave o cepillo de cerdas suaves. Para suciedad superficial, utiliza un producto diseñado específicamente para piel.",
+        "Hidratación de la piel",
+        "Aplica periódicamente un acondicionador para piel de buena calidad. Esto ayuda a mantener la piel hidratada y a conservar su apariencia.",
+        "Evita el exceso de humedad",
+        "Aunque la piel puede soportar cierta exposición ocasional, evita mojar las botas en exceso o dejarlas húmedas durante largos periodos.",
+        "Conserva su forma",
+        "Cuando no las utilices, guárdalas en un lugar fresco, seco y ventilado. Puedes utilizar un soporte para botas y el relleno de empaque para ayudar a conservar la forma de la caña."
+      ]
+    }
   },
   {
-    id: "prod-5",
-    sku: "BW-SIN-RE-MAR",
-    slug: "sinaloa-res-marron",
-    name: "Bota Sinaloa Res Marrón",
-    subtitle: "Piel de Res Marrón Castaño Satinado",
-    price: 4490,
-    description: "Equilibrio perfecto entre formalidad urbana y rudeza vaquera. Piel curtida con aceites naturales que garantizan flexibilidad inmediata desde la primera puesta.",
-    leatherType: "Piel de Res Castaño",
-    color: "Marrón Castaño / Chestnut",
-    construction: "Goodyear Welt Tradicional",
-    gender: "hombre",
-    collectionId: "sinaloa",
-    featuredImage: "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-1.webp",
-    images: [
+    "id": "prod-4",
+    "sku": "BW-SIN-RE-NEG",
+    "skuBase": "BW-SIN-RE-NEG",
+    "slug": "bota-sinaloa-res-negro",
+    "name": "Bota Sinaloa Res Negro",
+    "subtitle": "Construcción Goodyear Welt Tradicional en res 100% genuina",
+    "price": 3199,
+    "compareAtPrice": 3519,
+    "description": "Lleva tu estilo al siguiente nivel con Bravio Western, diseñados para quienes buscan una combinación de carácter, elegancia y presencia. Su acabado en color negro le da una apariencia sofisticada y versátil, perfecta para complementar desde un look western hasta un estilo más elegante. Su diseño de caña corta y líneas limpias aporta una imagen moderna sin perder la esencia tradicional de la bota western.",
+    "leatherType": "res 100% genuina",
+    "color": "",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
+    "images": [
+      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
+      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-2.webp",
+      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-3.webp",
+      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-4.webp",
+      "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-5.webp"
+    ],
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-RE-NEG-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-RE-NEG-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-RE-NEG-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-RE-NEG-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-RE-NEG-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-RE-NEG-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-RE-NEG-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-RE-NEG-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-RE-NEG-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-RE-NEG-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-RE-NEG-300",
+        "stock": 1
+      }
+    ],
+    "colors": [
+      {
+        "name": "",
+        "hex": "#605246",
+        "slug": ""
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "",
+      "res-100-genuina"
+    ],
+    "isFeatured": true,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
+    },
+    "careInstructions": {
+      "title": "Cuidados de la res 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Para mantener tus botas Bravio Western en óptimas condiciones, sigue estas recomendaciones:",
+        "Retira el polvo después de cada uso con un paño suave o cepillo de cerdas suaves. Para suciedad superficial, utiliza un producto diseñado específicamente para piel.",
+        "Hidratación de la piel",
+        "Aplica periódicamente un acondicionador para piel de buena calidad. Esto ayuda a mantener la piel hidratada y a conservar su apariencia.",
+        "Evita el exceso de humedad",
+        "Aunque la piel puede soportar cierta exposición ocasional, evita mojar las botas en exceso o dejarlas húmedas durante largos periodos.",
+        "Conserva su forma",
+        "Cuando no las utilices, guárdalas en un lugar fresco, seco y ventilado. Puedes utilizar un soporte para botas y el relleno de empaque para ayudar a conservar la forma de la caña."
+      ]
+    }
+  },
+  {
+    "id": "prod-5",
+    "sku": "BW-SIN-RE-MAR",
+    "skuBase": "BW-SIN-RE-MAR",
+    "slug": "bota-sinaloa-res-marron",
+    "name": "Bota Sinaloa Res Marrón",
+    "subtitle": "Construcción Goodyear Welt Tradicional en res 100% genuina",
+    "price": 3199,
+    "compareAtPrice": 3519,
+    "description": "Lleva tu estilo al siguiente nivel con Bravio Western, diseñados para quienes buscan una combinación de carácter, elegancia y presencia. Su acabado en color  marron le da una apariencia sofisticada y versátil. Su diseño de caña corta y líneas limpias aporta una imagen moderna sin perder la esencia tradicional de la bota western.",
+    "leatherType": "res 100% genuina",
+    "color": "",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-1.webp",
+    "images": [
       "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-1.webp",
       "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-2.webp",
       "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-3.webp",
       "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-4.webp",
+      "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-5.webp",
+      "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-6.webp",
+      "/products/catalogo/bw-sin-re-mar/bw-sin-re-mar-7.webp"
     ],
-    variants: [
-      { size: "25 MX", stock: 4, sku: "BW-SIN-RE-MAR-25" },
-      { size: "26 MX", stock: 8, sku: "BW-SIN-RE-MAR-26" },
-      { size: "27 MX", stock: 12, sku: "BW-SIN-RE-MAR-27" },
-      { size: "28 MX", stock: 9, sku: "BW-SIN-RE-MAR-28" },
-      { size: "29 MX", stock: 5, sku: "BW-SIN-RE-MAR-29" },
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-RE-MAR-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-RE-MAR-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-RE-MAR-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-RE-MAR-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-RE-MAR-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-RE-MAR-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-RE-MAR-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-RE-MAR-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-RE-MAR-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-RE-MAR-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-RE-MAR-300",
+        "stock": 1
+      }
     ],
-    tags: ["bota", "hombre", "sinaloa", "marron"],
-    isFeatured: false,
-    status: "active",
-    details: {
-      horma: "Western estilizada",
-      suela: "Suela de cuero natural",
-      tubo: "11 pulgadas",
-      tacon: "1.5 pulgadas",
-      origen: "León, Guanajuato",
+    "colors": [
+      {
+        "name": "",
+        "hex": "#605246",
+        "slug": ""
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "",
+      "res-100-genuina"
+    ],
+    "isFeatured": true,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
     },
+    "careInstructions": {
+      "title": "Cuidados de la res 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Para mantener tus botas Bravio Western en óptimas condiciones, sigue estas recomendaciones:",
+        "Retira el polvo después de cada uso con un paño suave o cepillo de cerdas suaves. Para suciedad superficial, utiliza un producto diseñado específicamente para piel.",
+        "Hidratación de la piel",
+        "Aplica periódicamente un acondicionador para piel de buena calidad. Esto ayuda a mantener la piel hidratada y a conservar su apariencia.",
+        "Evita el exceso de humedad",
+        "Aunque la piel puede soportar cierta exposición ocasional, evita mojar las botas en exceso o dejarlas húmedas durante largos periodos.",
+        "Conserva su forma",
+        "Cuando no las utilices, guárdalas en un lugar fresco, seco y ventilado. Puedes utilizar un soporte para botas y el relleno de empaque para ayudar a conservar la forma de la caña."
+      ]
+    }
   },
   {
-    id: "prod-6",
-    sku: "BW-SIN-ALL-NEG",
-    slug: "sinaloa-alligator-negro",
-    name: "Bota Sinaloa Grabado Alligator Negro",
-    subtitle: "Textura Exótica Imponente con Relieve Pronunciado",
-    price: 5290,
-    compareAtPrice: 5890,
-    description: "Grabado de alta definición sobre piel de res de calibre grueso. Relieves marcados y contraste sutil de brillo en las escamas para una presencia magnética tanto de día como de noche.",
-    leatherType: "Piel de Res Grabado Alligator",
-    color: "Negro Profundo / Jet Black",
-    construction: "Goodyear Welt Tradicional",
-    gender: "hombre",
-    collectionId: "sinaloa",
-    featuredImage: "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-1.webp",
-    images: [
+    "id": "prod-6",
+    "sku": "BW-SIN-ALL-NEG",
+    "skuBase": "BW-SIN-ALL-NEG",
+    "slug": "bota-sinaloa-grabado-alligator-negro",
+    "name": "Bota Sinaloa Grabado Alligator Negro",
+    "subtitle": "Construcción Goodyear Welt Tradicional en american alligator 100% genuina",
+    "price": 5600,
+    "compareAtPrice": 6160,
+    "description": "BOTIN SINALOA AMERICAN ALLIGATOR",
+    "leatherType": "american alligator 100% genuina",
+    "color": "NEGRO",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-1.webp",
+    "images": [
       "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-1.webp",
       "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-2.webp",
       "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-3.webp",
       "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-4.webp",
+      "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-5.webp",
+      "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-6.webp",
+      "/products/catalogo/bw-sin-all-neg/bw-sin-all-neg-7.webp"
     ],
-    variants: [
-      { size: "26 MX", stock: 6, sku: "BW-SIN-ALL-NEG-26" },
-      { size: "27 MX", stock: 8, sku: "BW-SIN-ALL-NEG-27" },
-      { size: "28 MX", stock: 7, sku: "BW-SIN-ALL-NEG-28" },
-      { size: "29 MX", stock: 4, sku: "BW-SIN-ALL-NEG-29" },
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-ALL-NEG-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-ALL-NEG-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-ALL-NEG-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-ALL-NEG-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-ALL-NEG-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-ALL-NEG-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-ALL-NEG-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-ALL-NEG-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-ALL-NEG-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-ALL-NEG-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-ALL-NEG-300",
+        "stock": 1
+      }
     ],
-    tags: ["bota", "hombre", "sinaloa", "exotico", "alligator", "negro"],
-    isFeatured: true,
-    status: "active",
-    details: {
-      horma: "Semi-oval Western",
-      suela: "Suela de cuero con cantos encerados en negro",
-      tubo: "11 pulgadas",
-      tacon: "1.5 pulgadas",
-      origen: "León, Guanajuato",
+    "colors": [
+      {
+        "name": "NEGRO",
+        "hex": "#1A1A1A",
+        "slug": "negro"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "negro",
+      "american-alligator-100-genuina"
+    ],
+    "isFeatured": true,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
     },
+    "careInstructions": {
+      "title": "Cuidados de la american alligator 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Cepillado regular:",
+        "Después de cada uso, cepilla tus botas con un cepillo de cerdas suaves para eliminar el polvo y la suciedad superficial.",
+        "Limpieza con paño húmedo:.",
+        "Si tus botas se ensucian más de lo normal, límpialas suavemente con un paño de microfibra humedecido con agua tibia. Evita usar detergentes agresivos o productos químicos",
+        "Deja secar tus botas al aire libre, lejos de fuentes de calor directo como radiadores o la luz solar intensa. No uses secadora de pelo.",
+        "Hidratación:",
+        "Acondicionador para pieles exóticas:",
+        "Aplica un acondicionador específico para pieles exóticas (como alligator) cada 2-3 meses para mantener la piel hidratada y flexible. Sigue las instrucciones del fabricante.",
+        "No usar aceites: .",
+        "Evita el uso de aceites o grasas en tus botas, ya que pueden oscurecer la piel y afectar su transpirabilidad"
+      ]
+    }
   },
   {
-    id: "prod-7",
-    sku: "BW-SIN-AVE-CON",
-    slug: "sinaloa-avestruz-cognac",
-    name: "Bota Sinaloa Grabado Avestruz Coñac",
-    subtitle: "Patrón Plumario Clásico en Tono Coñac Ámbar",
-    price: 5190,
-    compareAtPrice: 5690,
-    description: "El clásico indiscutible del guardarropa vaquero refinado. Grabado uniforme con los folículos característicos de avestruz, enriquecido con un sombreado artesanal en tono ámbar y madera.",
-    leatherType: "Piel Grabado Avestruz",
-    color: "Coñac Ámbar / Amber Cognac",
-    construction: "Goodyear Welt Tradicional",
-    gender: "hombre",
-    collectionId: "sinaloa",
-    featuredImage: "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-1.webp",
-    images: [
+    "id": "prod-7",
+    "sku": "BW-SIN-AVE-CON",
+    "skuBase": "BW-SIN-AVE-CON",
+    "slug": "bota-sinaloa-grabado-avestruz-conac",
+    "name": "Bota Sinaloa Grabado Avestruz Coñac",
+    "subtitle": "Construcción Goodyear Welt Tradicional en avestruz 100% genuina",
+    "price": 4500,
+    "compareAtPrice": 4950,
+    "description": "Descubre el lujo y la distinción en cada paso con estos comodos botines de avestruz africano. Fabricadas con piel de avestruz africano, estas botas ofrecen un estilo atrevido y durabilidad sin igual. Hechas a mano por artesanos expertos, estas botas son un verdadero testimonio de calidad y estilo",
+    "leatherType": "avestruz 100% genuina",
+    "color": "COÑAC",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-1.webp",
+    "images": [
       "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-1.webp",
       "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-2.webp",
       "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-3.webp",
       "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-4.webp",
+      "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-5.webp",
+      "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-6.webp"
     ],
-    variants: [
-      { size: "25 MX", stock: 3, sku: "BW-SIN-AVE-CON-25" },
-      { size: "26 MX", stock: 7, sku: "BW-SIN-AVE-CON-26" },
-      { size: "27 MX", stock: 10, sku: "BW-SIN-AVE-CON-27" },
-      { size: "28 MX", stock: 8, sku: "BW-SIN-AVE-CON-28" },
-      { size: "29 MX", stock: 5, sku: "BW-SIN-AVE-CON-29" },
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-AVE-COÑ-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-AVE-COÑ-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-AVE-COÑ-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-AVE-COÑ-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-AVE-COÑ-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-AVE-COÑ-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-AVE-COÑ-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-AVE-COÑ-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-AVE-COÑ-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-AVE-COÑ-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-AVE-COÑ-300",
+        "stock": 1
+      }
     ],
-    tags: ["bota", "hombre", "sinaloa", "avestruz", "coñac"],
-    isFeatured: true,
-    status: "active",
-    details: {
-      horma: "Semi-oval Western",
-      suela: "Cuero natural de primera selección",
-      tubo: "11 pulgadas con bordado ornamental",
-      tacon: "1.5 pulgadas",
-      origen: "León, Guanajuato",
+    "colors": [
+      {
+        "name": "COÑAC",
+        "hex": "#9E5B26",
+        "slug": "conac"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "conac",
+      "avestruz-100-genuina"
+    ],
+    "isFeatured": false,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
     },
+    "careInstructions": {
+      "title": "Cuidados de la avestruz 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Cepillado regular:",
+        "Después de cada uso, cepilla tus botas con un cepillo de cerdas suaves para eliminar el polvo y la suciedad superficial.",
+        "Limpieza con paño húmedo:.",
+        "Si tus botas se ensucian más de lo normal, límpialas suavemente con un paño de microfibra humedecido con agua tibia. Evita usar detergentes agresivos o productos químicos",
+        "Deja secar tus botas al aire libre, lejos de fuentes de calor directo como radiadores o la luz solar intensa. No uses secadora de pelo.",
+        "Hidratación:",
+        "Acondicionador para pieles exóticas:",
+        "Aplica un acondicionador específico para pieles exóticas cada 2-3 meses para mantener la piel hidratada y flexible. Sigue las instrucciones del fabricante.",
+        "No usar aceites: .",
+        "Evita el uso de aceites o grasas en tus botas, ya que pueden oscurecer la piel y afectar su transpirabilidad"
+      ]
+    }
   },
   {
-    id: "prod-8",
-    sku: "BW-SIN-PIT-BLA",
-    slug: "sinaloa-piton-blanco",
-    name: "Bota Sinaloa Pitón Blanco & Hueso",
-    subtitle: "Pieza de Declaración con Escamas Geométricas",
-    price: 5490,
-    compareAtPrice: 6200,
-    description: "Audaz, sofisticada y memorable. Un patrón de pitón en contraste hueso y grafito que rompe los moldes tradicionales y define la estética de BRAVÍO: western para la vida actual.",
-    leatherType: "Piel Grabado Pitón Natural",
-    color: "Blanco Hueso & Grafito / Bone Python",
-    construction: "Goodyear Welt Tradicional",
-    gender: "hombre",
-    collectionId: "sinaloa",
-    featuredImage: "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-1.webp",
-    images: [
+    "id": "prod-8",
+    "sku": "BW-SIN-AVE-CAF",
+    "skuBase": "BW-SIN-AVE-CAF",
+    "slug": "bota-sinaloa-grabado-avestruz-cafe",
+    "name": "Bota Sinaloa Grabado Avestruz Café",
+    "subtitle": "Construcción Goodyear Welt Tradicional en avestruz 100% genuina",
+    "price": 4500,
+    "compareAtPrice": 4950,
+    "description": "Descubre el lujo y la distinción en cada paso con estos comodos botines de avestruz africano. Fabricadas con piel de avestruz africano, estas botas ofrecen un estilo atrevido y durabilidad sin igual. Hechas a mano por artesanos expertos, estas botas son un verdadero testimonio de calidad y estilo",
+    "leatherType": "avestruz 100% genuina",
+    "color": "CAFÉ",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-1.webp",
+    "images": [
+      "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-1.webp",
+      "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-2.webp",
+      "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-3.webp",
+      "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-4.webp",
+      "/products/catalogo/bw-sin-ave-caf/bw-sin-ave-caf-5.webp"
+    ],
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-AVE-CAF-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-AVE-CAF-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-AVE-CAF-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-AVE-CAF-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-AVE-CAF-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-AVE-CAF-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-AVE-CAF-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-AVE-CAF-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-AVE-CAF-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-AVE-CAF-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-AVE-CAF-300",
+        "stock": 1
+      }
+    ],
+    "colors": [
+      {
+        "name": "CAFÉ",
+        "hex": "#4A2E1B",
+        "slug": "cafe"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "cafe",
+      "avestruz-100-genuina"
+    ],
+    "isFeatured": false,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
+    },
+    "careInstructions": {
+      "title": "Cuidados de la avestruz 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Cepillado regular:",
+        "Después de cada uso, cepilla tus botas con un cepillo de cerdas suaves para eliminar el polvo y la suciedad superficial.",
+        "Limpieza con paño húmedo:.",
+        "Si tus botas se ensucian más de lo normal, límpialas suavemente con un paño de microfibra humedecido con agua tibia. Evita usar detergentes agresivos o productos químicos",
+        "Deja secar tus botas al aire libre, lejos de fuentes de calor directo como radiadores o la luz solar intensa. No uses secadora de pelo.",
+        "Hidratación:",
+        "Acondicionador para pieles exóticas:",
+        "Aplica un acondicionador específico para pieles exóticas cada 2-3 meses para mantener la piel hidratada y flexible. Sigue las instrucciones del fabricante.",
+        "No usar aceites: .",
+        "Evita el uso de aceites o grasas en tus botas, ya que pueden oscurecer la piel y afectar su transpirabilidad"
+      ]
+    }
+  },
+  {
+    "id": "prod-9",
+    "sku": "BW-SIN-AVE-NEG",
+    "skuBase": "BW-SIN-AVE-NEG",
+    "slug": "bota-sinaloa-grabado-avestruz-negro",
+    "name": "Bota Sinaloa Grabado Avestruz Negro",
+    "subtitle": "Construcción Goodyear Welt Tradicional en avestruz 100% genuina",
+    "price": 4500,
+    "compareAtPrice": 4950,
+    "description": "Descubre el lujo y la distinción en cada paso con estos comodos botines de avestruz africano. Fabricadas con piel de avestruz africano, estas botas ofrecen un estilo atrevido y durabilidad sin igual. Hechas a mano por artesanos expertos, estas botas son un verdadero testimonio de calidad y estilo",
+    "leatherType": "avestruz 100% genuina",
+    "color": "NEGRO",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-1.webp",
+    "images": [
+      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-1.webp",
+      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-2.webp",
+      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-3.webp",
+      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-4.webp",
+      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-5.webp",
+      "/products/catalogo/bw-sin-ave-neg/bw-sin-ave-neg-6.webp"
+    ],
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-AVE-NEG-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-AVE-NEG-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-AVE-NEG-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-AVE-NEG-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-AVE-NEG-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-AVE-NEG-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-AVE-NEG-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-AVE-NEG-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-AVE-NEG-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-AVE-NEG-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-AVE-NEG-300",
+        "stock": 1
+      }
+    ],
+    "colors": [
+      {
+        "name": "NEGRO",
+        "hex": "#1A1A1A",
+        "slug": "negro"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "negro",
+      "avestruz-100-genuina"
+    ],
+    "isFeatured": false,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
+    },
+    "careInstructions": {
+      "title": "Cuidados de la avestruz 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Cepillado regular:",
+        "Después de cada uso, cepilla tus botas con un cepillo de cerdas suaves para eliminar el polvo y la suciedad superficial.",
+        "Limpieza con paño húmedo:.",
+        "Si tus botas se ensucian más de lo normal, límpialas suavemente con un paño de microfibra humedecido con agua tibia. Evita usar detergentes agresivos o productos químicos",
+        "Deja secar tus botas al aire libre, lejos de fuentes de calor directo como radiadores o la luz solar intensa. No uses secadora de pelo.",
+        "Hidratación:",
+        "Acondicionador para pieles exóticas:",
+        "Aplica un acondicionador específico para pieles exóticas cada 2-3 meses para mantener la piel hidratada y flexible. Sigue las instrucciones del fabricante.",
+        "No usar aceites: .",
+        "Evita el uso de aceites o grasas en tus botas, ya que pueden oscurecer la piel y afectar su transpirabilidad"
+      ]
+    }
+  },
+  {
+    "id": "prod-10",
+    "sku": "BW-SIN-PIT-CAF",
+    "skuBase": "BW-SIN-PIT-CAF",
+    "slug": "bota-sinaloa-piton-cafe",
+    "name": "Bota Sinaloa Pitón Café",
+    "subtitle": "Construcción Goodyear Welt Tradicional en piton 100% genuina",
+    "price": 4200,
+    "compareAtPrice": 4620,
+    "description": "Uno de nuestros modelos más exclusivos de Bravio Western. Es una botin de pitón en tono café, con una combinación de piel exótica elegante y sofisticada. Su diseño es ideal para el cliente que busca algo diferente, que quiere vestir con personalidad y proyectar distinción. Es una bota que destaca por sí sola.",
+    "leatherType": "piton 100% genuina",
+    "color": "CAFÉ",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-1.webp",
+    "images": [
+      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-1.webp",
+      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-2.webp",
+      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-3.webp",
+      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-4.webp",
+      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-5.webp",
+      "/products/catalogo/bw-sin-pit-caf/bw-sin-pit-caf-6.webp"
+    ],
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-PIT-CAF-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-PIT-CAF-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-PIT-CAF-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-PIT-CAF-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-PIT-CAF-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-PIT-CAF-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-PIT-CAF-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-PIT-CAF-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-PIT-CAF-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-PIT-CAF-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-PIT-CAF-300",
+        "stock": 1
+      }
+    ],
+    "colors": [
+      {
+        "name": "CAFÉ",
+        "hex": "#4A2E1B",
+        "slug": "cafe"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "cafe",
+      "piton-100-genuina"
+    ],
+    "isFeatured": false,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
+    },
+    "careInstructions": {
+      "title": "Cuidados de la piton 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Cepillado regular:",
+        "Después de cada uso, cepilla tus botas con un cepillo de cerdas suaves para eliminar el polvo y la suciedad superficial.",
+        "Limpieza con paño húmedo:.",
+        "Si tus botas se ensucian más de lo normal, límpialas suavemente con un paño de microfibra humedecido con agua tibia. Evita usar detergentes agresivos o productos químicos",
+        "Deja secar tus botas al aire libre, lejos de fuentes de calor directo como radiadores o la luz solar intensa. No uses secadora de pelo.",
+        "Hidratación:",
+        "Acondicionador para pieles exóticas:",
+        "Aplica un acondicionador específico para pieles exóticas cada 2-3 meses para mantener la piel hidratada y flexible. Sigue las instrucciones del fabricante.",
+        "No usar aceites: .",
+        "Evita el uso de aceites o grasas en tus botas, ya que pueden oscurecer la piel y afectar su transpirabilidad"
+      ]
+    }
+  },
+  {
+    "id": "prod-11",
+    "sku": "BW-SIN-PIT-BLA",
+    "skuBase": "BW-SIN-PIT-BLA",
+    "slug": "bota-sinaloa-piton-black-cherry",
+    "name": "Bota Sinaloa Pitón Black Cherry",
+    "subtitle": "Construcción Goodyear Welt Tradicional en piton 100% genuina",
+    "price": 4200,
+    "compareAtPrice": 4620,
+    "description": "BOTIN SINALOA PITON BLACK CHERRY",
+    "leatherType": "piton 100% genuina",
+    "color": "CAFÉ",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-1.webp",
+    "images": [
       "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-1.webp",
       "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-2.webp",
       "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-3.webp",
       "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-4.webp",
+      "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-5.webp",
+      "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-6.webp"
     ],
-    variants: [
-      { size: "26 MX", stock: 4, sku: "BW-SIN-PIT-BLA-26" },
-      { size: "27 MX", stock: 6, sku: "BW-SIN-PIT-BLA-27" },
-      { size: "28 MX", stock: 5, sku: "BW-SIN-PIT-BLA-28" },
-      { size: "29 MX", stock: 3, sku: "BW-SIN-PIT-BLA-29" },
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-PIT-BLA-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-PIT-BLA-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-PIT-BLA-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-PIT-BLA-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-PIT-BLA-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-PIT-BLA-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-PIT-BLA-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-PIT-BLA-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-PIT-BLA-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-PIT-BLA-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-PIT-BLA-300",
+        "stock": 1
+      }
     ],
-    tags: ["bota", "hombre", "sinaloa", "piton", "blanco", "edicion-especial"],
-    isFeatured: true,
-    status: "active",
-    details: {
-      horma: "Semi-oval estilizada",
-      suela: "Cuero natural pulido a mano",
-      tubo: "11.5 pulgadas",
-      tacon: "1.5 pulgadas",
-      origen: "León, Guanajuato",
+    "colors": [
+      {
+        "name": "CAFÉ",
+        "hex": "#4A2E1B",
+        "slug": "cafe"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "cafe",
+      "piton-100-genuina"
+    ],
+    "isFeatured": false,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
     },
+    "careInstructions": {
+      "title": "Cuidados de la piton 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Cepillado regular:",
+        "Después de cada uso, cepilla tus botas con un cepillo de cerdas suaves para eliminar el polvo y la suciedad superficial.",
+        "Limpieza con paño húmedo:.",
+        "Si tus botas se ensucian más de lo normal, límpialas suavemente con un paño de microfibra humedecido con agua tibia. Evita usar detergentes agresivos o productos químicos",
+        "Deja secar tus botas al aire libre, lejos de fuentes de calor directo como radiadores o la luz solar intensa. No uses secadora de pelo.",
+        "Hidratación:",
+        "Acondicionador para pieles exóticas:",
+        "Aplica un acondicionador específico para pieles exóticas cada 2-3 meses para mantener la piel hidratada y flexible. Sigue las instrucciones del fabricante.",
+        "No usar aceites: .",
+        "Evita el uso de aceites o grasas en tus botas, ya que pueden oscurecer la piel y afectar su transpirabilidad"
+      ]
+    }
   },
   {
-    id: "prod-9",
-    sku: "BW-SIN-CAI-NEG",
-    slug: "sinaloa-caiman-negro",
-    name: "Bota Sinaloa Grabado Caimán Negro",
-    subtitle: "Lomo de Caimán con Escudo Frontal Esculpido",
-    price: 5390,
-    description: "Construida para resistir el paso de las décadas con una presencia majestuosa. Grabado con dorsal de caimán de gran profundidad y remates bruñidos a mano en nuestro taller de León.",
-    leatherType: "Piel de Res Grabado Caimán",
-    color: "Negro Satinado / Midnight Caiman",
-    construction: "Goodyear Welt Tradicional",
-    gender: "hombre",
-    collectionId: "sinaloa",
-    featuredImage: "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-1.webp",
-    images: [
+    "id": "prod-12",
+    "sku": "BW-SIN-CAI-NEG",
+    "skuBase": "BW-SIN-CAI-NEG",
+    "slug": "bota-sinaloa-grabado-caiman-negro",
+    "name": "Bota Sinaloa Grabado Caimán Negro",
+    "subtitle": "Construcción Goodyear Welt Tradicional en piton 100% genuina",
+    "price": 5600,
+    "compareAtPrice": 6160,
+    "description": "Nuestra bota de piel de caimán es una pieza que impone presencia. Su textura exótica y acabado de lujo la convierten en una bota exclusiva para quienes buscan destacar y marcar su propio estilo. Simplemente esta píel es unica y tiene una presencia inigualable",
+    "leatherType": "piton 100% genuina",
+    "color": "NEGRO",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-1.webp",
+    "images": [
       "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-1.webp",
       "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-2.webp",
       "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-3.webp",
+      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-4.webp",
+      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-5.webp",
+      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-6.webp",
+      "/products/catalogo/bw-sin-cai-neg/bw-sin-cai-neg-7.webp"
     ],
-    variants: [
-      { size: "26 MX", stock: 5, sku: "BW-SIN-CAI-NEG-26" },
-      { size: "27 MX", stock: 7, sku: "BW-SIN-CAI-NEG-27" },
-      { size: "28 MX", stock: 6, sku: "BW-SIN-CAI-NEG-28" },
-      { size: "29 MX", stock: 3, sku: "BW-SIN-CAI-NEG-29" },
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-CAI-NEG-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-CAI-NEG-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-CAI-NEG-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-CAI-NEG-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-CAI-NEG-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-CAI-NEG-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-CAI-NEG-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-CAI-NEG-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-CAI-NEG-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-CAI-NEG-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-CAI-NEG-300",
+        "stock": 1
+      }
     ],
-    tags: ["bota", "hombre", "sinaloa", "caiman", "negro"],
-    isFeatured: false,
-    status: "active",
-    details: {
-      horma: "Semi-oval Western",
-      suela: "Cuero genuino 100%",
-      tubo: "11 pulgadas",
-      tacon: "1.5 pulgadas",
-      origen: "León, Guanajuato",
+    "colors": [
+      {
+        "name": "NEGRO",
+        "hex": "#1A1A1A",
+        "slug": "negro"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "negro",
+      "piton-100-genuina"
+    ],
+    "isFeatured": false,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
     },
+    "careInstructions": {
+      "title": "Cuidados de la piton 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Cepillado regular:",
+        "Después de cada uso, cepilla tus botas con un cepillo de cerdas suaves para eliminar el polvo y la suciedad superficial.",
+        "Limpieza con paño húmedo:.",
+        "Si tus botas se ensucian más de lo normal, límpialas suavemente con un paño de microfibra humedecido con agua tibia. Evita usar detergentes agresivos o productos químicos",
+        "Deja secar tus botas al aire libre, lejos de fuentes de calor directo como radiadores o la luz solar intensa. No uses secadora de pelo.",
+        "Hidratación:",
+        "Acondicionador para pieles exóticas:",
+        "Aplica un acondicionador específico para pieles exóticas cada 2-3 meses para mantener la piel hidratada y flexible. Sigue las instrucciones del fabricante.",
+        "No usar aceites: .",
+        "Evita el uso de aceites o grasas en tus botas, ya que pueden oscurecer la piel y afectar su transpirabilidad"
+      ]
+    }
   },
   {
-    id: "prod-10",
-    sku: "BW-SIN-CAI-CAF",
-    slug: "sinaloa-caiman-cafe",
-    name: "Bota Sinaloa Grabado Caimán Café",
-    subtitle: "Dorsal Exótico en Tonos Chocolate y Tierra",
-    price: 5390,
-    description: "La textura más codiciada en una paleta terrosa y sofisticada. Fácil de combinar con denim crudo, pantalones sastre o lino para ocasiones donde la bota es la protagonista absoluta.",
-    leatherType: "Piel Grabado Caimán Dorsal",
-    color: "Café Chocolate / Dark Chocolate",
-    construction: "Goodyear Welt Tradicional",
-    gender: "hombre",
-    collectionId: "sinaloa",
-    featuredImage: "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-1.webp",
-    images: [
+    "id": "prod-13",
+    "sku": "BW-SIN-CAI-CAF",
+    "skuBase": "BW-SIN-CAI-CAF",
+    "slug": "bota-sinaloa-grabado-caiman-cafe",
+    "name": "Bota Sinaloa Grabado Caimán Café",
+    "subtitle": "Construcción Goodyear Welt Tradicional en piton 100% genuina",
+    "price": 5600,
+    "compareAtPrice": 6160,
+    "description": "Nuestra bota de piel de caimán es una pieza que impone presencia. Su textura exótica y acabado de lujo la convierten en una bota exclusiva para quienes buscan destacar y marcar su propio estilo. Simplemente esta píel es unica y tiene una presencia inigualable",
+    "leatherType": "piton 100% genuina",
+    "color": "CAFÉ",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-1.webp",
+    "images": [
       "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-1.webp",
       "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-2.webp",
       "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-3.webp",
+      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-4.webp",
+      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-5.webp",
+      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-6.webp",
+      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-7.webp",
+      "/products/catalogo/bw-sin-cai-caf/bw-sin-cai-caf-8.webp"
     ],
-    variants: [
-      { size: "26 MX", stock: 4, sku: "BW-SIN-CAI-CAF-26" },
-      { size: "27 MX", stock: 8, sku: "BW-SIN-CAI-CAF-27" },
-      { size: "28 MX", stock: 5, sku: "BW-SIN-CAI-CAF-28" },
-      { size: "29 MX", stock: 2, sku: "BW-SIN-CAI-CAF-29" },
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-CAI-CAF-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-CAI-CAF-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-CAI-CAF-260",
+        "stock": 1
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-CAI-CAF-265",
+        "stock": 1
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-CAI-CAF-270",
+        "stock": 1
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-CAI-CAF-275",
+        "stock": 1
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-CAI-CAF-280",
+        "stock": 1
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-CAI-CAF-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-CAI-CAF-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-CAI-CAF-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-CAI-CAF-300",
+        "stock": 1
+      }
     ],
-    tags: ["bota", "hombre", "sinaloa", "caiman", "cafe"],
-    isFeatured: false,
-    status: "active",
-    details: {
-      horma: "Semi-oval Western",
-      suela: "Cuero natural",
-      tubo: "11 pulgadas",
-      tacon: "1.5 pulgadas",
-      origen: "León, Guanajuato",
+    "colors": [
+      {
+        "name": "CAFÉ",
+        "hex": "#4A2E1B",
+        "slug": "cafe"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "cafe",
+      "piton-100-genuina"
+    ],
+    "isFeatured": false,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "oval",
+      "suela": "cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "goodyear welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
     },
+    "careInstructions": {
+      "title": "Cuidados de la piton 100% genuina",
+      "tips": [
+        "Una bota de piel merece cuidado para conservar su apariencia, suavidad y carácter.",
+        "Cepillado regular:",
+        "Después de cada uso, cepilla tus botas con un cepillo de cerdas suaves para eliminar el polvo y la suciedad superficial.",
+        "Limpieza con paño húmedo:.",
+        "Si tus botas se ensucian más de lo normal, límpialas suavemente con un paño de microfibra humedecido con agua tibia. Evita usar detergentes agresivos o productos químicos",
+        "Deja secar tus botas al aire libre, lejos de fuentes de calor directo como radiadores o la luz solar intensa. No uses secadora de pelo.",
+        "Hidratación:",
+        "Acondicionador para pieles exóticas:",
+        "Aplica un acondicionador específico para pieles exóticas cada 2-3 meses para mantener la piel hidratada y flexible. Sigue las instrucciones del fabricante.",
+        "No usar aceites: .",
+        "Evita el uso de aceites o grasas en tus botas, ya que pueden oscurecer la piel y afectar su transpirabilidad"
+      ]
+    }
   },
+  {
+    "id": "prod-14",
+    "sku": "BW-SIN-PIT-VIN",
+    "skuBase": "BW-SIN-PIT-VIN",
+    "slug": "bota-sinaloa-piton-vino",
+    "name": "Bota Sinaloa Pitón Vino",
+    "subtitle": "Construcción Goodyear Welt Tradicional en Piel Pitón Genuina",
+    "price": 4200,
+    "compareAtPrice": 4620,
+    "description": "Uno de nuestros modelos más exclusivos de Bravio Western. Es un botín de pitón en tono vino profundo, con una combinación de piel exótica elegante y sofisticada. Su diseño es ideal para el cliente que busca distinción y autenticidad western para la vida actual.",
+    "leatherType": "piton 100% genuina",
+    "color": "Vino",
+    "construction": "Goodyear Welt Tradicional",
+    "category": "hombre",
+    "gender": "hombre",
+    "collectionId": "sinaloa",
+    "featuredImage": "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-1.webp",
+    "images": [
+      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-1.webp",
+      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-2.webp",
+      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-3.webp",
+      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-4.webp",
+      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-5.webp",
+      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-6.webp",
+      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-7.webp",
+      "/products/catalogo/bw-sin-pit-vin/bw-sin-pit-vin-8.webp"
+    ],
+    "variants": [
+      {
+        "size": "25 MX",
+        "sku": "BW-SIN-PIT-VIN-250",
+        "stock": 1
+      },
+      {
+        "size": "25.5 MX",
+        "sku": "BW-SIN-PIT-VIN-255",
+        "stock": 1
+      },
+      {
+        "size": "26 MX",
+        "sku": "BW-SIN-PIT-VIN-260",
+        "stock": 2
+      },
+      {
+        "size": "26.5 MX",
+        "sku": "BW-SIN-PIT-VIN-265",
+        "stock": 2
+      },
+      {
+        "size": "27 MX",
+        "sku": "BW-SIN-PIT-VIN-270",
+        "stock": 2
+      },
+      {
+        "size": "27.5 MX",
+        "sku": "BW-SIN-PIT-VIN-275",
+        "stock": 2
+      },
+      {
+        "size": "28 MX",
+        "sku": "BW-SIN-PIT-VIN-280",
+        "stock": 2
+      },
+      {
+        "size": "28.5 MX",
+        "sku": "BW-SIN-PIT-VIN-285",
+        "stock": 1
+      },
+      {
+        "size": "29 MX",
+        "sku": "BW-SIN-PIT-VIN-290",
+        "stock": 1
+      },
+      {
+        "size": "29.5 MX",
+        "sku": "BW-SIN-PIT-VIN-295",
+        "stock": 1
+      },
+      {
+        "size": "30 MX",
+        "sku": "BW-SIN-PIT-VIN-300",
+        "stock": 1
+      }
+    ],
+    "colors": [
+      {
+        "name": "Vino",
+        "hex": "#4A121A",
+        "slug": "vino"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "25 MX",
+        "available": true
+      },
+      {
+        "label": "25.5 MX",
+        "available": true
+      },
+      {
+        "label": "26 MX",
+        "available": true
+      },
+      {
+        "label": "26.5 MX",
+        "available": true
+      },
+      {
+        "label": "27 MX",
+        "available": true
+      },
+      {
+        "label": "27.5 MX",
+        "available": true
+      },
+      {
+        "label": "28 MX",
+        "available": true
+      },
+      {
+        "label": "28.5 MX",
+        "available": true
+      },
+      {
+        "label": "29 MX",
+        "available": true
+      },
+      {
+        "label": "29.5 MX",
+        "available": true
+      },
+      {
+        "label": "30 MX",
+        "available": true
+      }
+    ],
+    "tags": [
+      "bota",
+      "hombre",
+      "sinaloa",
+      "piton",
+      "vino",
+      "exotico"
+    ],
+    "isFeatured": true,
+    "available": true,
+    "status": "active",
+    "details": {
+      "horma": "Oval",
+      "suela": "Cuero 100%",
+      "tubo": "25 cm",
+      "tacon": "4 cm",
+      "forro": "100% res",
+      "construccion": "Goodyear Welt",
+      "origen": "Hecho a mano en León, Guanajuato, México"
+    }
+  }
 ];
 
 export const PRODUCTS = PRODUCTS_CATALOG;
@@ -393,7 +2391,7 @@ export const PRODUCTS = PRODUCTS_CATALOG;
 export function getProductsByCategory(category: string): Product[] {
   if (category === "all") return PRODUCTS_CATALOG;
   return PRODUCTS_CATALOG.filter(
-    (p) => p.gender === category || p.collectionId === category
+    (p) => p.gender === category || p.category === category || p.collectionId === category
   );
 }
 
@@ -405,4 +2403,6 @@ export function getProductById(id: string): Product | undefined {
   return PRODUCTS_CATALOG.find((p) => p.id === id);
 }
 
-
+export function getProductBySku(sku: string): Product | undefined {
+  return PRODUCTS_CATALOG.find((p) => p.sku === sku);
+}

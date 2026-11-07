@@ -35,7 +35,7 @@ export default function HistoriaPage() {
       {/* Featured Photo */}
       <div className="relative aspect-[16/9] overflow-hidden border border-[#B1C7D4]/50 mb-16 shadow-lg bg-white">
         <img
-          src="/products/bota-suela-zipper.jpg"
+          src="/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-3.webp"
           alt="Taller de calzado artesanal en León Gto"
           className="w-full h-full object-cover object-center filter contrast-105"
         />

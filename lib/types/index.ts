@@ -69,6 +69,7 @@ export interface ProductVariant {
 export interface Product {
   id: string;
   sku: string;
+  skuBase?: string;
   slug: string;
   name: string;
   subtitle: string;
@@ -84,15 +85,24 @@ export interface Product {
   images: string[];
   featuredImage: string;
   variants: ProductVariant[];
+  colors?: { name: string; hex: string; slug: string }[];
+  sizes?: { label: string; available: boolean }[];
   tags: string[];
   isFeatured: boolean;
+  available?: boolean;
   status: "active" | "draft" | "archived";
   details: {
     horma: string;
     suela: string;
     tubo: string;
     tacon: string;
+    forro?: string;
+    construccion?: string;
     origen: string;
+  };
+  careInstructions?: {
+    title: string;
+    tips: string[];
   };
 }
 

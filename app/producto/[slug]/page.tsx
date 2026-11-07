@@ -12,9 +12,11 @@ import { CruzDeHierro } from "@/components/ui/BravioLogo";
 export default function ProductDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const slug = (params?.slug as string) || "sinaloa-gamuza-arena";
+  const slug = (params?.slug as string) || "bota-sinaloa-gamuza-arena";
 
-  const product = PRODUCTS_CATALOG.find((p) => p.slug === slug) || PRODUCTS_CATALOG[0];
+  const product = PRODUCTS_CATALOG.find(
+    (p) => p.slug === slug || p.id === slug || p.sku.toLowerCase() === slug.toLowerCase()
+  ) || PRODUCTS_CATALOG[0];
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState(product.variants[0]?.size || "27 MX");
