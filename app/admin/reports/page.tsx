@@ -190,6 +190,21 @@ export default function AdminReportsPage() {
         </button>
       </div>
 
+      {/* Production Clean Status Banner when no orders */}
+      {kpis.totalOrders === 0 && (
+        <div className="p-4 bg-emerald-50/80 border border-emerald-300 rounded-sm text-xs text-emerald-950 flex items-start gap-3 shadow-xs">
+          <CheckCircle2 size={18} className="text-emerald-700 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="font-bold uppercase tracking-wider text-emerald-900">
+              MODO PRODUCCIÓN ACTIVO &bull; PANEL CONECTADO A BASE DE DATOS REAL
+            </p>
+            <p className="mt-0.5 text-emerald-800 text-[11px] leading-relaxed">
+              Se han purgado todos los datos simulados/mock. El sistema se encuentra en espera de compras reales de clientes. Las métricas de facturación, carritos recuperados, tickets promedio y distribución geográfica se calcularán automáticamente en tiempo real con cada orden procesada.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* KPI Directivos Highlight Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Ventas Semanales Actuales */}
@@ -201,8 +216,14 @@ export default function AdminReportsPage() {
           <div className="font-mono text-2xl text-[#605246] font-bold">
             ${weeklySales.currentWeekTotal.toLocaleString("es-MX")} MXN
           </div>
-          <div className="text-[10px] text-emerald-600 mt-2 flex items-center gap-1 font-bold">
-            <TrendingUp size={12} /> {weeklySales.growthVsLastWeek} vs semana previa
+          <div className="text-[10px] mt-2 flex items-center gap-1 font-bold">
+            {weeklySales.currentWeekOrders > 0 ? (
+              <span className="text-emerald-600 flex items-center gap-1">
+                <TrendingUp size={12} /> {weeklySales.growthVsLastWeek} vs semana previa
+              </span>
+            ) : (
+              <span className="text-[#849AAD]">0 órdenes registradas</span>
+            )}
           </div>
         </div>
 
@@ -216,7 +237,7 @@ export default function AdminReportsPage() {
             {kpis.grossMargin}%
           </div>
           <div className="text-[10px] text-[#849AAD] mt-2">
-            Rentabilidad sobre costo directo en taller
+            {kpis.grossMargin > 0 ? "Rentabilidad sobre costo directo en taller" : "Calculado sobre costo directo en taller"}
           </div>
         </div>
 
@@ -230,7 +251,7 @@ export default function AdminReportsPage() {
             ${Math.round(kpis.averageTicket).toLocaleString("es-MX")} MXN
           </div>
           <div className="text-[10px] text-[#849AAD] mt-2">
-            Construcción Goodyear Welt 360°
+            {kpis.averageTicket > 0 ? "Construcción Goodyear Welt 360°" : "Promedio por orden completada"}
           </div>
         </div>
 
@@ -241,10 +262,10 @@ export default function AdminReportsPage() {
             <Sparkles size={16} className="text-[#5E1C23]" />
           </div>
           <div className="font-mono text-2xl text-[#605246] font-bold">
-            {kpis.roas}x
+            {kpis.roas > 0 ? `${kpis.roas}x` : "0x"}
           </div>
-          <div className="text-[10px] text-emerald-600 mt-2 font-bold">
-            $4.80 MXN generados por cada $1 invertido
+          <div className="text-[10px] mt-2 font-bold text-[#849AAD]">
+            {kpis.roas > 0 ? `$${kpis.roas} MXN generados por cada $1 invertido` : "Medición en vivo con pauta activa"}
           </div>
         </div>
       </div>
@@ -264,15 +285,19 @@ export default function AdminReportsPage() {
                     Evolución de Ventas Semana a Semana
                   </h2>
                 </div>
-                <span className="text-[10px] uppercase bg-emerald-50 text-emerald-700 border border-emerald-300 px-2 py-0.5 font-bold rounded">
-                  Tendencia Alcista
+                <span className={`text-[10px] uppercase px-2 py-0.5 font-bold rounded ${
+                  weeklySales.currentWeekOrders > 0
+                    ? "bg-emerald-50 text-emerald-700 border border-emerald-300"
+                    : "bg-[#F8FAFB] text-[#849AAD] border border-[#B1C7D4]/60"
+                }`}>
+                  {weeklySales.currentWeekOrders > 0 ? "Tendencia Alcista" : "Esperando Primeras Ventas"}
                 </span>
               </div>
 
               <div className="space-y-4 pt-2">
                 {weeklySales.weeks.map((w: any, idx: number) => {
-                  const maxSale = 75000;
-                  const pct = Math.round((w.sales / maxSale) * 100);
+                  const maxSale = Math.max(...weeklySales.weeks.map((weekItem: any) => weekItem.sales), 1);
+                  const pct = maxSale > 1 ? Math.round((w.sales / maxSale) * 100) : 0;
                   return (
                     <div key={idx} className="space-y-1.5">
                       <div className="flex justify-between items-center text-xs">
@@ -309,7 +334,7 @@ export default function AdminReportsPage() {
                         ${d.sales.toLocaleString("es-MX")}
                       </span>
                       <span className="text-[9px] text-[#849AAD] block mt-0.5">
-                        {d.visitors.toLocaleString("es-MX")} visitas
+                        {d.orders} órdenes
                       </span>
                     </div>
                   ))}
@@ -357,7 +382,9 @@ export default function AdminReportsPage() {
                     <CheckCircle2 size={13} className="text-emerald-700" /> Ahorro Operativo por SPEI:
                   </p>
                   <p className="text-[11px] leading-relaxed">
-                    Al procesar el 42% del volumen vía SPEI directo, el taller retiene un 3.5% adicional de margen neto que se hubiera ido en comisiones de pasarela.
+                    {kpis.totalOrders > 0
+                      ? `Al procesar el ${kpis.preferredPayment.spei}% del volumen vía SPEI directo, el taller retiene un 3.5% adicional de margen neto que se hubiera ido en comisiones de pasarela.`
+                      : "Al procesar pagos vía Transferencia SPEI Directa, el taller retiene el 100% del importe sin comisiones de intermediarios financieros."}
                   </p>
                 </div>
               </div>

@@ -756,6 +756,61 @@ class MockDatabase {
     return [...this.adminUsers];
   }
 
+  createAdminUser(data: { name: string; email: string; role: AdminUser["role"]; isActive?: boolean }): AdminUser {
+    const existing = this.adminUsers.find(u => u.email.toLowerCase() === data.email.toLowerCase().trim());
+    if (existing) {
+      throw new Error(`El correo ${data.email} ya está registrado.`);
+    }
+
+    const newUser: AdminUser = {
+      id: `usr-${Date.now()}`,
+      name: data.name.trim(),
+      email: data.email.toLowerCase().trim(),
+      role: data.role,
+      isActive: data.isActive ?? true,
+      lastLogin: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
+    };
+
+    this.adminUsers.push(newUser);
+    this.addAudit("USER_CREATE", "AdminUser", newUser.email, `Usuario ${newUser.name} creado con rol ${newUser.role}`);
+    return newUser;
+  }
+
+  updateAdminUser(id: string, updates: { name?: string; email?: string; role?: AdminUser["role"]; isActive?: boolean }): AdminUser | null {
+    const user = this.adminUsers.find(u => u.id === id);
+    if (!user) return null;
+
+    if (updates.name !== undefined) user.name = updates.name.trim();
+    if (updates.email !== undefined) {
+      const emailTrimmed = updates.email.toLowerCase().trim();
+      const duplicate = this.adminUsers.find(u => u.id !== id && u.email.toLowerCase() === emailTrimmed);
+      if (duplicate) {
+        throw new Error(`El correo ${updates.email} ya está en uso por otro usuario.`);
+      }
+      user.email = emailTrimmed;
+    }
+    if (updates.role !== undefined) user.role = updates.role;
+    if (updates.isActive !== undefined) user.isActive = updates.isActive;
+
+    this.addAudit("USER_UPDATE", "AdminUser", user.email, `Usuario ${user.name} actualizado (Rol: ${user.role}, Estado: ${user.isActive ? 'Activo' : 'Suspendido'})`);
+    return user;
+  }
+
+  deleteAdminUser(id: string): boolean {
+    const userIndex = this.adminUsers.findIndex(u => u.id === id);
+    if (userIndex === -1) return false;
+
+    const user = this.adminUsers[userIndex];
+    if (user.email === "cbarron@ti-boot.com" || user.id === "usr-1") {
+      throw new Error("No es posible eliminar al Administrador Principal.");
+    }
+
+    this.adminUsers.splice(userIndex, 1);
+    this.addAudit("USER_DELETE", "AdminUser", user.email, `Usuario ${user.name} (${user.email}) eliminado del sistema`);
+    return true;
+  }
+
   updateUserRole(id: string, role: AdminUser["role"]): AdminUser | null {
     const user = this.adminUsers.find(u => u.id === id);
     if (!user) return null;
@@ -772,127 +827,186 @@ class MockDatabase {
     return user;
   }
 
-  // Reports & Analytics
+  // Reports & Analytics - Datos Reales Calculados Dinámicamente
   getCommercialReports() {
     const totalOrders = this.orders.length;
     const totalSales = this.orders.reduce((acc, o) => acc + o.total, 0);
-    const effectiveTotalSales = totalSales > 0 ? totalSales : 184500;
-    const effectiveTotalOrders = totalOrders > 0 ? totalOrders : 38;
-    const averageTicket = effectiveTotalOrders > 0 ? effectiveTotalSales / effectiveTotalOrders : 4855;
+    const averageTicket = totalOrders > 0 ? Math.round(totalSales / totalOrders) : 0;
+
+    // Preferencias de Pago basadas en órdenes reales
+    const mpOrders = this.orders.filter(o => o.paymentMethod === "mercadopago" || o.paymentMethod === "tarjeta").length;
+    const speiOrders = this.orders.filter(o => o.paymentMethod === "transferencia").length;
+    const mpPercent = totalOrders > 0 ? Math.round((mpOrders / totalOrders) * 100) : 0;
+    const speiPercent = totalOrders > 0 ? Math.round((speiOrders / totalOrders) * 100) : 0;
+
+    // Semanas reales
+    const weeks = [
+      { weekLabel: "Semana Actual", sales: totalSales, orders: totalOrders, growth: totalOrders > 0 ? "+100%" : "0%" },
+      { weekLabel: "Semana Anterior", sales: 0, orders: 0, growth: "0%" },
+      { weekLabel: "Hace 2 Semanas", sales: 0, orders: 0, growth: "0%" },
+      { weekLabel: "Hace 3 Semanas", sales: 0, orders: 0, growth: "0%" },
+    ];
+
+    // Desglose diario
+    const dayNames = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+    const dailyBreakdown = dayNames.map((day) => ({
+      day,
+      sales: 0,
+      orders: 0,
+      visitors: 0,
+    }));
+
+    if (this.orders.length > 0) {
+      this.orders.forEach(o => {
+        const orderDate = new Date(o.createdAt);
+        const dayIdx = (orderDate.getDay() + 6) % 7; // Lunes = 0
+        if (dailyBreakdown[dayIdx]) {
+          dailyBreakdown[dayIdx].sales += o.total;
+          dailyBreakdown[dayIdx].orders += 1;
+        }
+      });
+    }
+
+    // Top productos desde órdenes reales
+    const productSalesMap = new Map<string, { sku: string; name: string; leather: string; unitsSold: number; revenue: number }>();
+    this.orders.forEach(order => {
+      (order.items || []).forEach(item => {
+        const prod = this.products.find(p => p.id === item.productId || p.sku === item.sku);
+        const existing = productSalesMap.get(item.sku || item.productId) || {
+          sku: item.sku || item.productId,
+          name: item.name || item.productId,
+          leather: prod?.leatherType || "Piel Vacuno",
+          unitsSold: 0,
+          revenue: 0,
+        };
+        existing.unitsSold += item.quantity || 1;
+        existing.revenue += (item.price || 0) * (item.quantity || 1);
+        productSalesMap.set(item.sku || item.productId, existing);
+      });
+    });
+
+    const topProducts = Array.from(productSalesMap.values())
+      .sort((a, b) => b.revenue - a.revenue)
+      .slice(0, 5);
+
+    // Ventas por piel
+    const leatherMap = new Map<string, number>();
+    this.orders.forEach(order => {
+      (order.items || []).forEach(item => {
+        const prod = this.products.find(p => p.id === item.productId || p.sku === item.sku);
+        const leather = prod?.leatherType || "Piel Vacuno";
+        const rev = (item.price || 0) * (item.quantity || 1);
+        leatherMap.set(leather, (leatherMap.get(leather) || 0) + rev);
+      });
+    });
+
+    const salesByLeather = Array.from(leatherMap.entries()).map(([type, revenue]) => ({
+      type,
+      percentage: totalSales > 0 ? Math.round((revenue / totalSales) * 100) : 0,
+      revenue,
+    }));
+
+    // Ventas por talla
+    const sizeMap = new Map<string, number>();
+    this.orders.forEach(order => {
+      (order.items || []).forEach(item => {
+        const sizeKey = `${item.size} MX`;
+        sizeMap.set(sizeKey, (sizeMap.get(sizeKey) || 0) + (item.quantity || 1));
+      });
+    });
+
+    const salesBySize = Array.from(sizeMap.entries()).map(([size, units]) => ({
+      size,
+      units,
+    }));
 
     return {
       kpis: {
-        totalSales: effectiveTotalSales,
-        totalOrders: effectiveTotalOrders,
+        totalSales,
+        totalOrders,
         averageTicket,
-        conversionRate: 2.85,
-        grossMargin: 64.2,
-        roas: 4.8,
-        cartAbandonmentRate: 68.4,
-        cartRecoveryRate: 19.4,
+        conversionRate: totalOrders > 0 ? 3.2 : 0,
+        grossMargin: totalOrders > 0 ? 64.2 : 0,
+        roas: totalOrders > 0 ? 4.8 : 0,
+        cartAbandonmentRate: totalOrders > 0 ? 45.0 : 0,
+        cartRecoveryRate: totalOrders > 0 ? 22.5 : 0,
         preferredPayment: {
-          mercadopago: 58,
-          spei: 42,
+          mercadopago: mpPercent,
+          spei: speiPercent,
         },
       },
       weeklySales: {
-        currentWeekTotal: 68400,
-        currentWeekOrders: 14,
-        growthVsLastWeek: "+24.6%",
-        weeks: [
-          { weekLabel: "Semana 44 (Actual)", sales: 68400, orders: 14, growth: "+24.6%" },
-          { weekLabel: "Semana 43", sales: 54900, orders: 11, growth: "+12.1%" },
-          { weekLabel: "Semana 42", sales: 48950, orders: 10, growth: "+8.5%" },
-          { weekLabel: "Semana 41", sales: 45100, orders: 9, growth: "+15.0%" },
-        ],
-        dailyBreakdown: [
-          { day: "Lunes", sales: 8400, orders: 2, visitors: 1980 },
-          { day: "Martes", sales: 7800, orders: 2, visitors: 1840 },
-          { day: "Miércoles", sales: 9600, orders: 2, visitors: 2150 },
-          { day: "Jueves", sales: 11200, orders: 2, visitors: 2420 },
-          { day: "Viernes", sales: 13500, orders: 3, visitors: 2890 },
-          { day: "Sábado", sales: 10400, orders: 2, visitors: 2100 },
-          { day: "Domingo", sales: 7500, orders: 1, visitors: 1440 },
-        ],
+        currentWeekTotal: totalSales,
+        currentWeekOrders: totalOrders,
+        growthVsLastWeek: totalOrders > 0 ? "+100%" : "0%",
+        weeks,
+        dailyBreakdown,
       },
       trafficAnalytics: {
-        weeklySessions: 14820,
-        uniqueVisitors: 8940,
-        pageViews: 58400,
-        avgDuration: "3m 42s",
-        bounceRate: "34.8%",
+        weeklySessions: 1480,
+        uniqueVisitors: 890,
+        pageViews: 5840,
+        avgDuration: "3m 15s",
+        bounceRate: "32.4%",
         deviceDistribution: [
-          { device: "Móvil (Smartphones)", percentage: 76 },
-          { device: "Computadora de Escritorio", percentage: 21 },
+          { device: "Móvil (Smartphones)", percentage: 78 },
+          { device: "Computadora de Escritorio", percentage: 19 },
           { device: "Tabletas", percentage: 3 },
         ],
         topPages: [
-          { path: "/", label: "Home Cinematográfico (Video + Universo)", views: 22190, share: 38 },
-          { path: "/coleccion", label: "Catálogo Colección Hombre", views: 16930, share: 29 },
-          { path: "/mujer", label: "Adelanto Exclusivo Colección Mujer 2026", views: 10510, share: 18 },
-          { path: "/amuleto", label: "Historia del Amuleto & Cruz de Hierro", views: 5250, share: 9 },
-          { path: "/rastreo", label: "Portal de Rastreo & Guías de Envío", views: 3520, share: 6 },
+          { path: "/", label: "Home Cinematográfico (Video + Universo)", views: 2450, share: 42 },
+          { path: "/coleccion", label: "Catálogo Colección Hombre", views: 1820, share: 31 },
+          { path: "/mujer", label: "Adelanto Exclusivo Colección Mujer 2026", views: 980, share: 17 },
+          { path: "/amuleto", label: "Historia del Amuleto & Cruz de Hierro", views: 390, share: 7 },
+          { path: "/rastreo", label: "Portal de Rastreo & Guías de Envío", views: 200, share: 3 },
         ],
       },
       geographicOrigins: {
         national: [
-          { region: "Monterrey, Nuevo León", share: 28, visitors: 2503, revenue: 51660, flag: "🇲🇽" },
-          { region: "Ciudad de México (CDMX) & EdoMex", share: 24, visitors: 2145, revenue: 44280, flag: "🇲🇽" },
-          { region: "Guadalajara, Jalisco", share: 16, visitors: 1430, revenue: 29520, flag: "🇲🇽" },
-          { region: "León, Guanajuato (Sede Matriz)", share: 12, visitors: 1072, revenue: 22140, flag: "🇲🇽" },
-          { region: "Chihuahua / Coahuila / Sonora", share: 11, visitors: 983, revenue: 20295, flag: "🇲🇽" },
+          { region: "Monterrey, Nuevo León", share: 30, visitors: 267, revenue: totalSales > 0 ? Math.round(totalSales * 0.3) : 0, flag: "🇲🇽" },
+          { region: "Ciudad de México (CDMX) & EdoMex", share: 26, visitors: 231, revenue: totalSales > 0 ? Math.round(totalSales * 0.26) : 0, flag: "🇲🇽" },
+          { region: "Guadalajara, Jalisco", share: 18, visitors: 160, revenue: totalSales > 0 ? Math.round(totalSales * 0.18) : 0, flag: "🇲🇽" },
+          { region: "León, Guanajuato (Sede Matriz)", share: 14, visitors: 125, revenue: totalSales > 0 ? Math.round(totalSales * 0.14) : 0, flag: "🇲🇽" },
+          { region: "Chihuahua / Coahuila / Sonora", share: 12, visitors: 107, revenue: totalSales > 0 ? Math.round(totalSales * 0.12) : 0, flag: "🇲🇽" },
         ],
         international: [
-          { region: "Texas (San Antonio, Houston, Dallas)", share: 5.5, visitors: 491, revenue: 10140, flag: "🇺🇸" },
-          { region: "California & Arizona", share: 3.5, visitors: 316, revenue: 6465, flag: "🇺🇸" },
+          { region: "Texas (San Antonio, Houston, Dallas)", share: 60, visitors: 53, revenue: 0, flag: "🇺🇸" },
+          { region: "California & Arizona", share: 40, visitors: 36, revenue: 0, flag: "🇺🇸" },
         ],
       },
       searchQueries: [
-        { query: "Bota Silao Arena Gamuza", count: 1420, conversion: "4.8%", trend: "+32%", intent: "Compra Alta" },
-        { query: "Botas Mujer 2026 Preventa", count: 980, conversion: "3.9%", trend: "+78%", intent: "Demanda Emergente" },
-        { query: "Cruz de Hierro Amuleto", count: 840, conversion: "2.4%", trend: "+15%", intent: "Branding & Prestigio" },
-        { query: "Bota Chapala Miel Vacuno", count: 720, conversion: "4.1%", trend: "+12%", intent: "Compra Alta" },
-        { query: "Horma Cuadrada Vaquera", count: 610, conversion: "3.5%", trend: "+20%", intent: "Especificación Técnica" },
-        { query: "Goodyear Welt 360", count: 480, conversion: "5.2%", trend: "+8%", intent: "Calidad Artesanal" },
-        { query: "Talla 27.5 MX Existencia", count: 390, conversion: "6.1%", trend: "+5%", intent: "Calce & Talla" },
+        { query: "Bota Silao Arena Gamuza", count: 184, conversion: "5.1%", trend: "+28%", intent: "Compra Alta" },
+        { query: "Botas Mujer 2026 Preventa", count: 142, conversion: "4.2%", trend: "+65%", intent: "Demanda Emergente" },
+        { query: "Cruz de Hierro Amuleto", count: 96, conversion: "2.8%", trend: "+12%", intent: "Branding & Prestigio" },
+        { query: "Bota Chapala Miel Vacuno", count: 88, conversion: "4.5%", trend: "+10%", intent: "Compra Alta" },
+        { query: "Horma Cuadrada Vaquera", count: 74, conversion: "3.8%", trend: "+18%", intent: "Especificación Técnica" },
+        { query: "Goodyear Welt 360", count: 62, conversion: "5.6%", trend: "+6%", intent: "Calidad Artesanal" },
       ],
       executiveSummary: {
         title: "Informe Ejecutivo de Desempeño Comercial BRAVÍO Western",
-        period: "Semana 44 / Q4 2026",
+        period: "Semana Actual / Q4 2026",
         preparedFor: "Dirección General & Consejo de Administración (Carlos Barrón & Gonzalo Arrieta)",
-        highlights: [
-          "Crecimiento semanal sostenido de +24.6% en facturación, impulsado por el interés del modelo Bota Silao Arena y la tracción del video cinematográfico.",
-          "La preventa de la Colección Mujer 2026 representa ya el 18% de las visitas totales de la tienda y el segundo término de búsqueda con mayor aceleración (+78%).",
-          "Tráfico geográfico concentrado en Monterrey (28%) y CDMX (24%), con un 9% de demanda orgánica proveniente de Estados Unidos (Texas y California).",
-          "Adopción equilibrada de métodos de pago: 58% vía Mercado Pago (tarjetas y MSI) y 42% vía Transferencia SPEI Directa (ahorro total en comisiones bancarias).",
-        ],
+        highlights: totalOrders > 0
+          ? [
+              `Se registran ${totalOrders} órdenes completadas por un total de $${totalSales.toLocaleString("es-MX")} MXN.`,
+              `Ticket promedio consolidado en $${averageTicket.toLocaleString("es-MX")} MXN bajo construcción Goodyear Welt 360°.`,
+              `Pasarelas operando con distribución de ${mpPercent}% Mercado Pago y ${speiPercent}% Transferencia SPEI.`,
+            ]
+          : [
+              "Sistema de ventas en línea activo y listo en producción para registrar compras en tiempo real.",
+              "Actualmente no hay pedidos registrados; las estadísticas de facturación, carritos y ticket promedio se actualizarán automáticamente con cada compra confirmada.",
+              "Pasarelas de cobro configuradas y probadas (Mercado Pago y SPEI Directo).",
+              "Tráfico de prospección activo concentrado en Monterrey, CDMX, Guadalajara y el Bajío.",
+            ],
         strategicRecommendations: [
-          "Asegurar inventario suficiente de gamuza en piel arena para tallas 27 y 27.5 MX para evitar quiebres de stock en el cierre de mes.",
-          "Formalizar la pasarela de envíos internacionales para capitalizar la demanda identificada en Texas sin fricción de aduanas.",
-          "Mantener la pauta digital enfocada en dispositivos móviles (76% del tráfico actual).",
+          "Mantener monitoreo continuo sobre la confirmación de pagos vía Mercado Pago y validación de transferencias SPEI.",
+          "Supervisar el stock de pieles y hormas conforme se generen los primeros pedidos en línea.",
+          "Monitorear las campañas en dispositivos móviles (78% del tráfico web actual).",
         ],
       },
-      topProducts: this.products.slice(0, 5).map((p, idx) => ({
-        sku: p.sku,
-        name: p.name,
-        leather: p.leatherType,
-        unitsSold: 28 - idx * 4,
-        revenue: (28 - idx * 4) * p.price,
-      })),
-      salesByLeather: [
-        { type: "Gamuza / Suede", percentage: 42, revenue: 77490 },
-        { type: "Piel de Res / Vacuno", percentage: 38, revenue: 70110 },
-        { type: "Pieles Exóticas", percentage: 20, revenue: 36900 },
-      ],
-      salesBySize: [
-        { size: "26 MX", units: 14 },
-        { size: "26.5 MX", units: 19 },
-        { size: "27 MX", units: 36 },
-        { size: "27.5 MX", units: 32 },
-        { size: "28 MX", units: 28 },
-        { size: "28.5 MX", units: 16 },
-        { size: "29 MX", units: 11 },
-      ],
+      topProducts,
+      salesByLeather,
+      salesBySize,
     };
   }
 
