@@ -78,51 +78,63 @@ export default function AdminCustomersPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-[#B1C7D4]/20 text-[#605246]">
-            {filtered.map((c) => (
-              <tr key={c.id} className="hover:bg-[#F4F7F9]/50 transition-colors">
-                <td className="p-4">
-                  <span className="font-bold text-sm block">
-                    {c.firstName} {c.lastName}
-                  </span>
-                  <span className="text-[10px] text-[#849AAD]">ID: {c.id}</span>
-                </td>
-                <td className="p-4 space-y-1">
-                  <div className="flex items-center gap-1.5 text-xs">
-                    <Mail size={12} className="text-[#5E1C23]" />
-                    <span>{c.email}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[11px] text-[#849AAD]">
-                    <Phone size={12} />
-                    <span>{c.phone}</span>
-                  </div>
-                </td>
-                <td className="p-4">
-                  <div className="flex items-center gap-1.5">
-                    <MapPin size={12} className="text-[#849AAD]" />
-                    <span>{c.city}, {c.state}</span>
-                  </div>
-                  {(c.address || c.notes) && (
-                    <span className="text-[10px] text-[#849AAD] block pl-4">{c.address || c.notes}</span>
-                  )}
-                </td>
-                <td className="p-4">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#F4F7F9] text-[#605246] border border-[#B1C7D4]/60 text-[11px] font-bold">
-                    <ShoppingBag size={11} className="text-[#5E1C23]" />
-                    {c.ordersCount} {c.ordersCount === 1 ? "pedido" : "pedidos"}
-                  </span>
-                </td>
-                <td className="p-4 font-archivo text-base text-[#5E1C23] font-bold">
-                  ${c.totalSpent.toLocaleString("es-MX")} MXN
-                </td>
-                <td className="p-4 text-[11px] text-[#849AAD]">
-                  {new Date(c.createdAt).toLocaleDateString("es-MX", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })}
+            {filtered.length === 0 ? (
+              <tr>
+                <td colSpan={6} className="p-12 text-center text-xs text-[#849AAD]">
+                  <Users size={28} className="text-[#849AAD]/40 mx-auto mb-3" />
+                  <p className="font-bold text-[#605246]">No hay clientes registrados en este momento.</p>
+                  <p className="text-[11px] mt-1">
+                    Cada cliente que complete un pedido en la tienda o se registre aparecerá aquí automáticamente con su historial de compras.
+                  </p>
                 </td>
               </tr>
-            ))}
+            ) : (
+              filtered.map((c) => (
+                <tr key={c.id} className="hover:bg-[#F4F7F9]/50 transition-colors">
+                  <td className="p-4">
+                    <span className="font-bold text-sm block">
+                      {c.firstName} {c.lastName}
+                    </span>
+                    <span className="text-[10px] text-[#849AAD]">ID: {c.id}</span>
+                  </td>
+                  <td className="p-4 space-y-1">
+                    <div className="flex items-center gap-1.5 text-xs">
+                      <Mail size={12} className="text-[#5E1C23]" />
+                      <span>{c.email}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[11px] text-[#849AAD]">
+                      <Phone size={12} />
+                      <span>{c.phone}</span>
+                    </div>
+                  </td>
+                  <td className="p-4">
+                    <div className="flex items-center gap-1.5">
+                      <MapPin size={12} className="text-[#849AAD]" />
+                      <span>{c.city}, {c.state}</span>
+                    </div>
+                    {(c.address || c.notes) && (
+                      <span className="text-[10px] text-[#849AAD] block pl-4">{c.address || c.notes}</span>
+                    )}
+                  </td>
+                  <td className="p-4">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#F4F7F9] text-[#605246] border border-[#B1C7D4]/60 text-[11px] font-bold">
+                      <ShoppingBag size={11} className="text-[#5E1C23]" />
+                      {c.ordersCount} {c.ordersCount === 1 ? "pedido" : "pedidos"}
+                    </span>
+                  </td>
+                  <td className="p-4 font-archivo text-base text-[#5E1C23] font-bold">
+                    ${c.totalSpent.toLocaleString("es-MX")} MXN
+                  </td>
+                  <td className="p-4 text-[11px] text-[#849AAD]">
+                    {new Date(c.createdAt).toLocaleDateString("es-MX", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

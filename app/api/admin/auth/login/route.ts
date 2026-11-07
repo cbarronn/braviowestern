@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Credentials valid -> generate 2FA challenge code
+    // Credentials valid -> generate 2FA challenge code (Sent strictly via email)
     const challenge = await createTwoFactorChallenge(user);
 
     return NextResponse.json({
@@ -37,8 +37,6 @@ export async function POST(req: NextRequest) {
       requires2FA: true,
       tempToken: challenge.tempToken,
       email: challenge.email,
-      // For developer convenience or fallback when local SMTP is offline:
-      devCode: challenge.code,
     });
   } catch (error) {
     console.error("Login error:", error);

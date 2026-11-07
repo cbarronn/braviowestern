@@ -393,50 +393,7 @@ class MockDatabase {
   private auditLogs: AuditLog[] = [...INITIAL_AUDIT_LOGS];
   private products: Product[] = [...PRODUCTS_CATALOG];
   private paymentSettings: PaymentSettings = { ...INITIAL_PAYMENT_SETTINGS };
-  private customers: Customer[] = [
-    {
-      id: "cust-1",
-      firstName: "Rodrigo",
-      lastName: "Mendoza",
-      email: "rodrigo.mendoza@gmail.com",
-      phone: "+52 81 1234 5678",
-      city: "San Pedro Garza García",
-      state: "Nuevo León",
-      ordersCount: 3,
-      totalSpent: 14700,
-      lastOrderDate: "2026-10-28T14:30:00Z",
-      createdAt: "2026-08-10T10:00:00Z",
-      notes: "Cliente recurrente de botas en gamuza café",
-    },
-    {
-      id: "cust-2",
-      firstName: "Alejandra",
-      lastName: "Garza",
-      email: "alejandra.garza@outlook.com",
-      phone: "+52 55 9876 5432",
-      city: "Ciudad de México",
-      state: "CDMX",
-      ordersCount: 1,
-      totalSpent: 5200,
-      lastOrderDate: "2026-11-02T18:15:00Z",
-      createdAt: "2026-11-02T17:45:00Z",
-      notes: "Interesada en la colección BRAVÍO Mujer 2026",
-    },
-    {
-      id: "cust-3",
-      firstName: "Guillermo",
-      lastName: "Villarreal",
-      email: "memo.villarreal@vise.com.mx",
-      phone: "+52 477 712 3456",
-      city: "León",
-      state: "Guanajuato",
-      ordersCount: 2,
-      totalSpent: 9800,
-      lastOrderDate: "2026-10-15T09:00:00Z",
-      createdAt: "2026-09-01T12:00:00Z",
-      notes: "Recolección local en taller",
-    },
-  ];
+  private customers: Customer[] = [];
   private coupons: Coupon[] = [
     {
       id: "cup-1",
@@ -447,21 +404,8 @@ class MockDatabase {
       validFrom: "2026-01-01T00:00:00Z",
       validTo: "2026-12-31T23:59:59Z",
       isActive: true,
-      timesUsed: 42,
+      timesUsed: 0,
       description: "10% de descuento en primera compra para suscriptores de Newsletter",
-    },
-    {
-      id: "cup-2",
-      code: "BRAVIOLEON",
-      discountType: "fixed",
-      discountValue: 500,
-      minPurchase: 4500,
-      validFrom: "2026-10-01T00:00:00Z",
-      validTo: "2026-11-30T23:59:59Z",
-      isActive: true,
-      usageLimit: 100,
-      timesUsed: 18,
-      description: "$500 MXN de descuento en modelos seleccionados de vaqueta",
     },
   ];
   private adminUsers: AdminUser[] = [
@@ -476,21 +420,21 @@ class MockDatabase {
     },
     {
       id: "usr-2",
+      name: "Gonzalo Arrieta Navarro",
+      email: "gonzaloarrietanavarro@gmail.com",
+      role: "superadmin",
+      isActive: true,
+      lastLogin: new Date().toISOString(),
+      createdAt: "2026-01-01T00:00:00Z",
+    },
+    {
+      id: "usr-3",
       name: "Daniela Arrieta",
       email: "darrieta@vise.com.mx",
       role: "operations",
       isActive: true,
       lastLogin: "2026-11-05T16:20:00Z",
       createdAt: "2026-02-15T00:00:00Z",
-    },
-    {
-      id: "usr-3",
-      name: "Dirección Creativa",
-      email: "creatividad@braviowestern.com.mx",
-      role: "content_editor",
-      isActive: true,
-      lastLogin: "2026-11-06T11:00:00Z",
-      createdAt: "2026-03-01T00:00:00Z",
     },
   ];
 
@@ -644,6 +588,36 @@ class MockDatabase {
     };
     this.orders.unshift(newOrder);
     this.addAudit("ORDER_CREATE", "Order", newOrder.id, `Nuevo pedido generado #${newOrder.orderNumber}`);
+
+    // Automatically register or update customer record in real database
+    if (newOrder.customer && newOrder.customer.email) {
+      const email = newOrder.customer.email.toLowerCase().trim();
+      const existing = this.customers.find(c => c.email.toLowerCase() === email);
+      if (existing) {
+        existing.ordersCount += 1;
+        existing.totalSpent += newOrder.total;
+        existing.lastOrderDate = newOrder.createdAt;
+        if (newOrder.customer.phone) existing.phone = newOrder.customer.phone;
+        if (newOrder.customer.city) existing.city = newOrder.customer.city;
+        if (newOrder.customer.state) existing.state = newOrder.customer.state;
+      } else {
+        this.customers.unshift({
+          id: `cust-${Date.now()}`,
+          firstName: newOrder.customer.firstName,
+          lastName: newOrder.customer.lastName || "",
+          email: newOrder.customer.email,
+          phone: newOrder.customer.phone || "",
+          city: newOrder.customer.city || "León",
+          state: newOrder.customer.state || "Guanajuato",
+          address: newOrder.customer.address || "",
+          ordersCount: 1,
+          totalSpent: newOrder.total,
+          lastOrderDate: newOrder.createdAt,
+          createdAt: newOrder.createdAt,
+        });
+      }
+    }
+
     return newOrder;
   }
 

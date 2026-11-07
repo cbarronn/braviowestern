@@ -22,7 +22,6 @@ export async function POST(req: NextRequest) {
       success: true,
       tempToken: challenge.tempToken,
       email: challenge.email,
-      devCode: challenge.code,
     });
   } catch (error) {
     return NextResponse.json(

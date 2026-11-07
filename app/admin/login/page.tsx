@@ -19,7 +19,6 @@ export default function AdminLoginPage() {
   const [tempToken, setTempToken] = useState("");
   const [twoFactorCode, setTwoFactorCode] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  const [devNoticeCode, setDevNoticeCode] = useState<string | null>(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -49,9 +48,6 @@ export default function AdminLoginPage() {
       if (res.ok && data.success && data.requires2FA) {
         setTempToken(data.tempToken);
         setUserEmail(data.email);
-        if (data.devCode) {
-          setDevNoticeCode(data.devCode);
-        }
         setStep("2fa");
       } else {
         setError(data.error || "Credenciales incorrectas o usuario no autorizado.");
@@ -113,7 +109,6 @@ export default function AdminLoginPage() {
       const data = await res.json();
       if (res.ok && data.success) {
         setTempToken(data.tempToken);
-        if (data.devCode) setDevNoticeCode(data.devCode);
         setInfoMessage("Se ha enviado un nuevo código a tu correo.");
       } else {
         setError(data.error || "No se pudo reenviar el código.");
@@ -225,32 +220,14 @@ export default function AdminLoginPage() {
                   Doble Factor Requerido
                 </h3>
                 <p className="text-xs text-[#849AAD] leading-relaxed">
-                  Se ha enviado un código de seguridad de 6 dígitos a tu correo:
+                  Por tu seguridad, hemos enviado un código confidencial de 6 dígitos a tu correo:
                   <br />
                   <strong className="text-[#605246] font-mono">{userEmail}</strong>
                 </p>
+                <p className="text-[11px] text-[#849AAD] pt-1">
+                  Revisa tu bandeja de entrada o carpeta de spam para obtener tu código.
+                </p>
               </div>
-
-              {devNoticeCode && (
-                <div className="p-3.5 bg-amber-50 border border-amber-400 text-amber-900 text-xs text-center space-y-2">
-                  <div>
-                    <span className="font-bold">Código de verificación: </span>
-                    <span className="font-mono text-base tracking-widest font-black text-[#5E1C23] bg-white px-2.5 py-1 border border-amber-300 ml-1 inline-block">
-                      {devNoticeCode}
-                    </span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setTwoFactorCode(devNoticeCode)}
-                    className="text-[11px] font-bold text-[#5E1C23] hover:underline uppercase tracking-wider block mx-auto cursor-pointer"
-                  >
-                    ✦ Clic aquí para autorrellenar código ✦
-                  </button>
-                  <p className="text-[10px] text-amber-800/80">
-                    * También fue enviado vía Resend a tu correo (revisa si tu servidor lo desvió a Spam / No deseado).
-                  </p>
-                </div>
-              )}
 
               <div>
                 <label className="block text-[11px] font-bold uppercase tracking-wider text-[#605246] text-center mb-2">
