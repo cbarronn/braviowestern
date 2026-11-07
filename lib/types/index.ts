@@ -304,5 +304,23 @@ export interface PaymentSettings {
   updatedBy: string;
 }
 
+export interface NewsletterSubscriber {
+  id: string;
+  email: string;
+  source: "sitio_web" | "checkout" | "manual";
+  createdAt: string;
+  status: "active" | "unsubscribed";
+}
+
+export interface NewsletterCampaignRecord {
+  id: string;
+  subject: string;
+  title: string;
+  audience: "all" | "customers" | "subscribers" | "test";
+  recipientsCount: number;
+  sentAt: string;
+  sentBy: string;
+  status: "sent" | "partial" | "failed";
+}
 
 

@@ -24,6 +24,7 @@ import {
   ChevronRight,
   LogOut,
   User,
+  Mail,
 } from "lucide-react";
 import { CruzDeHierro } from "@/components/ui/BravioLogo";
 
@@ -34,6 +35,7 @@ const NAV_ITEMS = [
   { href: "/admin/orders", label: "Pedidos & Envíos", icon: ShoppingBag },
   { href: "/admin/settings/payments", label: "Métodos de Pago & SPEI", icon: CreditCard },
   { href: "/admin/customers", label: "Clientes", icon: Users },
+  { href: "/admin/newsletter", label: "Newsletter & Envíos", icon: Mail },
   { href: "/admin/promotions", label: "Promociones & Cupones", icon: Tag },
   { href: "/admin/reports", label: "Reportes & Ventas", icon: BarChart3 },
   { href: "/admin/media", label: "Multimedia (Fotos/Videos)", icon: ImageIcon },

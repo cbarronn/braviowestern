@@ -13,7 +13,9 @@ import {
   Coupon, 
   AdminUser, 
   InventoryRecord,
-  PaymentSettings
+  PaymentSettings,
+  NewsletterSubscriber,
+  NewsletterCampaignRecord
 } from "@/lib/types";
 import { PRODUCTS_CATALOG } from "./products";
 
@@ -437,6 +439,23 @@ class MockDatabase {
       createdAt: "2026-02-15T00:00:00Z",
     },
   ];
+  private newsletterSubscribers: NewsletterSubscriber[] = [
+    {
+      id: "sub-1",
+      email: "cbarron@ti-boot.com",
+      source: "manual",
+      createdAt: "2026-01-01T00:00:00Z",
+      status: "active",
+    },
+    {
+      id: "sub-2",
+      email: "gonzaloarrietanavarro@gmail.com",
+      source: "manual",
+      createdAt: "2026-01-01T00:00:00Z",
+      status: "active",
+    },
+  ];
+  private newsletterCampaigns: NewsletterCampaignRecord[] = [];
 
   // Media
   getMedia(folder?: VirtualFolder, query?: string): MediaItem[] {
@@ -825,6 +844,81 @@ class MockDatabase {
     user.isActive = !user.isActive;
     this.addAudit("USER_STATUS_CHANGE", "AdminUser", user.email, `Usuario ${user.name} ${user.isActive ? 'reactivado' : 'suspendido'}`);
     return user;
+  }
+
+  // Newsletter & Email Marketing
+  getNewsletterSubscribers(): NewsletterSubscriber[] {
+    return [...this.newsletterSubscribers];
+  }
+
+  addNewsletterSubscriber(email: string, source: "sitio_web" | "checkout" | "manual" = "sitio_web"): NewsletterSubscriber {
+    const cleanEmail = email.toLowerCase().trim();
+    const existing = this.newsletterSubscribers.find(s => s.email.toLowerCase() === cleanEmail);
+    if (existing) {
+      existing.status = "active";
+      return existing;
+    }
+
+    const newSub: NewsletterSubscriber = {
+      id: `sub-${Date.now()}`,
+      email: cleanEmail,
+      source,
+      createdAt: new Date().toISOString(),
+      status: "active",
+    };
+    this.newsletterSubscribers.unshift(newSub);
+    this.addAudit("NEWSLETTER_SUBSCRIBE", "Newsletter", cleanEmail, `Nuevo suscriptor registrado vía ${source}`);
+    return newSub;
+  }
+
+  deleteNewsletterSubscriber(idOrEmail: string): boolean {
+    const idx = this.newsletterSubscribers.findIndex(
+      s => s.id === idOrEmail || s.email.toLowerCase() === idOrEmail.toLowerCase().trim()
+    );
+    if (idx === -1) return false;
+    const removed = this.newsletterSubscribers.splice(idx, 1)[0];
+    this.addAudit("NEWSLETTER_UNSUBSCRIBE", "Newsletter", removed.email, `Suscriptor dado de baja: ${removed.email}`);
+    return true;
+  }
+
+  getNewsletterAudience(audience: "all" | "customers" | "subscribers"): string[] {
+    const emailSet = new Set<string>();
+
+    if (audience === "all" || audience === "subscribers") {
+      this.newsletterSubscribers
+        .filter(s => s.status === "active")
+        .forEach(s => {
+          if (s.email && s.email.includes("@")) emailSet.add(s.email.toLowerCase().trim());
+        });
+    }
+
+    if (audience === "all" || audience === "customers") {
+      this.customers.forEach(c => {
+        if (c.email && c.email.includes("@")) emailSet.add(c.email.toLowerCase().trim());
+      });
+      this.orders.forEach(o => {
+        if (o.customer?.email && o.customer.email.includes("@")) {
+          emailSet.add(o.customer.email.toLowerCase().trim());
+        }
+      });
+    }
+
+    return Array.from(emailSet);
+  }
+
+  getNewsletterCampaigns(): NewsletterCampaignRecord[] {
+    return [...this.newsletterCampaigns];
+  }
+
+  recordNewsletterCampaign(campaign: Omit<NewsletterCampaignRecord, "id" | "sentAt">): NewsletterCampaignRecord {
+    const record: NewsletterCampaignRecord = {
+      ...campaign,
+      id: `cmp-${Date.now()}`,
+      sentAt: new Date().toISOString(),
+    };
+    this.newsletterCampaigns.unshift(record);
+    this.addAudit("NEWSLETTER_CAMPAIGN_SENT", "Newsletter", record.id, `Campaña masiva enviada a ${record.recipientsCount} destinatarios (${record.audience}): "${record.subject}"`);
+    return record;
   }
 
   // Reports & Analytics - Datos Reales Calculados Dinámicamente

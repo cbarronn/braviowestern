@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email/send";
+import { db } from "@/lib/data/mock-db";
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,10 +13,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Registrar suscriptor en base de datos
+    db.addNewsletterSubscriber(email, "sitio_web");
+
     // 1. Notificación interna al equipo BRAVÍO
     await sendEmail({
-      from: "BRAVÍO Newsletter <noreply@braviowestern.com.mx>",
-      to: ["cbarron@ti-boot.com", "darrieta@vise.com.mx", "daniela.arrieta.navarro1@gmail.com"],
+      from: "BRAVÍO Western <hola@braviowestern.com.mx>",
+      to: ["cbarron@ti-boot.com", "gonzaloarrietanavarro@gmail.com", "darrieta@vise.com.mx"],
       subject: `Nuevo suscriptor al Newsletter: ${email}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background: #0F0C09; padding: 2rem; color: #B1C7D4;">
