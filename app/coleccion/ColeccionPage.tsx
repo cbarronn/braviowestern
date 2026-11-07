@@ -18,7 +18,7 @@ function ProductCard({ product }: { product: Product }) {
       {/* Contenedor de foto limpio — CERO textos sobre la bota, fondo blanco puro */}
       <div className="relative w-full aspect-square bg-white flex items-center justify-center p-6 border-b border-[#B1C7D4]/30">
         <Image
-          src={product.images[0] || product.featuredImage || "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp"}
+          src={product.images[0] || product.featuredImage || "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg"}
           alt={product.name}
           fill
           className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"

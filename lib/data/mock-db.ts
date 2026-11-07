@@ -76,10 +76,10 @@ const INITIAL_MEDIA: MediaItem[] = [
   {
     id: "med-4",
     name: "Editorial Hombre Botas Sinaloa Res Negro",
-    url: "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
-    storagePath: "products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
-    fileType: "webp",
-    mimeType: "image/webp",
+    url: "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG.jpg",
+    storagePath: "products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG.jpg",
+    fileType: "jpg",
+    mimeType: "image/jpeg",
     sizeBytes: 250000,
     virtualFolder: "Hombre",
     category: "editorial",
@@ -132,10 +132,10 @@ const INITIAL_MEDIA: MediaItem[] = [
   {
     id: "med-7",
     name: "Bota Sinaloa Gamuza Arena Perfil",
-    url: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
-    storagePath: "products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
-    fileType: "webp",
-    mimeType: "image/webp",
+    url: "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg",
+    storagePath: "products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg",
+    fileType: "jpg",
+    mimeType: "image/jpeg",
     sizeBytes: 220188,
     virtualFolder: "Productos",
     category: "product",
@@ -152,10 +152,10 @@ const INITIAL_MEDIA: MediaItem[] = [
   {
     id: "med-8",
     name: "Bota Sinaloa Res Negro Frontal",
-    url: "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
-    storagePath: "products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
-    fileType: "webp",
-    mimeType: "image/webp",
+    url: "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG.jpg",
+    storagePath: "products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG.jpg",
+    fileType: "jpg",
+    mimeType: "image/jpeg",
     sizeBytes: 210000,
     virtualFolder: "Productos",
     category: "product",
@@ -195,13 +195,13 @@ const INITIAL_COLLECTIONS: CollectionItem[] = [
     name: "Colección Sinaloa",
     tagline: "El Renacimiento de la Silueta Western Tradicional",
     description: "Inspirada en el carácter indomable del noroeste mexicano. Confeccionada con pieles seleccionadas de res, gamuza aperlada y grabados exóticos de avestruz, caimán y pitón sobre una construcción artesanal Goodyear Welt garantizada de por vida.",
-    coverImage: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
+    coverImage: "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg",
     gallery: [
-      { id: "g-1", url: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp", alt: "Gamuza Arena", order: 1, isCover: true, status: "published" },
-      { id: "g-2", url: "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp", alt: "Res Negro", order: 2, isCover: false, status: "published" },
-      { id: "g-3", url: "/products/catalogo/bw-sin-ave-con/bw-sin-ave-con-1.webp", alt: "Avestruz Coñac", order: 3, isCover: false, status: "published" },
-      { id: "g-4", url: "/products/catalogo/bw-sin-pit-bla/bw-sin-pit-bla-1.webp", alt: "Pitón Blanco", order: 4, isCover: false, status: "published" },
-      { id: "g-5", url: "/products/catalogo/bw-sin-ga-mie/bw-sin-ga-mie-1.webp", alt: "Gamuza Miel", order: 5, isCover: false, status: "published" },
+      { id: "g-1", url: "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg", alt: "Gamuza Arena", order: 1, isCover: true, status: "published" },
+      { id: "g-2", url: "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG.jpg", alt: "Res Negro", order: 2, isCover: false, status: "published" },
+      { id: "g-3", url: "/products/catalogo/bw-sin-ave-con/BW-SIN-AVE-COÑ.jpg", alt: "Avestruz Coñac", order: 3, isCover: false, status: "published" },
+      { id: "g-4", url: "/products/catalogo/bw-sin-pit-bla/BW-SIN-PIT-BLA.jpg", alt: "Pitón Blanco", order: 4, isCover: false, status: "published" },
+      { id: "g-5", url: "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpeg", alt: "Gamuza Miel", order: 5, isCover: false, status: "published" },
     ],
     productSkus: ["BW-SIN-GA-ARE", "BW-SIN-GA-MIE", "BW-SIN-RE-NEG", "BW-SIN-RE-CAF", "BW-SIN-ALL-NEG", "BW-SIN-AVE-CON", "BW-SIN-PIT-BLA", "BW-SIN-CAI-NEG"],
     sortOrder: 1,
@@ -280,7 +280,7 @@ const INITIAL_HOME_SECTIONS: HomeSectionConfig[] = [
       ctaSecondaryText: "CONOCER EL ORIGEN",
       ctaSecondaryLink: "/historia",
       desktopImage: "/brand/image10.png",
-      mobileImage: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp",
+      mobileImage: "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg",
       videoUrl: "/media/video.mp4"
     }
   },
@@ -305,7 +305,7 @@ const INITIAL_HOME_SECTIONS: HomeSectionConfig[] = [
     data: {
       leftTitle: "HOMBRE",
       leftSubtitle: "Colección Sinaloa",
-      leftImage: "/products/catalogo/bw-sin-re-neg/bw-sin-re-neg-1.webp",
+      leftImage: "/products/catalogo/bw-sin-re-neg/BW-SIN-RE-NEG.jpg",
       leftLink: "/hombre",
       rightTitle: "MUJER 2026",
       rightSubtitle: "Nueva Campaña Visual",
@@ -334,7 +334,7 @@ const INITIAL_HOME_SECTIONS: HomeSectionConfig[] = [
     data: {
       headline: "HECHO A MANO EN LEÓN, MÉXICO",
       description: "Más de 200 pasos artesanales manuales. Hormas esculpidas al milímetro, pieles de curtición vegetal y vástago de acero templado para un soporte inigualable durante décadas de uso.",
-      image: "/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-3.webp"
+      image: "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE (3).jpg"
     }
   }
 ];

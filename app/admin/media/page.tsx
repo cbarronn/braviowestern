@@ -497,7 +497,7 @@ export default function AdminMediaPage() {
                   type="text"
                   value={newFileUrl}
                   onChange={(e) => setNewFileUrl(e.target.value)}
-                  placeholder="/products/catalogo/bw-sin-ga-are/bw-sin-ga-are-1.webp"
+                  placeholder="/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg"
                   className="w-full bg-white border border-[#B1C7D4]/60 rounded-sm px-3 py-2 text-bravio-volcanic font-mono focus:outline-none focus:border-bravio-granate"
                 />
               </div>

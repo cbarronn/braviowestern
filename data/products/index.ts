@@ -1,4 +1,4 @@
-import { PRODUCTS_CATALOG, Product } from "@/lib/data/products";
+import { PRODUCTS_CATALOG } from "@/lib/data/products";
 
 export type ProductColor = {
   name: string;
