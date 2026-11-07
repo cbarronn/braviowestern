@@ -58,6 +58,10 @@ export default function CheckoutPage() {
       const data = await res.json();
       if (data.success && data.order) {
         clearCart();
+        if (paymentMethod === "mercadopago" && data.paymentUrl && !data.isTestDemo) {
+          window.location.href = data.paymentUrl;
+          return;
+        }
         setCompletedOrder(data.order);
       } else {
         alert(data.error || "Hubo un error al procesar tu pedido");
