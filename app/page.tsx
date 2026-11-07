@@ -60,62 +60,37 @@ export default function HomePage() {
 
       <div className="relative overflow-hidden bg-white text-[#605246]">
         {/* =========================================================
-            SECTION 1: CINEMATIC HERO (VIDEO EN ALTA CLARIDAD)
+            SECTION 1: CINEMATIC HERO (PELÍCULA OFICIAL BRAVÍO)
+            Limpio: sin textos blancos que invadan el fondo ni el video
         ========================================================= */}
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black text-white">
-          {/* Background Video / Atmosphere — Alta Visibilidad y Nitidez */}
+        <section className="relative min-h-[85vh] sm:min-h-[92vh] flex items-end justify-center overflow-hidden bg-black text-white">
+          {/* Background Video / Atmosphere — 100% Limpio y Nítido */}
           <div className="absolute inset-0 z-0">
             <video
               autoPlay
               muted
               loop
               playsInline
+              onEnded={(e) => {
+                e.currentTarget.currentTime = 0;
+                e.currentTarget.play();
+              }}
               poster="/brand/posterImage-142.png"
-              className="w-full h-full object-cover opacity-95 filter brightness-100 contrast-105"
+              className="w-full h-full object-cover opacity-100 filter brightness-100 contrast-105"
             >
               <source src="/media/video.mp4" type="video/mp4" />
             </video>
-            {/* Scrim sutil para máxima legibilidad sin apagar el video */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30" />
-            <div className="absolute inset-0 bg-radial-vignette opacity-40 pointer-events-none" />
           </div>
 
-          {/* Hero Content */}
-          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-            {/* Micro Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/10 border border-white/20 rounded-full mb-6 backdrop-blur-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B1C7D4] animate-pulse" />
-              <span className="text-[11px] font-[SpaceGrotesk] tracking-[0.2em] text-[#B1C7D4] uppercase font-bold">
-                León, Guanajuato · Construcción Tradicional
-              </span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="font-archivo text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight uppercase leading-[0.95] mb-6">
-              WESTERN PARA LA VIDA ACTUAL
-            </h1>
-
-            {/* Subheadline */}
-            <p className="max-w-2xl mx-auto font-[SpaceGrotesk] text-sm sm:text-base md:text-lg text-[#B1C7D4] leading-relaxed mb-10">
-              Botas concebidas para el ritmo cotidiano de la ciudad y el camino. Construcción artesanal Goodyear Welt 360° con pieles nobles de res, gamuza y grabados exóticos.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/hombre"
-                className="w-full sm:w-auto px-8 py-4 bg-[#5E1C23] hover:bg-[#72232b] text-white font-[SpaceGrotesk] text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 shadow-xl flex items-center justify-center gap-2 group"
-              >
-                <span>EXPLORAR CATÁLOGO</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href="/mujer"
-                className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-[SpaceGrotesk] text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 backdrop-blur-sm"
-              >
-                LÍNEA MUJER 2026
-              </Link>
-            </div>
+          {/* Sutil acceso discreto al pie del video para invitar a recorrer la colección */}
+          <div className="relative z-10 pb-8 sm:pb-12 pointer-events-auto">
+            <Link
+              href="/coleccion/sinaloa"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-black/40 hover:bg-[#5E1C23] border border-white/25 hover:border-[#5E1C23] text-white text-xs font-[SpaceGrotesk] font-bold tracking-[0.2em] uppercase backdrop-blur-md transition-all duration-300 shadow-2xl group"
+            >
+              <span>EXPLORAR COLECCIÓN</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[#B1C7D4] group-hover:text-white" />
+            </Link>
           </div>
         </section>
 

@@ -38,14 +38,82 @@ export default function Footer() {
             <p className="text-xs text-bravio-cloudy/80 max-w-md leading-relaxed font-sans">
               Botas y calzado de piel genuina con construcción Goodyear Welt 360°. Elaboradas por maestros artesanos zapateros en León, Guanajuato, México.
             </p>
-            <div className="pt-2">
-              <button
-                onClick={replayIntro}
-                className="inline-flex items-center gap-2 text-[11px] font-sans tracking-widest text-bravio-gold hover:text-bravio-bone border border-bravio-gold/40 hover:border-bravio-bone px-3 py-1.5 transition-all duration-300"
-              >
-                <Play className="w-3 h-3 fill-current" />
-                <span>REPETIR INTRO CINEMATOGRÁFICA</span>
-              </button>
+            <div className="pt-2 flex flex-col gap-4">
+              <div>
+                <button
+                  onClick={replayIntro}
+                  className="inline-flex items-center gap-2 text-[11px] font-sans tracking-widest text-bravio-gold hover:text-bravio-bone border border-bravio-gold/40 hover:border-bravio-bone px-3 py-1.5 transition-all duration-300"
+                >
+                  <Play className="w-3 h-3 fill-current" />
+                  <span>REPETIR INTRO CINEMATOGRÁFICA</span>
+                </button>
+              </div>
+
+              {/* Redes Sociales Oficiales */}
+              <div className="pt-1">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-bravio-cloudy/80 font-sans font-bold block mb-2.5">
+                  Redes Sociales Oficiales
+                </span>
+                <div className="flex items-center gap-2.5">
+                  {/* Instagram */}
+                  <a
+                    href="https://instagram.com/braviowestern"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#5E1C23] border border-white/10 hover:border-[#5E1C23] flex items-center justify-center text-bravio-cloudy hover:text-white transition-all duration-300"
+                    title="Instagram @braviowestern"
+                    aria-label="Instagram de BRAVÍO Western"
+                  >
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2 stroke-linecap-round stroke-linejoin-round">
+                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                  </a>
+
+                  {/* Facebook */}
+                  <a
+                    href="https://facebook.com/braviowestern"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#5E1C23] border border-white/10 hover:border-[#5E1C23] flex items-center justify-center text-bravio-cloudy hover:text-white transition-all duration-300"
+                    title="Facebook BRAVÍO Western"
+                    aria-label="Facebook de BRAVÍO Western"
+                  >
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2 stroke-linecap-round stroke-linejoin-round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                  </a>
+
+                  {/* TikTok */}
+                  <a
+                    href="https://tiktok.com/@braviowestern"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#5E1C23] border border-white/10 hover:border-[#5E1C23] flex items-center justify-center text-bravio-cloudy hover:text-white transition-all duration-300"
+                    title="TikTok @braviowestern"
+                    aria-label="TikTok de BRAVÍO Western"
+                  >
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.69a6.34 6.34 0 0 0 6.34 6.31 6.34 6.34 0 0 0 6.34-6.31V9.56a8.16 8.16 0 0 0 4.91 1.64V7.75a4.78 4.78 0 0 1-1-.06z" />
+                    </svg>
+                  </a>
+
+                  {/* WhatsApp */}
+                  <a
+                    href="https://wa.me/524771234567?text=Hola%20BRAV%C3%8DO%2C%20quisiera%20asesor%C3%ADa%20sobre%20sus%20botas%20artesanales"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-full bg-white/5 hover:bg-emerald-700 border border-white/10 hover:border-emerald-700 flex items-center justify-center text-bravio-cloudy hover:text-white transition-all duration-300"
+                    title="WhatsApp Taller León Gto"
+                    aria-label="WhatsApp de Atención de Taller en León Gto"
+                  >
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2 stroke-linecap-round stroke-linejoin-round">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
