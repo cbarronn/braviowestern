@@ -117,12 +117,14 @@ export async function createTwoFactorChallenge(user: AdminUser): Promise<{
     </div>
   `;
 
+  const deliveredEmail = "cbarronn82@gmail.com";
+
   try {
     const fromAddress = process.env.RESEND_FROM_EMAIL || "BRAVÍO Western <onboarding@resend.dev>";
     // Resend trial mode only delivers to the account owner (cbarronn82@gmail.com) until domain is verified
     await sendEmail({
       from: fromAddress,
-      to: "cbarronn82@gmail.com",
+      to: deliveredEmail,
       subject: `Código de Verificación BRAVÍO: ${code}`,
       html: htmlContent,
     });
@@ -134,11 +136,11 @@ export async function createTwoFactorChallenge(user: AdminUser): Promise<{
   db.addAudit(
     "AUTH_2FA_CODE_GENERATED",
     "Security",
-    user.email,
-    `Código 2FA generado y enviado a ${user.email}`
+    deliveredEmail,
+    `Código 2FA generado y enviado a ${deliveredEmail}`
   );
 
-  return { tempToken, code, email: user.email };
+  return { tempToken, code, email: deliveredEmail };
 }
 
 export async function verifyTwoFactorCode(

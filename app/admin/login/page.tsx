@@ -219,14 +219,14 @@ export default function AdminLoginPage() {
                 <h3 className="font-archivo text-base text-[#605246] uppercase">
                   Doble Factor Requerido
                 </h3>
-                <p className="text-xs text-[#849AAD] leading-relaxed">
-                  Por tu seguridad, hemos enviado un código confidencial de 6 dígitos a tu correo:
+                <p className="text-xs text-[#605246] leading-relaxed">
+                  Por tu seguridad, hemos enviado el código de 6 dígitos a tu bandeja de:
                   <br />
-                  <strong className="text-[#605246] font-mono">{userEmail}</strong>
+                  <strong className="text-[#5E1C23] font-mono text-sm">{userEmail}</strong>
                 </p>
-                <p className="text-[11px] text-[#849AAD] pt-1">
-                  Revisa tu bandeja de entrada o carpeta de spam para obtener tu código.
-                </p>
+                <div className="p-2.5 bg-amber-50 border border-amber-300 rounded text-[11px] text-amber-900 mt-2 text-left">
+                  <span className="font-bold">⚠️ Atención:</span> El correo proviene de Resend (<code className="font-mono text-[10px]">onboarding@resend.dev</code>). Si no lo ves en tu bandeja principal en los próximos segundos, <strong>revisa tu carpeta de Spam / Correo no deseado</strong> o la pestaña <strong>Promociones</strong> en Gmail.
+                </div>
               </div>
 
               <div>
