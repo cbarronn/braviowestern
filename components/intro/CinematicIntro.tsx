@@ -76,7 +76,7 @@ export default function CinematicIntro({
     }
 
     const startTime = Date.now();
-    const duration = 8800; // Pacing generoso y elegante
+    const duration = 16200; // Pacing majestuoso y cinematográfico
 
     const progressInterval = setInterval(() => {
       const elapsed = Date.now() - startTime;
@@ -86,9 +86,9 @@ export default function CinematicIntro({
     }, 40);
 
     const t1 = setTimeout(() => setStep(1), 100);
-    const t2 = setTimeout(() => setStep(2), 2400);
-    const t3 = setTimeout(() => setStep(3), 4800);
-    const t4 = setTimeout(() => setStep(4), 6800);
+    const t2 = setTimeout(() => setStep(2), 3600);
+    const t3 = setTimeout(() => setStep(3), 7800);
+    const t4 = setTimeout(() => setStep(4), 12800);
     const t5 = setTimeout(() => {
       finishIntro();
     }, duration);
@@ -429,55 +429,58 @@ export default function CinematicIntro({
               </motion.div>
             )}
 
-            {/* ETAPA 3: Manifiesto Oficial de Marca */}
+            {/* ETAPA 3: Manifiesto Oficial de Marca (Pacing Sostenido para Lectura Cómoda) */}
             {step === 3 && (
               <motion.div
                 key="phrase-reveal"
-                initial={{ opacity: 0, scale: 0.92 }}
+                initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.06, filter: "blur(6px)" }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="space-y-4"
+                exit={{ opacity: 0, scale: 1.05, filter: "blur(6px)" }}
+                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-6 max-w-3xl"
               >
                 <motion.h2
-                  initial={{ letterSpacing: "0.15em", filter: "blur(4px)" }}
+                  initial={{ letterSpacing: "0.12em", filter: "blur(4px)" }}
                   animate={{ letterSpacing: "0.22em", filter: "blur(0px)" }}
-                  transition={{ duration: 1.2, ease: "easeOut" }}
-                  className="font-archivo text-3xl sm:text-5xl md:text-6xl text-[#B1C7D4] uppercase leading-none tracking-widest drop-shadow-[0_6px_35px_rgba(0,0,0,0.8)]"
+                  transition={{ duration: 1.6, ease: "easeOut" }}
+                  className="font-archivo text-3xl sm:text-5xl md:text-6xl text-[#B1C7D4] uppercase leading-tight tracking-widest drop-shadow-[0_8px_40px_rgba(0,0,0,0.85)]"
                 >
                   WESTERN PARA LA VIDA ACTUAL.
                 </motion.h2>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.7 }}
-                  className="font-[SpaceGrotesk] text-xs sm:text-sm tracking-[0.3em] uppercase text-white font-bold"
+                  transition={{ delay: 0.9, duration: 1.0, ease: "easeOut" }}
+                  className="flex items-center justify-center gap-3 pt-2"
                 >
-                  <span className="text-[#5E1C23] font-black mr-2">✦</span>
-                  Entra con carácter
-                </motion.p>
+                  <span className="w-8 h-[1px] bg-[#5E1C23]" />
+                  <p className="font-[SpaceGrotesk] text-sm sm:text-base tracking-[0.3em] uppercase text-white font-bold">
+                    Entra con carácter
+                  </p>
+                  <span className="w-8 h-[1px] bg-[#5E1C23]" />
+                </motion.div>
               </motion.div>
             )}
 
-            {/* ETAPA 4: Transición Cinemática de Entrada (Sostenida, Serena y Sin Empalmes) */}
+            {/* ETAPA 4: Transición Cinemática de Entrada (Sostenida y Serena) */}
             {step === 4 && (
               <motion.div
                 key="enter-store"
-                initial={{ opacity: 0, scale: 0.92 }}
+                initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.9, ease: "easeOut" }}
-                className="flex flex-col items-center gap-5"
+                transition={{ duration: 1.4, ease: "easeOut" }}
+                className="flex flex-col items-center gap-6"
               >
-                <div className="w-16 h-16 text-[#B1C7D4] filter drop-shadow-[0_0_25px_#B1C7D4]">
-                  <CruzDeHierro size={64} color="#B1C7D4" />
+                <div className="w-20 h-20 text-[#B1C7D4] filter drop-shadow-[0_0_30px_#B1C7D4]">
+                  <CruzDeHierro size={76} color="#B1C7D4" />
                 </div>
-                <div className="space-y-1">
-                  <h3 className="font-archivo text-base sm:text-lg uppercase tracking-[0.3em] text-[#B1C7D4]">
+                <div className="space-y-2 text-center">
+                  <h3 className="font-archivo text-lg sm:text-2xl uppercase tracking-[0.35em] text-[#B1C7D4]">
                     ENTRANDO A BRAVÍO
                   </h3>
-                  <p className="font-[SpaceGrotesk] text-[11px] uppercase tracking-[0.25em] text-[#849AAD]">
+                  <p className="font-[SpaceGrotesk] text-xs uppercase tracking-[0.25em] text-[#849AAD]">
                     León, Guanajuato · Construcción Goodyear Welt 360°
                   </p>
                 </div>
