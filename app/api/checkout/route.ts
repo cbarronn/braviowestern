@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
 
     // Send Order Confirmation Email asynchronously
     try {
-      const fromEmail = process.env.RESEND_FROM_EMAIL || "BRAVÍO Western <onboarding@resend.dev>";
+      const fromEmail = "BRAVÍO Western <hola@braviowestern.com.mx>";
       const speiInfo = paymentSettings.spei;
 
       const itemsListHtml = items
@@ -179,7 +179,7 @@ export async function POST(req: NextRequest) {
       // Also send sales notification copy to store owners / partners
       sendEmail({
         from: fromEmail,
-        to: "cbarronn82@gmail.com",
+        to: "cbarron@ti-boot.com",
         subject: `[NUEVA VENTA] Pedido ${order.orderNumber} ($${Number(total).toLocaleString("es-MX")} MXN) - BRAVÍO Western`,
         html: emailHtml,
       }).catch((e) => console.error("Error sending admin order copy (cbarron):", e));
