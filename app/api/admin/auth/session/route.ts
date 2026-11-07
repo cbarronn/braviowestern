@@ -12,3 +12,4 @@ export async function GET() {
     return NextResponse.json({ authenticated: false, error: "Error consultando sesión." }, { status: 500 });
   }
 }
+

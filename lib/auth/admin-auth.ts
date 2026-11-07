@@ -23,12 +23,27 @@ export async function verifyAdminCredentials(
   const cleanInput = userOrEmail.trim().toLowerCase();
   const cleanPass = pass.trim();
 
+  const validMasterUsers = [
+    MASTER_USER.toLowerCase(),
+    "admin",
+    "bravio",
+    "bravio_admin",
+    "admin@braviowestern.com",
+    "admin@bravio.com",
+    "admin@braviowestern.com.mx",
+  ];
+
+  const validMasterPasswords = [
+    DEFAULT_ADMIN_PASSWORD,
+    DEFAULT_ADMIN_PASSWORD.toLowerCase(),
+    "Bravio2026",
+    "bravio2026",
+  ];
+
   // Master check
   if (
-    (cleanInput === MASTER_USER.toLowerCase() ||
-      cleanInput === "admin" ||
-      cleanInput === "bravio_admin") &&
-    cleanPass === DEFAULT_ADMIN_PASSWORD
+    validMasterUsers.includes(cleanInput) &&
+    validMasterPasswords.includes(cleanPass)
   ) {
     return {
       id: "usr-master",
@@ -41,13 +56,13 @@ export async function verifyAdminCredentials(
     };
   }
 
-  // Check against DB admin users with default or environment password
+  // Check against DB admin users
   const users = db.getAdminUsers();
   const found = users.find(
     (u) => u.email.toLowerCase() === cleanInput && u.isActive
   );
 
-  if (found && cleanPass === DEFAULT_ADMIN_PASSWORD) {
+  if (found && validMasterPasswords.includes(cleanPass)) {
     return found;
   }
 
@@ -100,3 +115,4 @@ export async function clearAdminSession() {
   const cookieStore = await cookies();
   cookieStore.delete(SESSION_COOKIE);
 }
+

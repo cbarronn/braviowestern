@@ -19,3 +19,4 @@ export async function POST() {
     return NextResponse.json({ error: "Error al cerrar sesión." }, { status: 500 });
   }
 }
+
