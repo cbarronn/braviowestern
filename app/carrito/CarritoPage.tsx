@@ -52,7 +52,7 @@ export default function CarritoPage() {
                 >
                   <div className="relative w-24 h-28 sm:w-28 sm:h-32 bg-white flex-shrink-0 border border-[#B1C7D4]/30 p-2 flex items-center justify-center">
                     <Image
-                      src={item.image || "/brand/image1.png"}
+                      src={item.image || "/campaigns/hero-boots.jpg"}
                       alt={item.name}
                       fill
                       sizes="(max-width: 640px) 96px, 112px"

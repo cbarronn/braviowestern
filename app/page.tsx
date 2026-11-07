@@ -170,7 +170,7 @@ export default function HomePage() {
               className="group relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden border border-[#B1C7D4]/40 bg-white shadow-sm hover:shadow-xl transition-all duration-500"
             >
               <Image
-                src="/brand/image1.png"
+                src="/campaigns/mujer-escena-01.jpg"
                 alt="Campaña Mujer 2026 BRAVÍO"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

@@ -42,7 +42,7 @@ export default function CruzDeHierroPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/5] bg-white border border-[#B1C7D4]/60 overflow-hidden shadow-sm">
             <Image
-              src="/brand/image1.png"
+              src="/campaigns/product-3.jpg"
               alt="La Cruz de Hierro BRAVÍO"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -93,7 +93,7 @@ export default function CruzDeHierroPage() {
 
           <div className="relative aspect-[4/5] bg-white border border-[#B1C7D4]/60 overflow-hidden shadow-sm order-1 md:order-2">
             <Image
-              src="/brand/image2.png"
+              src="/campaigns/hombre-editorial.jpg"
               alt="El amuleto en la vida urbana"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"

@@ -181,7 +181,7 @@ export default function AdminProductsPage() {
                 <td className="p-4">
                   <div className="relative w-12 h-14 bg-white border border-[#B1C7D4]/40 p-1 flex items-center justify-center">
                     <Image
-                      src={p.featuredImage || "/brand/image1.png"}
+                      src={p.featuredImage || "/campaigns/hero-boots.jpg"}
                       alt={p.name}
                       fill
                       sizes="48px"

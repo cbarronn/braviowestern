@@ -71,7 +71,7 @@ export default function CollectionPage() {
       <div className="relative overflow-hidden border border-[#B1C7D4]/50 mb-12 p-8 md:p-14 bg-[#605246] flex flex-col justify-end min-h-[280px] shadow-md">
         <div className="absolute inset-0 z-0">
           <Image
-            src={isWomen ? "/brand/image1.png" : "/brand/image10.png"}
+            src={isWomen ? "/campaigns/mujer-escena-01.jpg" : "/campaigns/hombre-hero.jpg"}
             alt={title}
             fill
             sizes="100vw"
