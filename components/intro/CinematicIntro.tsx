@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Volume2, VolumeX, FastForward, Sparkles } from "lucide-react";
+import { Volume2, VolumeX, FastForward } from "lucide-react";
 import { useCommerceStore } from "@/lib/store/commerce-store";
 import { CruzDeHierro } from "@/components/ui/BravioLogo";
 
@@ -17,10 +17,10 @@ export default function CinematicIntro({
 }: CinematicIntroProps) {
   // Sequence Steps:
   // 0: Sound Selection Gate (Entrar con música / En silencio)
-  // 1: 0–1.6s La Cruz de Hierro (Onda expansiva, aura azul Tsunami y forjado)
-  // 2: 1.6–3.6s Logotipo Oficial BRAVÍO con destello anamórfico azul
-  // 3: 3.6–4.8s Manifiesto: "WESTERN PARA LA VIDA ACTUAL" · "ENTRA CON CARÁCTER"
-  // 4: 4.8–5.8s Disolución cinemática hacia la tienda
+  // 1: 0.1s - 2.4s La Cruz de Hierro (Onda expansiva, forja Red Oxide #5E1C23 y auras Cloudy Valley #B1C7D4)
+  // 2: 2.4s - 4.8s Logotipo Oficial BRAVÍO en Cloudy Valley sobre Volcanic Island con haz de luz
+  // 3: 4.8s - 6.8s Manifiesto: "WESTERN PARA LA VIDA ACTUAL" · "ENTRA CON CARÁCTER"
+  // 4: 6.8s - 8.8s Transición cinemática de entrada hacia la tienda (sin prisas ni empalmes)
   const [step, setStep] = useState<number>(0);
   const [hasInteractedChoice, setHasInteractedChoice] = useState<boolean>(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(false);
@@ -76,7 +76,7 @@ export default function CinematicIntro({
     }
 
     const startTime = Date.now();
-    const duration = 5600;
+    const duration = 8800; // Pacing generoso y elegante
 
     const progressInterval = setInterval(() => {
       const elapsed = Date.now() - startTime;
@@ -86,9 +86,9 @@ export default function CinematicIntro({
     }, 40);
 
     const t1 = setTimeout(() => setStep(1), 100);
-    const t2 = setTimeout(() => setStep(2), 1600);
-    const t3 = setTimeout(() => setStep(3), 3500);
-    const t4 = setTimeout(() => setStep(4), 4800);
+    const t2 = setTimeout(() => setStep(2), 2400);
+    const t3 = setTimeout(() => setStep(3), 4800);
+    const t4 = setTimeout(() => setStep(4), 6800);
     const t5 = setTimeout(() => {
       finishIntro();
     }, duration);
@@ -122,74 +122,78 @@ export default function CinematicIntro({
   return (
     <motion.div
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#070D14] overflow-hidden select-none"
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#1F1915] overflow-hidden select-none"
     >
       {/* =========================================================
-          ATMÓSFERA CINEMÁTICA EN AZULES OFICIALES DE MARCA
-          (Cloudy Valley #B1C7D4, Tsunami #849AAD, Slate #101B2B)
-          Sin video de fondo para evitar logos duplicados o empalmados
+          ATMÓSFERA OFICIAL DEL MANUAL DE MARCA BRAVÍO:
+          - Volcanic Island (#605246): Base volcánica terrosa y profunda
+          - Cloudy Valley (#B1C7D4): Cielo y luz atmosférica principal (60%)
+          - Tsunami (#849AAD): Contraste y profundidad (15%)
+          - Red Oxide (#5E1C23): Acento forjado e ígneo (5%)
+          Sin videos de fondo para evitar duplicidad de marcas o empalmes.
       ========================================================= */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Deep Midnight Blue Canvas */}
+        {/* Volcanic Island Canvas */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 48%, #142334 0%, #0A1420 50%, #050B11 100%)",
+              "radial-gradient(ellipse at 50% 48%, #605246 0%, #382F28 45%, #181411 100%)",
           }}
         />
 
-        {/* Ambient Aurora Blue Wave 1 (Cloudy Valley) */}
+        {/* Luminous Cloudy Valley Wave (Top Left) */}
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.25, 0.45, 0.25],
-            x: ["-5%", "5%", "-5%"],
+            opacity: [0.35, 0.55, 0.35],
+            x: ["-4%", "4%", "-4%"],
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-1/3 -left-1/4 w-[150vw] h-[150vh] bg-[radial-gradient(circle_at_center,rgba(177,199,212,0.18)_0%,rgba(132,154,173,0.08)_40%,transparent_75%)] mix-blend-screen"
+          className="absolute -top-1/4 -left-1/4 w-[140vw] h-[140vh] bg-[radial-gradient(circle_at_center,rgba(177,199,212,0.32)_0%,rgba(132,154,173,0.15)_40%,transparent_75%)] mix-blend-screen"
         />
 
-        {/* Ambient Deep Tsunami Blue Pulse 2 */}
+        {/* Tsunami & Red Oxide Deep Warmth Pulse (Bottom Right) */}
         <motion.div
           animate={{
             scale: [1.15, 1, 1.15],
-            opacity: [0.2, 0.4, 0.2],
+            opacity: [0.3, 0.5, 0.3],
             y: ["-4%", "4%", "-4%"],
           }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-1/3 -right-1/4 w-[140vw] h-[140vh] bg-[radial-gradient(circle_at_center,rgba(132,154,173,0.22)_0%,rgba(94,28,35,0.12)_45%,transparent_80%)] mix-blend-screen"
+          className="absolute -bottom-1/4 -right-1/4 w-[130vw] h-[130vh] bg-[radial-gradient(circle_at_center,rgba(94,28,35,0.35)_0%,rgba(132,154,173,0.2)_45%,transparent_80%)] mix-blend-screen"
         />
 
-        {/* Anamorphic Cyan/Blue Horizontal Flare Streak */}
+        {/* Anamorphic Cloudy Valley Flare Sweep */}
         <motion.div
           animate={{
             x: ["-120%", "220%"],
             opacity: [0, 0.6, 0],
           }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.2 }}
-          className="absolute inset-y-0 w-2/5 bg-gradient-to-r from-transparent via-[#B1C7D4]/25 to-transparent skew-x-12 pointer-events-none"
+          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.5 }}
+          className="absolute inset-y-0 w-2/5 bg-gradient-to-r from-transparent via-[#B1C7D4]/30 to-transparent skew-x-12 pointer-events-none"
         />
 
-        {/* Subtle Fine Grid Texture for Editorial Precision */}
+        {/* Retícula editorial suave inspirada en el manual de marca */}
         <div
-          className="absolute inset-0 opacity-[0.035]"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               "linear-gradient(to right, #B1C7D4 1px, transparent 1px), linear-gradient(to bottom, #B1C7D4 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
+            backgroundSize: "64px 64px",
           }}
         />
 
-        {/* Cinematic Vignette */}
-        <div className="absolute inset-0 bg-radial-vignette opacity-85" />
+        {/* Vignette de Volcanic Island para enfocar el centro */}
+        <div className="absolute inset-0 bg-radial-vignette opacity-80" />
       </div>
 
-      {/* Top Cinematic Bar with Progress & Skip */}
+      {/* Barra superior de progreso y saltar */}
       {hasInteractedChoice && (
         <div className="absolute top-0 inset-x-0 z-40 p-6 flex items-center justify-between pointer-events-auto">
-          {/* Brand Mark with Blue Glow */}
+          {/* Sello de marca en Cloudy Valley */}
           <div className="flex items-center gap-2.5">
             <CruzDeHierro size={15} color="#B1C7D4" />
             <span className="font-[SpaceGrotesk] text-[10px] tracking-[0.25em] text-[#B1C7D4] uppercase font-bold">
@@ -197,30 +201,30 @@ export default function CinematicIntro({
             </span>
           </div>
 
-          {/* Skip Button */}
+          {/* Botón Saltar */}
           {allowSkip && (
             <motion.button
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               onClick={handleSkip}
-              className="flex items-center gap-2 px-4 py-2 text-xs tracking-widest text-[#B1C7D4] hover:text-white bg-[#101B2B]/70 hover:bg-[#5E1C23] border border-[#849AAD]/40 hover:border-[#5E1C23] transition-all duration-300 font-[SpaceGrotesk] font-bold backdrop-blur-md shadow-lg"
+              className="flex items-center gap-2 px-4 py-2 text-xs tracking-widest text-[#B1C7D4] hover:text-white bg-[#605246]/60 hover:bg-[#5E1C23] border border-[#B1C7D4]/40 hover:border-[#5E1C23] transition-all duration-300 font-[SpaceGrotesk] font-bold backdrop-blur-md shadow-lg"
             >
               <span>SALTAR INTRO</span>
               <FastForward className="w-3.5 h-3.5" />
             </motion.button>
           )}
 
-          {/* Progress Line in Brand Blues */}
-          <div className="absolute bottom-0 inset-x-0 h-[2px] bg-[#849AAD]/20">
+          {/* Línea de progreso con la paleta oficial */}
+          <div className="absolute bottom-0 inset-x-0 h-[2px] bg-[#605246]">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#849AAD] via-[#B1C7D4] to-[#5E1C23]"
+              className="h-full bg-gradient-to-r from-[#5E1C23] via-[#B1C7D4] to-[#849AAD]"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
       )}
 
-      {/* Screen 0: Sound Preference Gate */}
+      {/* Pantalla 0: Puerta de Selección de Audio */}
       {!hasInteractedChoice ? (
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.96 }}
@@ -228,23 +232,22 @@ export default function CinematicIntro({
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="relative z-30 flex flex-col items-center text-center px-6 max-w-lg mx-auto"
         >
-          {/* Pulsing Cruz de Hierro with Atmospheric Blue Aura */}
+          {/* Cruz de Hierro con auras en Cloudy Valley y Red Oxide */}
           <div className="relative w-24 h-24 mb-8 flex items-center justify-center">
-            {/* Concentric Glow Rings in Cloudy Valley & Tsunami */}
             <motion.div
-              animate={{ scale: [1, 1.9], opacity: [0.7, 0] }}
+              animate={{ scale: [1, 1.9], opacity: [0.8, 0] }}
               transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut" }}
-              className="absolute inset-0 rounded-full border border-[#B1C7D4]/50"
+              className="absolute inset-0 rounded-full border border-[#B1C7D4]/60"
             />
             <motion.div
-              animate={{ scale: [1, 2.4], opacity: [0.4, 0] }}
+              animate={{ scale: [1, 2.4], opacity: [0.5, 0] }}
               transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut", delay: 0.7 }}
-              className="absolute inset-0 rounded-full border border-[#849AAD]/30"
+              className="absolute inset-0 rounded-full border border-[#5E1C23]/50"
             />
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              className="w-16 h-16 text-[#B1C7D4] filter drop-shadow-[0_0_25px_rgba(177,199,212,0.6)]"
+              transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+              className="w-16 h-16 text-[#B1C7D4] filter drop-shadow-[0_0_25px_rgba(177,199,212,0.7)]"
             >
               <svg viewBox="-280 -280 560 560" className="w-full h-full fill-current">
                 <path d="M -58.8 -58.8 L 58.8 -58.8 L 109.2 -210 L -109.2 -210 Z M -58.8 58.8 L 58.8 58.8 L 109.2 210 L -109.2 210 Z M -58.8 -58.8 L -58.8 58.8 L -210 109.2 L -210 -109.2 Z M 58.8 -58.8 L 58.8 58.8 L 210 109.2 L 210 -109.2 Z M -58.8 -58.8 L 58.8 -58.8 L 58.8 58.8 L -58.8 58.8 Z" />
@@ -252,21 +255,21 @@ export default function CinematicIntro({
             </motion.div>
           </div>
 
-          <h2 className="font-archivo text-3xl sm:text-4xl text-white tracking-wider uppercase mb-2">
+          <h2 className="font-archivo text-3xl sm:text-4xl text-[#B1C7D4] tracking-wider uppercase mb-2">
             BRAVÍO
           </h2>
-          <p className="font-[SpaceGrotesk] text-xs sm:text-sm text-[#B1C7D4] tracking-[0.25em] mb-8 uppercase font-bold">
+          <p className="font-[SpaceGrotesk] text-xs sm:text-sm text-[#B1C7D4]/90 tracking-[0.25em] mb-8 uppercase font-bold">
             Western para la vida actual · León, Gto.
           </p>
 
-          {/* Sound Visualizer Bars Preview */}
+          {/* Visualizador de audio en Cloudy Valley */}
           <div className="flex items-center gap-1.5 mb-8 h-6">
             {[4, 10, 16, 8, 20, 12, 6, 18, 14, 8].map((h, i) => (
               <motion.span
                 key={i}
                 animate={{ height: [4, h, 4] }}
                 transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.1 }}
-                className="w-1 bg-[#849AAD] rounded-full opacity-70"
+                className="w-1 bg-[#B1C7D4] rounded-full opacity-80"
               />
             ))}
           </div>
@@ -274,7 +277,7 @@ export default function CinematicIntro({
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full font-[SpaceGrotesk]">
             <button
               onClick={() => handleStart(true)}
-              className="w-full sm:w-1/2 flex items-center justify-center gap-3 py-4 px-6 bg-[#5E1C23] hover:bg-[#72232b] text-white text-xs font-bold tracking-[0.2em] transition-all duration-300 shadow-xl shadow-[#5E1C23]/30 border border-[#5E1C23] group"
+              className="w-full sm:w-1/2 flex items-center justify-center gap-3 py-4 px-6 bg-[#5E1C23] hover:bg-[#72232b] text-white text-xs font-bold tracking-[0.2em] transition-all duration-300 shadow-xl shadow-[#5E1C23]/40 border border-[#5E1C23] group"
             >
               <Volume2 className="w-4 h-4 text-[#B1C7D4] group-hover:scale-125 transition-transform" />
               <span>ENTRAR CON MÚSICA</span>
@@ -282,7 +285,7 @@ export default function CinematicIntro({
 
             <button
               onClick={() => handleStart(false)}
-              className="w-full sm:w-1/2 flex items-center justify-center gap-3 py-4 px-6 bg-[#101B2B]/80 hover:bg-[#182A3D] border border-[#849AAD]/40 hover:border-[#B1C7D4] text-[#B1C7D4] hover:text-white text-xs font-bold tracking-[0.2em] transition-all duration-300 backdrop-blur-sm"
+              className="w-full sm:w-1/2 flex items-center justify-center gap-3 py-4 px-6 bg-[#605246]/70 hover:bg-[#605246] border border-[#B1C7D4]/40 hover:border-[#B1C7D4] text-[#B1C7D4] hover:text-white text-xs font-bold tracking-[0.2em] transition-all duration-300 backdrop-blur-sm"
             >
               <VolumeX className="w-4 h-4" />
               <span>EN SILENCIO</span>
@@ -290,43 +293,43 @@ export default function CinematicIntro({
           </div>
         </motion.div>
       ) : (
-        /* Cinematic Dynamic Sequence (One single clean focal element per step) */
+        /* Secuencia Dinámica Cinemática — Elemento focal único por etapa */
         <div className="relative z-30 flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
-            {/* ETAPA 1: Llegada de La Cruz de Hierro con Aura Azul y Resplandor Granate */}
+            {/* ETAPA 1: Llegada de La Cruz de Hierro con Onda Expansiva */}
             {step === 1 && (
               <motion.div
                 key="cross-arrival"
                 initial={{ opacity: 0, scale: 0.35, rotate: -20 }}
-                animate={{ opacity: 1, scale: [0.35, 1.1, 1], rotate: 0 }}
-                exit={{ opacity: 0, scale: 1.25, filter: "blur(8px)" }}
-                transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+                animate={{ opacity: 1, scale: [0.35, 1.08, 1], rotate: 0 }}
+                exit={{ opacity: 0, scale: 1.15, filter: "blur(6px)" }}
+                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
                 className="relative flex flex-col items-center"
               >
-                {/* Expanding Blue Shockwave Rings */}
+                {/* Ondas concéntricas en Cloudy Valley y Red Oxide */}
                 <motion.div
                   initial={{ scale: 0.5, opacity: 1 }}
                   animate={{ scale: 2.8, opacity: 0 }}
-                  transition={{ duration: 1.4, ease: "easeOut" }}
+                  transition={{ duration: 1.5, ease: "easeOut" }}
                   className="absolute inset-0 rounded-full border-2 border-[#B1C7D4] pointer-events-none"
                 />
                 <motion.div
                   initial={{ scale: 0.8, opacity: 1 }}
                   animate={{ scale: 3.4, opacity: 0 }}
-                  transition={{ duration: 1.6, ease: "easeOut", delay: 0.15 }}
-                  className="absolute inset-0 rounded-full border border-[#849AAD] pointer-events-none"
+                  transition={{ duration: 1.7, ease: "easeOut", delay: 0.15 }}
+                  className="absolute inset-0 rounded-full border border-[#5E1C23] pointer-events-none"
                 />
 
-                {/* Forged Iron Cross Icon with Blue Glow */}
-                <div className="w-28 h-28 sm:w-36 sm:h-36 text-white relative filter drop-shadow-[0_0_35px_rgba(177,199,212,0.85)]">
+                {/* Símbolo forjado en Red Oxide y Cloudy Valley */}
+                <div className="w-28 h-28 sm:w-36 sm:h-36 text-[#B1C7D4] relative filter drop-shadow-[0_0_35px_rgba(177,199,212,0.85)]">
                   <svg viewBox="-280 -280 560 560" className="w-full h-full fill-current">
                     <path d="M -58.8 -58.8 L 58.8 -58.8 L 109.2 -210 L -109.2 -210 Z M -58.8 58.8 L 58.8 58.8 L 109.2 210 L -109.2 210 Z M -58.8 -58.8 L -58.8 58.8 L -210 109.2 L -210 -109.2 Z M 58.8 -58.8 L 58.8 58.8 L 210 109.2 L 210 -109.2 Z M -58.8 -58.8 L 58.8 -58.8 L 58.8 58.8 L -58.8 58.8 Z" />
                   </svg>
-                  {/* Glowing center sapphire spark */}
+                  {/* Núcleo ígneo Red Oxide */}
                   <motion.div
                     animate={{ scale: [0.8, 1.4, 0.8], opacity: [0.7, 1, 0.7] }}
                     transition={{ duration: 1, repeat: Infinity }}
-                    className="absolute inset-0 m-auto w-4 h-4 rounded-full bg-[#B1C7D4] blur-[3px]"
+                    className="absolute inset-0 m-auto w-4 h-4 rounded-full bg-[#5E1C23] blur-[2px]"
                   />
                 </div>
 
@@ -341,18 +344,18 @@ export default function CinematicIntro({
               </motion.div>
             )}
 
-            {/* ETAPA 2: Logotipo Oficial BRAVÍO (Sin video detrás — Limpio y Definido) */}
+            {/* ETAPA 2: Logotipo Oficial BRAVÍO en Cloudy Valley (#B1C7D4) */}
             {step === 2 && (
               <motion.div
                 key="logo-arrival"
                 initial={{ opacity: 0, scale: 0.92, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
-                transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="relative flex flex-col items-center"
               >
-                {/* Official Vector Logo in Pure White / Silvery Blue */}
-                <div className="relative w-[300px] sm:w-[460px] md:w-[620px] text-white mb-6 filter drop-shadow-[0_10px_35px_rgba(132,154,173,0.5)]">
+                {/* Logotipo vectorial oficial en Cloudy Valley */}
+                <div className="relative w-[300px] sm:w-[460px] md:w-[620px] text-[#B1C7D4] mb-6 filter drop-shadow-[0_10px_35px_rgba(177,199,212,0.4)]">
                   <svg viewBox="-110 -1215 4554 1325" className="w-full h-auto fill-current">
                     <g transform="scale(1,-1)">
                       <g transform="translate(0,0)"><path d="M722 519Q722 392 607 359V355Q738 325 738 183Q738 129 711.5 87.5Q685 46 639.0 23.0Q593 0 538 0H74V688H532Q584 688 627.5 666.5Q671 645 696.5 606.0Q722 567 722 519ZM295 420H447Q469 420 483.5 435.5Q498 451 498 474V484Q498 506 483.0 521.5Q468 537 447 537H295ZM295 160H463Q485 160 499.5 175.5Q514 191 514 214V224Q514 247 499.5 262.5Q485 278 463 278H295Z"/></g>
@@ -365,12 +368,12 @@ export default function CinematicIntro({
                     </g>
                   </svg>
 
-                  {/* Horizontal Blue Light Ray Shimmer across the logo */}
+                  {/* Barrido de luz en Cloudy Valley */}
                   <motion.div
                     initial={{ x: "-120%" }}
                     animate={{ x: "120%" }}
-                    transition={{ duration: 1.3, ease: "easeInOut", delay: 0.2 }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-[#B1C7D4]/60 to-transparent skew-x-12 pointer-events-none"
+                    transition={{ duration: 1.4, ease: "easeInOut", delay: 0.2 }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 pointer-events-none"
                   />
                 </div>
 
@@ -380,28 +383,28 @@ export default function CinematicIntro({
                   transition={{ delay: 0.3, duration: 0.6 }}
                   className="flex items-center gap-3 text-xs font-[SpaceGrotesk] uppercase tracking-[0.25em] text-[#B1C7D4]"
                 >
-                  <span className="w-8 h-[1px] bg-[#849AAD]" />
+                  <span className="w-8 h-[1px] bg-[#5E1C23]" />
                   <span>Construcción Tradicional · León Gto</span>
-                  <span className="w-8 h-[1px] bg-[#849AAD]" />
+                  <span className="w-8 h-[1px] bg-[#5E1C23]" />
                 </motion.div>
               </motion.div>
             )}
 
-            {/* ETAPA 3: Frase de Manifiesto en Expansión y Contraste Azul */}
+            {/* ETAPA 3: Manifiesto Oficial de Marca */}
             {step === 3 && (
               <motion.div
                 key="phrase-reveal"
                 initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.08, filter: "blur(8px)" }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                exit={{ opacity: 0, scale: 1.06, filter: "blur(6px)" }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-4"
               >
                 <motion.h2
-                  initial={{ letterSpacing: "0.15em", filter: "blur(6px)" }}
-                  animate={{ letterSpacing: "0.25em", filter: "blur(0px)" }}
-                  transition={{ duration: 1.1, ease: "easeOut" }}
-                  className="font-archivo text-3xl sm:text-5xl md:text-6xl text-white uppercase leading-none tracking-widest drop-shadow-[0_6px_35px_rgba(0,0,0,0.9)]"
+                  initial={{ letterSpacing: "0.15em", filter: "blur(4px)" }}
+                  animate={{ letterSpacing: "0.22em", filter: "blur(0px)" }}
+                  transition={{ duration: 1.2, ease: "easeOut" }}
+                  className="font-archivo text-3xl sm:text-5xl md:text-6xl text-[#B1C7D4] uppercase leading-none tracking-widest drop-shadow-[0_6px_35px_rgba(0,0,0,0.8)]"
                 >
                   WESTERN PARA LA VIDA ACTUAL.
                 </motion.h2>
@@ -410,29 +413,35 @@ export default function CinematicIntro({
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.7 }}
-                  className="font-[SpaceGrotesk] text-xs sm:text-sm tracking-[0.3em] uppercase text-[#B1C7D4] font-bold"
+                  className="font-[SpaceGrotesk] text-xs sm:text-sm tracking-[0.3em] uppercase text-white font-bold"
                 >
+                  <span className="text-[#5E1C23] font-black mr-2">✦</span>
                   Entra con carácter
                 </motion.p>
               </motion.div>
             )}
 
-            {/* ETAPA 4: Transición Final Hacia la Tienda */}
+            {/* ETAPA 4: Transición Cinemática de Entrada (Sostenida, Serena y Sin Empalmes) */}
             {step === 4 && (
               <motion.div
                 key="enter-store"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1.05 }}
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
-                className="flex flex-col items-center gap-4"
+                transition={{ duration: 0.9, ease: "easeOut" }}
+                className="flex flex-col items-center gap-5"
               >
-                <div className="w-12 h-12 text-[#B1C7D4] filter drop-shadow-[0_0_20px_#B1C7D4]">
-                  <CruzDeHierro size={48} color="#B1C7D4" />
+                <div className="w-16 h-16 text-[#B1C7D4] filter drop-shadow-[0_0_25px_#B1C7D4]">
+                  <CruzDeHierro size={64} color="#B1C7D4" />
                 </div>
-                <span className="font-archivo text-xs sm:text-sm uppercase tracking-[0.3em] text-white">
-                  INGRESANDO A BRAVÍO...
-                </span>
+                <div className="space-y-1">
+                  <h3 className="font-archivo text-base sm:text-lg uppercase tracking-[0.3em] text-[#B1C7D4]">
+                    ENTRANDO A BRAVÍO
+                  </h3>
+                  <p className="font-[SpaceGrotesk] text-[11px] uppercase tracking-[0.25em] text-[#849AAD]">
+                    León, Guanajuato · Construcción Goodyear Welt 360°
+                  </p>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

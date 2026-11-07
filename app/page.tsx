@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { AnimatePresence } from "framer-motion";
 import { ArrowRight, ShieldCheck, Sparkles, Compass, Check } from "lucide-react";
 import CinematicIntro from "@/components/intro/CinematicIntro";
 import { PRODUCTS_CATALOG } from "@/lib/data/products";
@@ -53,7 +54,9 @@ export default function HomePage() {
   return (
     <>
       {/* Cinematic Intro Animation */}
-      {showIntro && <CinematicIntro onComplete={() => setShowIntro(false)} />}
+      <AnimatePresence>
+        {showIntro && <CinematicIntro onComplete={() => setShowIntro(false)} />}
+      </AnimatePresence>
 
       <div className="relative overflow-hidden bg-white text-[#605246]">
         {/* =========================================================
