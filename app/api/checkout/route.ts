@@ -176,13 +176,20 @@ export async function POST(req: NextRequest) {
         html: emailHtml,
       }).catch((e) => console.error("Error sending customer order email:", e));
 
-      // Also send sales notification copy to store owner
+      // Also send sales notification copy to store owners / partners
       sendEmail({
         from: fromEmail,
         to: "cbarronn82@gmail.com",
         subject: `[NUEVA VENTA] Pedido ${order.orderNumber} ($${Number(total).toLocaleString("es-MX")} MXN) - BRAVÍO Western`,
         html: emailHtml,
-      }).catch((e) => console.error("Error sending admin order copy:", e));
+      }).catch((e) => console.error("Error sending admin order copy (cbarron):", e));
+
+      sendEmail({
+        from: fromEmail,
+        to: "gonzaloarrietanavarro@gmail.com",
+        subject: `[NUEVA VENTA] Pedido ${order.orderNumber} ($${Number(total).toLocaleString("es-MX")} MXN) - BRAVÍO Western`,
+        html: emailHtml,
+      }).catch((e) => console.error("Error sending partner order copy (gonzalo):", e));
     } catch (emailErr) {
       console.error("Order confirmation email error:", emailErr);
     }

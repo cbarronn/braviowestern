@@ -802,14 +802,101 @@ class MockDatabase {
   getCommercialReports() {
     const totalOrders = this.orders.length;
     const totalSales = this.orders.reduce((acc, o) => acc + o.total, 0);
-    const averageTicket = totalOrders > 0 ? totalSales / totalOrders : 4850;
+    const effectiveTotalSales = totalSales > 0 ? totalSales : 184500;
+    const effectiveTotalOrders = totalOrders > 0 ? totalOrders : 38;
+    const averageTicket = effectiveTotalOrders > 0 ? effectiveTotalSales / effectiveTotalOrders : 4855;
 
     return {
       kpis: {
-        totalSales: totalSales > 0 ? totalSales : 184500,
-        totalOrders: totalOrders > 0 ? totalOrders : 38,
+        totalSales: effectiveTotalSales,
+        totalOrders: effectiveTotalOrders,
         averageTicket,
-        conversionRate: 2.8,
+        conversionRate: 2.85,
+        grossMargin: 64.2,
+        roas: 4.8,
+        cartAbandonmentRate: 68.4,
+        cartRecoveryRate: 19.4,
+        preferredPayment: {
+          mercadopago: 58,
+          spei: 42,
+        },
+      },
+      weeklySales: {
+        currentWeekTotal: 68400,
+        currentWeekOrders: 14,
+        growthVsLastWeek: "+24.6%",
+        weeks: [
+          { weekLabel: "Semana 44 (Actual)", sales: 68400, orders: 14, growth: "+24.6%" },
+          { weekLabel: "Semana 43", sales: 54900, orders: 11, growth: "+12.1%" },
+          { weekLabel: "Semana 42", sales: 48950, orders: 10, growth: "+8.5%" },
+          { weekLabel: "Semana 41", sales: 45100, orders: 9, growth: "+15.0%" },
+        ],
+        dailyBreakdown: [
+          { day: "Lunes", sales: 8400, orders: 2, visitors: 1980 },
+          { day: "Martes", sales: 7800, orders: 2, visitors: 1840 },
+          { day: "Miércoles", sales: 9600, orders: 2, visitors: 2150 },
+          { day: "Jueves", sales: 11200, orders: 2, visitors: 2420 },
+          { day: "Viernes", sales: 13500, orders: 3, visitors: 2890 },
+          { day: "Sábado", sales: 10400, orders: 2, visitors: 2100 },
+          { day: "Domingo", sales: 7500, orders: 1, visitors: 1440 },
+        ],
+      },
+      trafficAnalytics: {
+        weeklySessions: 14820,
+        uniqueVisitors: 8940,
+        pageViews: 58400,
+        avgDuration: "3m 42s",
+        bounceRate: "34.8%",
+        deviceDistribution: [
+          { device: "Móvil (Smartphones)", percentage: 76 },
+          { device: "Computadora de Escritorio", percentage: 21 },
+          { device: "Tabletas", percentage: 3 },
+        ],
+        topPages: [
+          { path: "/", label: "Home Cinematográfico (Video + Universo)", views: 22190, share: 38 },
+          { path: "/coleccion", label: "Catálogo Colección Hombre", views: 16930, share: 29 },
+          { path: "/mujer", label: "Adelanto Exclusivo Colección Mujer 2026", views: 10510, share: 18 },
+          { path: "/amuleto", label: "Historia del Amuleto & Cruz de Hierro", views: 5250, share: 9 },
+          { path: "/rastreo", label: "Portal de Rastreo & Guías de Envío", views: 3520, share: 6 },
+        ],
+      },
+      geographicOrigins: {
+        national: [
+          { region: "Monterrey, Nuevo León", share: 28, visitors: 2503, revenue: 51660, flag: "🇲🇽" },
+          { region: "Ciudad de México (CDMX) & EdoMex", share: 24, visitors: 2145, revenue: 44280, flag: "🇲🇽" },
+          { region: "Guadalajara, Jalisco", share: 16, visitors: 1430, revenue: 29520, flag: "🇲🇽" },
+          { region: "León, Guanajuato (Sede Matriz)", share: 12, visitors: 1072, revenue: 22140, flag: "🇲🇽" },
+          { region: "Chihuahua / Coahuila / Sonora", share: 11, visitors: 983, revenue: 20295, flag: "🇲🇽" },
+        ],
+        international: [
+          { region: "Texas (San Antonio, Houston, Dallas)", share: 5.5, visitors: 491, revenue: 10140, flag: "🇺🇸" },
+          { region: "California & Arizona", share: 3.5, visitors: 316, revenue: 6465, flag: "🇺🇸" },
+        ],
+      },
+      searchQueries: [
+        { query: "Bota Silao Arena Gamuza", count: 1420, conversion: "4.8%", trend: "+32%", intent: "Compra Alta" },
+        { query: "Botas Mujer 2026 Preventa", count: 980, conversion: "3.9%", trend: "+78%", intent: "Demanda Emergente" },
+        { query: "Cruz de Hierro Amuleto", count: 840, conversion: "2.4%", trend: "+15%", intent: "Branding & Prestigio" },
+        { query: "Bota Chapala Miel Vacuno", count: 720, conversion: "4.1%", trend: "+12%", intent: "Compra Alta" },
+        { query: "Horma Cuadrada Vaquera", count: 610, conversion: "3.5%", trend: "+20%", intent: "Especificación Técnica" },
+        { query: "Goodyear Welt 360", count: 480, conversion: "5.2%", trend: "+8%", intent: "Calidad Artesanal" },
+        { query: "Talla 27.5 MX Existencia", count: 390, conversion: "6.1%", trend: "+5%", intent: "Calce & Talla" },
+      ],
+      executiveSummary: {
+        title: "Informe Ejecutivo de Desempeño Comercial BRAVÍO Western",
+        period: "Semana 44 / Q4 2026",
+        preparedFor: "Dirección General & Consejo de Administración (Carlos Barrón & Gonzalo Arrieta)",
+        highlights: [
+          "Crecimiento semanal sostenido de +24.6% en facturación, impulsado por el interés del modelo Bota Silao Arena y la tracción del video cinematográfico.",
+          "La preventa de la Colección Mujer 2026 representa ya el 18% de las visitas totales de la tienda y el segundo término de búsqueda con mayor aceleración (+78%).",
+          "Tráfico geográfico concentrado en Monterrey (28%) y CDMX (24%), con un 9% de demanda orgánica proveniente de Estados Unidos (Texas y California).",
+          "Adopción equilibrada de métodos de pago: 58% vía Mercado Pago (tarjetas y MSI) y 42% vía Transferencia SPEI Directa (ahorro total en comisiones bancarias).",
+        ],
+        strategicRecommendations: [
+          "Asegurar inventario suficiente de gamuza en piel arena para tallas 27 y 27.5 MX para evitar quiebres de stock en el cierre de mes.",
+          "Formalizar la pasarela de envíos internacionales para capitalizar la demanda identificada en Texas sin fricción de aduanas.",
+          "Mantener la pauta digital enfocada en dispositivos móviles (76% del tráfico actual).",
+        ],
       },
       topProducts: this.products.slice(0, 5).map((p, idx) => ({
         sku: p.sku,
