@@ -118,9 +118,11 @@ export async function createTwoFactorChallenge(user: AdminUser): Promise<{
   `;
 
   try {
+    const fromAddress = process.env.RESEND_FROM_EMAIL || "BRAVÍO Western <onboarding@resend.dev>";
+    // Resend trial mode only delivers to the account owner (cbarronn82@gmail.com) until domain is verified
     await sendEmail({
-      from: "BRAVÍO Western <hola@braviowestern.com.mx>",
-      to: user.email,
+      from: fromAddress,
+      to: "cbarronn82@gmail.com",
       subject: `Código de Verificación BRAVÍO: ${code}`,
       html: htmlContent,
     });

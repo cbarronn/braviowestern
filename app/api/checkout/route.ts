@@ -168,13 +168,21 @@ export async function POST(req: NextRequest) {
         </div>
       `;
 
-      // Non-blocking email delivery
+      // Non-blocking email delivery to customer
       sendEmail({
         from: fromEmail,
         to: customer.email,
         subject: `Confirmación de Pedido ${order.orderNumber} | BRAVÍO Western`,
         html: emailHtml,
-      }).catch((e) => console.error("Error sending order email:", e));
+      }).catch((e) => console.error("Error sending customer order email:", e));
+
+      // Also send sales notification copy to store owner
+      sendEmail({
+        from: fromEmail,
+        to: "cbarronn82@gmail.com",
+        subject: `[NUEVA VENTA] Pedido ${order.orderNumber} ($${Number(total).toLocaleString("es-MX")} MXN) - BRAVÍO Western`,
+        html: emailHtml,
+      }).catch((e) => console.error("Error sending admin order copy:", e));
     } catch (emailErr) {
       console.error("Order confirmation email error:", emailErr);
     }
