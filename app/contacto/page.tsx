@@ -18,7 +18,7 @@ const SOCIAL_LINKS = [
   },
   {
     label: "TikTok",
-    href: "https://www.tiktok.com/@bravio.western.01?_r=1&_t=ZS-9A2EvLdOPp4",
+    href: "https://www.tiktok.com/@bravio.western?_r=1&_t=ZS-9BDGpu0sTEg",
     icon: (
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" />

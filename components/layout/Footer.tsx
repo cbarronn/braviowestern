@@ -87,11 +87,11 @@ export default function Footer() {
 
                   {/* TikTok */}
                   <a
-                    href="https://www.tiktok.com/@bravio.western.01?_r=1&_t=ZS-9A2EvLdOPp4"
+                    href="https://www.tiktok.com/@bravio.western?_r=1&_t=ZS-9BDGpu0sTEg"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#5E1C23] border border-white/10 hover:border-[#5E1C23] flex items-center justify-center text-bravio-cloudy hover:text-white transition-all duration-300"
-                    title="TikTok @bravio.western.01"
+                    title="TikTok @bravio.western"
                     aria-label="TikTok oficial de BRAVÍO Western"
                   >
                     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
