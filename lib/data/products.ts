@@ -2449,12 +2449,12 @@ export const PRODUCTS_CATALOG: Product[] = [
     "category": "mujer",
     "gender": "mujer",
     "collectionId": "bravio-mujer",
-    "featuredImage": "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpg",
+    "featuredImage": "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpeg",
     "images": [
-      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpg",
-      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (2).jpg",
-      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (3).jpg",
-      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (4).jpg"
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpeg",
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (2).jpeg",
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (3).jpeg",
+      "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE (4).jpeg"
     ],
     "variants": [
       { "size": "22.5 MX", "sku": "BW-MUJ-CHA-MIE-225", "stock": 3 },

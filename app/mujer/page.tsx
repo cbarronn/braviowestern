@@ -82,7 +82,7 @@ const UPCOMING_MODELS = [
     price: 3699,
     slug: "bota-chapala-dama-vacuno-miel",
     highlight: "Silueta estilizada con tiradores reforzados y la Cruz de Hierro grabada en bajo relieve.",
-    image: "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpg",
+    image: "/products/catalogo/bw-sin-ga-mie/BW-SIN-GA-MIE.jpeg",
     status: "Preventa Oficial",
   },
   {
