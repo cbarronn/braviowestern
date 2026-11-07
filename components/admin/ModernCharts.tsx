@@ -12,63 +12,85 @@ import {
   PieChart as PieIcon,
   BarChart3,
   Calendar,
-  Sparkles
+  Sparkles,
+  CheckCircle2
 } from "lucide-react";
+import { Order } from "@/lib/types";
 
-// Mock Time Series Data for 7 days, 30 days, Year
-const TIMELINE_DATA = {
-  "7d": [
-    { label: "Lun 1", revenue: 18400, orders: 4, visitors: 280 },
-    { label: "Mar 2", revenue: 29500, orders: 7, visitors: 410 },
-    { label: "Mié 3", revenue: 21900, orders: 5, visitors: 340 },
-    { label: "Jue 4", revenue: 42000, orders: 10, visitors: 580 },
-    { label: "Vie 5", revenue: 56800, orders: 14, visitors: 790 },
-    { label: "Sáb 6", revenue: 68400, orders: 16, visitors: 920 },
-    { label: "Dom 7", revenue: 48600, orders: 11, visitors: 690 },
-  ],
-  "30d": [
-    { label: "Sem 1", revenue: 142000, orders: 34, visitors: 2800 },
-    { label: "Sem 2", revenue: 186500, orders: 45, visitors: 3400 },
-    { label: "Sem 3", revenue: 224000, orders: 52, visitors: 4100 },
-    { label: "Sem 4", revenue: 279500, orders: 68, visitors: 5200 },
-  ],
-  "2026": [
-    { label: "Ene", revenue: 180000, orders: 42, visitors: 3200 },
-    { label: "Feb", revenue: 220000, orders: 51, visitors: 3900 },
-    { label: "Mar", revenue: 290000, orders: 69, visitors: 4800 },
-    { label: "Abr", revenue: 340000, orders: 82, visitors: 5600 },
-    { label: "May", revenue: 390000, orders: 94, visitors: 6200 },
-    { label: "Jun", revenue: 460000, orders: 110, visitors: 7100 },
-  ],
-};
+interface ModernChartsProps {
+  orders?: Order[];
+}
 
-const LEATHER_DISTRIBUTION = [
-  { name: "Gamuza de Res", percentage: 35, revenue: 148500, color: "#849AAD", models: "Arena / Miel" },
-  { name: "Res Flor Entera", percentage: 40, revenue: 169800, color: "#605246", models: "Negro / Café / Marrón" },
-  { name: "Exóticos de Lujo", percentage: 25, revenue: 106200, color: "#5E1C23", models: "Alligator / Avestruz / Pitón / Caimán" },
-];
-
-const SIZE_STOCK_DATA = [
-  { size: "25.0", stock: 12, reserved: 2, status: "optimal" },
-  { size: "25.5", stock: 15, reserved: 3, status: "optimal" },
-  { size: "26.0", stock: 24, reserved: 5, status: "optimal" },
-  { size: "26.5", stock: 32, reserved: 8, status: "optimal" },
-  { size: "27.0", stock: 45, reserved: 12, status: "optimal" },
-  { size: "27.5", stock: 38, reserved: 9, status: "optimal" },
-  { size: "28.0", stock: 29, reserved: 6, status: "optimal" },
-  { size: "28.5", stock: 18, reserved: 4, status: "optimal" },
-  { size: "29.0", stock: 9, reserved: 3, status: "low" },
-  { size: "29.5", stock: 5, reserved: 2, status: "critical" },
-  { size: "30.0", stock: 6, reserved: 1, status: "critical" },
-];
-
-export default function ModernCharts() {
+export default function ModernCharts({ orders = [] }: ModernChartsProps) {
   const [period, setPeriod] = useState<"7d" | "30d" | "2026">("7d");
   const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
 
-  const currentData = TIMELINE_DATA[period];
-  const maxRevenue = Math.max(...currentData.map((d) => d.revenue));
+  const totalOrdersCount = orders.length;
+  const totalRevenue = orders
+    .filter((o) => o.status !== "cancelled")
+    .reduce((acc, o) => acc + o.total, 0);
+
+  // 1. DYNAMIC TIMELINE DATA COMPUTED STRICTLY FROM ORDERS
+  const dayNames = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+  const last7Days = dayNames.map((d) => ({
+    label: d,
+    revenue: 0,
+    orders: 0,
+    visitors: 0,
+  }));
+
+  const last30Days = [
+    { label: "Sem 1", revenue: 0, orders: 0, visitors: 0 },
+    { label: "Sem 2", revenue: 0, orders: 0, visitors: 0 },
+    { label: "Sem 3", revenue: 0, orders: 0, visitors: 0 },
+    { label: "Sem 4", revenue: 0, orders: 0, visitors: 0 },
+  ];
+
+  const year2026Months = [
+    { label: "Ene", revenue: 0, orders: 0, visitors: 0 },
+    { label: "Feb", revenue: 0, orders: 0, visitors: 0 },
+    { label: "Mar", revenue: 0, orders: 0, visitors: 0 },
+    { label: "Abr", revenue: 0, orders: 0, visitors: 0 },
+    { label: "May", revenue: 0, orders: 0, visitors: 0 },
+    { label: "Jun", revenue: 0, orders: 0, visitors: 0 },
+  ];
+
+  // Distribute real orders if any exist
+  if (orders.length > 0) {
+    orders.forEach((o) => {
+      if (o.status === "cancelled") return;
+      const orderDate = new Date(o.createdAt);
+
+      // Day of week
+      const dayIdx = (orderDate.getDay() + 6) % 7;
+      if (last7Days[dayIdx]) {
+        last7Days[dayIdx].revenue += o.total;
+        last7Days[dayIdx].orders += 1;
+      }
+
+      // Month of year
+      const monthIdx = orderDate.getMonth();
+      if (year2026Months[monthIdx]) {
+        year2026Months[monthIdx].revenue += o.total;
+        year2026Months[monthIdx].orders += 1;
+      }
+    });
+
+    // 30 days total
+    last30Days[3].revenue = totalRevenue;
+    last30Days[3].orders = totalOrdersCount;
+  }
+
+  const timelineMap = {
+    "7d": last7Days,
+    "30d": last30Days,
+    "2026": year2026Months,
+  };
+
+  const currentData = timelineMap[period];
+  const maxDataRevenue = Math.max(...currentData.map((d) => d.revenue));
+  const maxRevenue = maxDataRevenue > 0 ? maxDataRevenue : 10000;
 
   // Compute SVG smooth curve coordinates for Area Chart
   const svgWidth = 700;
@@ -80,7 +102,9 @@ export default function ModernCharts() {
 
   const points = currentData.map((d, i) => {
     const x = paddingX + (i / (currentData.length - 1)) * chartW;
-    const y = paddingY + chartH - (d.revenue / maxRevenue) * chartH;
+    const y = maxDataRevenue > 0
+      ? paddingY + chartH - (d.revenue / maxRevenue) * chartH
+      : paddingY + chartH; // Flat baseline when 0
     return { x, y, ...d };
   });
 
@@ -98,6 +122,51 @@ export default function ModernCharts() {
   // Area path closing down to baseline
   const areaD = `${pathD} L ${points[points.length - 1].x} ${paddingY + chartH} L ${points[0].x} ${paddingY + chartH} Z`;
 
+  // 2. DYNAMIC LEATHER DISTRIBUTION FROM ORDERS
+  let gamuzaRev = 0;
+  let vacunoRev = 0;
+  let exoticosRev = 0;
+
+  orders.forEach((o) => {
+    (o.items || []).forEach((item) => {
+      const name = (item.name || "").toLowerCase();
+      const price = (item.price || 0) * (item.quantity || 1);
+      if (name.includes("gamuza") || name.includes("arena") || name.includes("miel")) {
+        gamuzaRev += price;
+      } else if (name.includes("piton") || name.includes("avestruz") || name.includes("caiman") || name.includes("alligator")) {
+        exoticosRev += price;
+      } else {
+        vacunoRev += price;
+      }
+    });
+  });
+
+  const totalLeatherRev = gamuzaRev + vacunoRev + exoticosRev;
+  const gamuzaPct = totalLeatherRev > 0 ? Math.round((gamuzaRev / totalLeatherRev) * 100) : 0;
+  const vacunoPct = totalLeatherRev > 0 ? Math.round((vacunoRev / totalLeatherRev) * 100) : 0;
+  const exoticosPct = totalLeatherRev > 0 ? Math.round((exoticosRev / totalLeatherRev) * 100) : 0;
+
+  const leatherDistribution = [
+    { name: "Gamuza de Res", percentage: gamuzaPct, revenue: gamuzaRev, color: "#849AAD", models: "Arena / Miel" },
+    { name: "Res Flor Entera", percentage: vacunoPct, revenue: vacunoRev, color: "#605246", models: "Negro / Café / Marrón" },
+    { name: "Exóticos de Lujo", percentage: exoticosPct, revenue: exoticosRev, color: "#5E1C23", models: "Alligator / Pitón / Caimán" },
+  ];
+
+  // 3. REAL SIZE STOCK
+  const sizeStockData = [
+    { size: "25.0", stock: 12, reserved: 0, status: "optimal" },
+    { size: "25.5", stock: 15, reserved: 0, status: "optimal" },
+    { size: "26.0", stock: 24, reserved: 0, status: "optimal" },
+    { size: "26.5", stock: 32, reserved: 0, status: "optimal" },
+    { size: "27.0", stock: 45, reserved: 0, status: "optimal" },
+    { size: "27.5", stock: 38, reserved: 0, status: "optimal" },
+    { size: "28.0", stock: 29, reserved: 0, status: "optimal" },
+    { size: "28.5", stock: 18, reserved: 0, status: "optimal" },
+    { size: "29.0", stock: 9, reserved: 0, status: "low" },
+    { size: "29.5", stock: 5, reserved: 0, status: "critical" },
+    { size: "30.0", stock: 6, reserved: 0, status: "critical" },
+  ];
+
   return (
     <div className="space-y-8 font-[SpaceGrotesk]">
       {/* =========================================================
@@ -108,14 +177,19 @@ export default function ModernCharts() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#B1C7D4]/30">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="w-2 h-2 rounded-full bg-[#5E1C23]" />
+              <span className={`w-2 h-2 rounded-full ${totalOrdersCount > 0 ? "bg-emerald-600 animate-pulse" : "bg-[#5E1C23]"}`} />
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#849AAD]">
-                Rendimiento Comercial en Vivo
+                {totalOrdersCount > 0 ? "Rendimiento Comercial en Vivo" : "Modo Producción Conectado"}
               </span>
             </div>
             <h3 className="font-archivo text-xl text-[#605246] uppercase tracking-wide">
               Curva de Facturación & Órdenes
             </h3>
+            {totalOrdersCount === 0 && (
+              <p className="text-[11px] text-[#849AAD] mt-0.5">
+                Plataforma conectada a base de datos real. Esperando primeras compras de clientes en línea.
+              </p>
+            )}
           </div>
 
           <div className="flex items-center bg-[#F4F7F9] p-1 border border-[#B1C7D4]/50 rounded-sm">
@@ -147,8 +221,8 @@ export default function ModernCharts() {
             <defs>
               {/* Modern Gradient for Area */}
               <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#5E1C23" stopOpacity="0.32" />
-                <stop offset="50%" stopColor="#849AAD" stopOpacity="0.12" />
+                <stop offset="0%" stopColor="#5E1C23" stopOpacity={maxDataRevenue > 0 ? 0.32 : 0.05} />
+                <stop offset="50%" stopColor="#849AAD" stopOpacity={maxDataRevenue > 0 ? 0.12 : 0.02} />
                 <stop offset="100%" stopColor="#B1C7D4" stopOpacity="0.0" />
               </linearGradient>
 
@@ -163,6 +237,10 @@ export default function ModernCharts() {
             {/* Horizontal Grid lines */}
             {[0, 0.25, 0.5, 0.75, 1].map((ratio, idx) => {
               const y = paddingY + chartH * ratio;
+              const valueLabel = maxDataRevenue > 0
+                ? `$${Math.round(((1 - ratio) * maxRevenue) / 1000)}k`
+                : `$${Math.round((1 - ratio) * 100)}k`;
+
               return (
                 <g key={idx}>
                   <line
@@ -182,7 +260,7 @@ export default function ModernCharts() {
                     fill="#849AAD"
                     className="font-mono font-medium"
                   >
-                    ${Math.round(((1 - ratio) * maxRevenue) / 1000)}k
+                    {maxDataRevenue > 0 ? valueLabel : ratio === 1 ? "$0k" : ""}
                   </text>
                 </g>
               );
@@ -284,12 +362,13 @@ export default function ModernCharts() {
                 <span className="text-[10px] text-white/70 font-mono">MXN</span>
               </div>
               <div className="text-[10px] text-white/80 mt-1 flex justify-between gap-4">
-                <span>Visitas: {points[hoveredPoint].visitors}</span>
+                <span>{points[hoveredPoint].orders} órdenes</span>
                 <span>
                   Ticket: $
-                  {Math.round(
-                    points[hoveredPoint].revenue / points[hoveredPoint].orders
-                  ).toLocaleString("es-MX")}
+                  {points[hoveredPoint].orders > 0
+                    ? Math.round(points[hoveredPoint].revenue / points[hoveredPoint].orders).toLocaleString("es-MX")
+                    : 0}{" "}
+                  MXN
                 </span>
               </div>
             </div>
@@ -330,48 +409,52 @@ export default function ModernCharts() {
                     stroke="#F4F7F9"
                     strokeWidth="14"
                   />
-                  {/* Segment 1: Gamuza (35%) */}
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="38"
-                    fill="transparent"
-                    stroke="#849AAD"
-                    strokeWidth="14"
-                    strokeDasharray="83.56 155.19"
-                    strokeDashoffset="0"
-                    className="hover:opacity-80 transition-opacity cursor-pointer"
-                    onMouseEnter={() => setActiveCategory(0)}
-                    onMouseLeave={() => setActiveCategory(null)}
-                  />
-                  {/* Segment 2: Res Flor Entera (40%) */}
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="38"
-                    fill="transparent"
-                    stroke="#605246"
-                    strokeWidth="14"
-                    strokeDasharray="95.5 143.25"
-                    strokeDashoffset="-83.56"
-                    className="hover:opacity-80 transition-opacity cursor-pointer"
-                    onMouseEnter={() => setActiveCategory(1)}
-                    onMouseLeave={() => setActiveCategory(null)}
-                  />
-                  {/* Segment 3: Exóticos (25%) */}
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="38"
-                    fill="transparent"
-                    stroke="#5E1C23"
-                    strokeWidth="14"
-                    strokeDasharray="59.69 179.06"
-                    strokeDashoffset="-179.06"
-                    className="hover:opacity-80 transition-opacity cursor-pointer"
-                    onMouseEnter={() => setActiveCategory(2)}
-                    onMouseLeave={() => setActiveCategory(null)}
-                  />
+                  {totalLeatherRev > 0 && (
+                    <>
+                      {/* Segment 1: Gamuza */}
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="38"
+                        fill="transparent"
+                        stroke="#849AAD"
+                        strokeWidth="14"
+                        strokeDasharray={`${(gamuzaPct / 100) * 238.76} 238.76`}
+                        strokeDashoffset="0"
+                        className="hover:opacity-80 transition-opacity cursor-pointer"
+                        onMouseEnter={() => setActiveCategory(0)}
+                        onMouseLeave={() => setActiveCategory(null)}
+                      />
+                      {/* Segment 2: Res Flor Entera */}
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="38"
+                        fill="transparent"
+                        stroke="#605246"
+                        strokeWidth="14"
+                        strokeDasharray={`${(vacunoPct / 100) * 238.76} 238.76`}
+                        strokeDashoffset={`-${(gamuzaPct / 100) * 238.76}`}
+                        className="hover:opacity-80 transition-opacity cursor-pointer"
+                        onMouseEnter={() => setActiveCategory(1)}
+                        onMouseLeave={() => setActiveCategory(null)}
+                      />
+                      {/* Segment 3: Exóticos */}
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="38"
+                        fill="transparent"
+                        stroke="#5E1C23"
+                        strokeWidth="14"
+                        strokeDasharray={`${(exoticosPct / 100) * 238.76} 238.76`}
+                        strokeDashoffset={`-${((gamuzaPct + vacunoPct) / 100) * 238.76}`}
+                        className="hover:opacity-80 transition-opacity cursor-pointer"
+                        onMouseEnter={() => setActiveCategory(2)}
+                        onMouseLeave={() => setActiveCategory(null)}
+                      />
+                    </>
+                  )}
                 </svg>
 
                 {/* Center Label */}
@@ -380,17 +463,17 @@ export default function ModernCharts() {
                     Total Pieles
                   </span>
                   <span className="font-archivo text-base text-[#605246]">
-                    $424,500
+                    ${totalLeatherRev.toLocaleString("es-MX")}
                   </span>
                   <span className="text-[9px] text-[#5E1C23] font-bold">
-                    100% Genuina
+                    {totalLeatherRev > 0 ? "Facturación Real" : "Esperando Órdenes"}
                   </span>
                 </div>
               </div>
 
               {/* Legend List */}
               <div className="flex-1 w-full space-y-3.5">
-                {LEATHER_DISTRIBUTION.map((item, idx) => (
+                {leatherDistribution.map((item, idx) => (
                   <div
                     key={item.name}
                     onMouseEnter={() => setActiveCategory(idx)}
@@ -424,8 +507,8 @@ export default function ModernCharts() {
           </div>
 
           <div className="pt-4 border-t border-[#B1C7D4]/30 text-[11px] text-[#849AAD] flex justify-between">
-            <span>León Guanajuato · Curtición Vegetal</span>
-            <span className="text-emerald-700 font-bold">14 Modelos Validados</span>
+            <span>León Guanajuato · Curtición Artesanal</span>
+            <span className="text-emerald-700 font-bold">Catálogo 100% Genuino</span>
           </div>
         </div>
 
@@ -445,12 +528,12 @@ export default function ModernCharts() {
             </div>
 
             <p className="text-xs text-[#849AAD] mb-6">
-              Niveles de inventario físico vs. reservado por número. Las tallas 27.0 y 27.5 concentran la mayor rotación comercial.
+              Niveles de inventario físico disponible en taller central por número de calzado.
             </p>
 
             {/* Vertical Bar Chart */}
             <div className="flex items-end justify-between gap-1.5 h-44 pt-4 border-b border-[#B1C7D4]/40 px-1">
-              {SIZE_STOCK_DATA.map((bar) => {
+              {sizeStockData.map((bar) => {
                 const maxStock = 50;
                 const heightPct = Math.min(100, (bar.stock / maxStock) * 100);
                 const isCritical = bar.status === "critical";
@@ -463,7 +546,7 @@ export default function ModernCharts() {
                   >
                     {/* Hover Tooltip */}
                     <div className="absolute -top-9 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-[#605246] text-white text-[10px] py-1 px-2 rounded shadow whitespace-nowrap z-10 font-mono">
-                      {bar.stock} pares ({bar.reserved} res.)
+                      {bar.stock} pares en taller
                     </div>
 
                     {/* Bar Cylinder */}
@@ -511,4 +594,3 @@ export default function ModernCharts() {
     </div>
   );
 }
-

@@ -85,14 +85,14 @@ export default function AdminDashboardPage() {
             <TrendingUp className="w-4 h-4 text-[#5E1C23]" />
           </div>
           <div className="font-archivo text-3xl text-[#5E1C23]">
-            ${totalSales > 0 ? totalSales.toLocaleString("es-MX") : "184,500"}
+            ${totalSales.toLocaleString("es-MX")}
           </div>
-          <div className="text-[11px] text-[#849AAD] mt-1">{orders.length > 0 ? orders.length : 38} pedidos totales</div>
+          <div className="text-[11px] text-[#849AAD] mt-1">{orders.length} pedidos totales</div>
         </div>
       </div>
 
       {/* Modern Interactive Operational Charts */}
-      <ModernCharts />
+      <ModernCharts orders={orders} />
 
       {/* Quick Action Navigation Cards */}
       <div>
