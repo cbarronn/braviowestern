@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { PRODUCTS_CATALOG } from "@/lib/data/products";
 import { useCommerceStore } from "@/lib/store/commerce-store";
-import { ArrowLeft, Check, Filter } from "lucide-react";
+import { ArrowLeft, Check, Filter, RotateCw } from "lucide-react";
 import { CruzDeHierro } from "@/components/ui/BravioLogo";
 
 export default function CollectionPage() {
@@ -150,16 +150,39 @@ export default function CollectionPage() {
                 href={`/producto/${product.slug}`}
                 className="relative block aspect-[4/5] bg-white overflow-hidden border-b border-[#B1C7D4]/30 p-4"
               >
+                {/* Primary view */}
                 <Image
                   src={product.featuredImage}
                   alt={product.name}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                  className={`object-contain p-4 transition-all duration-500 ${
+                    product.images && product.images.length > 1
+                      ? "group-hover:opacity-0"
+                      : "group-hover:scale-105"
+                  }`}
                 />
+                {/* Alternate angle view on hover */}
+                {product.images && product.images.length > 1 && (
+                  <Image
+                    src={product.images[1] || product.images[0]}
+                    alt={`${product.name} alternate view`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-contain p-4 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  />
+                )}
                 <span className="absolute top-3 left-3 bg-[#F4F7F9] text-[9px] font-[SpaceGrotesk] font-bold tracking-widest uppercase text-[#605246] px-2.5 py-1 border border-[#B1C7D4]/50">
                   {product.leatherType}
                 </span>
+
+                {/* 360° indicator badge */}
+                {product.images && product.images.length > 1 && (
+                  <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-white/95 backdrop-blur-xs text-[9px] font-[SpaceGrotesk] font-bold tracking-wider uppercase text-[#5E1C23] px-2 py-0.5 border border-[#B1C7D4]/60 shadow-2xs group-hover:border-[#5E1C23] transition-colors">
+                    <RotateCw className="w-2.5 h-2.5 group-hover:animate-spin" />
+                    <span>360°</span>
+                  </span>
+                )}
               </Link>
 
               <div className="p-5 flex-1 flex flex-col justify-between">

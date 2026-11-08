@@ -6,6 +6,7 @@ import Image from "next/image";
 import { AnimatePresence } from "framer-motion";
 import { ArrowRight, ShieldCheck, Sparkles, Compass, Check } from "lucide-react";
 import CinematicIntro from "@/components/intro/CinematicIntro";
+import HeroVideo from "@/components/home/HeroVideo";
 import { PRODUCTS_CATALOG } from "@/lib/data/products";
 import { useCommerceStore } from "@/lib/store/commerce-store";
 
@@ -64,22 +65,13 @@ export default function HomePage() {
             Limpio: sin textos blancos que invadan el fondo ni el video
         ========================================================= */}
         <section className="relative min-h-[85vh] sm:min-h-[92vh] flex items-end justify-center overflow-hidden bg-black text-white">
-          {/* Background Video / Atmosphere — 100% Limpio y Nítido */}
+          {/* Background Video / Atmosphere — Optimizado con auto-recovery anti-pausa */}
           <div className="absolute inset-0 z-0">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              onEnded={(e) => {
-                e.currentTarget.currentTime = 0;
-                e.currentTarget.play();
-              }}
+            <HeroVideo
+              src="/media/video.mp4"
               poster="/brand/posterImage-142.png"
               className="w-full h-full object-cover opacity-100 filter brightness-100 contrast-105"
-            >
-              <source src="/media/video.mp4" type="video/mp4" />
-            </video>
+            />
           </div>
 
           {/* Sutil acceso discreto al pie del video para invitar a recorrer la colección */}

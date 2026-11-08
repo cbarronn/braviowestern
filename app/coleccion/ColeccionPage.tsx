@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { PRODUCTS, type Product } from "@/data/products";
 import { CruzDeHierro } from "@/components/ui/BravioLogo";
+import { RotateCw } from "lucide-react";
 
 type Filter = "all" | "mujer" | "hombre";
 
@@ -21,9 +22,28 @@ function ProductCard({ product }: { product: Product }) {
           src={product.images[0] || product.featuredImage || "/products/catalogo/bw-sin-ga-are/BW-SIN-GA-ARE.jpg"}
           alt={product.name}
           fill
-          className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+          className={`object-contain p-4 transition-all duration-500 ${
+            product.images && product.images.length > 1
+              ? "group-hover:opacity-0"
+              : "group-hover:scale-105"
+          }`}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
+        {product.images && product.images.length > 1 && (
+          <Image
+            src={product.images[1] || product.images[0]}
+            alt={`${product.name} alternate angle`}
+            fill
+            className="object-contain p-4 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        )}
+        {product.images && product.images.length > 1 && (
+          <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-white/95 backdrop-blur-xs text-[9px] font-[SpaceGrotesk] font-bold tracking-wider uppercase text-[#5E1C23] px-2 py-0.5 border border-[#B1C7D4]/60 shadow-2xs group-hover:border-[#5E1C23] transition-colors">
+            <RotateCw className="w-2.5 h-2.5 group-hover:animate-spin" />
+            <span>360°</span>
+          </span>
+        )}
       </div>
 
       {/* Información ordenada debajo de la imagen */}

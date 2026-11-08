@@ -8,6 +8,7 @@ import { PRODUCTS_CATALOG } from "@/lib/data/products";
 import { useCommerceStore } from "@/lib/store/commerce-store";
 import { ArrowLeft, Check, ShieldCheck, Truck, RotateCcw } from "lucide-react";
 import { CruzDeHierro } from "@/components/ui/BravioLogo";
+import Product360Viewer from "@/components/products/Product360Viewer";
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -63,41 +64,14 @@ export default function ProductDetailPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        {/* Left: Gallery with pure white backdrop for seamless white-background photos */}
-        <div className="space-y-4">
-          {/* Main Large Image */}
-          <div className="relative aspect-[4/5] bg-white rounded-none overflow-hidden border border-[#B1C7D4]/60 p-6 flex items-center justify-center shadow-xs">
-            <Image
-              src={product.images[activeImageIndex] || product.featuredImage}
-              alt={product.name}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-contain p-6"
-              priority
-            />
-            <span className="absolute top-4 left-4 bg-[#F4F7F9] text-[10px] font-[SpaceGrotesk] font-bold tracking-widest uppercase text-[#605246] px-3 py-1 border border-[#B1C7D4]/60">
-              {product.leatherType}
-            </span>
-          </div>
-
-          {/* Thumbnails */}
-          {product.images.length > 1 && (
-            <div className="flex gap-3 overflow-x-auto pb-2">
-              {product.images.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveImageIndex(idx)}
-                  className={`relative w-20 h-24 flex-shrink-0 bg-white border-2 p-1 transition-all ${
-                    activeImageIndex === idx
-                      ? "border-[#5E1C23] shadow-xs"
-                      : "border-[#B1C7D4]/50 opacity-70 hover:opacity-100"
-                  }`}
-                >
-                  <img src={img} alt="" className="w-full h-full object-contain" />
-                </button>
-              ))}
-            </div>
-          )}
+        {/* Left: Interactive 360° Boot Rotator & Gallery */}
+        <div>
+          <Product360Viewer
+            images={product.images && product.images.length > 0 ? product.images : [product.featuredImage]}
+            name={product.name}
+            leatherType={product.leatherType}
+            onActiveIndexChange={(idx) => setActiveImageIndex(idx)}
+          />
         </div>
 
         {/* Right: Product Info & Actions */}
